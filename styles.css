@@ -18,6 +18,8 @@
   --good: #1d6b41;
   --ok: #a86a12;
   --bad: #c4232b;
+  --alert: #d33a3a;
+  --announce: #2059b8;
   color-scheme: light dark;
 }
 
@@ -39,6 +41,8 @@
     --good: #3fa36b;
     --ok: #d39a3a;
     --bad: #ff6b6b;
+    --alert: #ff6b6b;
+    --announce: #6b9cff;
   }
 }
 
@@ -273,6 +277,40 @@ button {
 
 .calls .redouble {
   color: var(--redouble);
+}
+
+/* Alerted calls get a red box and announced ones a blue box (the ACBL
+   convention card's colours). Tapping one shows its meaning. */
+.calls [data-kind] {
+  cursor: pointer;
+}
+
+.calls [data-kind] > span {
+  padding: 0 3px;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1.5px var(--alert);
+}
+
+.calls [data-kind="announce"] > span {
+  box-shadow: 0 0 0 1.5px var(--announce);
+}
+
+.mark-note {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  left: 8px;
+  padding: 6px 10px;
+  border-left: 4px solid var(--alert);
+  border-radius: 8px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mark-note[data-kind="announce"] {
+  border-left-color: var(--announce);
 }
 
 .calls .asked {

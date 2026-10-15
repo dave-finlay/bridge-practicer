@@ -162,3 +162,8 @@ blockquote {
   .tags { margin-left: 0; }
   .diagram .holding { font-size: 0.85rem; }
 }
+
+/* Alerted calls in red boxes, announced calls in blue, as in the app. */
+.mark { padding: 0 4px; border-radius: 5px; box-shadow: 0 0 0 2px #d33a3a; }
+.mark.announce { box-shadow: 0 0 0 2px #2059b8; }
+.marks { margin: 10px 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 0.95em; }

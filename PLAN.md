@@ -40,6 +40,15 @@ with a review: read the code, try it, and course-correct before moving on.
   above the bidding box, with a tag when earlier calls are scrolled out
   of view. Levels of the bidding box with no legal bid left are hidden,
   so long auctions have room.
+- **Alerts and announcements are marked** in the auction, as ACBL rules
+  and our agreements require: a red box for an alert, blue for an
+  announcement (the convention card's colours), and tapping one shows
+  its meaning. `js/alerts.js` works them out from the auction by rules,
+  so the problem files don't list them. Announced: 1NT openings (15 to
+  17), Jacoby and Texas transfers, and a super-accept. Alerted: Jacoby
+  2NT and opener's three-level answers, new minor forcing, and Stayman
+  over interference (double of 2♣, or a cue bid). Not marked: Stayman,
+  negative doubles, strong 2♣, RKCB, control bids.
 - **Double dummy results under the deal** on the feedback screen: the
   tricks each player takes as declarer in each strain, how the contract
   played fares, and par. They're worked out ahead of time with DDS and
@@ -76,6 +85,7 @@ manifest.webmanifest, sw.js, icons/  installing and offline use
 index.html, styles.css   the app
 js/app.js                the app's screens
 js/problems.js           grading, progress and picking problems
+js/alerts.js             which calls are alerted or announced
 js/store.js              saving answers and progress (IndexedDB)
 vendor/                  DDS source and the compiled solver (not committed)
 ```

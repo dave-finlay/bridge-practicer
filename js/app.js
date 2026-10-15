@@ -12,6 +12,7 @@
 // decides which problems come up: new ones first, then ones missed, then
 // ones due again.
 
+import { alertsFor } from './alerts.js';
 import { BIDS, STRAINS, contract, isVulnerable, legalCalls, seatAfter } from './auction.js';
 import { SUITS, formatHolding, hcp, parseHand } from './hands.js';
 import {
@@ -105,7 +106,8 @@ function handHTML(handText) {
 
 // The auction table. `calls` are shown from the dealer on. If `ask` is
 // set, `you` get a blinking "?" after them, or the call you've selected.
-// `highlight` marks a call.
+// `highlight` marks a call. Alerted calls get a red box and announced
+// ones a blue box; tapping one shows what it means.
 function auctionHTML(deal, you, calls, { ask = false, pending = null, highlight = -1 } = {}) {
   const partner = seatAfter(you, 2);
   const seats = TABLE_ORDER.map((seat) => {
@@ -120,12 +122,43 @@ function auctionHTML(deal, you, calls, { ask = false, pending = null, highlight 
 
   const cells = [];
   for (let i = 0; i < TABLE_ORDER.indexOf(deal.dealer); i++) cells.push('<div></div>');
-  calls.forEach((call, i) => cells.push(`<div${i === highlight ? ' class="asked"' : ''}>${callHTML(call)}</div>`));
+  const marks = alertsFor(deal.dealer, deal.auction);
+  calls.forEach((call, i) => {
+    const mark = marks.get(i);
+    const label = mark && `${mark.kind === 'alert' ? 'Alert' : 'Announced'}: ${mark.text}`;
+    const attributes = [
+      i === highlight ? ' class="asked"' : '',
+      mark ? ` data-kind="${mark.kind}" data-mark="${escapeHTML(label)}" role="button" aria-label="${escapeHTML(label)}"` : '',
+    ].join('');
+    cells.push(`<div${attributes}>${callHTML(call)}</div>`);
+  });
   if (ask) cells.push(pending ? `<div class="pending">${callHTML(pending)}</div>` : '<div class="cursor">?</div>');
 
   return `<div class="seats">${seats}</div>
     <div class="calls">${cells.join('')}</div>
-    <div class="more-above" hidden>↑ earlier calls</div>`;
+    <div class="more-above" hidden>↑ earlier calls</div>
+    <div class="mark-note" hidden></div>`;
+}
+
+// Shows what a marked call means, at the foot of its auction table, for a
+// few seconds, or until the next tap anywhere.
+let markTimer = 0;
+let markShown = null; // the marked call whose meaning is showing
+
+function hideMark() {
+  clearTimeout(markTimer);
+  app.querySelectorAll('.mark-note').forEach((note) => { note.hidden = true; });
+  markShown = null;
+}
+
+function showMark(cell) {
+  const note = cell.closest('.auction').querySelector('.mark-note');
+  note.textContent = cell.dataset.mark;
+  note.dataset.kind = cell.dataset.kind;
+  note.hidden = false;
+  markShown = cell;
+  clearTimeout(markTimer);
+  markTimer = setTimeout(hideMark, 4000);
 }
 
 // Scrolls the auction so its last row, where you call, is in view, and
@@ -423,6 +456,15 @@ function recordAnswer(call) {
 // Events
 
 app.addEventListener('click', (event) => {
+  // A tap anywhere hides a showing meaning; a tap on another marked call
+  // shows that one instead.
+  const marked = event.target.closest('[data-mark]');
+  const wasShown = markShown;
+  hideMark();
+  if (marked) {
+    if (marked !== wasShown) showMark(marked);
+    return;
+  }
   const button = event.target.closest('button');
   if (!button || button.disabled) return;
 
@@ -465,6 +507,12 @@ app.addEventListener('click', (event) => {
     screen = 'home';
   }
   render();
+});
+
+// Taps outside the app's own area (e.g. below a short feedback screen)
+// also hide a showing meaning.
+document.addEventListener('click', (event) => {
+  if (!app.contains(event.target)) hideMark();
 });
 
 async function start() {

@@ -4,6 +4,7 @@
 
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { alertsFor } from '../js/alerts.js';
 import { seatOfCall } from '../js/auction.js';
 import { SUITS, SUIT_SYMBOLS, formatCall, formatHolding, hcp, parseHand } from '../js/hands.js';
 import { LESSONS } from '../js/problems.js';
@@ -34,7 +35,14 @@ function handHtml(handText, { label } = {}) {
 function auctionHtml(deal, upTo) {
   const cells = Array(TABLE_ORDER.indexOf(deal.dealer)).fill('<td></td>');
   const calls = upTo === undefined ? deal.auction : deal.auction.slice(0, upTo);
-  let shown = calls.map((c) => `<td>${call(c)}</td>`);
+  // Alerted calls get a red box and announced ones a blue box, as in the app.
+  const marks = alertsFor(deal.dealer, deal.auction);
+  let shown = calls.map((c, i) => {
+    const mark = marks.get(i);
+    if (!mark) return `<td>${call(c)}</td>`;
+    const label = `${mark.kind === 'alert' ? 'Alert' : 'Announced'}: ${mark.text}`;
+    return `<td><span class="mark ${mark.kind}" title="${esc(label)}">${call(c)}</span></td>`;
+  });
   if (upTo === undefined) {
     // End with "All pass", as the handouts do.
     shown = shown.slice(0, -3).concat('<td colspan="3" class="all-pass">All pass</td>');
@@ -87,6 +95,14 @@ function problemHtml(deal, problem) {
   </article>`;
 }
 
+// The alerts and announcements in the whole auction, as a list.
+function marksHtml(deal) {
+  const marks = [...alertsFor(deal.dealer, deal.auction)];
+  if (!marks.length) return '';
+  return `<ul class="marks">${marks.map(([i, m]) =>
+    `<li><span class="mark ${m.kind}">${call(deal.auction[i])}</span> ${m.kind === 'alert' ? 'Alert' : 'Announced'}: ${esc(m.text)}</li>`).join('')}</ul>`;
+}
+
 function dealHtml(deal) {
   const notes = [...(deal.unusualSetup ? [deal.unusualSetup] : []), ...(deal.reviewNotes ?? [])];
   return `<section class="deal" id="${deal.id}">
@@ -99,6 +115,7 @@ function dealHtml(deal) {
         ${dealDiagram(deal)}
         <div>
           ${auctionHtml(deal)}
+          ${marksHtml(deal)}
           <blockquote><span class="answer-label">Handout</span> ${prose(deal.handout)}</blockquote>
         </div>
       </div>
