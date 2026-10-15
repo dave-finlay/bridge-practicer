@@ -1,0 +1,351 @@
+{
+  "lesson": "jacoby-2nt",
+  "title": "Jacoby 2NT",
+  "source": "Jacoby 2NT Raise .pdf",
+  "deals": [
+    {
+      "id": "j2nt-1",
+      "board": 1,
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "N": "KQJ.K7654.AT.852",
+        "E": "AT.832.8642.JT97",
+        "S": "6543.QJT9.KQ9.KQ",
+        "W": "9872.A.J753.A643"
+      },
+      "auction": ["1H", "P", "2N", "P", "4H", "P", "P", "P"],
+      "handout": "South bids 2 NT to show game forcing hand with 4 hearts. North shows a minimum with a 4♥ bid, ending the auction.",
+      "problems": [
+        {
+          "id": "j2nt-1a",
+          "at": 2,
+          "answer": "2N",
+          "tags": ["jacoby-2nt"],
+          "explanation": "You have four hearts and 13 HCP: an opening hand with a fit. Bid 2NT, Jacoby: four or more trumps and game values. Partner will describe their hand.",
+          "whyNot": {
+            "3H": "3♥ is a limit raise, about 10–12. You have an opening hand.",
+            "4H": "A jump to 4♥ is weak and distributional. You have 13 HCP and want to find out about slam."
+          }
+        },
+        {
+          "id": "j2nt-1b",
+          "at": 4,
+          "answer": "4H",
+          "tags": ["jacoby-2nt"],
+          "explanation": "Partner's 2NT is Jacoby: four or more hearts and game values. You have no singleton or void and a minimum, 13, so jump to 4♥.",
+          "whyNot": {
+            "3H": "3♥ shows 18 or more. You have a minimum.",
+            "3N": "3NT shows 15–17. You have a minimum.",
+            "3C": "A new suit at the three level shows a singleton or void. You have none."
+          }
+        }
+      ]
+    },
+    {
+      "id": "j2nt-2",
+      "board": 2,
+      "dealer": "E",
+      "vul": "NS",
+      "hands": {
+        "N": "542.J754.AT8.Q54",
+        "E": "KJT63.A92.9.A973",
+        "S": "8.KQT.76432.T862",
+        "W": "AQ97.863.KQJ5.KJ"
+      },
+      "auction": ["1S", "P", "2N", "P", "3D", "P", "4S", "P", "P", "P"],
+      "handout": "West has a solid game force with 4 spades and bids 2 NT. East shows singleton diamond with 3♦. West has worst possible diamond holding and signs off in 4♠.",
+      "problems": [
+        {
+          "id": "j2nt-2a",
+          "at": 2,
+          "answer": "2N",
+          "tags": ["jacoby-2nt"],
+          "explanation": "You have four spades and 16 HCP. Bid 2NT, Jacoby: four or more trumps and game values, and partner describes their hand.",
+          "whyNot": {
+            "3S": "3♠ is a limit raise, about 10–12. You have 16.",
+            "4S": "A jump to 4♠ is weak and distributional. You have 16 and slam is possible."
+          }
+        },
+        {
+          "id": "j2nt-2b",
+          "at": 4,
+          "answer": "3D",
+          "tags": ["jacoby-2nt"],
+          "explanation": "Partner's 2NT is Jacoby. You have a singleton diamond, so bid 3♦ to show it. Partner can judge how well the hands fit.",
+          "whyNot": {
+            "4S": "4♠ shows a minimum with no singleton or void. Show your singleton.",
+            "3S": "3♠ shows 18 or more and no singleton. You have a singleton diamond.",
+            "3N": "3NT shows 15–17 and no singleton. You have a singleton diamond."
+          }
+        },
+        {
+          "id": "j2nt-2c",
+          "at": 6,
+          "answer": "4S",
+          "tags": ["jacoby-2nt"],
+          "explanation": "Partner has a singleton diamond, and your KQJ there are wasted: partner will ruff the suit anyway. That's the worst holding opposite a singleton, so sign off in 4♠.",
+          "whyNot": {
+            "4N": "Your diamond honours are wasted opposite the singleton. Slam is unlikely.",
+            "3S": "Your diamond honours are wasted. Sign off in game."
+          }
+        }
+      ]
+    },
+    {
+      "id": "j2nt-3",
+      "board": 3,
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "N": "AKJ4.Q85.K6.7542",
+        "E": "9.AJ762.9753.JT8",
+        "S": "QT865.94.AQ.AK63",
+        "W": "732.KT3.JT842.Q9"
+      },
+      "auction": ["1S", "P", "2N", "P", "3N", "P", "4S", "P", "P", "P"],
+      "handout": "North has an opening hand with 4 spades and bids 2 NT. South shows 15-17 without shortness by bidding 3 NT. North should signoff in 4♠ over that.",
+      "problems": [
+        {
+          "id": "j2nt-3a",
+          "at": 2,
+          "answer": "2N",
+          "tags": ["jacoby-2nt"],
+          "explanation": "You have four spades and 13 HCP. Bid 2NT, Jacoby: four or more trumps and game values.",
+          "whyNot": {
+            "3S": "3♠ is a limit raise, about 10–12. You have an opening hand.",
+            "4S": "A jump to 4♠ is weak and distributional."
+          }
+        },
+        {
+          "id": "j2nt-3b",
+          "at": 4,
+          "answer": "3N",
+          "tags": ["jacoby-2nt"],
+          "explanation": "Partner's 2NT is Jacoby. You have no singleton or void, and 15 HCP, so bid 3NT: 15–17 without shortness. It doesn't mean you want to play notrump.",
+          "whyNot": {
+            "4S": "4♠ shows a minimum, 12–14. You have 15.",
+            "3S": "3♠ shows 18 or more. You have 15.",
+            "3C": "A new suit at the three level shows a singleton or void. You have none."
+          }
+        },
+        {
+          "id": "j2nt-3c",
+          "at": 6,
+          "answer": "4S",
+          "tags": ["jacoby-2nt"],
+          "explanation": "Partner has 15–17 and no shortness. You have 13 and a balanced hand, without the extras for slam. Sign off in 4♠.",
+          "whyNot": {
+            "4N": "You have a minimum opening hand with no shortness, and partner hasn't shown more than 17. Sign off.",
+            "P": "3NT shows strength, not a wish to play there. You have a spade fit."
+          }
+        }
+      ]
+    },
+    {
+      "id": "j2nt-4",
+      "board": 4,
+      "dealer": "W",
+      "vul": "All",
+      "hands": {
+        "N": "KQ82.J98.T6.J854",
+        "E": "A65.KT53.KJ4.K97",
+        "S": "JT94.4.852.AQT32",
+        "W": "73.AQ762.AQ973.6"
+      },
+      "auction": ["1H", "P", "2N", "P", "4D", "P", "4N", "P", "5S", "P", "6H", "P", "P", "P"],
+      "handout": "East has an opening hand with 4 hearts and bids 2 NT. West shows a good 5 card diamond suit with 4♦. Note, the East hand bids slam over 4♦ while he would sign off in 4H over a 3♣ bid showing short clubs.",
+      "problems": [
+        {
+          "id": "j2nt-4a",
+          "at": 2,
+          "answer": "2N",
+          "tags": ["jacoby-2nt"],
+          "explanation": "You have four hearts and 14 HCP. Bid 2NT, Jacoby: four or more trumps and game values.",
+          "whyNot": {
+            "3H": "3♥ is a limit raise, about 10–12. You have an opening hand.",
+            "4H": "A jump to 4♥ is weak and distributional."
+          }
+        },
+        {
+          "id": "j2nt-4b",
+          "at": 4,
+          "answer": "4D",
+          "acceptable": {
+            "3C": "Showing the singleton club is also descriptive. The handout prefers 4♦ for the strong second suit, which East likes more."
+          },
+          "tags": ["jacoby-2nt"],
+          "explanation": "Partner's 2NT is Jacoby. You have a strong second suit, five diamonds with two of the top three honours, so jump to 4♦ to show it.",
+          "whyNot": {
+            "4H": "4♥ shows a minimum with no shortness or second suit. Your diamonds are worth showing.",
+            "3H": "3♥ shows 18 or more. You have 12."
+          }
+        },
+        {
+          "id": "j2nt-4c",
+          "at": 6,
+          "answer": "4N",
+          "tags": ["jacoby-2nt", "rkcb"],
+          "explanation": "Partner has a good five-card diamond suit, and your KJ of diamonds fills it in. With 14 HCP, four hearts and that fit, slam is likely. Bid 4NT, RKCB, to check key cards.",
+          "whyNot": {
+            "4H": "Your diamond honours fit partner's second suit perfectly. Look for slam."
+          }
+        },
+        {
+          "id": "j2nt-4d",
+          "at": 8,
+          "answer": "5S",
+          "tags": ["jacoby-2nt", "rkcb"],
+          "explanation": "Partner's 4NT is RKCB for hearts. You have two key cards (the ♥A and ♦A) and the ♥Q, so bid 5♠: two key cards with the queen.",
+          "whyNot": {
+            "5H": "5♥ shows two key cards without the queen of trumps. You have the ♥Q.",
+            "5C": "5♣ shows one or four key cards. You have two."
+          }
+        },
+        {
+          "id": "j2nt-4e",
+          "at": 10,
+          "answer": "6H",
+          "tags": ["jacoby-2nt", "rkcb"],
+          "explanation": "Partner has two key cards and the ♥Q. With your ♠A and ♥K that's four of the five: only the ♣A is missing. Bid 6♥.",
+          "whyNot": {
+            "7H": "You're missing a key card, the ♣A.",
+            "5N": "5NT asks about kings for a grand slam, which needs all five key cards. You're missing one."
+          }
+        }
+      ]
+    },
+    {
+      "id": "j2nt-5",
+      "board": 5,
+      "dealer": "N",
+      "vul": "NS",
+      "hands": {
+        "N": "AQJ98.AKJT.4.K54",
+        "E": "T4.Q98.KQJ.T9763",
+        "S": "K765.54.A9876.AQ",
+        "W": "32.7632.T532.J82"
+      },
+      "auction": ["1S", "P", "2N", "P", "3D", "P", "3S", "P", "4N", "P", "5D", "P", "5N", "P", "6S", "P", "P", "P"],
+      "handout": "North shows shortness in diamonds with the 3♦ bid. South's hand is not bad opposite",
+      "reviewNotes": ["The handout's explanation is cut off. The RKCB answers follow the RKCB lesson (1430, and the lowest king for 5NT). South's 3♠ and North's 4NT and 5NT aren't problems because the text doesn't cover them."],
+      "problems": [
+        {
+          "id": "j2nt-5a",
+          "at": 2,
+          "answer": "2N",
+          "tags": ["jacoby-2nt"],
+          "explanation": "You have four spades and 13 HCP. Bid 2NT, Jacoby: four or more trumps and game values.",
+          "whyNot": {
+            "3S": "3♠ is a limit raise, about 10–12. You have an opening hand.",
+            "4S": "A jump to 4♠ is weak and distributional."
+          }
+        },
+        {
+          "id": "j2nt-5b",
+          "at": 4,
+          "answer": "3D",
+          "tags": ["jacoby-2nt"],
+          "explanation": "Partner's 2NT is Jacoby. You have a singleton diamond, so show it with 3♦, even with 18 HCP. Partner can judge how well the hands fit.",
+          "whyNot": {
+            "3S": "3♠ shows 18 or more with no singleton or void. Show your singleton first.",
+            "4S": "4♠ shows a minimum with no shortness.",
+            "4H": "Jumping in a new suit shows a strong five-card suit. Your hearts are four long."
+          }
+        },
+        {
+          "id": "j2nt-5c",
+          "at": 10,
+          "answer": "5D",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 4NT is RKCB for spades. You have three key cards: the ♠K, ♦A and ♣A. Bid 5♦: zero or three.",
+          "whyNot": {
+            "5C": "5♣ shows one or four key cards. You have three.",
+            "5H": "5♥ shows two key cards. You have three: the ♠K counts."
+          }
+        },
+        {
+          "id": "j2nt-5d",
+          "at": 14,
+          "answer": "6S",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 5NT asks for your lowest king outside trumps. The ♠K doesn't count, and you have no other king, so bid 6♠.",
+          "whyNot": {
+            "6D": "You have no ♦K. With no king outside trumps, bid six of the trump suit.",
+            "7S": "Partner is asking about kings, not telling you to bid seven."
+          }
+        }
+      ]
+    },
+    {
+      "id": "j2nt-6",
+      "board": 6,
+      "dealer": "E",
+      "vul": "EW",
+      "hands": {
+        "N": "42.AJ32.J65.QJT2",
+        "E": "KQJT9.Q76.AT92.9",
+        "S": "53.854.K743.6543",
+        "W": "A876.KT9.Q8.AK87"
+      },
+      "auction": ["1S", "P", "2N", "P", "3C", "P", "3S", "P", "4S", "P", "P", "P"],
+      "handout": "East shows short clubs with a 3♣ bid. West stalls with 3♠. East shows a minimum with 4♠. West is close to bidding over this but should give up.",
+      "reviewNotes": ["The Jacoby 2NT text doesn't cover responder's rebids, like West's 3♠ \"stall\". That problem and its explanation follow the handout's comments."],
+      "problems": [
+        {
+          "id": "j2nt-6a",
+          "at": 2,
+          "answer": "2N",
+          "tags": ["jacoby-2nt"],
+          "explanation": "You have four spades and 16 HCP. Bid 2NT, Jacoby: four or more trumps and game values.",
+          "whyNot": {
+            "3S": "3♠ is a limit raise, about 10–12. You have 16.",
+            "4S": "A jump to 4♠ is weak and distributional."
+          }
+        },
+        {
+          "id": "j2nt-6b",
+          "at": 4,
+          "answer": "3C",
+          "tags": ["jacoby-2nt"],
+          "explanation": "Partner's 2NT is Jacoby. You have a singleton club, so bid 3♣ to show it.",
+          "whyNot": {
+            "4S": "4♠ shows a minimum with no singleton. Show your singleton.",
+            "3N": "3NT shows 15–17 and no singleton."
+          }
+        },
+        {
+          "id": "j2nt-6c",
+          "at": 6,
+          "answer": "3S",
+          "tags": ["jacoby-2nt"],
+          "explanation": "Partner has a singleton club, and your ♣AK are partly wasted there. Slam is less likely, but with 16 you're not ready to give up. Bid 3♠, the cheapest way to agree spades and wait to hear more.",
+          "whyNot": {
+            "4S": "With 16 you can afford to keep the bidding low and hear more from partner first.",
+            "4N": "Your club honours are partly wasted opposite the singleton. Find out more before asking for key cards."
+          }
+        },
+        {
+          "id": "j2nt-6d",
+          "at": 8,
+          "answer": "4S",
+          "tags": ["jacoby-2nt"],
+          "explanation": "Partner's 3♠ waits for more information. You have a minimum, 12, so bid 4♠.",
+          "whyNot": {
+            "4N": "You have a minimum and have already shown your singleton. Leave slam to partner."
+          }
+        },
+        {
+          "id": "j2nt-6e",
+          "at": 10,
+          "answer": "P",
+          "tags": ["jacoby-2nt"],
+          "explanation": "Partner has shown a minimum. Your ♣AK are partly wasted opposite the singleton club, so slam is unlikely. You're close, but pass.",
+          "whyNot": {
+            "4N": "Partner has a minimum and your clubs are wasted. Give up on slam."
+          }
+        }
+      ]
+    }
+  ]
+}

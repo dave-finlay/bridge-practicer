@@ -1,0 +1,278 @@
+{
+  "lesson": "nmf",
+  "title": "New minor forcing",
+  "source": "NMF Student Hands.pdf",
+  "deals": [
+    {
+      "id": "nmf-1",
+      "board": 1,
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "N": "K8652.4.AQ87.643",
+        "E": "AJT.Q95.KT42.K87",
+        "S": "43.JT73.J93.AT95",
+        "W": "Q97.AK862.65.QJ2"
+      },
+      "auction": ["P", "1D", "P", "1H", "P", "1N", "P", "2C", "P", "2H", "P", "4H", "P", "P", "P"],
+      "handout": "West has a game forcing hand with 5 hearts. After the 1 NT rebid, he uses new minor forcing to find a heart fit. East's 2♥ bid shows a minimum with 3 hearts.",
+      "problems": [
+        {
+          "id": "nmf-1a",
+          "at": 7,
+          "answer": "2C",
+          "tags": ["nmf"],
+          "explanation": "Partner's 1NT shows 12–14 and may include three hearts. You have five hearts and 12 HCP, enough for game. Bid the new minor, 2♣: it's artificial and forcing, and asks whether partner has three hearts.",
+          "whyNot": {
+            "3N": "Partner may have three hearts, making a 5-3 fit. Ask with 2♣ first.",
+            "4H": "Partner may have only two hearts. Ask with 2♣ first.",
+            "2H": "Rebidding 2♥ is weak: partner will pass. You have game values."
+          }
+        },
+        {
+          "id": "nmf-1b",
+          "at": 9,
+          "answer": "2H",
+          "tags": ["nmf"],
+          "explanation": "Partner's 2♣ is new minor forcing: do you have three hearts, and how strong are you? You have three hearts and a minimum (12–13), so bid 2♥.",
+          "whyNot": {
+            "3H": "Jumping to 3♥ shows three hearts and a maximum (13–14). With 13 you're at the bottom of that; the handout calls this a minimum.",
+            "2N": "Show three-card support for partner's major first.",
+            "2D": "Rebidding your suit comes last, when nothing else fits. You have three hearts."
+          }
+        },
+        {
+          "id": "nmf-1c",
+          "at": 11,
+          "answer": "4H",
+          "tags": ["nmf"],
+          "explanation": "Partner has three hearts, so you have a 5-3 fit, and your 2♣ promised game values. Bid 4♥.",
+          "whyNot": {
+            "3N": "You've found an eight-card heart fit. Play in hearts.",
+            "3H": "Your new minor bid was forcing to game. Bid it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nmf-2",
+      "board": 2,
+      "dealer": "E",
+      "vul": "NS",
+      "hands": {
+        "N": "KJ.AQ987.KJ5.T72",
+        "E": "542.J54.Q2.Q8643",
+        "S": "T9876.K6.T64.AKJ",
+        "W": "AQ3.T32.A9873.95"
+      },
+      "auction": ["P", "P", "P", "1H", "P", "1S", "P", "1N", "P", "2C", "P", "3N", "P", "P", "P"],
+      "handout": "South has an invitational hand with 5 spades. He bids NMF to show this and search for a fit. North jumps to 3 NT to show a maximum without any extra major suit length.",
+      "problems": [
+        {
+          "id": "nmf-2a",
+          "at": 9,
+          "answer": "2C",
+          "tags": ["nmf"],
+          "explanation": "You have five spades and 11 HCP: enough to invite. Partner's 1NT may include three spades. After a 1♥ opening both minors are new, so bid your better one, 2♣, as new minor forcing.",
+          "whyNot": {
+            "2S": "Rebidding 2♠ is weak: partner will pass. You have enough to invite.",
+            "2N": "2NT invites, but could miss a 5-3 spade fit. Ask with 2♣ first.",
+            "3S": "A jump to 3♠ shows six spades. You have five."
+          }
+        },
+        {
+          "id": "nmf-2b",
+          "at": 11,
+          "answer": "3N",
+          "tags": ["nmf"],
+          "explanation": "Partner's 2♣ is new minor forcing. You have only two spades, and a maximum (14) with diamonds stopped. Jump to 3NT: no spade fit, and the top of your range.",
+          "whyNot": {
+            "2N": "2NT shows a minimum. With 14, jump to 3NT.",
+            "2S": "Showing spades promises three. You have two.",
+            "2H": "Rebidding hearts comes last, when nothing else fits. With a maximum and a diamond stopper, bid notrump."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nmf-3",
+      "board": 3,
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "N": "AT7642.5.T2.JT63",
+        "E": "J8.KQT76.KJ43.Q5",
+        "S": "K9.A984.Q975.974",
+        "W": "Q53.J32.A86.AK82"
+      },
+      "auction": ["P", "1C", "P", "1H", "P", "1N", "P", "2D", "P", "3H", "P", "4H", "P", "P", "P"],
+      "handout": "East has a game forcing hand with 5 hearts and uses NMF to find a fit. West jumps to 3♥ to show extras with 3 hearts. East bids game.",
+      "problems": [
+        {
+          "id": "nmf-3a",
+          "at": 7,
+          "answer": "2D",
+          "tags": ["nmf"],
+          "explanation": "You have five hearts and 12 HCP, enough for game. Partner's 1NT may include three hearts. Bid the new minor, 2♦, to ask.",
+          "whyNot": {
+            "3N": "Partner may have three hearts. Ask with 2♦ first.",
+            "4H": "Partner may have only two hearts. Ask with 2♦ first.",
+            "2H": "Rebidding 2♥ is weak: partner will pass. You have game values."
+          }
+        },
+        {
+          "id": "nmf-3b",
+          "at": 9,
+          "answer": "3H",
+          "tags": ["nmf"],
+          "explanation": "Partner's 2♦ is new minor forcing. You have three hearts and a maximum (14), so jump to 3♥.",
+          "whyNot": {
+            "2H": "2♥ shows three hearts but a minimum. You have 14: jump.",
+            "2N": "Show three-card support for partner's major first.",
+            "3D": "Raising the new minor comes after showing heart support. You have three hearts."
+          }
+        },
+        {
+          "id": "nmf-3c",
+          "at": 11,
+          "answer": "4H",
+          "tags": ["nmf"],
+          "explanation": "Partner has three hearts and a maximum. You have the 5-3 fit and game values: bid 4♥.",
+          "whyNot": {
+            "3N": "You've found an eight-card heart fit. Play in hearts.",
+            "P": "Your 2♦ promised game values. Bid game."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nmf-4",
+      "board": 4,
+      "dealer": "W",
+      "vul": "All",
+      "hands": {
+        "N": "J74.QJ8.AJ6.A763",
+        "E": "QT6.972.KQ5.K952",
+        "S": "A9532.AKT4.732.T",
+        "W": "K8.653.T984.QJ84"
+      },
+      "auction": ["P", "1C", "P", "1S", "P", "1N", "P", "2D", "P", "2S", "P", "3S", "P", "P", "P"],
+      "handout": "South has a strong invitational hand with 5-4 in the majors. He uses NMF over partner's 1 NT rebid. North shows 3 spades and a minimum but South tries once more in vain.",
+      "problems": [
+        {
+          "id": "nmf-4a",
+          "at": 7,
+          "answer": "2D",
+          "tags": ["nmf"],
+          "explanation": "You have five spades, four hearts and 11 HCP. Bid the new minor, 2♦: partner shows four hearts first, then three spades. Bidding 2♥ yourself wouldn't be forcing.",
+          "whyNot": {
+            "2H": "After a 1NT rebid, 2♥ isn't forcing, or even invitational. With a good hand, use new minor forcing.",
+            "2N": "2NT could miss a 4-4 heart fit or a 5-3 spade fit. Ask with 2♦."
+          }
+        },
+        {
+          "id": "nmf-4b",
+          "at": 9,
+          "answer": "2S",
+          "tags": ["nmf"],
+          "explanation": "Partner's 2♦ is new minor forcing. You don't have four hearts, but you have three spades and a minimum (12–13), so bid 2♠.",
+          "whyNot": {
+            "3S": "Jumping shows three spades and a maximum (13–14). The handout treats this as a minimum.",
+            "2H": "Showing hearts promises four. You have three.",
+            "2N": "Show three-card support for partner's major first."
+          }
+        },
+        {
+          "id": "nmf-4c",
+          "at": 11,
+          "answer": "3S",
+          "acceptable": {
+            "P": "Partner has shown a minimum, so stopping in 2♠ is reasonable too. The handout tries once more."
+          },
+          "tags": ["nmf"],
+          "explanation": "Partner has three spades and a minimum. With 11 HCP and a good 5-4 shape, invite once more with 3♠: partner bids game with anything extra.",
+          "whyNot": {
+            "4S": "Partner has shown a minimum. Invite and let partner decide."
+          }
+        },
+        {
+          "id": "nmf-4d",
+          "at": 12,
+          "answer": "P",
+          "tags": ["nmf"],
+          "explanation": "Partner invited again, but you've already shown a minimum and have nothing more to add. Pass.",
+          "whyNot": {
+            "4S": "You have a minimum, which you've already shown. Decline."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nmf-5",
+      "board": 5,
+      "dealer": "N",
+      "vul": "NS",
+      "hands": {
+        "N": "AKQ.T32.KJ852.53",
+        "E": "8542.Q876.A73.AQ",
+        "S": "T.AK54.T964.KJ98",
+        "W": "J9763.J9.Q.T7642"
+      },
+      "auction": ["1D", "P", "1H", "P", "1N", "P", "2N", "P", "3N", "P", "P", "P"],
+      "handout": "With an invitational hand without 5 hearts South does not use NMF.",
+      "problems": [
+        {
+          "id": "nmf-5a",
+          "at": 6,
+          "answer": "2N",
+          "tags": ["nmf"],
+          "explanation": "New minor forcing looks for a 5-3 fit in your major, so it needs five cards. You have four hearts, and partner's 1NT rebid denied four. With 11 HCP, invite game with 2NT.",
+          "whyNot": {
+            "2C": "New minor forcing needs a five-card major. You have four hearts, and partner has already denied four.",
+            "3N": "11 HCP opposite 12–14 is only enough to invite.",
+            "2H": "Rebidding hearts shows five or more, and partner will pass. You have four."
+          }
+        },
+        {
+          "id": "nmf-5b",
+          "at": 8,
+          "answer": "3N",
+          "tags": ["nmf"],
+          "explanation": "Partner invited with 2NT. You have 13 HCP and a good five-card diamond suit: accept.",
+          "whyNot": {
+            "P": "With 13 and a five-card suit, you're worth accepting."
+          }
+        }
+      ]
+    },
+    {
+      "id": "nmf-6",
+      "board": 6,
+      "dealer": "E",
+      "vul": "EW",
+      "hands": {
+        "N": "742.A643.KJ832.6",
+        "E": "AT.J852.QT4.KQ94",
+        "S": "J3.KQT9.976.J532",
+        "W": "KQ9865.7.A5.AT87"
+      },
+      "auction": ["1C", "P", "1S", "P", "1N", "P", "4S", "P", "P", "P"],
+      "handout": "With a minimum game forcing hand with 6 spades South should bid game. There is no need to use NMF since South already knows",
+      "reviewNotes": ["The handout says South should bid game; West bid 4♠. The handout's sentence is also cut off."],
+      "problems": [
+        {
+          "id": "nmf-6a",
+          "at": 6,
+          "answer": "4S",
+          "tags": ["nmf"],
+          "explanation": "Partner's 1NT promises at least two spades, so with six spades you already know there's an eight-card fit. You have 13 HCP: bid game. New minor forcing would only ask a question you know the answer to.",
+          "whyNot": {
+            "2D": "New minor forcing asks about three-card support. With six spades you know there's a fit already.",
+            "3S": "A jump to 3♠ only invites. With 13 HCP opposite an opener, bid game.",
+            "3N": "You have six spades and partner at least two: play in spades."
+          }
+        }
+      ]
+    }
+  ]
+}
