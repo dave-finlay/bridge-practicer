@@ -1,0 +1,325 @@
+{
+  "lesson": "rkcb",
+  "title": "Roman Keycard Blackwood",
+  "source": "Roman Key Card Hands.pdf",
+  "deals": [
+    {
+      "id": "rkcb-1",
+      "board": 1,
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "N": "7.JT53.T985.A652",
+        "E": "AKQT93.KQ62.AK.8",
+        "S": "865.974.QJ4.QJT7",
+        "W": "J42.A8.7632.K943"
+      },
+      "auction": ["P", "2C", "P", "2D", "P", "2S", "P", "3S", "P", "4N", "P", "5C", "P", "6S", "P", "P", "P"],
+      "handout": "East can see that one control (combined with his 3) makes six spades a good contract and 2 controls would make seven good. East asks and west bids 5♣ to show one keycard. East signs off in 6S.",
+      "problems": [
+        {
+          "id": "rkcb-1a",
+          "at": 9,
+          "answer": "4N",
+          "tags": ["rkcb"],
+          "explanation": "Partner has raised spades, so spades are trumps. You have three of the five key cards (♠A, ♠K, ♦A). One more makes 6♠ good, and two more make 7♠ worth bidding. Bid 4NT, RKCB, to find out.",
+          "whyNot": {
+            "4S": "With 21 HCP and a spade fit, slam is likely. Find out about key cards.",
+            "6S": "If partner has no key cards, you're missing two aces. Ask first."
+          }
+        },
+        {
+          "id": "rkcb-1b",
+          "at": 11,
+          "answer": "5C",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 4NT is RKCB for spades. You have one key card, the ♥A. 5♣ = 1 or 4 key cards, 5♦ = 0 or 3, 5♥ = 2 without the trump queen, 5♠ = 2 with it. Bid 5♣.",
+          "whyNot": {
+            "5D": "5♦ shows zero or three key cards. You have one.",
+            "5H": "5♥ shows two key cards. The ♣K isn't one: only the four aces and the trump king count."
+          }
+        },
+        {
+          "id": "rkcb-1c",
+          "at": 13,
+          "answer": "6S",
+          "tags": ["rkcb"],
+          "explanation": "Partner has one key card, so with your three that's four of the five: one ace is missing. Bid 6♠.",
+          "whyNot": {
+            "7S": "An ace is missing.",
+            "5N": "5NT asks about kings for a grand slam, which needs all five key cards and the trump queen."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rkcb-2",
+      "board": 2,
+      "dealer": "E",
+      "vul": "NS",
+      "hands": {
+        "N": "AQJ93.K5.K8432.J",
+        "E": "4.JT97.J96.98532",
+        "S": "KT65.Q32.A.AKQ74",
+        "W": "872.A864.QT75.T6"
+      },
+      "auction": ["P", "1C", "P", "1S", "P", "4S", "P", "4N", "P", "5D", "P", "6S", "P", "P", "P"],
+      "handout": "North sees enough values for slam after the 4♠ bid but North needs # of keycards. North asks and South bids 5♦ showing 0 or 3. North knows it is 3, that one keycard is missing, and that 6 is the correct level.",
+      "problems": [
+        {
+          "id": "rkcb-2a",
+          "at": 7,
+          "answer": "4N",
+          "tags": ["rkcb"],
+          "explanation": "Partner's jump to 4♠ shows four spades and a strong hand, about 19 or more counting shape. With your 14, slam is likely; the question is how many key cards are missing. Bid 4NT, RKCB.",
+          "whyNot": {
+            "P": "Partner's jump shows a strong hand. With 14 you have enough to look for slam.",
+            "6S": "You might be missing two key cards. Ask first."
+          }
+        },
+        {
+          "id": "rkcb-2b",
+          "at": 9,
+          "answer": "5D",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 4NT is RKCB for spades. You have three key cards: the ♠K, ♦A and ♣A. 5♣ = 1 or 4 key cards, 5♦ = 0 or 3, 5♥ = 2 without the trump queen, 5♠ = 2 with it. Bid 5♦.",
+          "whyNot": {
+            "5C": "5♣ shows one or four key cards. You have three: the ♠K counts.",
+            "5H": "5♥ shows two key cards. You have three."
+          }
+        },
+        {
+          "id": "rkcb-2c",
+          "at": 11,
+          "answer": "6S",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 5♦ shows zero or three key cards. After a jump to 4♠ it must be three, so with your ♠A that's four: one ace is missing. Bid 6♠.",
+          "whyNot": {
+            "7S": "One ace, the ♥A, is missing.",
+            "5S": "Partner can't have zero key cards after jumping to 4♠. It's three, enough for 6♠."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rkcb-3",
+      "board": 3,
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "N": "A.JT2.KQ5.AKJ932",
+        "E": "KJ97.87.A83.QT87",
+        "S": "432.AK96543.76.6",
+        "W": "QT865.Q.JT942.54"
+      },
+      "auction": ["3H", "P", "4N", "P", "5H", "P", "6H", "P", "P", "P"],
+      "handout": "With a big trump fit it should be easy to set up clubs. If South has AK of hearts a slam should be good. North asks and finds and bids 6♥.",
+      "problems": [
+        {
+          "id": "rkcb-3a",
+          "at": 2,
+          "answer": "4N",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 3♥ is a preempt with seven hearts. You have three-card support and a strong club suit to run. If partner has the ♥A and ♥K, slam should be good. Bid 4NT: RKCB for hearts, the last bid suit.",
+          "whyNot": {
+            "4H": "If partner has the top hearts, slam is good. Ask.",
+            "6H": "Partner might be missing the ♥A or ♥K. Ask first."
+          }
+        },
+        {
+          "id": "rkcb-3b",
+          "at": 4,
+          "answer": "5H",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 4NT is RKCB for hearts. You have two key cards, the ♥A and ♥K, but not the ♥Q. 5♣ = 1 or 4 key cards, 5♦ = 0 or 3, 5♥ = 2 without the trump queen, 5♠ = 2 with it. Bid 5♥.",
+          "whyNot": {
+            "5S": "5♠ shows two key cards with the trump queen. You don't have the ♥Q.",
+            "5C": "5♣ shows one or four key cards. You have two: the ♥K counts."
+          }
+        },
+        {
+          "id": "rkcb-3c",
+          "at": 6,
+          "answer": "6H",
+          "tags": ["rkcb"],
+          "explanation": "Partner has the ♥A and ♥K. With your ♠A and ♣A that's four key cards; the ♦A is missing. You have ten hearts between you, so the missing ♥Q is unlikely to matter. Bid 6♥.",
+          "whyNot": {
+            "7H": "The ♦A is missing.",
+            "5N": "5NT asks about kings for a grand slam, which needs all five key cards."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rkcb-4",
+      "board": 4,
+      "dealer": "W",
+      "vul": "All",
+      "hands": {
+        "N": "85.KQJ9865..JT87",
+        "E": "AKT32.2.AKQ962.5",
+        "S": "4.T73.T75.KQ9632",
+        "W": "QJ976.A4.J843.A4"
+      },
+      "auction": ["1S", "3H", "4N", "P", "5S", "P", "7S", "P", "P", "P"],
+      "handout": "East can count on diamonds running in a spade contract so East asks for controls. Finding all the Keycards, East can count 13 tricks and bids 7. Note, East does not have to ask for Kings since he has all 2nd round controls.",
+      "problems": [
+        {
+          "id": "rkcb-4a",
+          "at": 2,
+          "answer": "4N",
+          "tags": ["rkcb"],
+          "explanation": "You have five spades opposite partner's five, and a diamond suit that should run. With the trumps set, the question is key cards. Bid 4NT, RKCB for spades.",
+          "whyNot": {
+            "4S": "With 16 HCP, a big spade fit and a long strong suit, look for slam.",
+            "6S": "You might be missing two key cards. Ask first."
+          }
+        },
+        {
+          "id": "rkcb-4b",
+          "at": 4,
+          "answer": "5S",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 4NT is RKCB for spades, your suit. You have two key cards (♥A, ♣A) and the ♠Q. 5♣ = 1 or 4 key cards, 5♦ = 0 or 3, 5♥ = 2 without the trump queen, 5♠ = 2 with it. Bid 5♠.",
+          "whyNot": {
+            "5H": "5♥ shows two key cards without the trump queen. You have the ♠Q.",
+            "5C": "5♣ shows one or four key cards. You have two."
+          }
+        },
+        {
+          "id": "rkcb-4c",
+          "at": 6,
+          "answer": "7S",
+          "tags": ["rkcb"],
+          "explanation": "Partner has the ♥A, ♣A and ♠Q, so you have all five key cards and the trump queen. Your diamonds will run, and you have second-round control in every suit, so you can count 13 tricks. Bid 7♠.",
+          "whyNot": {
+            "6S": "You have every key card and the trump queen, and the diamonds run: 13 tricks.",
+            "5N": "You don't need to ask about kings: you can already count 13 tricks."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rkcb-5",
+      "board": 5,
+      "dealer": "N",
+      "vul": "NS",
+      "hands": {
+        "N": "KJ832.K52.AJ3.62",
+        "E": "74.J93.Q987.T987",
+        "S": "AQT5.A4.K4.AQJ43",
+        "W": "96.QT876.T652.K5"
+      },
+      "auction": ["1S", "P", "4N", "P", "5H", "P", "5N", "P", "6H", "P", "6S", "P", "P", "P"],
+      "handout": "South's hand is strong enough to force to slam. North's 5♥ bid shows that NS have all the keycards. South is interested in 7. South asks for kings with 5 NT. The 6♥ bid shows the King of hearts but denies the club king that South wanted to find. When the club",
+      "reviewNotes": ["South's 4NT straight over 1♠ isn't a problem: the lesson doesn't cover how to agree trumps first. The handout's explanation is cut off."],
+      "problems": [
+        {
+          "id": "rkcb-5a",
+          "at": 4,
+          "answer": "5H",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 4NT is RKCB for spades, your suit. You have two key cards (♠K, ♦A) but not the ♠Q. 5♣ = 1 or 4 key cards, 5♦ = 0 or 3, 5♥ = 2 without the trump queen, 5♠ = 2 with it. Bid 5♥.",
+          "whyNot": {
+            "5S": "5♠ shows two key cards with the trump queen. You don't have the ♠Q.",
+            "5C": "5♣ shows one or four key cards. You have two: the ♠K counts."
+          }
+        },
+        {
+          "id": "rkcb-5b",
+          "at": 6,
+          "answer": "5N",
+          "tags": ["rkcb"],
+          "explanation": "Partner has two key cards. With your three (♠A, ♥A, ♣A) that's all five, and you have the ♠Q. A grand slam is possible if partner has the ♣K. Bid 5NT: it asks for partner's lowest king, and promises all the key cards and the trump queen.",
+          "whyNot": {
+            "6S": "You have every key card and the trump queen. Find out about the ♣K before settling for six.",
+            "7S": "You need the ♣K to be sure of 13 tricks. Ask first."
+          }
+        },
+        {
+          "id": "rkcb-5c",
+          "at": 8,
+          "answer": "6H",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 5NT asks for your lowest king outside trumps; the ♠K doesn't count. Your lowest is the ♥K, so bid 6♥. That also denies the ♣K and ♦K.",
+          "whyNot": {
+            "6S": "6♠ says you have no king outside trumps. You have the ♥K.",
+            "6C": "6♣ would show the ♣K. You don't have it.",
+            "6D": "6♦ would show the ♦K. You don't have it."
+          }
+        },
+        {
+          "id": "rkcb-5d",
+          "at": 10,
+          "answer": "6S",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 6♥ shows the ♥K and denies the ♣K, which you needed for the grand slam. Settle for 6♠.",
+          "whyNot": {
+            "7S": "Partner doesn't have the ♣K, so you can't count 13 tricks."
+          }
+        }
+      ]
+    },
+    {
+      "id": "rkcb-6",
+      "board": 6,
+      "dealer": "E",
+      "vul": "EW",
+      "hands": {
+        "N": "Q96.7432.J.T6542",
+        "E": "JT532.AQJ.9653.Q",
+        "S": "7.986.AKT8742.73",
+        "W": "AK84.KT5.Q.AKJ98"
+      },
+      "auction": ["P", "3D", "X", "P", "4S", "P", "4N", "P", "5C", "P", "5D", "P", "5S", "P", "P", "P"],
+      "handout": "After the takeout double East is too strong to bid just 3♠. West can envision slam after the leap to game. West's 5♦ bid asks for the Q of spades. When West finds that EW are missing a keycard and the Q of spades West signs off in 5♠. Declarer loses one diamond",
+      "reviewNotes": ["East's 4♠ jump over the takeout double isn't a problem: it isn't about RKCB."],
+      "problems": [
+        {
+          "id": "rkcb-6a",
+          "at": 6,
+          "answer": "4N",
+          "tags": ["rkcb"],
+          "explanation": "Partner jumped to 4♠ over your takeout double, so spades are trumps and partner has some values. With 20 HCP, slam is possible. Bid 4NT, RKCB.",
+          "whyNot": {
+            "P": "With 20 HCP and partner's jump, look for slam.",
+            "6S": "You might be missing two key cards, or the trump queen. Ask first."
+          }
+        },
+        {
+          "id": "rkcb-6b",
+          "at": 8,
+          "answer": "5C",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 4NT is RKCB for spades. You have one key card, the ♥A. 5♣ = 1 or 4 key cards, 5♦ = 0 or 3, 5♥ = 2 without the trump queen, 5♠ = 2 with it. Bid 5♣.",
+          "whyNot": {
+            "5D": "5♦ shows zero or three key cards. You have one.",
+            "5H": "5♥ shows two key cards. You have one."
+          }
+        },
+        {
+          "id": "rkcb-6c",
+          "at": 10,
+          "answer": "5D",
+          "tags": ["rkcb"],
+          "explanation": "Partner has one key card, so with your three one is missing. Slam is still good if partner has the ♠Q. Ask with 5♦, the next step up from partner's 5♣ answer.",
+          "whyNot": {
+            "5S": "If partner has the ♠Q, 6♠ is good. Ask first.",
+            "6S": "With a key card missing, you also need the ♠Q. Ask first."
+          }
+        },
+        {
+          "id": "rkcb-6d",
+          "at": 12,
+          "answer": "5S",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 5♦ asks for the trump queen. Without it, bid trumps at the lowest level: 5♠. (With the queen, you'd bid your lowest king.)",
+          "whyNot": {
+            "6S": "You don't have the ♠Q. Bid 5♠ to say so.",
+            "5H": "With the queen, you'd show your lowest king. You don't have the queen."
+          }
+        }
+      ]
+    }
+  ]
+}

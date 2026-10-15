@@ -190,7 +190,8 @@ control bids, one lesson at a time, each with a review page
 (`npm run review -- <lesson>`). This can run alongside steps 3 to 5.
 Done: Stayman (8 deals, 28 problems), negative doubles (16 deals, 45
 problems), new minor forcing (6 deals, 15 problems), Jacoby 2NT (6
-deals, 22 problems).
+deals, 22 problems), RKCB (6 deals, 21 problems), control bids (8
+deals, 28 problems).
 
 ### 7. Hosting: done
 Public GitHub Pages from `main`, at

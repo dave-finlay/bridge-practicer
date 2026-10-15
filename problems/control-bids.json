@@ -1,0 +1,460 @@
+{
+  "lesson": "control-bids",
+  "title": "Control bids",
+  "source": "Control Student .pdf",
+  "deals": [
+    {
+      "id": "control-1",
+      "board": 1,
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "N": "AK87543..KQJ.AKQ",
+        "E": ".AT982.T9.J98764",
+        "S": "JT9.QJ53.A875.T2",
+        "W": "Q62.K764.6432.53"
+      },
+      "auction": ["2C", "P", "2D", "P", "2S", "P", "3S", "P", "4C", "P", "4D", "P", "7S", "P", "P", "P"],
+      "handout": "After the spade fit is found South bids 4♣ hoping to hear a 4♦ bid. When South is able to do so, North can count 13 tricks and bids 7♠.",
+      "reviewNotes": ["The handout says South bid 4♣; North did, and South answered 4♦."],
+      "problems": [
+        {
+          "id": "control-1a",
+          "at": 8,
+          "answer": "4C",
+          "tags": ["control-bids"],
+          "explanation": "Partner has raised spades. You have a heart void, so Blackwood won't help: it tells you how many aces partner has, not which. The one you need is the ♦A. Bid 4♣, a control bid showing the ♣A, and see whether partner bids 4♦.",
+          "whyNot": {
+            "4N": "With a heart void, Blackwood can't tell you whether partner's ace is the useful ♦A or the wasted ♥A.",
+            "4S": "You have 22 HCP and a fit. Look for slam.",
+            "6S": "If partner has the ♦A you may have 13 tricks. Find out."
+          }
+        },
+        {
+          "id": "control-1b",
+          "at": 10,
+          "answer": "4D",
+          "tags": ["control-bids"],
+          "explanation": "Partner's 4♣ is a control bid: the ♣A, and slam interest. Show your cheapest ace above it: bid 4♦ for the ♦A.",
+          "whyNot": {
+            "4S": "You have the ♦A. Show it.",
+            "4H": "4♥ would show the ♥A and deny the ♦A."
+          }
+        },
+        {
+          "id": "control-1c",
+          "at": 12,
+          "answer": "7S",
+          "tags": ["control-bids"],
+          "explanation": "Partner's 4♦ shows the ♦A, the card you needed. With your spades, the ♦KQJ and the ♣AKQ, you can count 13 tricks. Bid 7♠.",
+          "whyNot": {
+            "6S": "With the ♦A from partner, you can count 13 tricks.",
+            "4N": "You already know what you need. Bid the grand slam."
+          }
+        }
+      ]
+    },
+    {
+      "id": "control-2",
+      "board": 2,
+      "dealer": "E",
+      "vul": "NS",
+      "hands": {
+        "N": "53.Q76.T754.QT52",
+        "E": "AQJ96.K8.AKJ3.A9",
+        "S": "74.JT93.Q982.K83",
+        "W": "KT82.A542.6.J764"
+      },
+      "auction": ["2C", "P", "2D", "P", "2S", "P", "3S", "P", "4S", "P", "5H", "P", "6S", "P", "P", "P"],
+      "handout": "After West raises spades East has a minimum and signs off in 4♠. West has extra values, but cannot use Blackwood without a club control. It is better to use the control bid here. The 5♥ bid shows first-round heart control and a good hand. It denies a cheaper ace. This bid fits East's hand well so he jumps to 6♠.",
+      "problems": [
+        {
+          "id": "control-2a",
+          "at": 10,
+          "answer": "5H",
+          "tags": ["control-bids"],
+          "explanation": "Partner signed off in 4♠, but you have extra values: four trumps, a singleton diamond and the ♥A. You have no club control, so Blackwood is risky: you could be missing the ♣A and ♣K. Bid 5♥, a control bid: the ♥A, and a good hand.",
+          "whyNot": {
+            "P": "Your four trumps, singleton and ace are worth one more try.",
+            "4N": "With no club control, Blackwood can't tell you whether you have two club losers."
+          }
+        },
+        {
+          "id": "control-2b",
+          "at": 12,
+          "answer": "6S",
+          "tags": ["control-bids"],
+          "explanation": "Partner's 5♥ shows the ♥A and a good hand, and denies a cheaper ace. That covers your heart weakness, and you have the ♣A yourself. Bid 6♠.",
+          "whyNot": {
+            "P": "Partner's control bid is exactly what you needed. Bid slam.",
+            "5S": "Partner's 5♥ asks you to bid slam with a fitting hand. Yours fits well."
+          }
+        }
+      ]
+    },
+    {
+      "id": "control-3",
+      "board": 3,
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "N": ".AQ8742.K3.AKQ82",
+        "E": "642.65.JT92.J943",
+        "S": "A5.KJT93.A876.75",
+        "W": "KQJT9873..Q54.T6"
+      },
+      "auction": ["1H", "4S", "5S", "P", "6D", "P", "7H", "P", "P", "P"],
+      "handout": "North has a huge hand for hearts but cannot ask for aces with a spade void. The 5♠ bid shows a heart fit, enough values to drive to slam, and first round control in spades. South doesn't like that the spade ace is opposite a void, but has good trumps, and so will cooperate without committing to the 7 level. Hearing about the ace of diamonds is enough information for North to bid 7♥.",
+      "problems": [
+        {
+          "id": "control-3a",
+          "at": 2,
+          "answer": "5S",
+          "tags": ["control-bids"],
+          "explanation": "You have a huge hand with a heart fit, but a spade void, so Blackwood won't help. Bid 5♠, a control bid in the opponents' suit: a heart fit, enough to drive to slam, and first-round control of spades.",
+          "whyNot": {
+            "4N": "With a spade void, Blackwood can't tell you whether partner's ace is the wasted ♠A.",
+            "6H": "You may have a grand slam. A control bid finds out more.",
+            "5H": "5♥ would only invite. You want slam, and to look for seven."
+          }
+        },
+        {
+          "id": "control-3b",
+          "at": 4,
+          "answer": "6D",
+          "tags": ["control-bids"],
+          "explanation": "Partner's 5♠ shows a heart fit, slam values and spade control. Your ♠A is wasted opposite a void, but your trumps are good, so cooperate: bid 6♦ to show the ♦A without going past 6♥.",
+          "whyNot": {
+            "6H": "You have the ♦A and good trumps. Show the ace and let partner decide about seven.",
+            "P": "Partner's control bid is forcing to slam."
+          }
+        },
+        {
+          "id": "control-3c",
+          "at": 6,
+          "answer": "7H",
+          "tags": ["control-bids"],
+          "explanation": "Partner has the ♦A as well as good hearts. With your clubs and the ♦K, you can count 13 tricks. Bid 7♥.",
+          "whyNot": {
+            "6H": "Partner's ♦A is the card you needed. Bid the grand slam."
+          }
+        }
+      ]
+    },
+    {
+      "id": "control-4",
+      "board": 4,
+      "dealer": "W",
+      "vul": "All",
+      "hands": {
+        "N": "T842.9.AK72.9853",
+        "E": "65.J873.54.KQJ62",
+        "S": "J973.T4.QJT86.T4",
+        "W": "AKQ.AKQ652.93.A7"
+      },
+      "auction": ["2C", "P", "3C", "P", "3H", "P", "4H", "P", "4S", "P", "5H", "P", "P", "P"],
+      "handout": "West has a very nice hand and can see many tricks after East has shown a good club suit and a heart fit. West's only concern is the two small diamonds. West bids 4♠ to give his partner a chance to show the ♦A. When East bids 5♥ instead, West gives up because he expects two diamond losers.",
+      "problems": [
+        {
+          "id": "control-4a",
+          "at": 8,
+          "answer": "4S",
+          "tags": ["control-bids"],
+          "explanation": "Partner has a good club suit and a heart fit, so you can see many tricks. Your worry is two small diamonds. Blackwood would say how many aces partner has, not whether one is the ♦A. Bid 4♠, a control bid, to give partner a chance to show the ♦A.",
+          "whyNot": {
+            "4N": "Blackwood can't tell you about diamonds. You could be missing the ♦A and ♦K.",
+            "6H": "You might have two diamond losers. Find out first."
+          }
+        },
+        {
+          "id": "control-4b",
+          "at": 10,
+          "answer": "5H",
+          "tags": ["control-bids"],
+          "explanation": "Partner's 4♠ is a control bid, asking about your controls. You have no ♦A, so you can't bid 5♦. Sign off in 5♥.",
+          "whyNot": {
+            "5D": "5♦ would show the ♦A. You don't have it.",
+            "4N": "Your hand is a minimum with no aces. Let partner decide."
+          }
+        },
+        {
+          "id": "control-4c",
+          "at": 12,
+          "answer": "P",
+          "tags": ["control-bids"],
+          "explanation": "Partner denied the ♦A by not bidding 5♦. You expect two diamond losers, so pass.",
+          "whyNot": {
+            "6H": "Partner has no ♦A, so the defenders can probably take two diamond tricks."
+          }
+        }
+      ]
+    },
+    {
+      "id": "control-5",
+      "board": 5,
+      "dealer": "N",
+      "vul": "NS",
+      "hands": {
+        "N": "AKQ876.AK8.74.A4",
+        "E": "93.T94.AQJT.T653",
+        "S": "JT54.J765.832.K8",
+        "W": "2.Q32.K965.QJ972"
+      },
+      "auction": ["2C", "P", "2D", "P", "2S", "P", "3S", "P", "4C", "P", "4S", "P", "P", "P"],
+      "handout": "North has a great hand and opens 2♣. After North bids 2♠ South raises to 3S. North bids 4♣, but South cannot do more than sign-off in 4♠. North fears two diamond losers and gives up.",
+      "problems": [
+        {
+          "id": "control-5a",
+          "at": 8,
+          "answer": "4C",
+          "tags": ["control-bids"],
+          "explanation": "Partner raised spades. You have a great hand, but two small diamonds. Blackwood won't tell you about the ♦A, so bid 4♣, a control bid showing the ♣A, and see whether partner can bid 4♦.",
+          "whyNot": {
+            "4N": "Blackwood can't tell you whether you have two diamond losers.",
+            "6S": "You might have two diamond losers. Find out first.",
+            "4S": "With 20 HCP and a fit, slam is possible. Make a try."
+          }
+        },
+        {
+          "id": "control-5b",
+          "at": 10,
+          "answer": "4S",
+          "tags": ["control-bids"],
+          "explanation": "Partner's 4♣ is a control bid. You have no ♦A or ♥A to show, and a weak hand, so sign off in 4♠.",
+          "whyNot": {
+            "4D": "4♦ would show the ♦A. You don't have it.",
+            "4H": "4♥ would show the ♥A. You don't have it."
+          }
+        },
+        {
+          "id": "control-5c",
+          "at": 12,
+          "answer": "P",
+          "tags": ["control-bids"],
+          "explanation": "Partner signed off without showing the ♦A. You expect two diamond losers, so pass.",
+          "whyNot": {
+            "6S": "Partner has no ♦A, so the defenders can probably take two diamond tricks.",
+            "4N": "Partner has already denied the ♦A. Slam needs it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "control-6",
+      "board": 6,
+      "dealer": "E",
+      "vul": "EW",
+      "hands": {
+        "N": "J4.862.AK5.QT754",
+        "E": "AKQ8.AKQ975.QJ.A",
+        "S": "T7652..T9872.863",
+        "W": "93.JT43.643.KJ92"
+      },
+      "auction": ["2C", "P", "2D", "P", "2H", "P", "3H", "P", "3S", "P", "4H", "P", "P", "P"],
+      "handout": "East has a huge hand and just needs a diamond card to make slam. After the heart fit is found East bids spades and then clubs, making it clear that a diamond control is needed. When West denies the Ace of diamonds by bidding 4H over 3♠ East gives up and passes.",
+      "reviewNotes": ["The handout says East bids \"spades and then clubs\"; East only bids spades. West's 4♥ denies the minor-suit aces."],
+      "problems": [
+        {
+          "id": "control-6a",
+          "at": 8,
+          "answer": "3S",
+          "tags": ["control-bids"],
+          "explanation": "Partner raised hearts. You have a huge hand, and slam only needs a diamond control from partner. Bid 3♠, a control bid showing the ♠A. Partner shows the ♣A or ♦A next, if they have it.",
+          "whyNot": {
+            "4N": "Blackwood can't tell you whether partner's ace is a diamond.",
+            "6H": "Without a diamond control from partner, you may lose two diamonds.",
+            "4H": "You have 25 HCP and a fit. Look for slam."
+          }
+        },
+        {
+          "id": "control-6b",
+          "at": 10,
+          "answer": "4H",
+          "tags": ["control-bids"],
+          "explanation": "Partner's 3♠ is a control bid. Show your cheapest ace above it, if you have one: you have neither the ♣A nor the ♦A, so sign off in 4♥.",
+          "whyNot": {
+            "4C": "4♣ shows the ♣A. Your ♣K doesn't count on the first round.",
+            "4D": "4♦ would show the ♦A. You don't have it."
+          }
+        },
+        {
+          "id": "control-6c",
+          "at": 12,
+          "answer": "P",
+          "tags": ["control-bids"],
+          "explanation": "Partner skipped 4♣ and 4♦, denying both minor-suit aces. You can lose the ♦A and ♦K, so pass.",
+          "whyNot": {
+            "6H": "Partner has no ♦A, so you can lose two diamond tricks.",
+            "4N": "Partner has already denied the ♦A, which is what you need."
+          }
+        }
+      ]
+    },
+    {
+      "id": "control-7",
+      "board": 7,
+      "dealer": "S",
+      "vul": "All",
+      "hands": {
+        "N": "AT83.72.AK85.973",
+        "E": "9.86543.QJ94.JT5",
+        "S": "KQJ7642.AK.62.AQ",
+        "W": "5.QJT9.T73.K8642"
+      },
+      "auction": ["2C", "P", "2D", "P", "2S", "P", "3S", "P", "4C", "P", "4D", "P", "4N", "P", "5H", "P", "5N", "P", "6D", "P", "6S", "P", "P", "P"],
+      "handout": "South bids clubs after hearing 3S from partner. He does not want to use Blackwood since he has two quick diamond losers. North bids 4♦. Now, South knows that North-South have first or second round control in every suit so he checks on Aces and Kings using Blackwood and discovers the partnership is missing one King so South signs off in 6♠, (Or 6 NT perhaps in Duplicate).",
+      "problems": [
+        {
+          "id": "control-7a",
+          "at": 8,
+          "answer": "4C",
+          "tags": ["control-bids"],
+          "explanation": "Partner raised spades. You have two small diamonds, so Blackwood can't tell you whether you have two quick diamond losers. Bid 4♣, a control bid showing the ♣A.",
+          "whyNot": {
+            "4N": "With two small diamonds, Blackwood can't tell you whether partner's ace is the ♦A.",
+            "6S": "You might have two diamond losers. Find out first."
+          }
+        },
+        {
+          "id": "control-7b",
+          "at": 10,
+          "answer": "4D",
+          "tags": ["control-bids"],
+          "explanation": "Partner's 4♣ is a control bid. Show your cheapest ace above it: bid 4♦ for the ♦A.",
+          "whyNot": {
+            "4S": "You have the ♦A. Show it.",
+            "4H": "4♥ would show the ♥A and deny the ♦A."
+          }
+        },
+        {
+          "id": "control-7c",
+          "at": 12,
+          "answer": "4N",
+          "tags": ["control-bids", "rkcb"],
+          "explanation": "Partner showed the ♦A, and you have the ♥AK, so every suit is controlled. Now Blackwood works: bid 4NT, RKCB, to count key cards.",
+          "whyNot": {
+            "6S": "You might be missing a key card, and a grand slam is possible. Ask first.",
+            "4S": "Every suit is controlled. Look for slam."
+          }
+        },
+        {
+          "id": "control-7d",
+          "at": 14,
+          "answer": "5H",
+          "tags": ["control-bids", "rkcb"],
+          "explanation": "Partner's 4NT is RKCB for spades. You have two key cards (♠A, ♦A) but not the ♠Q. 5♣ = 1 or 4 key cards, 5♦ = 0 or 3, 5♥ = 2 without the trump queen, 5♠ = 2 with it. Bid 5♥.",
+          "whyNot": {
+            "5S": "5♠ shows two key cards with the trump queen. You don't have the ♠Q.",
+            "5C": "5♣ shows one or four key cards. You have two."
+          }
+        },
+        {
+          "id": "control-7e",
+          "at": 16,
+          "answer": "5N",
+          "tags": ["control-bids", "rkcb"],
+          "explanation": "Partner has two key cards. With your three (♠K, ♥A, ♣A) that's all five, and you have the ♠Q. Bid 5NT, the king ask, to look for a grand slam.",
+          "whyNot": {
+            "6S": "You have all the key cards and the trump queen. Look for a grand slam first.",
+            "7S": "You don't yet know about partner's kings."
+          }
+        },
+        {
+          "id": "control-7f",
+          "at": 18,
+          "answer": "6D",
+          "tags": ["control-bids", "rkcb"],
+          "explanation": "Partner's 5NT asks for your lowest king outside trumps. You have the ♦K and no ♣K, so bid 6♦.",
+          "whyNot": {
+            "6S": "6♠ says you have no king outside trumps. You have the ♦K.",
+            "6C": "6♣ would show the ♣K. You don't have it."
+          }
+        },
+        {
+          "id": "control-7g",
+          "at": 20,
+          "answer": "6S",
+          "acceptable": {
+            "6N": "At duplicate, where 6NT scores more than 6♠, the handout suggests it."
+          },
+          "tags": ["control-bids", "rkcb"],
+          "explanation": "Partner's 6♦ shows the ♦K and denies the ♣K. You could lose a club trick, so settle for 6♠.",
+          "whyNot": {
+            "7S": "The ♣K is missing, so the club finesse decides a grand slam."
+          }
+        }
+      ]
+    },
+    {
+      "id": "control-8",
+      "board": 8,
+      "dealer": "W",
+      "vul": "None",
+      "hands": {
+        "N": "2.Q6542.AT75.J94",
+        "E": "Q976.AK83.83.Q73",
+        "S": "J4.JT97.K4.T8652",
+        "W": "AKT853..QJ962.AK"
+      },
+      "auction": ["1S", "P", "3S", "P", "4C", "P", "4H", "P", "5C", "P", "5H", "P", "5S", "P", "P", "P"],
+      "handout": "West has a huge hand opposite a limit raise, but needs a diamond control. West bids 4♣. East bids 4♥ showing the ace of hearts but denying the ace of diamonds. West tries again with 5♣, showing the K♣, but East shows the king of hearts and denies the king of diamonds. Now West must give up in 5♠.",
+      "problems": [
+        {
+          "id": "control-8a",
+          "at": 4,
+          "answer": "4C",
+          "tags": ["control-bids"],
+          "explanation": "Partner's 3♠ is a limit raise. You have a huge hand, but a heart void and weak diamonds, so Blackwood won't help: you need to know about diamonds. Bid 4♣, a control bid showing the ♣A.",
+          "whyNot": {
+            "4N": "With a heart void, Blackwood can't tell you whether partner's ace is the useful ♦A or the wasted ♥A.",
+            "4S": "With 17 HCP, a void and a fit, look for slam.",
+            "6S": "You might have two diamond losers. Find out first."
+          }
+        },
+        {
+          "id": "control-8b",
+          "at": 6,
+          "answer": "4H",
+          "tags": ["control-bids"],
+          "explanation": "Partner's 4♣ is a control bid. Show your cheapest ace above it. You have no ♦A, but you have the ♥A, so bid 4♥. Skipping 4♦ denies the ♦A.",
+          "whyNot": {
+            "4S": "You have the ♥A. Show it.",
+            "4D": "4♦ would show the ♦A. You don't have it."
+          }
+        },
+        {
+          "id": "control-8c",
+          "at": 8,
+          "answer": "5C",
+          "tags": ["control-bids"],
+          "explanation": "Partner showed the ♥A but denied the ♦A. You still need second-round diamond control, the ♦K. Bid 5♣: a second control bid in a suit shows the king, the ♣K.",
+          "whyNot": {
+            "4S": "Partner might still have the ♦K. Try once more.",
+            "4N": "Blackwood won't tell you about the ♦K."
+          }
+        },
+        {
+          "id": "control-8d",
+          "at": 10,
+          "answer": "5H",
+          "tags": ["control-bids"],
+          "explanation": "Partner's 5♣ shows the ♣K and asks about second-round controls. You have the ♥K but not the ♦K, so bid 5♥, which skips 5♦ and denies the ♦K.",
+          "whyNot": {
+            "5D": "5♦ would show the ♦K. You don't have it.",
+            "5S": "You have the ♥K to show."
+          }
+        },
+        {
+          "id": "control-8e",
+          "at": 12,
+          "answer": "5S",
+          "tags": ["control-bids"],
+          "explanation": "Partner has denied both the ♦A and ♦K, so you have two diamond losers. Sign off in 5♠.",
+          "whyNot": {
+            "6S": "Partner has neither the ♦A nor the ♦K, so you can lose two diamonds."
+          }
+        }
+      ]
+    }
+  ]
+}
