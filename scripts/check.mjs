@@ -1,12 +1,13 @@
 // Checks every problem file in problems/ and reports anything wrong.
 // Usage: node scripts/check.mjs
 
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
   SEATS, dealerForBoard, isComplete, legalCalls, seatOfCall, vulnerabilityForBoard,
 } from '../js/auction.js';
 import { RANKS, SUITS, hcp, parseHand } from '../js/hands.js';
+import { LESSONS } from '../js/problems.js';
 
 const VULNERABILITIES = ['None', 'NS', 'EW', 'All'];
 const isLegal = (dealer, calls, call) => legalCalls(dealer, calls).has(call);
@@ -91,6 +92,22 @@ for (const file of readdirSync(dir).filter((f) => f.endsWith('.json') && f !== '
       problem.hcp = hcp(parseHand(deal.hands[seat]));
     }
   }
+}
+
+// The service worker keeps every file the app loads for offline use.
+const root = new URL('../', import.meta.url).pathname;
+const swFiles = new Set(readFileSync(join(root, 'sw.js'), 'utf8').match(/^const FILES = \[([^\]]*)\]/m)[1]
+  .match(/'[^']*'/g).map((quoted) => quoted.slice(1, -1)));
+const needed = [
+  ...readdirSync(join(root, 'js')).filter((f) => f.endsWith('.js')).map((f) => `js/${f}`),
+  ...LESSONS.map((lesson) => `problems/${lesson}.json`),
+  'problems/dd.json',
+];
+for (const file of needed) {
+  if (!swFiles.has(file)) errors.push(`sw.js: ${file} is missing from FILES`);
+}
+for (const file of swFiles) {
+  if (file !== './' && !existsSync(join(root, file))) errors.push(`sw.js: ${file} in FILES doesn't exist`);
 }
 
 if (errors.length) {

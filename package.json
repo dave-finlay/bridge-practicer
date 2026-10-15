@@ -7,6 +7,7 @@
     "check": "node scripts/check.mjs",
     "review": "node scripts/build-review.mjs",
     "dd": "node scripts/dd.mjs",
+    "icons": "swift scripts/make-icons.swift",
     "test": "node --test test/"
   }
 }

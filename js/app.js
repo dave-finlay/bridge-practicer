@@ -500,4 +500,10 @@ async function start() {
   }
 }
 
+// Offline support (sw.js). Browsers only allow it over HTTPS, so it runs on
+// the hosted app; it's skipped on localhost, where a cached copy would hide
+// each change until a second reload.
+if ('serviceWorker' in navigator && location.hostname !== 'localhost') {
+  navigator.serviceWorker.register('sw.js').catch(console.error);
+}
 start();

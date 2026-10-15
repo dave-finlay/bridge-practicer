@@ -71,6 +71,8 @@ scripts/review.css       the review page's styles
 scripts/dd.mjs           solves every deal into problems/dd.json (npm run dd)
 scripts/dd/dd-table.cpp  the small program that calls DDS
 scripts/serve.mjs        dev server for trying the app on the phone
+scripts/make-icons.swift draws the app icons (npm run icons)
+manifest.webmanifest, sw.js, icons/  installing and offline use
 index.html, styles.css   the app
 js/app.js                the app's screens
 js/problems.js           grading, progress and picking problems
@@ -172,6 +174,11 @@ iPhone home screen app keeps its own storage, separate from Safari's,
 so progress starts fresh once it's installed (step 5).
 
 ### 5. PWA: installable and works offline
+`manifest.webmanifest`, icons (`npm run icons`) and `sw.js`, the same
+approach as the bid recorder: the phone keeps a copy of every file and
+refreshes it in the background, so updates show on the second opening.
+`npm run check` fails if a script or lesson file is missing from the
+service worker's list.
 **Review:** install it and try it in airplane mode.
 
 ### 6. The other lessons
@@ -179,20 +186,25 @@ Stayman, new minor forcing, negative doubles, Jacoby 2NT, RKCB and
 control bids, one lesson at a time, each with a review page. This can
 run alongside steps 3 to 5.
 
-### 7. Hosting
-Depends on the open question below.
+### 7. Hosting: done
+Public GitHub Pages from `main`, at
+https://dave-finlay.github.io/bridge-practicer/ (repo
+dave-finlay/bridge-practicer). Pushing to `main` publishes.
 
 ### 8. Use it before a session, then iterate
 
-## Open questions
+## Decided: public hosting
 
-- **Public or private.** GitHub Pages hosting is free for a public repo.
-  But the deals and the quoted commentary come from our teacher's
-  handouts, so we should ask the teacher before publishing, or rewrite
-  the commentary in our own words. Until then the repo stays local.
+The deals and some quoted commentary come from our teacher's handouts.
+We chose public GitHub Pages anyway: it's for Dave and Donna, nobody
+makes money from it, and the handout files themselves stay out of the
+repo. If it looks to be used more widely, Dave will make the repo
+private once the app is installed on our phones. (On a free account
+that takes the Pages site down: installed apps keep working from their
+offline copy but stop getting updates.)
 
 ## Working agreements
 
 - At the end of each step, after your review, I commit that step if you
-  want me to.
+  want me to, and push it, which publishes it.
 - The lesson handouts stay out of the repo (they're the teacher's).

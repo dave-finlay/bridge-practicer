@@ -10,7 +10,10 @@ Stayman, Jacoby and Texas transfers, new minor forcing, negative doubles,
 Jacoby 2NT, Roman Keycard Blackwood and control bids. A session is a
 short mixed set, for a quick review before going to the club.
 
-The app isn't built yet: see [PLAN.md](PLAN.md).
+It runs at https://dave-finlay.github.io/bridge-practicer/. On an
+iPhone, open it in Safari and choose Share, then Add to Home Screen; it
+then works offline. Each phone keeps its own progress. How it's being
+built is in [PLAN.md](PLAN.md).
 
 ## Problems
 
@@ -23,6 +26,8 @@ notes on tempting wrong calls. [PLAN.md](PLAN.md) describes the format.
 npm test          # unit tests
 npm run check     # checks every deal and problem (52 cards, legal auctions, ...)
 npm run review    # builds review/index.html, a page for checking the problems
+npm run dd        # double dummy results for new or changed deals
+npm start         # serves the app to this computer and phones on the Wi-Fi
 ```
 
 The lesson handouts themselves are not in this repo.
