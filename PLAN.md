@@ -200,6 +200,48 @@ dave-finlay/bridge-practicer). Pushing to `main` publishes.
 
 ### 8. Use it before a session, then iterate
 
+## To do: more topics
+
+None of these have handouts, so each needs its own deals: written to
+fit the topic, or taken from real hands (see below). Problems built this
+way leave out the `handout` field and say where the deal came from.
+
+**Later**
+- **Minor suit transfers.** We've agreed to play them but have no
+  handout, and we need to settle which version first.
+
+**We understand these but don't play them**
+- **Balancing:** bidding in the pass-out seat with less than usual.
+- **Cue bids of the opponents' suit:** e.g. a cue bid raise showing a
+  limit raise or better after an overcall, and a cue bid asking for a
+  stopper.
+
+These can go in as they are, since the answers don't depend on our own
+agreements. Before each, we agree which version we'd use.
+
+**To explore, and decide whether to play**
+- **Unusual 2NT**: the two lowest unbid suits.
+- **Michaels cue bid**: both majors, or a major and a minor.
+- **Drury / reverse Drury**: a passed hand's 2♣ asking whether a
+  third- or fourth-seat opener is light.
+- **Support doubles**: opener's double showing three-card support for
+  responder's major after an interfering bid.
+- **Finding 3NT after a minor suit fit**: showing stoppers (and asking
+  for them) once a minor fit is found, so 3NT is reached instead of 5 of
+  a minor; inverted minors fit here too.
+
+For these, I'd write a short summary of the convention first, as a
+page like the review page, so we can decide whether to play it. If we
+do, the agreement goes in `~/context/bridge/agreements.md` before any
+problems are written.
+
+**From our own play**
+- When a hand at the club goes wrong in the bidding, Dave and Donna
+  agree what they *should* have bid, and it becomes a problem: the deal
+  from the club's hand record, the agreed auction, and the reasoning.
+  The bid recorder already records our auctions, so its export could
+  carry the auction across. Tagged `club`, with the date and board.
+
 ## Decided: public hosting
 
 The deals and some quoted commentary come from our teacher's handouts.
