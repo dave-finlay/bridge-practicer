@@ -73,7 +73,8 @@ scripts/dd/dd-table.cpp  the small program that calls DDS
 scripts/serve.mjs        dev server for trying the app on the phone
 index.html, styles.css   the app
 js/app.js                the app's screens
-js/problems.js           grading and picking problems
+js/problems.js           grading, progress and picking problems
+js/store.js              saving answers and progress (IndexedDB)
 vendor/                  DDS source and the compiled solver (not committed)
 ```
 
@@ -134,10 +135,12 @@ double dummy results are missing or out of date (`npm run dd` fixes it).
    missed", New session and Home.
 
 **Choosing problems.** At most one problem per deal. Within that, prefer
-problems never seen, then ones answered wrong, then ones answered right
-longest ago, picking at random among equals. Each problem keeps a simple
-level that drops to zero when answered wrong and rises when answered
-right, so missed problems come back sooner and known ones fade out.
+problems never seen, then ones answered wrong last time, then ones due
+soonest, picking at random among equals, and shuffle the session. Each
+problem keeps a level that drops to 0 when answered wrong and rises by
+one when answered right or acceptably. A problem is due 1, 3, 7, 14 or
+30 days (by level) after it was last answered, so missed problems come
+back sooner and known ones fade out.
 
 ## Steps
 
@@ -160,10 +163,13 @@ screen, and the convention filter. Problems are picked at random until
 step 4 stores progress.
 **Review:** run a few sessions.
 
-### 4. Progress
+### 4. Progress: done
 IndexedDB storage of every answer, levels for choosing problems, and the
 progress line on the home screen.
 **Review:** check that missed problems come back.
+Progress on the home screen follows the convention chips. Note: an
+iPhone home screen app keeps its own storage, separate from Safari's,
+so progress starts fresh once it's installed (step 5).
 
 ### 5. PWA: installable and works offline
 **Review:** install it and try it in airplane mode.

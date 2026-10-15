@@ -7,12 +7,18 @@
 // screen grades the call and shows the whole deal. After the last problem
 // (or ✕ to stop early), the summary lists the answers, any of which can
 // be looked at again, and offers the missed ones as a new session.
+//
+// Every answer is saved on the phone (js/store.js), and the progress
+// decides which problems come up: new ones first, then ones missed, then
+// ones due again.
 
 import { BIDS, STRAINS, contract, isVulnerable, legalCalls, seatAfter } from './auction.js';
 import { SUITS, formatHolding, hcp, parseHand } from './hands.js';
 import {
-  LESSONS, conventionName, conventionsIn, dealCount, flatten, grade, pickSession, withTags,
+  LESSONS, conventionName, conventionsIn, dealCount, flatten, grade, pickSession, progressSummary,
+  updateProgress, withTags,
 } from './problems.js';
+import { loadProgress, requestPersistence, saveAnswer } from './store.js';
 
 const app = document.getElementById('app');
 
@@ -36,6 +42,7 @@ const NEXT_DELAY_MS = 500;
 
 let problems = [];
 let dd = {}; // double dummy results by deal id, from problems/dd.json
+let progress = {}; // progress records by problem id, from js/store.js
 let session = []; // [{ item, call }], call is null until answered
 let index = 0;
 let screen = 'loading'; // 'home', 'problem', 'feedback', 'review', 'summary', 'error'
@@ -314,7 +321,17 @@ function renderSummary() {
   window.scrollTo(0, 0);
 }
 
-// The home screen: which conventions to practise, and Start.
+// "today", "yesterday", "3 days ago", or a date such as "3 Oct".
+function whenText(time) {
+  const startOfDay = (t) => new Date(t).setHours(0, 0, 0, 0);
+  const days = Math.round((startOfDay(Date.now()) - startOfDay(time)) / (24 * 60 * 60 * 1000));
+  if (days <= 0) return 'Today';
+  if (days === 1) return 'Yesterday';
+  if (days < 14) return `${days} days ago`;
+  return new Date(time).toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+}
+
+// The home screen: which conventions to practise, progress, and Start.
 function renderHome() {
   const chip = (tag, name, count, on) =>
     `<button class="chip${on ? ' on' : ''}" data-tag="${tag}" aria-pressed="${on}">${escapeHTML(name)}${count ? ` <small>${count}</small>` : ''}</button>`;
@@ -329,6 +346,8 @@ function renderHome() {
   // size means a shorter session. Sizes that come to the same are shown once.
   const sizes = [...new Set(SESSION_SIZES.map((size) => Math.min(size, deals)))];
 
+  const { seen, right, lastAt } = progressSummary(pool, progress);
+
   app.className = 'home-screen';
   app.innerHTML = `
     <header>
@@ -339,6 +358,14 @@ function renderHome() {
       <h2>Conventions</h2>
       <div class="chips">${chips}</div>
       <p class="hint">${pool.length} problem${pool.length === 1 ? '' : 's'} from ${deals} deal${deals === 1 ? '' : 's'}. A session has at most one problem from each deal.</p>
+    </section>
+    <section>
+      <h2>Progress${tags.length ? ' on these' : ''}</h2>
+      <div class="stats">
+        <div><strong>${seen}</strong> of ${pool.length} tried</div>
+        <div><strong>${right}</strong> right last time</div>
+        <div><strong>${lastAt ? whenText(lastAt) : 'Not yet'}</strong> last practised</div>
+      </div>
     </section>
     <div class="starts">
       ${sizes.map((size) => `<button class="primary" data-action="start" data-size="${size}">${size} problem${size === 1 ? '' : 's'}</button>`).join('')}
@@ -363,7 +390,7 @@ function render() {
 // first if it's given.
 function startSession(pool, size, first = null) {
   const others = pool.filter((item) => item.deal !== first?.deal);
-  const picked = pickSession(others, first ? size - 1 : size);
+  const picked = pickSession(others, first ? size - 1 : size, { progress });
   session = (first ? [first, ...picked] : picked).map((item) => ({ item, call: null }));
   index = 0;
   selected = null;
@@ -377,6 +404,17 @@ function quitSession() {
   session = session.filter(({ call }) => call);
   selected = null;
   screen = session.length ? 'summary' : 'home';
+}
+
+// Records the call for the current problem, in the session and on the
+// phone. If saving fails, the session carries on.
+function recordAnswer(call) {
+  const { item } = session[index];
+  const result = grade(item.problem, call);
+  answeredAt = Date.now();
+  session[index].call = call;
+  progress[item.id] = updateProgress(progress[item.id], item.id, result, answeredAt);
+  saveAnswer({ id: item.id, call, grade: result, at: answeredAt }, progress[item.id]).catch(console.error);
 }
 
 // Events
@@ -402,9 +440,8 @@ app.addEventListener('click', (event) => {
   } else if (action === 'cancel') {
     selected = null;
   } else if (action === 'confirm') {
-    session[index].call = selected;
+    recordAnswer(selected);
     selected = null;
-    answeredAt = Date.now();
     screen = 'feedback';
   } else if (action === 'next') {
     if (Date.now() - answeredAt < NEXT_DELAY_MS) return;
@@ -436,6 +473,13 @@ async function start() {
       })),
     );
     problems = flatten(lessons);
+    // Without storage (e.g. a private window), progress lasts until the
+    // page closes.
+    progress = await loadProgress().catch((error) => {
+      console.error(error);
+      return {};
+    });
+    requestPersistence().catch(() => {});
     // Double dummy results are extra: the app works without them.
     dd = await fetch('problems/dd.json').then((response) => (response.ok ? response.json() : {})).catch(() => ({}));
     // Forget conventions no longer in the problems.
