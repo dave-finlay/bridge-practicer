@@ -7,7 +7,7 @@
 import { seatOfCall } from './auction.js';
 
 // The lesson files the app loads, in problems/.
-export const LESSONS = ['texas'];
+export const LESSONS = ['stayman', 'texas'];
 
 // The names of the conventions that problems are tagged with, in the
 // order the home screen lists them.

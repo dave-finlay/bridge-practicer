@@ -1,0 +1,453 @@
+{
+  "lesson": "stayman",
+  "title": "Stayman and Garbage Stayman",
+  "source": "Stayman Hands lesson.pdf",
+  "deals": [
+    {
+      "id": "stayman-1",
+      "board": 1,
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "N": "943.J863.J76.Q97",
+        "E": "KJT5.AKT7.QT3.A2",
+        "S": "A8.Q94.985.KJ865",
+        "W": "Q762.52.AK42.T43"
+      },
+      "auction": ["P", "1N", "P", "2C", "P", "2H", "P", "2N", "P", "4S", "P", "P", "P"],
+      "handout": "West looks for a 4-4 major suit fit with 2C. When East shows hearts, West shows an invitational hand with 4 spades and without 4 hearts. East has a maximum with 4S and accepts the invite in spades.",
+      "problems": [
+        {
+          "id": "stayman-1a",
+          "at": 3,
+          "answer": "2C",
+          "tags": ["stayman"],
+          "explanation": "You have 9 HCP and four spades: enough to invite game opposite 15–17, and a 4-4 spade fit would play better than notrump. Bid 2♣, Stayman, to ask partner for a four-card major.",
+          "whyNot": {
+            "2N": "2NT invites game, but it gives up on finding a 4-4 spade fit. With a four-card major, start with Stayman.",
+            "P": "With 9 HCP, game is possible opposite 15–17. Make an invitation.",
+            "3N": "9 HCP is only enough to invite. And with four spades, look for the fit first."
+          }
+        },
+        {
+          "id": "stayman-1b",
+          "at": 5,
+          "answer": "2H",
+          "tags": ["stayman"],
+          "explanation": "Partner's 2♣ is Stayman: do you have a four-card major? You have both. With both majors, bid hearts first. If partner has spades instead, they can show them next.",
+          "whyNot": {
+            "2S": "With four cards in both majors, bid 2♥ first.",
+            "2D": "2♦ says you have no four-card major. You have two."
+          }
+        },
+        {
+          "id": "stayman-1c",
+          "at": 7,
+          "answer": "2N",
+          "tags": ["stayman"],
+          "explanation": "Partner has four hearts, but you have only two, so there's no heart fit. Bid 2NT: an invitation to game. Because you bid Stayman and didn't raise hearts, it also shows four spades, so partner can choose 4♠ with four spades too.",
+          "whyNot": {
+            "3N": "9 HCP opposite 15–17 is only enough to invite. Let partner decide.",
+            "P": "You have only two hearts, and 9 HCP is worth an invitation.",
+            "3H": "A raise shows four hearts. You have two."
+          }
+        },
+        {
+          "id": "stayman-1d",
+          "at": 9,
+          "answer": "4S",
+          "tags": ["stayman"],
+          "explanation": "Partner bid Stayman, then 2NT over your 2♥: an invitation with four spades and not four hearts. You have a maximum, 17, and four spades too. Accept the invitation in your 4-4 spade fit: 4♠.",
+          "whyNot": {
+            "3N": "Partner's 2NT shows four spades. You have four too, so play in spades.",
+            "P": "With 17, a maximum, accept the invitation.",
+            "3S": "3♠ would decline the invitation. With 17, bid game."
+          }
+        }
+      ]
+    },
+    {
+      "id": "stayman-2",
+      "board": 2,
+      "dealer": "E",
+      "vul": "NS",
+      "hands": {
+        "N": "T75.QJ64.72.KQ97",
+        "E": "KJ94.973.KT6.J52",
+        "S": "A2.AKT2.Q83.AT64",
+        "W": "Q863.85.AJ954.83"
+      },
+      "auction": ["P", "1N", "P", "2C", "P", "2H", "P", "3H", "P", "4H", "P", "P", "P"],
+      "handout": "North has 4 hearts with an invitational hand and bids Stayman. When South shows 4 hearts, North raises to 3 as an invitation to game. With 17 points, South has a clear acceptance.",
+      "problems": [
+        {
+          "id": "stayman-2a",
+          "at": 3,
+          "answer": "2C",
+          "tags": ["stayman"],
+          "explanation": "You have 8 HCP and four hearts: enough to invite game opposite 15–17. Bid 2♣, Stayman, to look for a 4-4 heart fit.",
+          "whyNot": {
+            "2N": "2NT invites, but gives up on finding a 4-4 heart fit. With a four-card major, start with Stayman.",
+            "P": "With 8 HCP, game is possible opposite 15–17. Make an invitation.",
+            "2D": "2♦ is a Jacoby transfer, which shows five or more hearts. You have four."
+          }
+        },
+        {
+          "id": "stayman-2b",
+          "at": 5,
+          "answer": "2H",
+          "tags": ["stayman"],
+          "explanation": "Partner's 2♣ asks for a four-card major. You have four hearts and not four spades, so bid 2♥.",
+          "whyNot": {
+            "2D": "2♦ says you have no four-card major. You have four hearts.",
+            "2N": "Answer the question: with four hearts, bid 2♥."
+          }
+        },
+        {
+          "id": "stayman-2c",
+          "at": 7,
+          "answer": "3H",
+          "tags": ["stayman"],
+          "explanation": "You've found a 4-4 heart fit. With 8 HCP, game depends on partner's strength, so raise to 3♥: an invitation. Partner bids 4♥ with a maximum and passes with a minimum.",
+          "whyNot": {
+            "4H": "8 HCP opposite 15–17 is only enough to invite. Let partner decide.",
+            "2N": "You've found the heart fit. Invite in hearts, not notrump.",
+            "P": "With 8 HCP and a fit, invite game."
+          }
+        },
+        {
+          "id": "stayman-2d",
+          "at": 9,
+          "answer": "4H",
+          "tags": ["stayman"],
+          "explanation": "Partner bid Stayman and raised your hearts to 3♥: four hearts and an invitation to game. With 17, a maximum, accept: 4♥.",
+          "whyNot": {
+            "P": "With 17, a maximum, accept the invitation.",
+            "3N": "You have a 4-4 heart fit. Play in hearts."
+          }
+        }
+      ]
+    },
+    {
+      "id": "stayman-3",
+      "board": 3,
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "N": "K65.752.A5.QJ842",
+        "E": "J942.QT83.T963.T",
+        "S": "AQ73.AJ9.874.953",
+        "W": "T8.K64.KQJ2.AK76"
+      },
+      "auction": ["P", "1N", "P", "2C", "P", "2D", "P", "P", "P"],
+      "handout": "East has a bad hand with length in every suit except clubs. He can safely pass any response by partner. East should bid 2C Stayman and then pass West's 2D bid. When you use Stayman with fewer than eight points and shortness in clubs, it is called Garbage Stayman.",
+      "problems": [
+        {
+          "id": "stayman-3a",
+          "at": 3,
+          "answer": "2C",
+          "tags": ["stayman"],
+          "explanation": "Garbage Stayman. With only 3 HCP, 1NT will struggle opposite your weak hand. You have four cards in both majors and in diamonds, and a singleton club. So bid 2♣ and pass whatever partner answers: 2♦, 2♥ and 2♠ will all be at least a seven-card fit and play better than 1NT.",
+          "whyNot": {
+            "P": "1NT opposite 3 HCP will struggle. With 4-4 in the majors, four diamonds and short clubs, Garbage Stayman finds a better partscore.",
+            "2D": "2♦ is a Jacoby transfer, which shows five or more hearts. You have four."
+          }
+        },
+        {
+          "id": "stayman-3b",
+          "at": 5,
+          "answer": "2D",
+          "tags": ["stayman"],
+          "explanation": "Partner's 2♣ asks for a four-card major. You have neither four hearts nor four spades, so bid 2♦, which is artificial: \"no four-card major\". It says nothing about your diamonds.",
+          "whyNot": {
+            "2H": "2♥ shows four hearts. You have three.",
+            "2N": "Answer the question: with no four-card major, bid 2♦."
+          }
+        },
+        {
+          "id": "stayman-3c",
+          "at": 7,
+          "answer": "P",
+          "tags": ["stayman"],
+          "explanation": "You bid Garbage Stayman, so you pass whatever partner answers. Partner has no four-card major, but you have four diamonds, so 2♦ is at least a seven-card fit. That plays better than 1NT opposite your 3 HCP.",
+          "whyNot": {
+            "2N": "2NT would invite game, showing 8–9 points. You have 3."
+          }
+        }
+      ]
+    },
+    {
+      "id": "stayman-4",
+      "board": 4,
+      "dealer": "W",
+      "vul": "All",
+      "hands": {
+        "N": "A3.AQJT5.75.JT98",
+        "E": "Q872.64.AKJ42.54",
+        "S": "T95.932.9863.Q62",
+        "W": "KJ64.K87.QT.AK73"
+      },
+      "auction": ["1N", "2H", "3H", "P", "3S", "P", "4S", "P", "P", "P"],
+      "handout": "Over interference, a cue bid is used as game forcing Stayman. Here East bids 3 hearts to look for a 4-4 spade fit.",
+      "problems": [
+        {
+          "id": "stayman-4a",
+          "at": 2,
+          "answer": "3H",
+          "tags": ["stayman"],
+          "explanation": "The 2♥ overcall takes away 2♣. When the opponents overcall 1NT with anything other than 2♣, a cue bid of their suit is Stayman, and it's forcing to game. You have 10 HCP and four spades, so bid 3♥ to ask partner for four spades.",
+          "whyNot": {
+            "3N": "You might have a 4-4 spade fit, and you have no heart stopper. Cue bid 3♥ to ask.",
+            "2S": "2♠ is a natural bid, and partner can pass it. You want game, and only a 4-4 spade fit.",
+            "X": "A double of 2♣ is Stayman, but here 2♥ was bid. Over any other overcall, the cue bid is Stayman."
+          }
+        },
+        {
+          "id": "stayman-4b",
+          "at": 4,
+          "answer": "3S",
+          "tags": ["stayman"],
+          "explanation": "Partner's 3♥ cue bid is Stayman, forcing to game. You have four spades, so bid 3♠.",
+          "whyNot": {
+            "3N": "Partner's cue bid asks for a four-card major. With four spades, show them.",
+            "P": "The cue bid is forcing to game."
+          }
+        },
+        {
+          "id": "stayman-4c",
+          "at": 6,
+          "answer": "4S",
+          "tags": ["stayman"],
+          "explanation": "Partner showed four spades and you have four too: a 4-4 fit. Your cue bid forced to game, so bid 4♠.",
+          "whyNot": {
+            "3N": "You've found the 4-4 spade fit. And you have no heart stopper.",
+            "P": "Your cue bid promised game. With the fit found, bid it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "stayman-5",
+      "board": 5,
+      "dealer": "N",
+      "vul": "NS",
+      "hands": {
+        "N": "AQ7.KJ7.QJ54.K76",
+        "E": "532.Q92.K9.A8432",
+        "S": "KT986.A854.AT8.5",
+        "W": "J4.T63.7632.QJT9"
+      },
+      "auction": ["1N", "P", "2C", "P", "2D", "P", "3S", "P", "4S", "P", "P", "P"],
+      "handout": "Stayman can be used with 5-4 in the majors as well as with hands with no more than 4 cards in a major. Here North bids Stayman and when South doesn't show a major, North jumps in spades to show a game forcing hand with 5 spades and 4 hearts. South has 3 spades and bids game in spades.",
+      "reviewNotes": ["The handout swaps North and South: North opened 1NT, and South bid Stayman and then 3♠ with five spades and four hearts. The problems follow the auction."],
+      "problems": [
+        {
+          "id": "stayman-5a",
+          "at": 2,
+          "answer": "2C",
+          "tags": ["stayman"],
+          "explanation": "You have 11 HCP, enough for game, with five spades and four hearts. Bid 2♣, Stayman, first. If partner has four hearts, you play 4♥. If partner bids 2♦, jump to 3♠ to show five spades, and partner chooses 4♠ or 3NT.",
+          "acceptable": {
+            "2H": "A Jacoby transfer, then 3♥ (natural and forcing) also shows five spades and four hearts. The lesson's way is Stayman first."
+          },
+          "whyNot": {
+            "3N": "With five spades and four hearts, look for a major suit fit first.",
+            "4S": "Partner may have only two spades. And you might have a 4-4 heart fit. Ask with Stayman first."
+          }
+        },
+        {
+          "id": "stayman-5b",
+          "at": 4,
+          "answer": "2D",
+          "tags": ["stayman"],
+          "explanation": "Partner's 2♣ asks for a four-card major. You have three spades and three hearts, so bid 2♦: \"no four-card major\".",
+          "whyNot": {
+            "2S": "2♠ shows four spades. You have three.",
+            "2H": "2♥ shows four hearts. You have three.",
+            "2N": "Answer the question: with no four-card major, bid 2♦."
+          }
+        },
+        {
+          "id": "stayman-5c",
+          "at": 6,
+          "answer": "3S",
+          "tags": ["stayman"],
+          "explanation": "Partner has no four-card major, so there's no heart fit. But a 5-3 spade fit is still possible. With 11 HCP you want game, so jump to 3♠: five spades, four hearts (you bid Stayman), forcing to game. Partner bids 4♠ with three spades, or 3NT with two.",
+          "whyNot": {
+            "3N": "Partner may have three spades. Jump to 3♠ to show your five and let partner choose.",
+            "4S": "Partner may have only two spades. Show your five with 3♠ and let partner choose.",
+            "2S": "2♠ isn't forcing. With 11 HCP you want game, so jump."
+          }
+        },
+        {
+          "id": "stayman-5d",
+          "at": 8,
+          "answer": "4S",
+          "tags": ["stayman"],
+          "explanation": "Partner bid Stayman and then jumped to 3♠: five spades, four hearts, and enough for game. You have three spades, so there's a 5-3 fit. Bid 4♠.",
+          "whyNot": {
+            "3N": "With three spades opposite five, play in the eight-card spade fit.",
+            "P": "Partner's jump to 3♠ is forcing to game."
+          }
+        }
+      ]
+    },
+    {
+      "id": "stayman-6",
+      "board": 6,
+      "dealer": "E",
+      "vul": "EW",
+      "hands": {
+        "N": "J963.A2.A632.754",
+        "E": "AK.J9654.T95.AK3",
+        "S": "T842.K3.874.QJT9",
+        "W": "Q75.QT87.KQJ.862"
+      },
+      "auction": ["1N", "P", "2C", "P", "2H", "P", "4H", "P", "P", "P"],
+      "handout": "West has a game forcing hand with 4 hearts. West bids Stayman, and upon finding a fit, raises to game.",
+      "problems": [
+        {
+          "id": "stayman-6a",
+          "at": 2,
+          "answer": "2C",
+          "tags": ["stayman"],
+          "explanation": "You have 10 HCP, enough for game opposite 15–17, and four hearts. Bid 2♣, Stayman. If partner has four hearts, you'll play 4♥. If not, 3NT.",
+          "whyNot": {
+            "3N": "You might have a 4-4 heart fit. Look for it with Stayman first.",
+            "2D": "2♦ is a Jacoby transfer, which shows five or more hearts. You have four."
+          }
+        },
+        {
+          "id": "stayman-6b",
+          "at": 4,
+          "answer": "2H",
+          "tags": ["stayman"],
+          "explanation": "Partner's 2♣ asks for a four-card major. You have five hearts, which certainly includes four: bid 2♥.",
+          "whyNot": {
+            "2D": "2♦ says you have no four-card major. You have five hearts.",
+            "3H": "Just answer the question with 2♥. Partner will decide how high to go."
+          }
+        },
+        {
+          "id": "stayman-6c",
+          "at": 6,
+          "answer": "4H",
+          "tags": ["stayman"],
+          "explanation": "Partner has at least four hearts, and you have four: a fit. With 10 HCP opposite 15–17 you have enough for game, so bid 4♥.",
+          "whyNot": {
+            "3H": "3♥ would only invite. With 10 HCP opposite 15–17, bid game.",
+            "3N": "You've found the heart fit. Play in hearts."
+          }
+        }
+      ]
+    },
+    {
+      "id": "stayman-7",
+      "board": 7,
+      "dealer": "S",
+      "vul": "All",
+      "hands": {
+        "N": "T5.AK93.AK98.K93",
+        "E": "A92.875.4.AQJ876",
+        "S": "KQJ7.JT64.QJT6.2",
+        "W": "8643.Q2.7532.T54"
+      },
+      "auction": ["P", "P", "1N", "2C", "X", "P", "2H", "P", "4H", "P", "P", "P"],
+      "handout": "When the defenders bid 2C, a double serves as Stayman. North shows his 4 card heart suit and South raises to game.",
+      "problems": [
+        {
+          "id": "stayman-7a",
+          "at": 4,
+          "answer": "X",
+          "tags": ["stayman"],
+          "explanation": "East's 2♣ took your Stayman bid. When the opponents overcall 2♣, double is Stayman. You have 10 HCP, enough for game, and four cards in both majors, so double to ask partner for a four-card major.",
+          "whyNot": {
+            "3N": "You might have a 4-4 major fit, and with a singleton club you have no club stopper. Double to ask.",
+            "P": "With 10 HCP opposite 15–17 you want game. Double to look for a major fit.",
+            "2H": "2♥ is natural and partner can pass it. You want game, and to find the right major."
+          }
+        },
+        {
+          "id": "stayman-7b",
+          "at": 6,
+          "answer": "2H",
+          "tags": ["stayman"],
+          "explanation": "Partner's double of 2♣ is Stayman: do you have a four-card major? You have four hearts, so bid 2♥.",
+          "whyNot": {
+            "P": "Passing would leave East in 2♣ doubled. The double is Stayman, asking for a major.",
+            "2D": "2♦ would say you have no four-card major. You have four hearts."
+          }
+        },
+        {
+          "id": "stayman-7c",
+          "at": 8,
+          "answer": "4H",
+          "tags": ["stayman"],
+          "explanation": "Partner has four hearts, and so do you: a fit. With 10 HCP opposite 15–17, bid game: 4♥.",
+          "whyNot": {
+            "3H": "3♥ would only invite. With 10 HCP opposite 15–17, bid game.",
+            "3N": "You've found the heart fit, and you have no club stopper."
+          }
+        }
+      ]
+    },
+    {
+      "id": "stayman-8",
+      "board": 8,
+      "dealer": "W",
+      "vul": "None",
+      "hands": {
+        "N": "K875.AKJ7.A93.JT",
+        "E": "64.65432.42.AK86",
+        "S": "QJT2.QT9.KQJ5.Q9",
+        "W": "A93.8.T876.75432"
+      },
+      "auction": ["P", "1N", "P", "2C", "P", "2H", "P", "3N", "P", "4S", "P", "P", "P"],
+      "handout": "South has an opening hand and 4 spades. South bids Stayman, and after North bids 2H, jumps to 3NT showing game forcing values with 4 spades. North knows there is an 8 card major suit fit and bids 4S.",
+      "problems": [
+        {
+          "id": "stayman-8a",
+          "at": 3,
+          "answer": "2C",
+          "tags": ["stayman"],
+          "explanation": "You have 13 HCP, enough for game, and four spades. Bid 2♣, Stayman, to look for a 4-4 spade fit before settling in 3NT.",
+          "whyNot": {
+            "3N": "You might have a 4-4 spade fit. Look for it with Stayman first."
+          }
+        },
+        {
+          "id": "stayman-8b",
+          "at": 5,
+          "answer": "2H",
+          "tags": ["stayman"],
+          "explanation": "Partner's 2♣ asks for a four-card major. You have both. With both majors, bid hearts first. If partner has spades instead, they'll show it.",
+          "whyNot": {
+            "2S": "With four cards in both majors, bid 2♥ first.",
+            "2D": "2♦ says you have no four-card major. You have two."
+          }
+        },
+        {
+          "id": "stayman-8c",
+          "at": 7,
+          "answer": "3N",
+          "tags": ["stayman"],
+          "explanation": "Partner has four hearts, but you have only three, so no heart fit. You have 13 HCP, enough for game. Bid 3NT. Because you bid Stayman and didn't raise hearts, it shows four spades, and partner can correct to 4♠ with four spades too.",
+          "whyNot": {
+            "4H": "4♥ shows a heart fit, which needs four hearts. You have three.",
+            "2N": "2NT would only invite. With 13 HCP, bid game."
+          }
+        },
+        {
+          "id": "stayman-8d",
+          "at": 9,
+          "answer": "4S",
+          "tags": ["stayman"],
+          "explanation": "Partner bid Stayman, then 3NT over your 2♥: game values and four spades (they wouldn't have bid Stayman otherwise). You have four spades too, so bid 4♠ in the 4-4 fit.",
+          "whyNot": {
+            "P": "Partner's 3NT shows four spades. You have four too, so play in spades."
+          }
+        }
+      ]
+    }
+  ]
+}

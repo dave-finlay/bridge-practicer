@@ -1,11 +1,12 @@
 // Builds review/index.html: every problem as the app will ask it, with the
 // answer, explanation and full deal, for checking before they go in the app.
-// Usage: node scripts/build-review.mjs
+// Usage: node scripts/build-review.mjs [lesson …]   (default: every lesson)
 
-import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { seatOfCall } from '../js/auction.js';
 import { SUITS, SUIT_SYMBOLS, formatCall, formatHolding, hcp, parseHand } from '../js/hands.js';
+import { LESSONS } from '../js/problems.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const SEAT_NAMES = { N: 'North', E: 'East', S: 'South', W: 'West' };
@@ -102,8 +103,9 @@ function dealHtml(deal) {
   </section>`;
 }
 
-const lessons = readdirSync(join(root, 'problems')).filter((f) => f.endsWith('.json')).sort()
-  .map((f) => JSON.parse(readFileSync(join(root, 'problems', f), 'utf8')));
+// The lessons named on the command line (npm run review -- stayman), or all.
+const names = process.argv.length > 2 ? process.argv.slice(2) : LESSONS;
+const lessons = names.map((name) => JSON.parse(readFileSync(join(root, 'problems', `${name}.json`), 'utf8')));
 const problemCount = lessons.reduce((n, l) => n + l.deals.reduce((m, d) => m + d.problems.length, 0), 0);
 const flagged = lessons.flatMap((l) => l.deals.filter((d) => d.reviewNotes?.length));
 

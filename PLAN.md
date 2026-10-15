@@ -183,8 +183,9 @@ service worker's list.
 
 ### 6. The other lessons
 Stayman, new minor forcing, negative doubles, Jacoby 2NT, RKCB and
-control bids, one lesson at a time, each with a review page. This can
-run alongside steps 3 to 5.
+control bids, one lesson at a time, each with a review page
+(`npm run review -- <lesson>`). This can run alongside steps 3 to 5.
+Done: Stayman (8 deals, 28 problems).
 
 ### 7. Hosting: done
 Public GitHub Pages from `main`, at
