@@ -201,7 +201,7 @@ function renderProblem() {
   app.className = 'problem-screen';
   app.innerHTML = `
     <header class="bar">
-      <button class="quit" data-action="quit" aria-label="Stop this session">✕</button>
+      <button class="quit" data-action="quit" aria-label="Stop these challenges">✕</button>
       <span class="progress">${index + 1} of ${session.length}</span>
       <span class="setting">You are ${SEAT_NAMES[seat]} · ${VUL_NAMES[deal.vul]}</span>
     </header>
@@ -325,7 +325,7 @@ function renderFeedback(reviewing = false) {
     <div class="next-bar">
       ${reviewing
         ? '<button class="primary" data-action="summary">Back to results</button>'
-        : `<button class="primary" data-action="next">${last ? 'See how you did' : 'Next problem'}</button>`}
+        : `<button class="primary" data-action="next">${last ? 'See how you did' : 'Next challenge'}</button>`}
     </div>`;
   window.scrollTo(0, 0);
 }
@@ -349,10 +349,10 @@ function renderSummary() {
   app.className = 'summary-screen';
   app.innerHTML = `
     <h1>${right} of ${session.length} right</h1>
-    <p class="hint">Tap a problem to look at it again.</p>
+    <p class="hint">Tap a challenge to look at it again.</p>
     <ul class="results">${rows}</ul>
     ${missed ? `<button class="primary" data-action="missed">Practise the ${missed === 1 ? 'one' : `${missed}`} I missed</button>` : ''}
-    <button class="${missed ? 'secondary' : 'primary'}" data-action="again">New session</button>
+    <button class="${missed ? 'secondary' : 'primary'}" data-action="again">More challenges</button>
     <button class="secondary" data-action="home">Home</button>`;
   window.scrollTo(0, 0);
 }
@@ -388,12 +388,12 @@ function renderHome() {
   app.innerHTML = `
     <header>
       <h1>Bridge Practicer</h1>
-      <p class="hint">Bidding problems from our lessons</p>
+      <p class="hint">Bidding challenges from our lessons</p>
     </header>
     <section>
       <h2>Conventions</h2>
       <div class="chips">${chips}</div>
-      <p class="hint">${pool.length} problem${pool.length === 1 ? '' : 's'} from ${deals} deal${deals === 1 ? '' : 's'}. A session has at most one problem from each deal.</p>
+      <p class="hint">${pool.length} challenge${pool.length === 1 ? '' : 's'} from ${deals} deal${deals === 1 ? '' : 's'}. A set of challenges has at most one from each deal.</p>
     </section>
     <section>
       <h2>Progress${tags.length ? ' on these' : ''}</h2>
@@ -404,7 +404,7 @@ function renderHome() {
       </div>
     </section>
     <div class="starts">
-      ${sizes.map((size) => `<button class="primary" data-action="start" data-size="${size}">${size} problem${size === 1 ? '' : 's'}</button>`).join('')}
+      ${sizes.map((size) => `<button class="primary" data-action="start" data-size="${size}">${size} bidding challenge${size === 1 ? '' : 's'}</button>`).join('')}
     </div>`;
   window.scrollTo(0, 0);
 }
@@ -418,7 +418,7 @@ function render() {
     case 'summary': return renderSummary();
     case 'error':
       app.className = 'summary-screen';
-      app.innerHTML = '<h1>The problems didn’t load</h1><p>Check the connection and reload the page.</p>';
+      app.innerHTML = '<h1>The challenges didn’t load</h1><p>Check the connection and reload the page.</p>';
   }
 }
 
@@ -504,6 +504,9 @@ app.addEventListener('click', (event) => {
     startSession(withTags(problems, tags), lastSize);
     return;
   } else if (action === 'home') {
+    // Home starts again from all conventions.
+    tags = [];
+    saveSettings();
     screen = 'home';
   }
   render();

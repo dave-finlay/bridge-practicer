@@ -134,10 +134,13 @@ are missing or out of date (`npm run dd` fixes it).
 
 ## Screens
 
+The app calls the problems **challenges** ("10 bidding challenges",
+"More challenges"); "session" isn't used on screen.
+
 1. **Home:** convention chips (All, or any mix of conventions, remembered
-   on the phone), Start with 10 or 20 problems (fewer if the filter leaves
-   fewer deals), and from step 4 a line of progress (problems seen, share
-   right, last practised).
+   on the phone; Home from the summary goes back to All), Start with 10
+   or 20 bidding challenges (fewer if the filter leaves fewer deals), and
+   progress (problems seen, share right, last practised).
 2. **Problem:** "3 of 10", your seat, dealer and vulnerability, your hand
    (large, one suit per line), the auction table (W N E S, as in the bid
    recorder) with "?" at your turn, and a bidding box with illegal calls
@@ -147,7 +150,7 @@ are missing or out of date (`npm run dd` fixes it).
    one; the whole deal and auction; double dummy results; Next.
 4. **Summary:** the score, each problem with a tick or cross, its
    convention and the answer (tap to look again), "Practise the ones I
-   missed", New session and Home.
+   missed", More challenges (same conventions) and Home.
 
 **Choosing problems.** At most one problem per deal. Within that, prefer
 problems never seen, then ones answered wrong last time, then ones due
