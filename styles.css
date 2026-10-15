@@ -1,0 +1,583 @@
+/* Colors and type follow the bid recorder, so the two apps look alike. */
+:root {
+  --felt: #1d6b41;
+  --bg: #eef1ef;
+  --surface: #ffffff;
+  --surface-2: #f6f8f7;
+  --text: #17201b;
+  --muted: #66716a;
+  --line: #d5dcd8;
+  --red: #c4232b;
+  --vul: #d33a3a;
+  --pass: #2f7d4f;
+  --double: #c4232b;
+  --redouble: #2059b8;
+  --off-bg: #e3e7e5;
+  --off-text: #b3bab6;
+  --asked: #dcefe3;
+  --good: #1d6b41;
+  --ok: #a86a12;
+  --bad: #c4232b;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --felt: #2f8a57;
+    --bg: #0f1311;
+    --surface: #1a1f1c;
+    --surface-2: #151a17;
+    --text: #e9eeeb;
+    --muted: #97a29b;
+    --line: #2d3531;
+    --red: #ff6b6b;
+    --vul: #b83232;
+    --double: #c73838;
+    --off-bg: #161a18;
+    --off-text: #3c4540;
+    --asked: #1f3a2a;
+    --good: #3fa36b;
+    --ok: #d39a3a;
+    --bad: #ff6b6b;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation; /* no double-tap zoom, so taps register at once */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.red {
+  color: var(--red);
+}
+
+.primary {
+  width: 100%;
+  height: 52px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--felt);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.secondary {
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--felt);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Hands: one suit per line. */
+
+.holding {
+  white-space: nowrap;
+}
+
+.holding .suit {
+  display: inline-block;
+  width: 1.3em;
+}
+
+/* Problem screen: fills the screen, with the bidding box at the bottom
+   where the thumb reaches. The auction table takes the space left over. */
+
+.problem-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 480px;
+  height: 100dvh;
+  margin: 0 auto;
+  padding:
+    calc(env(safe-area-inset-top) + 8px)
+    calc(env(safe-area-inset-right) + 10px)
+    calc(env(safe-area-inset-bottom) + 8px)
+    calc(env(safe-area-inset-left) + 10px);
+}
+
+.bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 28px;
+}
+
+.progress {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.setting {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.problem-screen .hand {
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.auction {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 96px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.seats,
+.calls {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+
+.seat {
+  padding: 4px 0 3px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+  font-weight: 700;
+}
+
+.seat small {
+  display: block;
+  min-height: 1.2em;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.seat.vul {
+  background: var(--vul);
+  color: #fff;
+}
+
+.seat.vul small {
+  color: rgb(255 255 255 / 85%);
+}
+
+.calls {
+  flex: 1;
+  align-content: start;
+  overflow-y: auto;
+  padding: 2px 0;
+}
+
+.calls > div {
+  padding: 3px 0;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+/* Shown while the auction is scrolled down past its first rows. */
+.more-above {
+  position: absolute;
+  top: 46px;
+  left: 50%;
+  padding: 1px 10px;
+  transform: translateX(-50%);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* The call you've tapped, waiting for Bid. */
+.calls .pending {
+  margin: 0 6px;
+  border: 2px dashed var(--felt);
+  border-radius: 8px;
+  padding: 1px 0;
+}
+
+.calls .pass {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.calls .double {
+  color: var(--double);
+}
+
+.calls .redouble {
+  color: var(--redouble);
+}
+
+.calls .asked {
+  border-radius: 8px;
+  background: var(--asked);
+}
+
+.cursor {
+  color: var(--muted);
+  animation: blink 1.1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+  }
+}
+
+.confirm {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5px;
+}
+
+.confirm .primary {
+  height: 44px;
+  border-radius: 10px;
+}
+
+.confirm .primary .red {
+  color: inherit;
+}
+
+.confirm button:disabled {
+  border-color: transparent;
+  background: var(--off-bg);
+  color: var(--off-text);
+}
+
+.box {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+}
+
+.box button {
+  height: clamp(32px, 5.2dvh, 50px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.box button:active:not(:disabled),
+.box button.selected {
+  border-color: var(--felt);
+  background: var(--felt);
+  color: #fff;
+}
+
+.specials button.selected {
+  outline: 3px solid var(--text);
+  outline-offset: 2px;
+}
+
+.specials {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 5px;
+}
+
+.specials button {
+  height: 52px;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.specials .pass {
+  background: var(--pass);
+}
+
+.specials .double {
+  background: var(--double);
+}
+
+.specials .redouble {
+  background: var(--redouble);
+}
+
+/* Once a call is selected, the other special calls drop their fill so
+   only the selection stands out. They can still be tapped instead. */
+.specials.chosen button:not(.selected):not(:disabled) {
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.specials.chosen .pass:not(.selected):not(:disabled) {
+  color: var(--pass);
+}
+
+.specials.chosen .double:not(.selected):not(:disabled) {
+  color: var(--double);
+}
+
+.specials.chosen .redouble:not(.selected):not(:disabled) {
+  color: var(--redouble);
+}
+
+/* Illegal calls: grayed out. Comes after the rules above so it wins. */
+.box button:disabled,
+.specials button:disabled {
+  border-color: transparent;
+  background: var(--off-bg);
+  color: var(--off-text);
+}
+
+/* Feedback screen: scrolls, with Next fixed at the bottom. */
+
+.feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+  padding:
+    calc(env(safe-area-inset-top) + 12px)
+    calc(env(safe-area-inset-right) + 14px)
+    calc(env(safe-area-inset-bottom) + 96px)
+    calc(env(safe-area-inset-left) + 14px);
+}
+
+.feedback p {
+  margin: 0;
+}
+
+.feedback h2 {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.verdict {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 2px solid currentColor;
+}
+
+.verdict.best { color: var(--good); }
+.verdict.acceptable { color: var(--ok); }
+.verdict.wrong { color: var(--bad); }
+
+.verdict h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.verdict p {
+  color: var(--text);
+  font-size: 17px;
+}
+
+.verdict-icon {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.feedback .auction {
+  flex: none;
+}
+
+.deal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "n n" "w e" "s s";
+  gap: 10px;
+}
+
+.deal-hand {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.d-n, .d-s {
+  justify-self: center;
+  min-width: 50%;
+}
+
+.d-n { grid-area: n; }
+.d-w { grid-area: w; }
+.d-e { grid-area: e; }
+.d-s { grid-area: s; }
+
+.deal-hand.you {
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: var(--asked);
+}
+
+.deal-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.next-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding:
+    10px
+    calc(env(safe-area-inset-right) + 14px)
+    calc(env(safe-area-inset-bottom) + 10px)
+    calc(env(safe-area-inset-left) + 14px);
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.next-bar .primary {
+  display: block;
+  max-width: 452px;
+  margin: 0 auto;
+}
+
+/* Summary */
+
+.summary-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 480px;
+  margin: 0 auto;
+  padding:
+    calc(env(safe-area-inset-top) + 20px)
+    calc(env(safe-area-inset-right) + 14px)
+    calc(env(safe-area-inset-bottom) + 20px)
+    calc(env(safe-area-inset-left) + 14px);
+}
+
+.summary-screen h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.results {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  list-style: none;
+}
+
+.results li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  font-size: 17px;
+}
+
+.results li + li {
+  border-top: 1px solid var(--line);
+}
+
+.results .mark {
+  width: 1.2em;
+  font-weight: 700;
+}
+
+.results .best .mark { color: var(--good); }
+.results .acceptable .mark { color: var(--ok); }
+.results .wrong .mark { color: var(--bad); }
+
+/* Double dummy table, under the deal on the feedback screen. */
+
+.dd-note {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.dd {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 17px;
+  text-align: center;
+}
+
+.dd th,
+.dd td {
+  padding: 4px 0;
+}
+
+.dd tr + tr > * {
+  border-top: 1px solid var(--line);
+}
+
+.dd th:first-child {
+  padding-left: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.dd td {
+  color: var(--muted);
+}
+
+.dd td.makes {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.dd td.played {
+  background: var(--asked);
+}

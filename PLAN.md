@@ -33,6 +33,17 @@ with a review: read the code, try it, and course-correct before moving on.
   commentary is wrong (it sometimes names the wrong player), the problem
   follows the auction and says so in its review notes.
 - **Each phone keeps its own progress.** No accounts, no syncing.
+- **Tap, then confirm.** Tapping a call selects it: it shows in the
+  auction in place of the "?", and Bid (beside Cancel) confirms it. That
+  gives a moment to check your thinking before committing.
+- **The auction scrolls to its last row** so the latest calls sit just
+  above the bidding box, with a tag when earlier calls are scrolled out
+  of view. Levels of the bidding box with no legal bid left are hidden,
+  so long auctions have room.
+- **Double dummy results under the deal** on the feedback screen: the
+  tricks each player takes as declarer in each strain, how the contract
+  played fares, and par. They're worked out ahead of time with DDS and
+  stored in `problems/dd.json`, so the app never runs a solver.
 
 ## Tech choices
 
@@ -57,10 +68,16 @@ test/                    unit tests
 scripts/check.mjs        checks every deal and problem
 scripts/build-review.mjs builds review/index.html for checking problems
 scripts/review.css       the review page's styles
+scripts/dd.mjs           solves every deal into problems/dd.json (npm run dd)
+scripts/dd/dd-table.cpp  the small program that calls DDS
+scripts/serve.mjs        dev server for trying the app on the phone
+index.html, styles.css   the app
+js/app.js                the app's screens
+js/problems.js           grading and picking problems
+vendor/                  DDS source and the compiled solver (not committed)
 ```
 
-The app itself (index.html, styles, screens, service worker) arrives
-with steps 2 to 5.
+The service worker and manifest arrive with step 5.
 
 ## Problem format
 
@@ -96,7 +113,8 @@ with steps 2 to 5.
 deck with ranks in order, dealer and vulnerability matching the board
 number, a legal and complete auction, legal answers, acceptable calls and
 why-nots, unique problem ids, and an answer that matches the auction
-unless an `answerNote` explains why it doesn't.
+unless an `answerNote` explains why it doesn't. It also fails if a deal's
+double dummy results are missing or out of date (`npm run dd` fixes it).
 
 ## Screens (to confirm)
 
@@ -124,12 +142,14 @@ right, so missed problems come back sooner and known ones fade out.
 Texas transfers written up (8 deals, 16 problems) and reviewed.
 `js/auction.js` copied from the bid recorder.
 
-### 2. The problem screen (the core)
+### 2. The problem screen (the core): done
 One problem at a time from the Texas set: hand, auction, bidding box,
 then the feedback screen with the whole deal. Dev server so it can be
-opened on the iPhone.
+opened on the iPhone. A session is already a random set with one
+problem per deal (8 for Texas), ending with a bare summary.
 **Review:** try it on the phone. This is the main checkpoint for how it
 feels: hand size, the bidding box, and how long the explanations are.
+Added during review: tap then confirm, and double dummy results.
 
 ### 3. Sessions
 Home screen, choosing 10 or 20 problems by the rules above, the summary
@@ -160,9 +180,6 @@ Depends on the open question below.
   But the deals and the quoted commentary come from our teacher's
   handouts, so we should ask the teacher before publishing, or rewrite
   the commentary in our own words. Until then the repo stays local.
-- **Answer with one tap, or tap then confirm?** One tap is faster, but a
-  mis-tap on a small bidding box would count as a wrong answer. Decide in
-  step 2, on the phone.
 
 ## Working agreements
 

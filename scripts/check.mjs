@@ -17,7 +17,10 @@ const problemIds = new Set();
 let dealCount = 0;
 let problemCount = 0;
 
-for (const file of readdirSync(dir).filter((f) => f.endsWith('.json')).sort()) {
+// Double dummy results, from scripts/dd.mjs.
+const dd = JSON.parse(readFileSync(join(dir, 'dd.json'), 'utf8'));
+
+for (const file of readdirSync(dir).filter((f) => f.endsWith('.json') && f !== 'dd.json').sort()) {
   const lesson = JSON.parse(readFileSync(join(dir, file), 'utf8'));
   for (const deal of lesson.deals) {
     dealCount++;
@@ -53,6 +56,9 @@ for (const file of readdirSync(dir).filter((f) => f.endsWith('.json')).sort()) {
       if (cards !== 13) fail(`${seat} has ${cards} cards`);
     }
     if (seen.size !== 52) fail(`the deal has ${seen.size} different cards`);
+    if (dd[deal.id]?.hands !== `N:${SEATS.map((seat) => deal.hands[seat]).join(' ')}`) {
+      fail('double dummy results are missing or out of date: run npm run dd');
+    }
 
     deal.auction.forEach((call, i) => {
       if (!isLegal(deal.dealer, deal.auction.slice(0, i), call)) fail(`call ${i + 1} (${call}) is not legal`);
