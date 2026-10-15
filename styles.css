@@ -151,6 +151,9 @@ button {
 }
 
 .problem-screen .hand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 6px 14px;
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -158,6 +161,25 @@ button {
   font-size: 23px;
   font-weight: 600;
   line-height: 1.25;
+}
+
+/* The hand's point count, to the right of the hand. */
+.points {
+  min-width: 64px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.points strong {
+  display: block;
+  color: var(--text);
+  font-size: 26px;
 }
 
 .auction {

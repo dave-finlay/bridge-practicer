@@ -172,7 +172,10 @@ function renderProblem() {
       <span class="progress">${index + 1} of ${session.length}</span>
       <span class="setting">You are ${SEAT_NAMES[seat]} · ${VUL_NAMES[deal.vul]}</span>
     </header>
-    <section class="hand" aria-label="Your hand">${handHTML(deal.hands[seat])}</section>
+    <section class="hand" aria-label="Your hand">
+      <div>${handHTML(deal.hands[seat])}</div>
+      <div class="points" aria-label="High card points"><strong>${hcp(parseHand(deal.hands[seat]))}</strong>HCP</div>
+    </section>
     <section class="auction">${auctionHTML(deal, seat, before, { ask: true, pending: selected })}</section>
     <div class="confirm">
       <button class="secondary" data-action="cancel"${selected ? '' : ' disabled'}>Cancel</button>
