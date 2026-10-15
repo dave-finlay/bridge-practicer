@@ -235,6 +235,30 @@ page like the review page, so we can decide whether to play it. If we
 do, the agreement goes in `~/context/bridge/agreements.md` before any
 problems are written.
 
+**A scoring trainer**
+- A second mode, chosen on the home screen: Bidding or Scoring. Same
+  app, one install, one progress store. Duplicate scoring, as at the
+  club.
+- **Problems are made up on the spot**, since scoring is arithmetic: a
+  contract, doubled or not, vulnerability and tricks taken. A scoring
+  function in `js/` (with tests) works out the answer.
+- **Paired questions**: "2NT vulnerable, 7 tricks: your score?" then
+  "and if you'd made it?", so the difference sinks in (−100 against
+  +120). The same for game against partscore, and doubled against
+  undoubled.
+- **Answering** with a number pad, plus or minus for your side. The
+  feedback breaks the score down: trick score, partscore or game bonus
+  (50, or 300 / 500 vulnerable), slam bonus, overtricks, and the bonus
+  for making a doubled contract.
+- **Levels**: undoubled makes and downs; game against partscore at each
+  vulnerability; doubled undertricks (100/300/500 not vulnerable,
+  200/500/800 vulnerable); doubled overtricks, redoubles and slams.
+- **Progress by type** ("doubled, vulnerable, down 2") rather than by
+  problem, with the same spaced repetition, so weak spots come back.
+- Later, a link to the bidding problems: the feedback screen already
+  knows the final contract and its double dummy tricks, so it could ask
+  what that scores.
+
 **From our own play**
 - When a hand at the club goes wrong in the bidding, Dave and Donna
   agree what they *should* have bid, and it becomes a problem: the deal
