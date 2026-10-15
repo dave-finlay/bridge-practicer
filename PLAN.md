@@ -116,19 +116,22 @@ why-nots, unique problem ids, and an answer that matches the auction
 unless an `answerNote` explains why it doesn't. It also fails if a deal's
 double dummy results are missing or out of date (`npm run dd` fixes it).
 
-## Screens (to confirm)
+## Screens
 
-1. **Home:** Start (10 or 20 problems), an optional filter by convention,
-   and a line of progress (problems seen, share right, last practised).
+1. **Home:** convention chips (All, or any mix of conventions, remembered
+   on the phone), Start with 10 or 20 problems (fewer if the filter leaves
+   fewer deals), and from step 4 a line of progress (problems seen, share
+   right, last practised).
 2. **Problem:** "3 of 10", your seat, dealer and vulnerability, your hand
    (large, one suit per line), the auction table (W N E S, as in the bid
    recorder) with "?" at your turn, and a bidding box with illegal calls
-   greyed out.
+   greyed out. ✕ stops the session early, going to the summary.
 3. **Feedback:** right, acceptable or wrong; your call beside the best
    call; the explanation; the "why not" note for your call if there is
-   one; the whole deal and auction; Next.
-4. **Summary:** the score, each problem with a tick or cross (tap to look
-   again), and "Practise the ones I missed".
+   one; the whole deal and auction; double dummy results; Next.
+4. **Summary:** the score, each problem with a tick or cross, its
+   convention and the answer (tap to look again), "Practise the ones I
+   missed", New session and Home.
 
 **Choosing problems.** At most one problem per deal. Within that, prefer
 problems never seen, then ones answered wrong, then ones answered right
@@ -151,9 +154,10 @@ problem per deal (8 for Texas), ending with a bare summary.
 feels: hand size, the bidding box, and how long the explanations are.
 Added during review: tap then confirm, and double dummy results.
 
-### 3. Sessions
+### 3. Sessions: done
 Home screen, choosing 10 or 20 problems by the rules above, the summary
-screen, and the convention filter.
+screen, and the convention filter. Problems are picked at random until
+step 4 stores progress.
 **Review:** run a few sessions.
 
 ### 4. Progress

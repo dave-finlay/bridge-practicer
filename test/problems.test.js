@@ -1,7 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { flatten, grade, pickSession } from '../js/problems.js';
+import {
+  conventionsIn, dealCount, flatten, grade, pickSession, withTags,
+} from '../js/problems.js';
 
 const texas = JSON.parse(readFileSync(new URL('../problems/texas.json', import.meta.url)));
 const problems = flatten([texas]);
@@ -44,4 +46,23 @@ test('pickSession stops at the size asked for, and varies the problems', () => {
   const firsts = new Set();
   for (let seed = 1; seed <= 20; seed++) firsts.add(pickSession(problems, 8, seeded(seed))[0].id);
   assert.ok(firsts.size > 3);
+});
+
+test('conventionsIn lists the tags in the usual order, with counts and names', () => {
+  assert.deepEqual(conventionsIn(problems), [
+    { tag: 'jacoby', name: 'Jacoby transfers', count: 2 },
+    { tag: 'texas', name: 'Texas transfers', count: 15 },
+    { tag: 'rkcb', name: 'RKCB', count: 2 },
+  ]);
+});
+
+test('withTags keeps problems with any of the tags, or all for none', () => {
+  assert.equal(withTags(problems, []).length, 16);
+  assert.deepEqual(withTags(problems, ['rkcb']).map((p) => p.id), ['texas-6c', 'texas-6d']);
+  assert.equal(withTags(problems, ['rkcb', 'jacoby']).length, 4);
+});
+
+test('dealCount counts the deals the problems come from', () => {
+  assert.equal(dealCount(problems), 8);
+  assert.equal(dealCount(withTags(problems, ['rkcb', 'jacoby'])), 1);
 });

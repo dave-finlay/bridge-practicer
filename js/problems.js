@@ -9,6 +9,22 @@ import { seatOfCall } from './auction.js';
 // The lesson files the app loads, in problems/.
 export const LESSONS = ['texas'];
 
+// The names of the conventions that problems are tagged with, in the
+// order the home screen lists them.
+export const CONVENTIONS = {
+  stayman: 'Stayman',
+  jacoby: 'Jacoby transfers',
+  texas: 'Texas transfers',
+  'minor-transfers': 'Minor suit transfers',
+  nmf: 'New minor forcing',
+  'negative-double': 'Negative doubles',
+  'jacoby-2nt': 'Jacoby 2NT',
+  rkcb: 'RKCB',
+  'control-bids': 'Control bids',
+};
+
+export const conventionName = (tag) => CONVENTIONS[tag] ?? tag;
+
 // Every problem in the lessons, each with its deal and the seat that calls.
 export function flatten(lessons) {
   return lessons.flatMap((lesson) =>
@@ -48,4 +64,29 @@ export function pickSession(problems, size, random = Math.random) {
     picked.push(item);
   }
   return picked;
+}
+
+// The conventions the problems test, in CONVENTIONS order with any others
+// after, each with how many problems test it: [{ tag, name, count }].
+export function conventionsIn(problems) {
+  const counts = new Map();
+  for (const { problem } of problems) {
+    for (const tag of problem.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1);
+  }
+  const order = Object.keys(CONVENTIONS);
+  const rank = (tag) => (order.includes(tag) ? order.indexOf(tag) : order.length);
+  return [...counts.keys()]
+    .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b))
+    .map((tag) => ({ tag, name: conventionName(tag), count: counts.get(tag) }));
+}
+
+// The problems that test any of `tags`, or all of them if `tags` is empty.
+export function withTags(problems, tags) {
+  if (!tags.length) return problems;
+  return problems.filter(({ problem }) => problem.tags.some((tag) => tags.includes(tag)));
+}
+
+// How many deals the problems come from: the most a session can hold.
+export function dealCount(problems) {
+  return new Set(problems.map((item) => item.deal.id)).size;
 }

@@ -129,8 +129,20 @@ button {
 }
 
 .progress {
+  margin-right: auto;
   font-size: 17px;
   font-weight: 700;
+}
+
+.quit {
+  width: 32px;
+  height: 28px;
+  margin-left: -6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 18px;
 }
 
 .setting {
@@ -512,12 +524,32 @@ button {
   list-style: none;
 }
 
-.results li {
+.results button {
   display: flex;
   align-items: center;
   gap: 12px;
+  width: 100%;
   padding: 10px 14px;
+  border: 0;
+  background: none;
   font-size: 17px;
+  text-align: left;
+}
+
+.result-text {
+  flex: 1;
+}
+
+.result-text small {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.chevron {
+  color: var(--muted);
+  font-size: 22px;
 }
 
 .results li + li {
@@ -580,4 +612,85 @@ button {
 
 .dd td.played {
   background: var(--asked);
+}
+
+.summary-screen .secondary {
+  height: 52px;
+  border-radius: 12px;
+}
+
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Home */
+
+.home-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 480px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding:
+    calc(env(safe-area-inset-top) + 24px)
+    calc(env(safe-area-inset-right) + 14px)
+    calc(env(safe-area-inset-bottom) + 20px)
+    calc(env(safe-area-inset-left) + 14px);
+}
+
+.home-screen h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.home-screen h2 {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.chip {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.chip small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.chip.on {
+  border-color: var(--felt);
+  background: var(--felt);
+  color: #fff;
+}
+
+.chip.on small {
+  color: rgb(255 255 255 / 80%);
+}
+
+/* Start sits at the bottom, where the thumb reaches. */
+.starts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
 }

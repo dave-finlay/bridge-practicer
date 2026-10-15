@@ -1,18 +1,24 @@
 // The app's screens and event handling.
 //
-// A session is a short list of problems. Each one shows the problem
-// screen: your hand, the auction so far and a bidding box. Tapping a call
-// selects it, and Bid confirms it, so there's a moment to check. Then the
-// feedback screen grades the call and shows the whole deal. After the
-// last problem, a summary offers another session.
+// The home screen starts a session of 10 or 20 problems, optionally for
+// chosen conventions only. Each problem shows the problem screen: your
+// hand, the auction so far and a bidding box. Tapping a call selects it,
+// and Bid confirms it, so there's a moment to check. Then the feedback
+// screen grades the call and shows the whole deal. After the last problem
+// (or ✕ to stop early), the summary lists the answers, any of which can
+// be looked at again, and offers the missed ones as a new session.
 
 import { BIDS, STRAINS, contract, isVulnerable, legalCalls, seatAfter } from './auction.js';
 import { SUITS, formatHolding, hcp, parseHand } from './hands.js';
-import { LESSONS, flatten, grade, pickSession } from './problems.js';
+import {
+  LESSONS, conventionName, conventionsIn, dealCount, flatten, grade, pickSession, withTags,
+} from './problems.js';
 
 const app = document.getElementById('app');
 
-const SESSION_SIZE = 10;
+const SESSION_SIZES = [10, 20];
+// Where the home screen's choice of conventions is kept between visits.
+const SETTINGS_KEY = 'bridge-practicer-settings';
 // Columns of the auction table, as on BBO and in the bid recorder.
 const TABLE_ORDER = ['W', 'N', 'E', 'S'];
 const SEAT_NAMES = { N: 'North', E: 'East', S: 'South', W: 'West' };
@@ -32,9 +38,26 @@ let problems = [];
 let dd = {}; // double dummy results by deal id, from problems/dd.json
 let session = []; // [{ item, call }], call is null until answered
 let index = 0;
-let screen = 'loading'; // 'problem', 'feedback', 'summary', 'error'
+let screen = 'loading'; // 'home', 'problem', 'feedback', 'review', 'summary', 'error'
 let selected = null; // the call tapped on the problem screen, not yet confirmed
 let answeredAt = 0;
+let tags = loadSettings().tags; // conventions chosen on the home screen; none means all
+let lastSize = SESSION_SIZES[0];
+
+// Settings are a convenience: if storage is unavailable, the defaults do.
+function loadSettings() {
+  try {
+    const settings = JSON.parse(localStorage.getItem(SETTINGS_KEY));
+    if (Array.isArray(settings?.tags)) return settings;
+  } catch {}
+  return { tags: [] };
+}
+
+function saveSettings() {
+  try {
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify({ tags }));
+  } catch {}
+}
 
 // Formatting
 
@@ -138,6 +161,7 @@ function renderProblem() {
   app.className = 'problem-screen';
   app.innerHTML = `
     <header class="bar">
+      <button class="quit" data-action="quit" aria-label="Stop this session">✕</button>
       <span class="progress">${index + 1} of ${session.length}</span>
       <span class="setting">You are ${SEAT_NAMES[seat]} · ${VUL_NAMES[deal.vul]}</span>
     </header>
@@ -217,7 +241,9 @@ function doubleDummyHTML(deal) {
     <p>${par}</p>`;
 }
 
-function renderFeedback() {
+// After answering, Next goes on. Looking again from the summary
+// (`reviewing`), the button goes back to it.
+function renderFeedback(reviewing = false) {
   const { item, call } = session[index];
   const { deal, problem, seat } = item;
   const result = grade(problem, call);
@@ -254,32 +280,78 @@ function renderFeedback() {
       ${doubleDummyHTML(deal)}
     </div>
     <div class="next-bar">
-      <button class="primary" data-action="next">${last ? 'See how you did' : 'Next problem'}</button>
+      ${reviewing
+        ? '<button class="primary" data-action="summary">Back to results</button>'
+        : `<button class="primary" data-action="next">${last ? 'See how you did' : 'Next problem'}</button>`}
     </div>`;
   window.scrollTo(0, 0);
 }
 
 function renderSummary() {
   const right = session.filter(({ item, call }) => grade(item.problem, call) !== 'wrong').length;
-  const rows = session.map(({ item, call }) => {
+  const missed = session.filter(({ item, call }) => grade(item.problem, call) === 'wrong').length;
+  const rows = session.map(({ item, call }, i) => {
     const result = grade(item.problem, call);
     const answer = result === 'best' ? '' : ` · answer ${callHTML(item.problem.answer)}`;
-    return `<li class="${result}"><span class="mark" aria-hidden="true">${GRADES[result].icon}</span>
-      <span>You bid ${callHTML(call)}${answer}</span></li>`;
+    return `<li class="${result}"><button data-review="${i}">
+      <span class="mark" aria-hidden="true">${GRADES[result].icon}</span>
+      <span class="result-text">
+        <small>${escapeHTML(conventionName(item.problem.tags[0]))}</small>
+        You bid ${callHTML(call)}${answer}
+      </span>
+      <span class="chevron" aria-hidden="true">›</span>
+    </button></li>`;
   }).join('');
 
   app.className = 'summary-screen';
   app.innerHTML = `
     <h1>${right} of ${session.length} right</h1>
+    <p class="hint">Tap a problem to look at it again.</p>
     <ul class="results">${rows}</ul>
-    <button class="primary" data-action="again">Practise again</button>`;
+    ${missed ? `<button class="primary" data-action="missed">Practise the ${missed === 1 ? 'one' : `${missed}`} I missed</button>` : ''}
+    <button class="${missed ? 'secondary' : 'primary'}" data-action="again">New session</button>
+    <button class="secondary" data-action="home">Home</button>`;
+  window.scrollTo(0, 0);
+}
+
+// The home screen: which conventions to practise, and Start.
+function renderHome() {
+  const chip = (tag, name, count, on) =>
+    `<button class="chip${on ? ' on' : ''}" data-tag="${tag}" aria-pressed="${on}">${escapeHTML(name)}${count ? ` <small>${count}</small>` : ''}</button>`;
+  const chips = [
+    chip('', 'All', 0, !tags.length),
+    ...conventionsIn(problems).map(({ tag, name, count }) => chip(tag, name, count, tags.includes(tag))),
+  ].join('');
+
+  const pool = withTags(problems, tags);
+  const deals = dealCount(pool);
+  // A session has at most one problem per deal, so fewer deals than a
+  // size means a shorter session. Sizes that come to the same are shown once.
+  const sizes = [...new Set(SESSION_SIZES.map((size) => Math.min(size, deals)))];
+
+  app.className = 'home-screen';
+  app.innerHTML = `
+    <header>
+      <h1>Bridge Practicer</h1>
+      <p class="hint">Bidding problems from our lessons</p>
+    </header>
+    <section>
+      <h2>Conventions</h2>
+      <div class="chips">${chips}</div>
+      <p class="hint">${pool.length} problem${pool.length === 1 ? '' : 's'} from ${deals} deal${deals === 1 ? '' : 's'}. A session has at most one problem from each deal.</p>
+    </section>
+    <div class="starts">
+      ${sizes.map((size) => `<button class="primary" data-action="start" data-size="${size}">${size} problem${size === 1 ? '' : 's'}</button>`).join('')}
+    </div>`;
   window.scrollTo(0, 0);
 }
 
 function render() {
   switch (screen) {
+    case 'home': return renderHome();
     case 'problem': return renderProblem();
     case 'feedback': return renderFeedback();
+    case 'review': return renderFeedback(true);
     case 'summary': return renderSummary();
     case 'error':
       app.className = 'summary-screen';
@@ -287,17 +359,24 @@ function render() {
   }
 }
 
-// A problem id in the URL (e.g. #texas-6d) puts that problem first, for
-// trying out a particular problem.
-function startSession() {
-  const wanted = problems.find((item) => `#${item.id}` === location.hash);
-  const others = problems.filter((item) => item.deal !== wanted?.deal);
-  const picked = pickSession(others, wanted ? SESSION_SIZE - 1 : SESSION_SIZE);
-  session = (wanted ? [wanted, ...picked] : picked).map((item) => ({ item, call: null }));
+// Starts a session of up to `size` problems from `pool`, with `first`
+// first if it's given.
+function startSession(pool, size, first = null) {
+  const others = pool.filter((item) => item.deal !== first?.deal);
+  const picked = pickSession(others, first ? size - 1 : size);
+  session = (first ? [first, ...picked] : picked).map((item) => ({ item, call: null }));
   index = 0;
   selected = null;
   screen = 'problem';
   render();
+}
+
+// Stops the session early: the summary covers the answered problems, or
+// with none answered it's back to the home screen.
+function quitSession() {
+  session = session.filter(({ call }) => call);
+  selected = null;
+  screen = session.length ? 'summary' : 'home';
 }
 
 // Events
@@ -306,9 +385,20 @@ app.addEventListener('click', (event) => {
   const button = event.target.closest('button');
   if (!button || button.disabled) return;
 
-  const { call, action } = button.dataset;
+  const { call, action, tag, review } = button.dataset;
   if (call) {
     selected = call;
+  } else if (tag !== undefined) {
+    // "All" clears the choice; a convention toggles, and none left is all.
+    tags = !tag ? [] : tags.includes(tag) ? tags.filter((t) => t !== tag) : [...tags, tag];
+    saveSettings();
+  } else if (review !== undefined) {
+    index = Number(review);
+    screen = 'review';
+  } else if (action === 'start') {
+    lastSize = Number(button.dataset.size);
+    startSession(withTags(problems, tags), lastSize);
+    return;
   } else if (action === 'cancel') {
     selected = null;
   } else if (action === 'confirm') {
@@ -320,9 +410,19 @@ app.addEventListener('click', (event) => {
     if (Date.now() - answeredAt < NEXT_DELAY_MS) return;
     index++;
     screen = index < session.length ? 'problem' : 'summary';
-  } else if (action === 'again') {
-    startSession();
+  } else if (action === 'quit') {
+    quitSession();
+  } else if (action === 'summary') {
+    screen = 'summary';
+  } else if (action === 'missed') {
+    const missed = session.filter(({ item, call }) => grade(item.problem, call) === 'wrong').map(({ item }) => item);
+    startSession(missed, missed.length);
     return;
+  } else if (action === 'again') {
+    startSession(withTags(problems, tags), lastSize);
+    return;
+  } else if (action === 'home') {
+    screen = 'home';
   }
   render();
 });
@@ -338,7 +438,17 @@ async function start() {
     problems = flatten(lessons);
     // Double dummy results are extra: the app works without them.
     dd = await fetch('problems/dd.json').then((response) => (response.ok ? response.json() : {})).catch(() => ({}));
-    startSession();
+    // Forget conventions no longer in the problems.
+    tags = tags.filter((tag) => problems.some(({ problem }) => problem.tags.includes(tag)));
+    // A problem id in the URL (e.g. #texas-6d) skips the home screen and
+    // puts that problem first, for trying out a particular problem.
+    const wanted = problems.find((item) => `#${item.id}` === location.hash);
+    if (wanted) {
+      startSession(problems, SESSION_SIZES[0], wanted);
+    } else {
+      screen = 'home';
+      render();
+    }
   } catch (error) {
     console.error(error);
     screen = 'error';
