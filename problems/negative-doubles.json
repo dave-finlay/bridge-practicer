@@ -1,0 +1,803 @@
+{
+  "lesson": "negative-doubles",
+  "title": "Negative doubles",
+  "source": "Negative Double Hands Part 1.pdf, Negative Doubles Hands Part 2.pdf",
+  "deals": [
+    {
+      "id": "negdbl1-1",
+      "part": 1,
+      "board": 1,
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "N": "AK4.KQ.J752.AQ73",
+        "E": "QJT975.65.AK6.J8",
+        "S": "632.AT984.T93.K6",
+        "W": "8.J732.Q84.T9542"
+      },
+      "auction": ["1D", "1S", "X", "P", "2N", "P", "3H", "P", "3N", "P", "P", "P"],
+      "handout": "South does not have enough high cards to bid his heart suit at the two-level, so he uses a negative double. North jumps to 2 NT to show 18-19 balanced points with spades stopped and fewer than 4 Hearts. South bids 3♥ to check for a heart fit, but with only 2 Hearts, North bids 3 NT.",
+      "problems": [
+        {
+          "id": "negdbl1-1a",
+          "at": 2,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "You have five hearts but only 7 HCP, not enough to bid 2♥. A negative double shows four or more hearts (and something in clubs) with 8 or more points at the two level, so it gets your hearts into the auction.",
+          "whyNot": {
+            "2H": "A new suit at the two level shows five or more cards and about 10 points. You have 7.",
+            "P": "With 7 HCP and five hearts, compete. The negative double shows your hearts.",
+            "1N": "1NT over 1♠ promises a spade stopper. You have three small spades."
+          }
+        },
+        {
+          "id": "negdbl1-1b",
+          "at": 4,
+          "answer": "2N",
+          "tags": ["negative-double"],
+          "explanation": "Partner's double shows four or more hearts. You have only two. With 19 balanced and spades stopped, jump to 2NT: 18–19, a spade stopper, fewer than four hearts.",
+          "whyNot": {
+            "1N": "1NT after a negative double shows a minimum, about 12–14. You have 19: jump.",
+            "3N": "Partner may have only 6 or 7 points. 2NT shows 18–19 and lets partner decide.",
+            "2H": "A heart bid shows four hearts. You have two."
+          }
+        },
+        {
+          "id": "negdbl1-1c",
+          "at": 6,
+          "answer": "3H",
+          "tags": ["negative-double"],
+          "explanation": "Partner's 2NT shows 18–19, so with 7 HCP you have enough for game. Partner has fewer than four hearts but may have three. Bid 3♥ to show five hearts, forcing, and partner chooses 4♥ or 3NT.",
+          "whyNot": {
+            "3N": "Partner may have three hearts, making a 5-3 fit. Show your fifth heart first.",
+            "4H": "Partner has fewer than four hearts, and may have only two. Let partner choose.",
+            "P": "7 HCP opposite 18–19 is enough for game."
+          }
+        },
+        {
+          "id": "negdbl1-1d",
+          "at": 8,
+          "answer": "3N",
+          "tags": ["negative-double"],
+          "explanation": "Partner's 3♥ shows five hearts and asks whether you have three. You have two, so bid 3NT.",
+          "whyNot": {
+            "4H": "You have only two hearts: a seven-card fit at best. 3NT is the better game.",
+            "P": "3♥ is forcing. Partner is asking about your heart length."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl1-2",
+      "part": 1,
+      "board": 2,
+      "dealer": "E",
+      "vul": "NS",
+      "hands": {
+        "N": "96.7643.QJ972.J9",
+        "E": "J4.AJ98.AT43.K76",
+        "S": "AKQT2.5.K65.T832",
+        "W": "8753.KQT2.8.AQ54"
+      },
+      "auction": ["1D", "1S", "X", "P", "2H", "P", "4H", "P", "P", "P"],
+      "handout": "West is strong enough to bid at the two level, but with only 4 hearts must start with a double. East bids 2♥ showing 4 and West raises to game.",
+      "problems": [
+        {
+          "id": "negdbl1-2a",
+          "at": 2,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "You have 11 HCP, enough to bid at the two level, but only four hearts. 2♥ would promise five. Double instead: it shows four hearts, and you can bid game once partner shows a fit.",
+          "whyNot": {
+            "2H": "A new suit at the two level shows five or more cards and about 10 points. You have only four hearts.",
+            "1N": "1NT promises a spade stopper. Yours are four small.",
+            "P": "With 11 HCP and four hearts you want to find a heart fit."
+          }
+        },
+        {
+          "id": "negdbl1-2b",
+          "at": 4,
+          "answer": "2H",
+          "tags": ["negative-double"],
+          "explanation": "Partner's negative double shows four hearts. You have four too, so bid 2♥ to show the fit. With a minimum, bid it at the lowest level.",
+          "whyNot": {
+            "P": "A negative double asks you to bid. With four hearts, show them.",
+            "3H": "Jumping shows extra values, about 15–17. You have 13.",
+            "1N": "You have a heart fit, and no spade stopper."
+          }
+        },
+        {
+          "id": "negdbl1-2c",
+          "at": 6,
+          "answer": "4H",
+          "tags": ["negative-double"],
+          "explanation": "Partner showed four hearts, and you have four: a fit. With 11 HCP and a singleton diamond opposite an opening bid, bid game.",
+          "whyNot": {
+            "3H": "With 11 HCP and a singleton opposite an opener, you have enough for game.",
+            "P": "You have a fit and enough for game."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl1-3",
+      "part": 1,
+      "board": 3,
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "N": "T976.AKJ3.QJ.AT9",
+        "E": "4.87652.8762.532",
+        "S": "KQJ8.Q4.54.KQJ74",
+        "W": "A532.T9.AKT93.86"
+      },
+      "auction": ["1C", "1D", "X", "P", "1S", "P", "4S", "P", "P", "P"],
+      "handout": "North's negative double over 1D shows exactly 4-4 in the majors with 6 or more points. After South shows 4 spades, North has enough strength to jump to game in spades.",
+      "problems": [
+        {
+          "id": "negdbl1-3a",
+          "at": 2,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "After 1♣ and a 1♦ overcall, a negative double shows exactly four hearts and four spades. That's your hand. Find out which major partner has, then decide how high to go.",
+          "whyNot": {
+            "1H": "Bidding 1♥ could lose a 4-4 spade fit. Double shows both majors at once.",
+            "1S": "Bidding 1♠ could lose a 4-4 heart fit. Double shows both majors at once.",
+            "3N": "You might have a 4-4 major fit. Double to find out first."
+          }
+        },
+        {
+          "id": "negdbl1-3b",
+          "at": 4,
+          "answer": "1S",
+          "acceptable": {
+            "2S": "A jump to 2♠ shows extra values, about 15–17. With 14 and a good club suit it's close; 1♠ is the simple choice."
+          },
+          "tags": ["negative-double"],
+          "explanation": "Partner's double shows exactly four cards in each major. You have four spades, so bid 1♠. Partner knows about the fit and will raise if there's more.",
+          "whyNot": {
+            "1N": "You have a four-card spade fit. Show it.",
+            "2C": "Show the spade fit first. Partner asked about the majors.",
+            "1H": "You have only two hearts. Bid the major where you have four."
+          }
+        },
+        {
+          "id": "negdbl1-3c",
+          "at": 6,
+          "answer": "4S",
+          "tags": ["negative-double"],
+          "explanation": "Partner has four spades and you have four: a fit. With 15 HCP opposite an opening bid, bid game.",
+          "whyNot": {
+            "2S": "With 15 HCP opposite an opener, you have enough for game.",
+            "3S": "With 15 HCP opposite an opener, don't just invite: bid game.",
+            "3N": "You've found the 4-4 spade fit. Play in spades."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl1-4",
+      "part": 1,
+      "board": 4,
+      "dealer": "W",
+      "vul": "All",
+      "hands": {
+        "N": "AT.AJ765.98.K872",
+        "E": "KQJ9532.Q9.532.J",
+        "S": "64.T.AQJT76.A943",
+        "W": "87.K8432.K4.QT65"
+      },
+      "auction": ["P", "1H", "3S", "X", "P", "3N", "P", "P", "P"],
+      "handout": "South should use a negative double rather than bidding 4♦ because 3 NT is likely to be the right contract and a 4♦ bid would preclude a 3 NT contract. West is happy to bid 3 NT with a spade stopper and nothing else exciting to convey.",
+      "reviewNotes": ["The handout says \"West is happy to bid 3 NT\"; North bid it."],
+      "problems": [
+        {
+          "id": "negdbl1-4a",
+          "at": 3,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "Negative doubles apply through a 3♠ overcall. You have 11 HCP and length in both minors, but bidding 4♦ goes past 3NT, which is likely to be the best game. Double: it shows the unbid suits and enough to bid at the three level (9 or more), and partner can bid 3NT with a spade stopper.",
+          "whyNot": {
+            "4D": "4♦ goes past 3NT, which is likely to be the best game.",
+            "3N": "You have no spade stopper. Let partner bid notrump.",
+            "P": "With 11 HCP you want to compete. Double shows your values and the unbid suits."
+          }
+        },
+        {
+          "id": "negdbl1-4b",
+          "at": 5,
+          "answer": "3N",
+          "tags": ["negative-double"],
+          "explanation": "Partner's double is negative: values and the unbid suits, clubs and diamonds. You have a spade stopper (A10) and nothing else to say, so bid 3NT.",
+          "whyNot": {
+            "P": "Passing turns partner's negative double into a penalty double. With only A10 of spades you can't expect to beat 3♠ by enough.",
+            "4H": "Your hearts are only five long and partner has shown short hearts. 3NT is the better game.",
+            "4C": "4♣ goes past 3NT. With a spade stopper, bid it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl1-5",
+      "part": 1,
+      "board": 5,
+      "dealer": "N",
+      "vul": "NS",
+      "hands": {
+        "N": "KJ95.A6.853.AJT5",
+        "E": "6.JT8.KJT72.K963",
+        "S": "AQT4.K953.4.Q872",
+        "W": "8732.Q742.AQ96.4"
+      },
+      "auction": ["1C", "1D", "X", "3D", "3S", "P", "4S", "P", "P", "P"],
+      "handout": "East makes a negative double showing four cards in each major. North has a promising minimum hand and bids his major at the 3 level. South has an easy raise to game.",
+      "reviewNotes": ["The handout says \"East makes a negative double\"; South did."],
+      "problems": [
+        {
+          "id": "negdbl1-5a",
+          "at": 2,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "After 1♣ and a 1♦ overcall, a negative double shows exactly four hearts and four spades. You have that, with 11 HCP.",
+          "whyNot": {
+            "1H": "Bidding 1♥ could lose a 4-4 spade fit. Double shows both majors at once.",
+            "1S": "Bidding 1♠ could lose a 4-4 heart fit. Double shows both majors at once."
+          }
+        },
+        {
+          "id": "negdbl1-5b",
+          "at": 4,
+          "answer": "3S",
+          "tags": ["negative-double"],
+          "explanation": "Partner's double shows four cards in each major, so you have a 4-4 spade fit. West's jump to 3♦ takes away your room, but with the fit and a good minimum, compete with 3♠.",
+          "whyNot": {
+            "P": "You have a four-card spade fit. Don't let the jump to 3♦ shut you out.",
+            "4S": "You have a minimum. Bid 3♠ and let partner decide about game."
+          }
+        },
+        {
+          "id": "negdbl1-5c",
+          "at": 6,
+          "answer": "4S",
+          "tags": ["negative-double"],
+          "explanation": "Partner bid 3♠ freely, over West's jump, so you have a 4-4 spade fit and partner has a decent hand. With 11 HCP and a singleton diamond, bid game.",
+          "whyNot": {
+            "P": "With 11 HCP, a singleton and a fit opposite an opener, bid game."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl1-6",
+      "part": 1,
+      "board": 6,
+      "dealer": "E",
+      "vul": "EW",
+      "hands": {
+        "N": "AKQJ2.J954.3.JT9",
+        "E": "854.KT76.Q52.AQ3",
+        "S": "T9.3.J987.K87542",
+        "W": "763.AQ82.AKT64.6"
+      },
+      "auction": ["P", "P", "1D", "1S", "X", "P", "2H", "P", "3H", "P", "4H", "P", "P", "P"],
+      "handout": "With 4 hearts East starts with a negative double. West bid 2H showing 4. East invites with 11 points and West has an easy accept.",
+      "problems": [
+        {
+          "id": "negdbl1-6a",
+          "at": 4,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "You have four hearts and 11 HCP. 2♥ would promise five, so double: it shows four hearts and at least 8 points.",
+          "whyNot": {
+            "2H": "A new suit at the two level shows five or more cards and about 10 points. You have only four hearts.",
+            "1N": "1NT promises a spade stopper. You have three small spades."
+          }
+        },
+        {
+          "id": "negdbl1-6b",
+          "at": 6,
+          "answer": "2H",
+          "tags": ["negative-double"],
+          "explanation": "Partner's negative double shows four hearts. You have four, so bid 2♥ to show the fit.",
+          "whyNot": {
+            "2D": "You have a heart fit. Show it.",
+            "3H": "Jumping shows extra values, about 15–17. You have 13.",
+            "P": "A negative double asks you to bid. With four hearts, show them."
+          }
+        },
+        {
+          "id": "negdbl1-6c",
+          "at": 8,
+          "answer": "3H",
+          "tags": ["negative-double"],
+          "explanation": "You have a 4-4 heart fit, and partner has shown a minimum. You're a passed hand with 11 HCP, so invite with 3♥: partner bids game with a little extra.",
+          "whyNot": {
+            "4H": "Partner's 2♥ shows a minimum and you passed at your first turn. Invite and let partner decide.",
+            "P": "With 11 HCP and a fit, game is possible. Invite."
+          }
+        },
+        {
+          "id": "negdbl1-6d",
+          "at": 10,
+          "answer": "4H",
+          "tags": ["negative-double"],
+          "explanation": "Partner invited with 3♥. You have 13 HCP, a singleton club and a good five-card diamond suit: accept.",
+          "whyNot": {
+            "P": "Your shape makes your hand worth more than 13: accept the invitation."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl1-7",
+      "part": 1,
+      "board": 7,
+      "dealer": "S",
+      "vul": "All",
+      "hands": {
+        "N": "KQJ73.J2.A64.QT6",
+        "E": "A654.KQ87.J9.KJ3",
+        "S": "T.T6543.873.7542",
+        "W": "982.A9.KQT52.A98"
+      },
+      "auction": ["P", "1D", "1S", "X", "P", "2D", "P", "3N", "P", "P", "P"],
+      "handout": "East makes a negative double to show 4 hearts. West, without a second suit, and reluctant to bid 1 NT without a spade stopper rebids his 5 card diamond suit. East has spades stopped and an opening hand and tries 3 NT.",
+      "problems": [
+        {
+          "id": "negdbl1-7a",
+          "at": 3,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "You have four hearts and 14 HCP. Start with a negative double to look for a 4-4 heart fit. If partner doesn't have four hearts, you can bid 3NT next with your spade stopper.",
+          "whyNot": {
+            "2H": "A new suit at the two level shows five or more cards and about 10 points. You have only four hearts.",
+            "3N": "You might have a 4-4 heart fit. Double first, then bid 3NT if there isn't one.",
+            "1N": "1NT shows about 6–10. You have 14."
+          }
+        },
+        {
+          "id": "negdbl1-7b",
+          "at": 5,
+          "answer": "2D",
+          "tags": ["negative-double"],
+          "explanation": "Partner's double shows four hearts, but you have only two. Without a spade stopper you can't bid notrump, and you have no second suit, so rebid your five diamonds.",
+          "whyNot": {
+            "1N": "1NT promises a spade stopper. Yours are three small.",
+            "2H": "Raising hearts shows four. You have two.",
+            "P": "A negative double asks you to bid."
+          }
+        },
+        {
+          "id": "negdbl1-7c",
+          "at": 7,
+          "answer": "3N",
+          "tags": ["negative-double"],
+          "explanation": "Partner has no four hearts and no spade stopper. You have spades stopped (A654) and an opening hand, so bid 3NT.",
+          "whyNot": {
+            "2N": "2NT would only invite. With 14 HCP opposite an opener, bid game.",
+            "P": "With 14 HCP opposite an opener, you have enough for game."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl1-8",
+      "part": 1,
+      "board": 8,
+      "dealer": "W",
+      "vul": "None",
+      "hands": {
+        "N": "KQ74.Q85.QT62.J8",
+        "E": "T96.J72.AJ74.954",
+        "S": "AJ53.64.K85.AQ63",
+        "W": "82.AKT93.93.KT72"
+      },
+      "auction": ["P", "P", "P", "1C", "1H", "X", "2H", "2S", "P", "P", "P"],
+      "handout": "After the 1♥ overcall North doubles to show 4 spades (A 1♠ bid would show 5+ spades.) East raises hearts and south bids spades. North has 10 points but with bad values should not invite.",
+      "problems": [
+        {
+          "id": "negdbl1-8a",
+          "at": 5,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "Over a 1♥ overcall, a negative double shows exactly four spades. 1♠ would show five or more. You have four, so double.",
+          "whyNot": {
+            "1S": "1♠ shows five or more spades. With exactly four, double.",
+            "1N": "With four spades, double first to look for a spade fit."
+          }
+        },
+        {
+          "id": "negdbl1-8b",
+          "at": 7,
+          "answer": "2S",
+          "tags": ["negative-double"],
+          "explanation": "Partner's double shows four spades. You have four too. East has raised hearts, so compete with 2♠. With a minimum, bid at the lowest level.",
+          "whyNot": {
+            "P": "You have a 4-4 spade fit. Compete.",
+            "3S": "Jumping shows extra values, about 15–17. You have 14."
+          }
+        },
+        {
+          "id": "negdbl1-8c",
+          "at": 9,
+          "answer": "P",
+          "tags": ["negative-double"],
+          "explanation": "Partner has shown four spades and a minimum. You have 10 HCP, but no aces and a heart queen that may be worthless. Game is unlikely, so pass.",
+          "whyNot": {
+            "3S": "Partner's 2♠ is a minimum and your values are poor. Don't push.",
+            "4S": "Partner has a minimum. Game is unlikely."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl2-1",
+      "part": 2,
+      "board": 1,
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "N": "QJ75.KT8.53.AQJT",
+        "E": "84.AQ6.AQJT8.943",
+        "S": "KT96.J953.642.K8",
+        "W": "A32.742.K97.7652"
+      },
+      "auction": ["1C", "1D", "X", "2D", "2S", "3D", "P", "P", "P"],
+      "handout": "The bids are straight-forward up to East's final bid. East may or may not bid 3♦. The shape is poor but the solid diamond suit suggests bidding.",
+      "problems": [
+        {
+          "id": "negdbl2-1a",
+          "at": 2,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "After 1♣ and a 1♦ overcall, a negative double shows exactly four hearts and four spades. You have that, with 7 HCP: enough at the one level.",
+          "whyNot": {
+            "1H": "Bidding 1♥ could lose a 4-4 spade fit. Double shows both majors at once.",
+            "1S": "Bidding 1♠ could lose a 4-4 heart fit. Double shows both majors at once."
+          }
+        },
+        {
+          "id": "negdbl2-1b",
+          "at": 4,
+          "answer": "2S",
+          "tags": ["negative-double"],
+          "explanation": "Partner's double shows four cards in each major. You have four spades, so there's a 4-4 fit. West has raised diamonds; compete with 2♠.",
+          "whyNot": {
+            "P": "You have a four-card spade fit. Compete.",
+            "2H": "You have three hearts and four spades. Bid the 4-4 fit.",
+            "3S": "Jumping shows extra values. You have a minimum."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl2-2",
+      "part": 2,
+      "board": 2,
+      "dealer": "E",
+      "vul": "NS",
+      "hands": {
+        "N": "42.T876.Q876.Q43",
+        "E": "3.KQJ95.AJ9.KJ92",
+        "S": "KQT76.A32.K3.765",
+        "W": "AJ985.4.T542.AT8"
+      },
+      "auction": ["1H", "1S", "P", "P", "X", "P", "P", "P"],
+      "handout": "With very strong spades and with North-South vulnerable, West should want to defend. West cannot double for penalties so he must pass and hope his partner can reopen with a double. East has good shape for a reopening double and West will convert for penalty.",
+      "problems": [
+        {
+          "id": "negdbl2-2a",
+          "at": 2,
+          "answer": "P",
+          "tags": ["negative-double"],
+          "explanation": "You'd like to double 1♠ for penalties, but playing negative doubles you can't: a double here would be negative. Pass, and hope partner reopens with a double, which you can pass for penalties.",
+          "whyNot": {
+            "X": "Double is negative, not penalty. Partner would bid, and you'd lose the chance to defend.",
+            "1N": "Possible, but with this spade holding you'd rather defend 1♠ doubled. Pass and hope partner reopens with a double.",
+            "2D": "Your diamonds are weak, and you'd rather defend."
+          }
+        },
+        {
+          "id": "negdbl2-2b",
+          "at": 4,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "Partner passed 1♠, which may be because partner wanted to double it for penalties. With a singleton spade, reopen with a double: partner can pass to defend, or bid.",
+          "whyNot": {
+            "P": "Partner may be waiting to defend 1♠ doubled. With a singleton spade, reopen with a double.",
+            "2H": "A double keeps more options open: partner can pass for penalties, and you can still bid hearts later."
+          }
+        },
+        {
+          "id": "negdbl2-2c",
+          "at": 6,
+          "answer": "P",
+          "tags": ["negative-double"],
+          "explanation": "Partner's reopening double gives you the chance you wanted. With AJ985 sitting over South's spades, pass to defend 1♠ doubled.",
+          "whyNot": {
+            "2D": "You wanted to defend 1♠ doubled, and now you can.",
+            "1N": "With this spade holding, defending 1♠ doubled pays more."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl2-3",
+      "part": 2,
+      "board": 3,
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "N": "Q952.742.K64.QJ8",
+        "E": "K873.53.AT9852.T",
+        "S": "AJT4.A6.73.AK762",
+        "W": "6.KQJT98.QJ.9543"
+      },
+      "auction": ["1C", "2H", "X", "P", "4S", "P", "P", "P"],
+      "handout": "North has a minimum for a negative double at the 2 level. South has a nice hand and bids game.",
+      "problems": [
+        {
+          "id": "negdbl2-3a",
+          "at": 2,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "Over a 2♥ overcall, a negative double shows four spades and at least 8 points: you have exactly that. You don't have enough to bid 2♠.",
+          "whyNot": {
+            "2S": "2♠ over 2♥ shows five or more spades and about 10 points. You have four, and 8.",
+            "P": "With four spades and 8 HCP, double to find a spade fit.",
+            "2N": "2NT shows about 11–12 and a heart stopper. You have neither."
+          }
+        },
+        {
+          "id": "negdbl2-3b",
+          "at": 4,
+          "answer": "4S",
+          "acceptable": {
+            "3S": "Inviting is reasonable with 16. But your good five-card club suit and the fit make game worth bidding."
+          },
+          "tags": ["negative-double"],
+          "explanation": "Partner's double shows four spades and at least 8 points. You have four spades and 16 HCP, with a good club suit. Bid game.",
+          "whyNot": {
+            "2S": "2♠ shows a minimum. With 16 and a fit, bid more."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl2-4",
+      "part": 2,
+      "board": 4,
+      "dealer": "W",
+      "vul": "All",
+      "hands": {
+        "N": "K62.KQJT7.942.A8",
+        "E": "QJT73.52.AJ7.J54",
+        "S": "95.8643.T863.962",
+        "W": "A84.A9.KQ5.KQT73"
+      },
+      "auction": ["1C", "1H", "1S", "P", "4S", "P", "P", "P"],
+      "handout": "East's 1♠ bid shows a 5 card suit since he would use the negative double with only 4. West can jump to game with only 3 spades since that is enough to have an 8 card fit.",
+      "problems": [
+        {
+          "id": "negdbl2-4a",
+          "at": 2,
+          "answer": "1S",
+          "tags": ["negative-double"],
+          "explanation": "Over a 1♥ overcall, a negative double shows exactly four spades. With five, bid 1♠: it shows five or more.",
+          "whyNot": {
+            "X": "Over 1♥, double shows exactly four spades. With five, bid them.",
+            "1N": "You have five spades. Show them."
+          }
+        },
+        {
+          "id": "negdbl2-4b",
+          "at": 4,
+          "answer": "4S",
+          "tags": ["negative-double"],
+          "explanation": "Partner's 1♠ shows five or more spades, since with four partner would have doubled. You have three, so there's an eight-card fit, and with 18 HCP you want game.",
+          "whyNot": {
+            "2S": "With 18 HCP, a raise to 2♠ undersells your hand. Bid game.",
+            "3S": "With 18 HCP and an eight-card fit, bid game.",
+            "3N": "Partner has five spades and you have three: play in the eight-card fit."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl2-5",
+      "part": 2,
+      "board": 5,
+      "dealer": "N",
+      "vul": "NS",
+      "hands": {
+        "N": "K84.A65.A52.QJ84",
+        "E": "QT972.73.86.AK62",
+        "S": "A63.JT42.KJ43.T9",
+        "W": "J5.KQ98.QT97.753"
+      },
+      "auction": ["1C", "1S", "X", "P", "1N", "P", "P", "P"],
+      "handout": "With a balanced hand and spades stopped North rebids 1 NT after the negative double.",
+      "problems": [
+        {
+          "id": "negdbl2-5a",
+          "at": 2,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "You have four hearts and 9 HCP. Over 1♠, a negative double shows four or more hearts, so it's the way to look for a heart fit.",
+          "whyNot": {
+            "2H": "A new suit at the two level shows five or more cards and about 10 points. You have only four hearts.",
+            "1N": "1NT would hide your hearts. Double first.",
+            "2D": "A new suit at the two level shows five or more cards and about 10 points. You have four diamonds and 9 HCP."
+          }
+        },
+        {
+          "id": "negdbl2-5b",
+          "at": 4,
+          "answer": "1N",
+          "tags": ["negative-double"],
+          "explanation": "Partner's double shows four hearts. You have three, and a balanced minimum with spades stopped (K84). Bid 1NT: 12–14 balanced with a spade stopper.",
+          "whyNot": {
+            "2H": "Raising hearts shows four. You have three.",
+            "2C": "With a balanced hand and a spade stopper, 1NT describes it better.",
+            "2N": "A jump to 2NT shows 18–19. You have 14."
+          }
+        },
+        {
+          "id": "negdbl2-5c",
+          "at": 6,
+          "answer": "P",
+          "tags": ["negative-double"],
+          "explanation": "Partner's 1NT shows 12–14 and denies four hearts. With 9 HCP you don't have enough for game, so pass.",
+          "whyNot": {
+            "2N": "Partner has 12–14. With 9, game is unlikely.",
+            "2H": "Partner's 1NT denies four hearts."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl2-6",
+      "part": 2,
+      "board": 6,
+      "dealer": "E",
+      "vul": "EW",
+      "hands": {
+        "N": "T987.952.KJ9.QJT",
+        "E": "54.Q86.AQ52.8642",
+        "S": "KQ62.J4.T84.AK73",
+        "W": "AJ3.AKT73.763.95"
+      },
+      "auction": ["P", "1C", "1H", "X", "2H", "2S", "3H", "P", "P", "P"],
+      "handout": "North makes a negative double of 1♥ showing exactly 4 spades. West might bid 3♥ or might sell out to 2♠.",
+      "problems": [
+        {
+          "id": "negdbl2-6a",
+          "at": 3,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "Over a 1♥ overcall, a negative double shows exactly four spades and, at the one level, 6 or more points. You have four spades and 7.",
+          "whyNot": {
+            "1S": "1♠ shows five or more spades. With exactly four, double.",
+            "P": "With four spades and 7 HCP, compete."
+          }
+        },
+        {
+          "id": "negdbl2-6b",
+          "at": 5,
+          "answer": "2S",
+          "tags": ["negative-double"],
+          "explanation": "Partner's double shows four spades, and you have four. East has raised hearts, so compete with 2♠.",
+          "whyNot": {
+            "P": "You have a 4-4 spade fit. Compete.",
+            "3S": "Jumping shows extra values, about 15–17. You have 13."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl2-7",
+      "part": 2,
+      "board": 7,
+      "dealer": "W",
+      "vul": "All",
+      "unusualSetup": "The handout has West dealing board 7 (usually South deals it). The auction starts with West, so the deal follows the handout.",
+      "hands": {
+        "N": "96.Q5.KJT7.AJ763",
+        "E": "Q3.K8.AQ8432.Q82",
+        "S": "AKJ754.J94.96.T9",
+        "W": "T82.AT7632.5.K54"
+      },
+      "auction": ["P", "P", "1D", "2S", "X", "P", "3D", "P", "3H", "P", "P", "P"],
+      "handout": "West's heart suit is not quite good enough for an opening 2 bid. After the 2♠ overcall, West should double to get the hearts into the auction. East rebids diamonds with a minimum opener and long diamonds, and West bids his long suit.",
+      "reviewNotes": ["West has 7 HCP, below the lesson's 9 for a negative double at the three level. The handout doubles anyway to get the six-card heart suit in; the problem follows the handout."],
+      "problems": [
+        {
+          "id": "negdbl2-7a",
+          "at": 4,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "You have six hearts but only 7 HCP. 3♥ would be forcing and show more. Double to get the hearts into the auction: if partner bids 3♦, you can bid 3♥ next, which shows long hearts without extra values.",
+          "whyNot": {
+            "3H": "A new suit at the three level is forcing and shows about 10 or more points. You have 7.",
+            "P": "With six hearts and a singleton diamond, get your hearts into the auction."
+          }
+        },
+        {
+          "id": "negdbl2-7b",
+          "at": 6,
+          "answer": "3D",
+          "tags": ["negative-double"],
+          "explanation": "Partner's double shows hearts. You have only two, and a minimum with six diamonds, so rebid 3♦.",
+          "whyNot": {
+            "3H": "Partner may have only four hearts. With two, rebid your long diamonds.",
+            "3N": "You have no spade stopper.",
+            "P": "A negative double asks you to bid."
+          }
+        },
+        {
+          "id": "negdbl2-7c",
+          "at": 8,
+          "answer": "3H",
+          "tags": ["negative-double"],
+          "explanation": "Partner has a minimum with long diamonds. You have six hearts, so bid 3♥. After your double, it shows long hearts and not enough to bid 3♥ at once.",
+          "whyNot": {
+            "P": "Diamonds is a poor fit. Your six hearts will play better.",
+            "4H": "Partner has shown a minimum, and you have 7 HCP."
+          }
+        }
+      ]
+    },
+    {
+      "id": "negdbl2-8",
+      "part": 2,
+      "board": 8,
+      "dealer": "W",
+      "vul": "None",
+      "hands": {
+        "N": "A86.54.AKQ876.94",
+        "E": "KQJT3.982.5.KJ76",
+        "S": "754.AQJ3.JT943.A",
+        "W": "92.KT76.2.QT8532"
+      },
+      "auction": ["P", "1D", "1S", "X", "P", "2D", "P", "5D", "P", "P", "P"],
+      "handout": "South makes a negative double to show hearts since he doesn't have 5 of them. North rebids the diamonds and South raises to game in diamonds with a distributional hand and a big fit.",
+      "problems": [
+        {
+          "id": "negdbl2-8a",
+          "at": 3,
+          "answer": "X",
+          "tags": ["negative-double"],
+          "explanation": "You have four hearts. 2♥ would promise five, so start with a negative double to look for a heart fit. You can support diamonds later.",
+          "whyNot": {
+            "2H": "A new suit at the two level shows five or more cards and about 10 points. You have only four hearts.",
+            "3D": "A raise could lose a 4-4 heart fit. Double first."
+          }
+        },
+        {
+          "id": "negdbl2-8b",
+          "at": 5,
+          "answer": "2D",
+          "tags": ["negative-double"],
+          "explanation": "Partner's double shows four hearts. You have two, and a minimum with six good diamonds, so rebid 2♦.",
+          "whyNot": {
+            "2H": "Raising hearts shows four. You have two.",
+            "1N": "With six diamonds and a doubleton heart, rebid the diamonds.",
+            "3D": "Jumping shows extra values. You have a minimum."
+          }
+        },
+        {
+          "id": "negdbl2-8c",
+          "at": 7,
+          "answer": "5D",
+          "tags": ["negative-double"],
+          "explanation": "There's no heart fit, but you have five diamonds opposite partner's long suit, a singleton club and 12 HCP. You have no spade stopper for 3NT, so bid game in diamonds.",
+          "whyNot": {
+            "3D": "3♦ only invites. With 12 HCP, a big fit and a singleton, bid game.",
+            "3N": "You have no spade stopper.",
+            "4D": "4♦ isn't game. With 12 HCP and a big fit, bid it."
+          }
+        }
+      ]
+    }
+  ]
+}

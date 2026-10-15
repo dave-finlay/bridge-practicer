@@ -91,6 +91,7 @@ The service worker and manifest arrive with step 5.
   source: 'Texas Hands Explan.pdf',
   deals: [{
     id: 'texas-1',               // never changes once published
+    part: 2,                     // optional: which handout, for a lesson in two
     board: 1,                    // board number in the handout
     dealer: 'N',                 // N E S W
     vul: 'None',                 // None NS EW All
@@ -98,6 +99,7 @@ The service worker and manifest arrive with step 5.
     auction: ['1N', 'P', '4H', 'P', '4S', 'P', 'P', 'P'], // from the dealer, complete
     handout: '…',                // the handout's commentary on the bidding
     reviewNotes: ['…'],          // optional: anything for us to check
+    unusualSetup: '…',           // optional: why dealer or vulnerability isn't the board's usual
     problems: [{
       id: 'texas-1a',            // never changes: progress is stored by id
       at: 2,                     // index in the auction of the call to make
@@ -114,10 +116,11 @@ The service worker and manifest arrive with step 5.
 
 `npm run check` verifies every deal: four 13-card hands making one full
 deck with ranks in order, dealer and vulnerability matching the board
-number, a legal and complete auction, legal answers, acceptable calls and
-why-nots, unique problem ids, and an answer that matches the auction
-unless an `answerNote` explains why it doesn't. It also fails if a deal's
-double dummy results are missing or out of date (`npm run dd` fixes it).
+number (unless `unusualSetup` explains why not), a legal and complete
+auction, legal answers, acceptable calls and why-nots, unique problem
+ids, and an answer that matches the auction unless an `answerNote`
+explains why it doesn't. It also fails if a deal's double dummy results
+are missing or out of date (`npm run dd` fixes it).
 
 ## Screens
 
@@ -185,7 +188,8 @@ service worker's list.
 Stayman, new minor forcing, negative doubles, Jacoby 2NT, RKCB and
 control bids, one lesson at a time, each with a review page
 (`npm run review -- <lesson>`). This can run alongside steps 3 to 5.
-Done: Stayman (8 deals, 28 problems).
+Done: Stayman (8 deals, 28 problems), negative doubles (16 deals, 45
+problems).
 
 ### 7. Hosting: done
 Public GitHub Pages from `main`, at

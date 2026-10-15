@@ -31,7 +31,8 @@ for (const file of readdirSync(dir).filter((f) => f.endsWith('.json') && f !== '
     if (!SEATS.includes(deal.dealer)) fail(`bad dealer ${deal.dealer}`);
     if (!VULNERABILITIES.includes(deal.vul)) fail(`bad vulnerability ${deal.vul}`);
     const usual = { dealer: dealerForBoard(deal.board), vul: vulnerabilityForBoard(deal.board) };
-    if (usual.dealer !== deal.dealer || usual.vul !== deal.vul) {
+    // `unusualSetup` explains a handout that doesn't follow the usual rotation.
+    if ((usual.dealer !== deal.dealer || usual.vul !== deal.vul) && !deal.unusualSetup) {
       fail(`board ${deal.board} is usually dealer ${usual.dealer}, ${usual.vul} vul`);
     }
 

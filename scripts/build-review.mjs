@@ -57,6 +57,9 @@ function dealDiagram(deal) {
   </div>`;
 }
 
+// "Board 3", or "Part 2, board 3" for a lesson in two handouts.
+const boardName = (deal) => (deal.part ? `Part ${deal.part}, board ${deal.board}` : `Board ${deal.board}`);
+
 function problemHtml(deal, problem) {
   const seat = seatOfCall(deal.dealer, problem.at);
   const letter = problem.id.slice(deal.id.length);
@@ -64,7 +67,7 @@ function problemHtml(deal, problem) {
   const whyNot = Object.entries(problem.whyNot ?? {});
   return `<article class="problem" id="${problem.id}">
     <header class="problem-head">
-      <h3>Problem ${deal.board}${letter}</h3>
+      <h3>Problem ${deal.part ? `${deal.part}.` : ''}${deal.board}${letter}</h3>
       <p class="setting">You are ${SEAT_NAMES[seat]} · Dealer ${SEAT_NAMES[deal.dealer]} · ${VUL_NAMES[deal.vul]}</p>
       <p class="tags">${problem.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</p>
     </header>
@@ -85,9 +88,9 @@ function problemHtml(deal, problem) {
 }
 
 function dealHtml(deal) {
-  const notes = deal.reviewNotes ?? [];
+  const notes = [...(deal.unusualSetup ? [deal.unusualSetup] : []), ...(deal.reviewNotes ?? [])];
   return `<section class="deal" id="${deal.id}">
-    <h2>Board ${deal.board}</h2>
+    <h2>${boardName(deal)}</h2>
     ${notes.length ? `<div class="check"><span class="check-label">Please check</span><ul>${notes.map((n) => `<li>${prose(n)}</li>`).join('')}</ul></div>` : ''}
     ${deal.problems.map((p) => problemHtml(deal, p)).join('')}
     <div class="full">
@@ -107,7 +110,7 @@ function dealHtml(deal) {
 const names = process.argv.length > 2 ? process.argv.slice(2) : LESSONS;
 const lessons = names.map((name) => JSON.parse(readFileSync(join(root, 'problems', `${name}.json`), 'utf8')));
 const problemCount = lessons.reduce((n, l) => n + l.deals.reduce((m, d) => m + d.problems.length, 0), 0);
-const flagged = lessons.flatMap((l) => l.deals.filter((d) => d.reviewNotes?.length));
+const flagged = lessons.flatMap((l) => l.deals.filter((d) => d.reviewNotes?.length || d.unusualSetup));
 
 const css = readFileSync(join(root, 'scripts/review.css'), 'utf8');
 const html = `<title>Bridge Practicer Problems</title>
@@ -121,7 +124,7 @@ const html = `<title>Bridge Practicer Problems</title>
     <p class="eyebrow">Bridge practicer · draft problems for review</p>
     <h1>${lessons.map((l) => esc(l.title)).join(', ')}</h1>
     <p>${problemCount} problems from ${lessons.reduce((n, l) => n + l.deals.length, 0)} lesson boards. Each one shows what the app will ask (your hand and the auction so far), then the answer it will give. Check that the answers are right and the explanations say what you'd want to read at the table.</p>
-    ${flagged.length ? `<p>Boards with something to check: ${flagged.map((d) => `<a href="#${d.id}">${d.board}</a>`).join(', ')}.</p>` : ''}
+    ${flagged.length ? `<p>Boards with something to check: ${flagged.map((d) => `<a href="#${d.id}">${d.part ? `${d.part}.` : ''}${d.board}</a>`).join(', ')}.</p>` : ''}
   </header>
   ${lessons.map((l) => l.deals.map(dealHtml).join('')).join('')}
 </main>
