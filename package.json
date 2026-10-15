@@ -1,0 +1,10 @@
+{
+  "name": "bridge-practicer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "review": "node scripts/build-review.mjs",
+    "test": "node --test"
+  }
+}

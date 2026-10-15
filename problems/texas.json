@@ -1,0 +1,323 @@
+{
+  "lesson": "texas",
+  "title": "Texas transfers",
+  "source": "Texas Hands Explan.pdf",
+  "deals": [
+    {
+      "id": "texas-1",
+      "board": 1,
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "N": "A2.JT54.AQ4.AJT2",
+        "E": "T654.K7.T762.K74",
+        "S": "KQ9873.A2.J3.986",
+        "W": "J.Q9863.K985.Q53"
+      },
+      "auction": ["1N", "P", "4H", "P", "4S", "P", "P", "P"],
+      "handout": "With 10 HCP and 6 spades South knows 4♠ is the right contract and so bids 4♥ to transfer to 4♠.",
+      "problems": [
+        {
+          "id": "texas-1a",
+          "at": 2,
+          "answer": "4H",
+          "tags": ["texas"],
+          "explanation": "You have 10 HCP and six spades opposite partner's 15–17, so you already know the contract: 4♠. Bid 4♥, a Texas transfer. Partner bids 4♠ and becomes declarer, so the opening lead comes up to the strong hand instead of through it.",
+          "whyNot": {
+            "4S": "4♠ is the right contract, but played from the wrong side. Texas lets the strong hand declare it.",
+            "2H": "A Jacoby transfer followed by 4♠ shows slam interest. With 10 HCP you have none, so go straight to game with Texas.",
+            "3N": "With a six-card major you have at least an eight-card fit. Play in spades."
+          }
+        },
+        {
+          "id": "texas-1b",
+          "at": 4,
+          "answer": "4S",
+          "tags": ["texas"],
+          "explanation": "Partner's 4♥ is a Texas transfer: six or more spades and enough for game. It says nothing about hearts. Bid 4♠, and partner will pass. Partner has chosen the contract, so your 16 HCP doesn't change anything.",
+          "whyNot": {
+            "P": "4♥ is artificial. Partner may have only one or two hearts.",
+            "4N": "Texas is a sign-off. With slam interest partner would have transferred at the two level and then bid game, or would bid 4NT after your 4♠."
+          }
+        }
+      ]
+    },
+    {
+      "id": "texas-2",
+      "board": 2,
+      "dealer": "E",
+      "vul": "NS",
+      "hands": {
+        "N": "QJT.QJ5.742.8743",
+        "E": "K65.872.AQJT.AJ6",
+        "S": "A932.3.8653.KQT9",
+        "W": "874.AKT964.K9.52"
+      },
+      "auction": ["1N", "P", "4D", "P", "4H", "P", "P", "P"],
+      "handout": "With 10 HCP and 6 Hearts West knows 4♠ is the right contract and so bids 4♦ to transfer to 4♥.",
+      "reviewNotes": ["The handout says \"4♠ is the right contract\"; it means 4♥."],
+      "problems": [
+        {
+          "id": "texas-2a",
+          "at": 2,
+          "answer": "4D",
+          "tags": ["texas"],
+          "explanation": "You have 10 HCP and six hearts opposite 15–17: you want to play 4♥. Bid 4♦, a Texas transfer, so partner's strong hand declares 4♥.",
+          "whyNot": {
+            "4H": "4♥ is the right contract, but played from the wrong side. Texas lets the strong hand declare it.",
+            "2D": "A Jacoby transfer followed by 4♥ shows slam interest. With 10 HCP you have none, so go straight to game with Texas.",
+            "3N": "With a six-card major you have at least an eight-card fit. Play in hearts."
+          }
+        }
+      ]
+    },
+    {
+      "id": "texas-3",
+      "board": 3,
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "N": "QJT9.QJ4.KQJT9.A",
+        "E": "53.AKT8632.43.Q2",
+        "S": "762.5.86.9876543",
+        "W": "AK84.97.A752.KJT"
+      },
+      "auction": ["P", "1N", "X", "4D", "P", "4H", "P", "P", "P"],
+      "handout": "North's double suggests that 1NT might not be making, but with East's hand 4♥ can still be a good contract. Texas transfers are still on over the double.",
+      "reviewNotes": ["The Texas text only covers overcalls up to 3♣. That Texas is still on over a double comes from this board's commentary (the Jacoby handout says the same for Jacoby transfers)."],
+      "problems": [
+        {
+          "id": "texas-3a",
+          "at": 3,
+          "answer": "4D",
+          "tags": ["texas"],
+          "explanation": "The double doesn't change your plan: Texas is still on over a double of 1NT. With seven hearts and 9 HCP you want to play 4♥, so bid 4♦ and let partner declare it.",
+          "whyNot": {
+            "P": "That leaves partner in 1NT doubled. With seven hearts and 9 HCP you belong in 4♥.",
+            "4H": "4♥ is the right contract, but played from the wrong side. Texas is still available over the double.",
+            "2D": "A Jacoby transfer followed by 4♥ would show slam interest. You have none, so use Texas."
+          }
+        },
+        {
+          "id": "texas-3b",
+          "at": 5,
+          "answer": "4H",
+          "tags": ["texas"],
+          "explanation": "Over a double of 1NT, partner's 4♦ is still Texas: six or more hearts and enough for game. Bid 4♥, even with only two hearts.",
+          "whyNot": {
+            "P": "4♦ is artificial. Partner wants to play in hearts, not diamonds.",
+            "4N": "Texas is a sign-off. Partner has chosen the contract."
+          }
+        }
+      ]
+    },
+    {
+      "id": "texas-4",
+      "board": 4,
+      "dealer": "W",
+      "vul": "All",
+      "hands": {
+        "N": "97.AQJ3.KT73.AQ3",
+        "E": ".K8.Q65.KJT98762",
+        "S": "KJT86432.54.AJ.5",
+        "W": "AQ5.T9762.9842.4"
+      },
+      "auction": ["P", "1N", "3C", "4H", "P", "4S", "P", "P", "P"],
+      "handout": "Texas Transfers apply after interference of up to 3♣. Here South has them available and bids 4♥ transfer to 4♠.",
+      "problems": [
+        {
+          "id": "texas-4a",
+          "at": 3,
+          "answer": "4H",
+          "tags": ["texas"],
+          "explanation": "Texas is still on after an overcall up to 3♣. With eight spades and 9 HCP you want to play 4♠, so bid 4♥ and let partner declare it.",
+          "whyNot": {
+            "4S": "4♠ is the right contract, but played from the wrong side. Texas is still available over 3♣.",
+            "3S": "3♠ is natural and forcing, asking partner to choose between 3NT and 4♠. You already know the contract."
+          }
+        },
+        {
+          "id": "texas-4b",
+          "at": 5,
+          "answer": "4S",
+          "tags": ["texas"],
+          "explanation": "Texas is still on over a 3♣ overcall, so partner's 4♥ shows long spades, not hearts. Bid 4♠.",
+          "whyNot": {
+            "P": "With ♥AQJ3 it's tempting to think partner has hearts, but 4♥ is a transfer to spades. Passing leaves you in a contract partner never asked for."
+          }
+        }
+      ]
+    },
+    {
+      "id": "texas-5",
+      "board": 5,
+      "dealer": "N",
+      "vul": "NS",
+      "hands": {
+        "N": "AK94.T82.Q7.AQJ2",
+        "E": ".A3.AKJT862.9543",
+        "S": "QJ2.KQJ7654.54.8",
+        "W": "T87653.9.93.KT76"
+      },
+      "auction": ["1N", "3D", "4H", "P", "P", "P"],
+      "handout": "Over 3♦ Texas no longer applies. Instead a 4♦ offers a choice between the majors. Here South knows 4♥ is the right contract and bids it.",
+      "problems": [
+        {
+          "id": "texas-5a",
+          "at": 2,
+          "answer": "4H",
+          "tags": ["texas"],
+          "explanation": "After a 3♦ overcall, Texas is off. 4♦ would be a cuebid, not a transfer. Bid what you want to play: 4♥, natural.",
+          "whyNot": {
+            "4D": "Over 3♦, Texas no longer applies. 4♦ is a cuebid of their suit, asking partner to choose a major. You know which major you want.",
+            "3H": "3♥ is natural and forcing, but with seven hearts you don't need partner's opinion. Bid the game."
+          }
+        },
+        {
+          "id": "texas-5b",
+          "at": 4,
+          "answer": "P",
+          "tags": ["texas"],
+          "explanation": "Texas only applies over overcalls up to 3♣. After 3♦, partner's 4♥ is natural: hearts, and to play. Pass.",
+          "whyNot": {
+            "4S": "That treats 4♥ as Texas. Over 3♦, Texas is off and 4♥ means hearts."
+          }
+        }
+      ]
+    },
+    {
+      "id": "texas-6",
+      "board": 6,
+      "dealer": "E",
+      "vul": "EW",
+      "hands": {
+        "N": ".J9854.T2.KJT643",
+        "E": "A7.AT76.K87.AQ98",
+        "S": "JT986.32.Q9643.5",
+        "W": "KQ5432.KQ.AJ5.72"
+      },
+      "auction": ["1N", "P", "2H", "P", "2S", "P", "4S", "P", "4N", "P", "5S", "P", "6S", "P", "P", "P"],
+      "handout": "With 15 points and a 6 card spade suit north has some interest in slam. When playing Texas transfers bidding a simple Jacoby Transfer and then bidding game shows a slam invite with a single suited hand with at least 6 spades. With a maximum East should move over this. Having only 2 spades isn't great, but since their partner is known to have 6 it should not stop them.",
+      "reviewNotes": [
+        "The handout says \"north has some interest in slam\"; it means West.",
+        "Problem 6c lists 6♠ as acceptable. I'd still teach 4NT first, as the handout does."
+      ],
+      "problems": [
+        {
+          "id": "texas-6a",
+          "at": 2,
+          "answer": "2H",
+          "tags": ["texas", "jacoby"],
+          "explanation": "With 15 HCP opposite 15–17 you have 30–32 between you: game is certain, and slam is possible if partner is at the top of the range. To invite slam, transfer with 2♥ and then jump to 4♠. A Jacoby transfer followed by game shows six or more spades and slam interest. Texas would be a sign-off.",
+          "whyNot": {
+            "4H": "Texas puts you in 4♠ with no slam interest, unless you then bid 4NT, which drives to slam if the key cards are there. With 30–32 points you want partner's opinion first.",
+            "4N": "4NT directly over 1NT is quantitative: it invites 6NT. With six spades you want spades as trumps.",
+            "4S": "4♠ is a fine contract, but from the wrong side, and it gives up on slam."
+          }
+        },
+        {
+          "id": "texas-6b",
+          "at": 6,
+          "answer": "4S",
+          "tags": ["texas", "jacoby"],
+          "explanation": "Now jump to 4♠. Because you play Texas, a Jacoby transfer followed by game shows six or more spades and slam interest; without slam interest you'd have used Texas. Partner passes with a minimum and moves toward slam with a maximum.",
+          "whyNot": {
+            "3S": "Transfer then 3♠ invites game (8–9 points with six spades). You have far more: game is certain.",
+            "4N": "Asking for key cards commits you to slam whenever enough are there. With 30–32 points slam isn't certain, so let partner judge."
+          }
+        },
+        {
+          "id": "texas-6c",
+          "at": 8,
+          "answer": "4N",
+          "acceptable": {
+            "6S": "Reasonable with three aces, but checking key cards first costs nothing: if two are missing you can stop in 5♠."
+          },
+          "tags": ["texas", "rkcb"],
+          "explanation": "Partner transferred and then bid game instead of using Texas: six or more spades and slam interest. With 17 HCP, the top of your range, and three aces, accept. Bid 4NT, Roman Keycard Blackwood for spades. Only two spades isn't ideal, but partner has at least six.",
+          "whyNot": {
+            "P": "Pass with a minimum. You have a maximum: 17 HCP and three aces."
+          }
+        },
+        {
+          "id": "texas-6d",
+          "at": 10,
+          "answer": "5S",
+          "tags": ["rkcb"],
+          "explanation": "4NT is Roman Keycard Blackwood for spades. Count your key cards: the ♠K and ♦A make two, and you hold the ♠Q. Two with the queen is 5♠. (1430: 5♣ one or four, 5♦ zero or three, 5♥ two without the queen, 5♠ two with it.)",
+          "whyNot": {
+            "5H": "5♥ shows two key cards without the trump queen. You have the ♠Q.",
+            "5C": "5♣ shows one or four key cards. The trump king counts as a key card, so you have two.",
+            "5D": "5♦ shows zero or three key cards. The ♥K isn't a key card; the trump king is."
+          }
+        }
+      ]
+    },
+    {
+      "id": "texas-7",
+      "board": 7,
+      "dealer": "S",
+      "vul": "All",
+      "hands": {
+        "N": "QT7632.K92.T6.75",
+        "E": "J.T87.K53.AJ9862",
+        "S": "AK5.AQ3.AQ4.QT43",
+        "W": "984.J654.J9872.K"
+      },
+      "auction": ["2N", "P", "4H", "P", "4S", "P", "P", "P"],
+      "handout": "Texas transfers apply over 2 NT openings as well as 1 NT openings. Here North has 5 points and 6 spades, easily enough to force to game, and bids 4♥ transfer to 4♠.",
+      "problems": [
+        {
+          "id": "texas-7a",
+          "at": 2,
+          "answer": "4H",
+          "tags": ["texas"],
+          "explanation": "Partner's 2NT shows 20–22, and Texas works over 2NT too. With six spades, your 5 HCP is plenty for game (25–27 together). Bid 4♥ to put partner in 4♠.",
+          "whyNot": {
+            "P": "With six spades opposite 20–22, game is a good bet even with 5 HCP.",
+            "3H": "A Jacoby transfer works, but then you'd have to bid 4♠ yourself, which shows slam interest. Texas gets you to game in one bid.",
+            "4S": "4♠ is the right contract, but played from the wrong side. Texas lets the strong hand declare it."
+          }
+        },
+        {
+          "id": "texas-7b",
+          "at": 4,
+          "answer": "4S",
+          "tags": ["texas"],
+          "explanation": "Over 2NT, partner's 4♥ is Texas: six or more spades and a decision to play game. Bid 4♠.",
+          "whyNot": {
+            "P": "4♥ is a transfer. Partner wants to play in spades.",
+            "4N": "Texas is a sign-off. With slam interest partner would have transferred with 3♥ and then bid 4♠."
+          }
+        }
+      ]
+    },
+    {
+      "id": "texas-8",
+      "board": 8,
+      "dealer": "W",
+      "vul": "None",
+      "hands": {
+        "N": "A.932.Q.KJT98743",
+        "E": "KJT86432.54.A.65",
+        "S": "Q5.KT76.J986542.",
+        "W": "97.AQJ8.KT73.AQ2"
+      },
+      "auction": ["1N", "3C", "4H", "P", "4S", "P", "P", "P"],
+      "handout": "With 8 spades is close to being too strong for this auction.",
+      "problems": [
+        {
+          "id": "texas-8a",
+          "at": 2,
+          "answer": "4H",
+          "tags": ["texas"],
+          "explanation": "Texas is still on over a 3♣ overcall. With eight spades and 8 HCP you want to play 4♠, so bid 4♥ and let partner declare it. With eight spades you're close to strong enough to try for slam, but 4♠ is the sensible place to stop.",
+          "whyNot": {
+            "4S": "4♠ is the right contract, but played from the wrong side. Texas is still available over 3♣.",
+            "3S": "3♠ is natural and forcing, asking partner to choose between 3NT and 4♠. You already know the contract."
+          }
+        }
+      ]
+    }
+  ]
+}
