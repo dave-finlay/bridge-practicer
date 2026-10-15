@@ -1,0 +1,418 @@
+{
+  "lesson": "jacoby",
+  "title": "Jacoby transfers",
+  "source": "Hands Jacoby Transfers.pdf",
+  "deals": [
+    {
+      "id": "jacoby-1",
+      "board": 1,
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "N": "K762.J6.AKJ4.KQT",
+        "E": "A84.K4.T9863.A65",
+        "S": "953.QT9752.5.J94",
+        "W": "QJT.A83.Q72.8732"
+      },
+      "auction": ["1N", "P", "2D", "P", "2H", "P", "P", "P"],
+      "handout": "South has a weak hand with 5+ hearts. South transfers to 2♥ and passes.",
+      "problems": [
+        {
+          "id": "jacoby-1a",
+          "at": 2,
+          "answer": "2D",
+          "tags": ["jacoby"],
+          "explanation": "With six hearts and only 3 HCP, 2♥ will play better than 1NT. Bid 2♦, a Jacoby transfer, and pass partner's 2♥. Partner declares, so the lead comes up to the strong hand.",
+          "whyNot": {
+            "P": "1NT opposite 3 HCP and a singleton diamond will struggle. Your six hearts play better as trumps.",
+            "2H": "2♥ is a transfer to spades. To show hearts, bid 2♦."
+          }
+        },
+        {
+          "id": "jacoby-1b",
+          "at": 4,
+          "answer": "2H",
+          "tags": ["jacoby"],
+          "explanation": "Partner's 2♦ is a Jacoby transfer: five or more hearts, any strength. You must complete it by bidding 2♥, whatever you hold there.",
+          "whyNot": {
+            "P": "The transfer is forcing. Partner may have no diamonds at all.",
+            "2N": "Complete the transfer with 2♥. Partner will tell you more if they have more."
+          }
+        },
+        {
+          "id": "jacoby-1c",
+          "at": 6,
+          "answer": "P",
+          "tags": ["jacoby"],
+          "explanation": "Partner completed the transfer. You have 0–7 points, so pass: you've reached a better partscore than 1NT.",
+          "whyNot": {
+            "3H": "Bidding 3♥ invites game, showing 8–9. You have 3.",
+            "2N": "2NT invites game, showing 8–9 and five hearts. You have 3."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jacoby-2",
+      "board": 2,
+      "dealer": "E",
+      "vul": "NS",
+      "hands": {
+        "N": "83.JT9652.A5.Q62",
+        "E": "Q752.K8.97432.J9",
+        "S": "AK64.Q73.KJ8.A74",
+        "W": "JT9.A4.QT6.KT853"
+      },
+      "auction": ["P", "1N", "P", "2D", "P", "2H", "P", "3H", "P", "4H", "P", "P", "P"],
+      "handout": "With 6 hearts, North should transfer to 2♥ and then raise to 3♥. This bid shows 8 or 9 points and at least a 6 card suit.",
+      "reviewNotes": ["North has 7 HCP, where the lesson says to transfer and pass. The handout invites with 3♥, so that's the answer; passing is marked acceptable."],
+      "problems": [
+        {
+          "id": "jacoby-2a",
+          "at": 3,
+          "answer": "2D",
+          "tags": ["jacoby"],
+          "explanation": "You have six hearts. Whatever your strength, start with 2♦, a Jacoby transfer, so partner declares the heart contract.",
+          "whyNot": {
+            "2H": "2♥ is a transfer to spades. To show hearts, bid 2♦.",
+            "P": "With six hearts, a heart contract will play better than 1NT."
+          }
+        },
+        {
+          "id": "jacoby-2b",
+          "at": 5,
+          "answer": "2H",
+          "tags": ["jacoby"],
+          "explanation": "Partner's 2♦ is a Jacoby transfer: five or more hearts, any strength. You must complete it by bidding 2♥, whatever you hold there.",
+          "whyNot": {
+            "P": "The transfer is forcing.",
+            "3H": "Just complete the transfer. Partner will invite if they want to."
+          }
+        },
+        {
+          "id": "jacoby-2c",
+          "at": 7,
+          "answer": "3H",
+          "acceptable": {
+            "P": "By the lesson's point ranges, 7 HCP is a pass. The handout invites anyway, counting the sixth heart."
+          },
+          "tags": ["jacoby"],
+          "explanation": "You have six hearts and the transfer is done. Raise to 3♥: an invitation with a six-card suit. Partner bids 4♥ with a maximum.",
+          "whyNot": {
+            "4H": "Opposite 15–17, game needs more than you have. Invite.",
+            "2N": "2NT shows exactly five hearts. With six, raise hearts."
+          }
+        },
+        {
+          "id": "jacoby-2d",
+          "at": 9,
+          "answer": "4H",
+          "tags": ["jacoby"],
+          "explanation": "Partner's 3♥ invites with six hearts. You have three hearts and a maximum, 17, so bid 4♥.",
+          "whyNot": {
+            "P": "With 17, a maximum, accept the invitation.",
+            "3N": "Partner has six hearts and you have three: play in hearts."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jacoby-3",
+      "board": 3,
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "N": "AT84.KJT94.85.72",
+        "E": "K2.865.AKJ2.AQ95",
+        "S": "95.Q7.QT763.T843",
+        "W": "QJ763.A32.94.KJ6"
+      },
+      "auction": ["P", "P", "P", "1N", "P", "2H", "X", "P", "P", "3N", "P", "P", "P"],
+      "handout": "North doubles 2♥ to ask for a heart lead. East passes over the double to show fewer than 3 spades. With 11 points and a heart stopper West bids 3 NT.",
+      "problems": [
+        {
+          "id": "jacoby-3a",
+          "at": 5,
+          "answer": "2H",
+          "tags": ["jacoby"],
+          "explanation": "You have five spades and 11 HCP: enough for game. Bid 2♥, a Jacoby transfer, then 3NT, so partner can choose between 3NT and 4♠.",
+          "whyNot": {
+            "3N": "Partner may have three spades. Transfer first, then bid 3NT and let partner choose.",
+            "4S": "Partner may have only two spades. Transfer, then bid 3NT."
+          }
+        },
+        {
+          "id": "jacoby-3b",
+          "at": 6,
+          "answer": "X",
+          "tags": ["jacoby"],
+          "explanation": "West's 2♥ is artificial: a transfer to spades. A double asks partner to lead hearts. With KJ1094 you'd like a heart lead, so double.",
+          "whyNot": {
+            "P": "You want partner to lead a heart. The double tells them."
+          }
+        },
+        {
+          "id": "jacoby-3c",
+          "at": 7,
+          "answer": "P",
+          "tags": ["jacoby"],
+          "explanation": "Partner's transfer was doubled. You have only two spades, so pass to say so. With three or more, you'd bid 2♠.",
+          "whyNot": {
+            "2S": "Over the double, accepting the transfer shows three or more spades. You have two."
+          }
+        },
+        {
+          "id": "jacoby-3d",
+          "at": 9,
+          "answer": "3N",
+          "tags": ["jacoby"],
+          "explanation": "Partner's pass says only two spades, so there's no 5-3 fit. You have game values and a heart stopper (the ♥A), so bid 3NT.",
+          "whyNot": {
+            "2S": "You have game values. Bid game.",
+            "4S": "Partner has only two spades. 3NT is the better game."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jacoby-4",
+      "board": 4,
+      "dealer": "W",
+      "vul": "All",
+      "hands": {
+        "N": "JT3.A6.JT963.Q52",
+        "E": "742.KJ743.85.A76",
+        "S": "Q96.982.KQ2.T983",
+        "W": "AK85.QT5.A74.KJ4"
+      },
+      "auction": ["1N", "P", "2D", "P", "2H", "P", "2N", "P", "4H", "P", "P", "P"],
+      "handout": "East transfers to hearts when he bids 2♦. His rebid of 2 NT shows exactly five hearts and 8-9 high-card points. Since West is at the top of his bid and holds three hearts, he accepts the invitation by jumping to 4♥.",
+      "problems": [
+        {
+          "id": "jacoby-4a",
+          "at": 2,
+          "answer": "2D",
+          "tags": ["jacoby"],
+          "explanation": "You have five hearts and 8 HCP. Bid 2♦, a Jacoby transfer, then 2NT to invite.",
+          "whyNot": {
+            "2N": "2NT invites, but partner can't tell you have five hearts. Transfer first.",
+            "2H": "2♥ is a transfer to spades. To show hearts, bid 2♦."
+          }
+        },
+        {
+          "id": "jacoby-4b",
+          "at": 4,
+          "answer": "2H",
+          "tags": ["jacoby"],
+          "explanation": "Partner's 2♦ is a Jacoby transfer: five or more hearts, any strength. You must complete it by bidding 2♥, whatever you hold there.",
+          "whyNot": {
+            "P": "The transfer is forcing.",
+            "2N": "Complete the transfer with 2♥."
+          }
+        },
+        {
+          "id": "jacoby-4c",
+          "at": 6,
+          "answer": "2N",
+          "tags": ["jacoby"],
+          "explanation": "You have exactly five hearts and 8–9 points. Bid 2NT: an invitation that shows five hearts. Partner chooses between pass, 3♥, 3NT and 4♥.",
+          "whyNot": {
+            "3H": "Raising to 3♥ shows six hearts. You have five.",
+            "P": "With 8 HCP, invite game.",
+            "3N": "With 8 HCP, only invite."
+          }
+        },
+        {
+          "id": "jacoby-4d",
+          "at": 8,
+          "answer": "4H",
+          "tags": ["jacoby"],
+          "explanation": "Partner's 2NT shows five hearts and 8–9 points. You have three hearts and a maximum, 17, so bid 4♥.",
+          "whyNot": {
+            "3H": "3♥ shows three hearts but a minimum. With 17, bid game.",
+            "3N": "With three hearts, play in the 5-3 heart fit.",
+            "P": "With 17, a maximum, accept the invitation."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jacoby-5",
+      "board": 5,
+      "dealer": "N",
+      "vul": "NS",
+      "hands": {
+        "N": "AT8.KT82.J95.963",
+        "E": "KQ7.AQ5.KQ63.A42",
+        "S": "9.J93.AT84.KQJT7",
+        "W": "J65432.764.72.85"
+      },
+      "auction": ["P", "2N", "P", "3H", "P", "3S", "P", "P", "P"],
+      "handout": "West has a very weak hand with long spades. West transfers to spades and passes 3♠.",
+      "problems": [
+        {
+          "id": "jacoby-5a",
+          "at": 3,
+          "answer": "3H",
+          "tags": ["jacoby"],
+          "explanation": "Jacoby transfers work over 2NT too, one level higher. With six spades and 1 HCP, 3♠ will play better than 2NT. Bid 3♥, a transfer, and pass 3♠.",
+          "whyNot": {
+            "P": "2NT opposite 1 HCP will struggle. Your spades play better as trumps.",
+            "3S": "3♠ would be natural and forcing. Transfer with 3♥ and pass."
+          }
+        },
+        {
+          "id": "jacoby-5b",
+          "at": 5,
+          "answer": "3S",
+          "tags": ["jacoby"],
+          "explanation": "Partner's 3♥ is a Jacoby transfer over 2NT: five or more spades. Complete it with 3♠.",
+          "whyNot": {
+            "P": "The transfer is forcing.",
+            "3N": "Complete the transfer with 3♠."
+          }
+        },
+        {
+          "id": "jacoby-5c",
+          "at": 7,
+          "answer": "P",
+          "tags": ["jacoby"],
+          "explanation": "Partner completed the transfer. With almost nothing, pass.",
+          "whyNot": {
+            "4S": "You have 1 HCP. Game is unlikely."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jacoby-6",
+      "board": 6,
+      "dealer": "E",
+      "vul": "EW",
+      "hands": {
+        "N": "A62.KJ942.6.KJ43",
+        "E": "J875.T87.42.9762",
+        "S": "KQ3.Q63.AK75.QT5",
+        "W": "T94.A5.QJT983.A8"
+      },
+      "auction": ["P", "1N", "2D", "3H", "P", "4H", "P", "P", "P"],
+      "handout": "Transfers still apply after a 2♣ overcall, or after a double but not after an overcall of 2D or above. In order to show a game forcing hand with 5 hearts, North jumps to 3♥. South has a fit and raises to game.",
+      "problems": [
+        {
+          "id": "jacoby-6a",
+          "at": 3,
+          "answer": "3H",
+          "tags": ["jacoby"],
+          "explanation": "Over a 2♦ overcall, transfers are off and you bid naturally. With five hearts and game values, jump to 3♥: forcing, so partner chooses 4♥ or 3NT.",
+          "whyNot": {
+            "2H": "Over the overcall, 2♥ is natural and weak (0–7). You have game values.",
+            "4H": "You have only five hearts. Let partner choose between 4♥ and 3NT.",
+            "3N": "With a singleton diamond and five hearts, show the hearts first."
+          }
+        },
+        {
+          "id": "jacoby-6b",
+          "at": 5,
+          "answer": "4H",
+          "tags": ["jacoby"],
+          "explanation": "Partner's 3♥ is natural and forcing: five hearts and game values. You have three hearts, so bid 4♥.",
+          "whyNot": {
+            "3N": "You have three hearts, so play the 5-3 fit.",
+            "P": "3♥ is forcing to game."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jacoby-7",
+      "board": 7,
+      "dealer": "S",
+      "vul": "All",
+      "hands": {
+        "N": "A97.T98765.62.K6",
+        "E": "Q864.K4.A975.T43",
+        "S": "KJT.AQJ2.KT.Q875",
+        "W": "532.3.QJ843.AJ92"
+      },
+      "auction": ["1N", "P", "2D", "P", "3H", "P", "4H", "P", "P", "P"],
+      "handout": "After North bids 2D showing a least a five card heart suit, South jumps in hearts, showing a good 1 NT opener with at least 4 hearts. North accepts the game in hearts.",
+      "reviewNotes": ["The Jacoby text doesn't cover opener's jump to 3♥ with four hearts. The problem follows the handout; completing the transfer with 2♥ is marked acceptable."],
+      "problems": [
+        {
+          "id": "jacoby-7a",
+          "at": 2,
+          "answer": "2D",
+          "tags": ["jacoby"],
+          "explanation": "You have six hearts. Start with 2♦, a Jacoby transfer, so partner declares the heart contract.",
+          "whyNot": {
+            "2H": "2♥ is a transfer to spades. To show hearts, bid 2♦.",
+            "P": "With six hearts, a heart contract will play better than 1NT."
+          }
+        },
+        {
+          "id": "jacoby-7b",
+          "at": 4,
+          "answer": "3H",
+          "acceptable": {
+            "2H": "Completing the transfer is always fine. The jump to 3♥ shows a good hand with four hearts, which the handout teaches here."
+          },
+          "tags": ["jacoby"],
+          "explanation": "Partner's 2♦ shows five or more hearts. You have four, and a good hand, so jump to 3♥ instead of just completing the transfer. It shows four-card support and a good 1NT, and partner can bid game with less.",
+          "whyNot": {
+            "4H": "Partner may have nothing. 3♥ shows the fit and leaves room to stop."
+          }
+        },
+        {
+          "id": "jacoby-7c",
+          "at": 6,
+          "answer": "4H",
+          "tags": ["jacoby"],
+          "explanation": "Partner jumped to 3♥: four hearts and a good 1NT. You have six hearts, so a ten-card fit, and 7 HCP. That's enough for game opposite this: bid 4♥.",
+          "whyNot": {
+            "P": "Partner's jump shows a fit and a good hand. With six hearts, bid game."
+          }
+        }
+      ]
+    },
+    {
+      "id": "jacoby-8",
+      "board": 8,
+      "dealer": "W",
+      "vul": "None",
+      "hands": {
+        "N": "84.A93.K52.QJT62",
+        "E": "AKJ963.842.J9.75",
+        "S": "T2.QJT75.874.K84",
+        "W": "Q75.K6.AQT63.A93"
+      },
+      "auction": ["1N", "P", "2H", "P", "2S", "P", "4S", "P", "P", "P"],
+      "handout": "With 6 Spades and 9 points, East wants to play game in spades. The way to do this is to transfer to 2♠ and then bid 4♠.",
+      "reviewNotes": ["The Jacoby lesson came before Texas, so the handout transfers and then bids 4♠ to play game. Since learning Texas, we use Texas for game without slam interest and keep transfer-then-4♠ for slam interest. Problem 8a follows that."],
+      "problems": [
+        {
+          "id": "jacoby-8a",
+          "at": 2,
+          "answer": "4H",
+          "answerNote": "The handout transfers with 2♥ and then bids 4♠, which is right without Texas. We learned Texas afterwards, and with it, transfer-then-4♠ shows slam interest, so the answer here is Texas, 4♥.",
+          "tags": ["jacoby"],
+          "explanation": "You have six spades and enough for game, with no interest in slam. Bid 4♥, a Texas transfer: partner bids 4♠ and declares it.",
+          "whyNot": {
+            "4S": "4♠ is the right contract, but played from the wrong side. Texas lets the strong hand declare it.",
+            "2H": "Without Texas, transferring and then bidding 4♠ is right, and it's what the handout does. But now that we play Texas, that sequence shows slam interest. With 9 HCP you have none, so use Texas."
+          }
+        },
+        {
+          "id": "jacoby-8b",
+          "at": 4,
+          "answer": "2S",
+          "tags": ["jacoby"],
+          "explanation": "Partner's 2♥ is a Jacoby transfer: five or more spades, any strength. You must complete it by bidding 2♠, whatever you hold there.",
+          "whyNot": {
+            "P": "The transfer is forcing.",
+            "2N": "Complete the transfer with 2♠."
+          }
+        }
+      ]
+    }
+  ]
+}
