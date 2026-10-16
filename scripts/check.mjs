@@ -4,7 +4,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
-  SEATS, dealerForBoard, isComplete, legalCalls, seatOfCall, vulnerabilityForBoard,
+  SEATS, dealerForBoard, isComplete, legalCalls, seatOfCall, sideOf, vulnerabilityForBoard,
 } from '../js/auction.js';
 import { RANKS, SUITS, hcp, parseHand } from '../js/hands.js';
 import { LESSONS } from '../js/problems.js';
@@ -79,6 +79,12 @@ for (const file of readdirSync(dir).filter((f) => f.endsWith('.json') && f !== '
       }
       const before = deal.auction.slice(0, problem.at);
       if (!isLegal(deal.dealer, before, problem.answer)) errors.push(`${at}: answer ${problem.answer} is not legal`);
+      // A pass from a side that hasn't bid usually means the problem is at
+      // the wrong call (one off): the answer matches, but the hand is wrong.
+      const side = sideOf(seatOfCall(deal.dealer, problem.at));
+      if (problem.answer === 'P' && !before.some((c, i) => c !== 'P' && sideOf(seatOfCall(deal.dealer, i)) === side)) {
+        errors.push(`${at}: asks a player whose side hasn't bid yet to pass; is "at" right?`);
+      }
       if (problem.answer !== deal.auction[problem.at] && !problem.answerNote) {
         errors.push(`${at}: answer differs from the auction's ${deal.auction[problem.at]} without an answerNote`);
       }
