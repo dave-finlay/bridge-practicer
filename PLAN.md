@@ -15,7 +15,7 @@ with a review: read the code, try it, and course-correct before moving on.
   handouts (about 58 deals, roughly 100 problems). Generated hands come
   later, and only if we start recognising the curated ones. They would
   be generated ahead of time and shipped with the app, not made up live.
-- **Mixed sessions** of 10 or 20 problems, with the conventions mixed so
+- **Mixed sessions** of 10 problems, with the conventions mixed so
   that recognising the situation is part of the test. A filter by
   convention is there for focused study.
 - **"The convention doesn't apply" problems** are included, e.g. Texas is
@@ -139,7 +139,8 @@ The app calls the problems **challenges** ("10 bidding challenges",
 
 1. **Home:** convention chips (All, or any mix of conventions, remembered
    on the phone; Home from the summary goes back to All), Start with 10
-   or 20 bidding challenges (fewer if the filter leaves fewer deals), and
+   bidding challenges (fewer if the filter leaves fewer deals; a choice
+   of 20 was dropped as more than anyone wanted at once), and
    progress (problems seen, share right, last practised).
 2. **Problem:** "3 of 10", your seat, dealer and vulnerability, your hand
    (large, one suit per line), the auction table (W N E S, as in the bid

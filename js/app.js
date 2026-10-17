@@ -1,6 +1,6 @@
 // The app's screens and event handling.
 //
-// The home screen starts a session of 10 or 20 problems, optionally for
+// The home screen starts a session of 10 problems, optionally for
 // chosen conventions only. Each problem shows the problem screen: your
 // hand, the auction so far and a bidding box. Tapping a call selects it,
 // and Bid confirms it, so there's a moment to check. Then the feedback
@@ -19,11 +19,12 @@ import {
   LESSONS, conventionName, conventionsIn, dealCount, flatten, grade, pickSession, progressSummary,
   updateProgress, withTags,
 } from './problems.js';
+import { startPreview } from './preview.js';
 import { loadProgress, requestPersistence, saveAnswer } from './store.js';
 
 const app = document.getElementById('app');
 
-const SESSION_SIZES = [10, 20];
+const SESSION_SIZE = 10;
 // Where the home screen's choice of conventions is kept between visits.
 const SETTINGS_KEY = 'bridge-practicer-settings';
 // Columns of the auction table, as on BBO and in the bid recorder.
@@ -50,7 +51,6 @@ let screen = 'loading'; // 'home', 'problem', 'feedback', 'review', 'summary', '
 let selected = null; // the call tapped on the problem screen, not yet confirmed
 let answeredAt = 0;
 let tags = loadSettings().tags; // conventions chosen on the home screen; none means all
-let lastSize = SESSION_SIZES[0];
 
 // Settings are a convenience: if storage is unavailable, the defaults do.
 function loadSettings() {
@@ -162,12 +162,14 @@ function showMark(cell) {
 }
 
 // Scrolls the auction so its last row, where you call, is in view, and
-// shows the "earlier calls" tag while rows are hidden above.
+// shows the "earlier calls" tag while a row is hidden above. A row only
+// clipped at the top is still readable, and the tag would cover it.
 function scrollAuction() {
   const calls = app.querySelector('.calls');
   const tag = app.querySelector('.more-above');
   if (!calls || !tag) return;
-  const update = () => { tag.hidden = calls.scrollTop < 4; };
+  const rowHeight = calls.firstElementChild?.offsetHeight ?? 0;
+  const update = () => { tag.hidden = calls.scrollTop < rowHeight / 2; };
   calls.scrollTop = calls.scrollHeight;
   calls.addEventListener('scroll', update, { passive: true });
   update();
@@ -378,9 +380,9 @@ function renderHome() {
 
   const pool = withTags(problems, tags);
   const deals = dealCount(pool);
-  // A session has at most one problem per deal, so fewer deals than a
-  // size means a shorter session. Sizes that come to the same are shown once.
-  const sizes = [...new Set(SESSION_SIZES.map((size) => Math.min(size, deals)))];
+  // A session has at most one problem per deal, so fewer deals than
+  // SESSION_SIZE means a shorter session.
+  const size = Math.min(SESSION_SIZE, deals);
 
   const { seen, right, lastAt } = progressSummary(pool, progress);
 
@@ -404,7 +406,7 @@ function renderHome() {
       </div>
     </section>
     <div class="starts">
-      ${sizes.map((size) => `<button class="primary" data-action="start" data-size="${size}">${size} bidding challenge${size === 1 ? '' : 's'}</button>`).join('')}
+      <button class="primary" data-action="start">${size} bidding challenge${size === 1 ? '' : 's'}</button>
     </div>`;
   window.scrollTo(0, 0);
 }
@@ -479,8 +481,7 @@ app.addEventListener('click', (event) => {
     index = Number(review);
     screen = 'review';
   } else if (action === 'start') {
-    lastSize = Number(button.dataset.size);
-    startSession(withTags(problems, tags), lastSize);
+    startSession(withTags(problems, tags), SESSION_SIZE);
     return;
   } else if (action === 'cancel') {
     selected = null;
@@ -501,7 +502,7 @@ app.addEventListener('click', (event) => {
     startSession(missed, missed.length);
     return;
   } else if (action === 'again') {
-    startSession(withTags(problems, tags), lastSize);
+    startSession(withTags(problems, tags), SESSION_SIZE);
     return;
   } else if (action === 'home') {
     // Home starts again from all conventions.
@@ -542,7 +543,7 @@ async function start() {
     // puts that problem first, for trying out a particular problem.
     const wanted = problems.find((item) => `#${item.id}` === location.hash);
     if (wanted) {
-      startSession(problems, SESSION_SIZES[0], wanted);
+      startSession(problems, SESSION_SIZE, wanted);
     } else {
       screen = 'home';
       render();
@@ -560,4 +561,5 @@ async function start() {
 if ('serviceWorker' in navigator && location.hostname !== 'localhost') {
   navigator.serviceWorker.register('sw.js').catch(console.error);
 }
-start();
+// On a laptop previewing a phone, the app runs in the phone's frame.
+if (!startPreview()) start();

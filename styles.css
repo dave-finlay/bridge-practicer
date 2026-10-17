@@ -437,6 +437,39 @@ button {
   color: var(--off-text);
 }
 
+/* Short screens (an iPhone mini or SE, or Display Zoom set to Larger
+   Text): a smaller hand and buttons, so the auction keeps room for three
+   rows of calls. */
+@media (max-height: 720px) {
+  .problem-screen {
+    gap: 5px;
+  }
+
+  .problem-screen .hand {
+    padding: 4px 12px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .points strong {
+    font-size: 22px;
+  }
+
+  .calls > div {
+    padding: 2px 0;
+    font-size: 18px;
+  }
+
+  .confirm .primary,
+  .confirm .secondary {
+    height: 38px;
+  }
+
+  .specials button {
+    height: 44px;
+  }
+}
+
 /* Feedback screen: scrolls, with Next fixed at the bottom. */
 
 .feedback {
@@ -697,7 +730,7 @@ button {
   padding:
     calc(env(safe-area-inset-top) + 24px)
     calc(env(safe-area-inset-right) + 14px)
-    calc(env(safe-area-inset-bottom) + 20px)
+    0
     calc(env(safe-area-inset-left) + 14px);
 }
 
@@ -747,12 +780,31 @@ button {
   color: rgb(255 255 255 / 80%);
 }
 
-/* Start sits at the bottom, where the thumb reaches. */
+/* Start sits at the bottom, where the thumb reaches, and stays there
+   when the screen is too short for everything above it. */
 .starts {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  position: sticky;
+  bottom: 0;
   margin-top: auto;
+  padding: 10px 0 calc(env(safe-area-inset-bottom) + 20px);
+  background: var(--bg);
+}
+
+/* Narrow screens: smaller chips, so more fit on a line. */
+@media (max-width: 360px) {
+  .home-screen {
+    gap: 16px;
+  }
+
+  .chips {
+    gap: 6px;
+  }
+
+  .chip {
+    min-height: 36px;
+    padding: 0 11px;
+    font-size: 15px;
+  }
 }
 
 .stats {
@@ -775,4 +827,65 @@ button {
   display: block;
   color: var(--text);
   font-size: 22px;
+}
+
+/* Laptop preview at phone size (js/preview.js). */
+
+.preview-bar {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.preview-bar button {
+  padding: 4px 10px;
+  border: 0;
+  border-radius: 7px;
+  background: none;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.preview-bar [aria-pressed="true"] {
+  background: var(--felt);
+  color: #fff;
+}
+
+.phone {
+  width: fit-content;
+  margin: 64px auto 24px;
+  overflow: hidden;
+  border: 10px solid #111;
+  border-radius: 46px;
+  background: var(--bg);
+}
+
+.phone iframe {
+  display: block;
+  border: 0;
+}
+
+/* The bar at the foot of an iPhone's screen. */
+.home-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-indicator::after {
+  content: "";
+  width: 120px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--text);
 }
