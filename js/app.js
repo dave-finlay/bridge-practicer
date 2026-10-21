@@ -30,7 +30,8 @@ const SETTINGS_KEY = 'bridge-practicer-settings';
 // Columns of the auction table, as on BBO and in the bid recorder.
 const TABLE_ORDER = ['W', 'N', 'E', 'S'];
 const SEAT_NAMES = { N: 'North', E: 'East', S: 'South', W: 'West' };
-const VUL_NAMES = { None: 'Nobody vulnerable', NS: 'N-S vulnerable', EW: 'E-W vulnerable', All: 'Both vulnerable' };
+// Short, so the top line fits a small phone; the red seats show it too.
+const VUL_NAMES = { None: 'None vul', NS: 'N-S vul', EW: 'E-W vul', All: 'Both vul' };
 // U+FE0E asks iOS to draw the suit as text rather than as a color emoji.
 const SYMBOLS = { C: '♣︎', D: '♦︎', H: '♥︎', S: '♠︎', N: 'NT' };
 const GRADES = {
@@ -116,7 +117,7 @@ function auctionHTML(deal, you, calls, { ask = false, pending = null, highlight 
     const tags = [];
     if (seat === you) tags.push('you');
     if (seat === partner) tags.push('partner');
-    if (seat === deal.dealer) tags.push('dealer');
+    if (seat === deal.dealer) tags.push('dlr');
     return `<div class="${classes.join(' ')}">${seat}<small>${tags.join(' · ')}</small></div>`;
   }).join('');
 

@@ -152,6 +152,7 @@ button {
 .setting {
   color: var(--muted);
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .problem-screen .hand {
@@ -212,9 +213,14 @@ button {
   font-weight: 700;
 }
 
+/* One line only: a label too long for its column is cut short rather
+   than pushing the auction down. */
 .seat small {
   display: block;
+  overflow: hidden;
   min-height: 1.2em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: var(--muted);
   font-size: 11px;
   font-weight: 500;
