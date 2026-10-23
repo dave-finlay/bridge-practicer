@@ -156,7 +156,7 @@
           "at": 7,
           "answer": "P",
           "tags": ["jacoby"],
-          "explanation": "Partner's transfer was doubled. You have only two spades, so pass to say so. With three or more, you'd bid 2♠.",
+          "explanation": "Partner's transfer was doubled, which gives you a choice you didn't have before. Your pass doesn't end the auction: partner's transfer promises another bid, and with a weak hand they'll bid 2♠ themselves. So pass and 2♠ can mean different things: 2♠ shows three or more spades, and pass shows only two. You have two, so pass. Partner then knows whether there's a 5-3 spade fit and can choose the right game.",
           "whyNot": {
             "2S": "Over the double, accepting the transfer shows three or more spades. You have two."
           }
