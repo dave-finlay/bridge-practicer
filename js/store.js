@@ -49,7 +49,7 @@ export async function saveAnswer(answer, record) {
   return done(transaction);
 }
 
-// Asks the browser not to clear our data when the phone is low on space.
+// Asks the browser not to clear the app's data when the phone is low on space.
 // Browsers may say no, and older ones don't support it; either way the
 // app still works.
 export async function requestPersistence() {

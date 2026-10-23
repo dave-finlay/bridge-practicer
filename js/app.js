@@ -391,7 +391,7 @@ function renderHome() {
   app.innerHTML = `
     <header>
       <h1>Bridge Practicer</h1>
-      <p class="hint">Bidding challenges from our lessons</p>
+      <p class="hint">Challenges from bridge lessons</p>
     </header>
     <section>
       <h2>Conventions</h2>

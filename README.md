@@ -1,7 +1,7 @@
 # Bridge Practicer
 
-A phone app for practising the bidding conventions from our bridge
-lessons until the answers come automatically. Each problem shows your
+A phone app for practising the bidding conventions from bridge lessons
+I took, until the answers come automatically. Each problem shows your
 hand and the auction so far and asks for your call. Then it tells you
 the best call and why, and shows the whole deal.
 

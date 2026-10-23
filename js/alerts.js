@@ -1,6 +1,6 @@
 // Which calls in an auction are alerted or announced, under ACBL rules
-// and our agreements (see the ACBL convention card: red is Alert, blue is
-// Announce). No UI code.
+// and the agreements in the lessons (see the ACBL convention card: red is
+// Alert, blue is Announce). No UI code.
 //
 // Each rule looks only at the call and the calls before it, so a call's
 // marking is the same whether or not the rest of the auction is shown.

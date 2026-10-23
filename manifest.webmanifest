@@ -1,7 +1,7 @@
 {
   "name": "Bridge Practicer",
   "short_name": "Practicer",
-  "description": "Bidding problems from our bridge lessons.",
+  "description": "Bidding challenges from bridge lessons.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
