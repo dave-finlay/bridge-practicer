@@ -21,6 +21,18 @@
   --alert: #d33a3a;
   --announce: #2059b8;
   color-scheme: light dark;
+  /* Extra room at the top of each screen; see the standalone rule below. */
+  --top-gap: 0px;
+}
+
+/* Opened from the Home Screen, iOS 26 blurs a band below the status bar
+   (seen on an iPhone 13/14, about 30pt deep). Content starts below it.
+   Not on short screens, which can't spare the room (and the one seen,
+   a 12 mini with Larger Text, showed no blur). */
+@media (display-mode: standalone) and (min-height: 721px) {
+  :root {
+    --top-gap: 24px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -118,7 +130,7 @@ button {
   height: 100dvh;
   margin: 0 auto;
   padding:
-    calc(env(safe-area-inset-top) + 8px)
+    calc(env(safe-area-inset-top) + var(--top-gap) + 8px)
     calc(env(safe-area-inset-right) + 10px)
     calc(env(safe-area-inset-bottom) + 8px)
     calc(env(safe-area-inset-left) + 10px);
@@ -485,7 +497,7 @@ button {
   max-width: 480px;
   margin: 0 auto;
   padding:
-    calc(env(safe-area-inset-top) + 12px)
+    calc(env(safe-area-inset-top) + var(--top-gap) + 12px)
     calc(env(safe-area-inset-right) + 14px)
     calc(env(safe-area-inset-bottom) + 96px)
     calc(env(safe-area-inset-left) + 14px);
@@ -602,7 +614,7 @@ button {
   max-width: 480px;
   margin: 0 auto;
   padding:
-    calc(env(safe-area-inset-top) + 20px)
+    calc(env(safe-area-inset-top) + var(--top-gap) + 20px)
     calc(env(safe-area-inset-right) + 14px)
     calc(env(safe-area-inset-bottom) + 20px)
     calc(env(safe-area-inset-left) + 14px);
@@ -734,7 +746,7 @@ button {
   min-height: 100dvh;
   margin: 0 auto;
   padding:
-    calc(env(safe-area-inset-top) + 24px)
+    calc(env(safe-area-inset-top) + var(--top-gap) + 24px)
     calc(env(safe-area-inset-right) + 14px)
     0
     calc(env(safe-area-inset-left) + 14px);
