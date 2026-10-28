@@ -7,7 +7,7 @@
 import { seatOfCall } from './auction.js';
 
 // The lesson files the app loads, in problems/.
-export const LESSONS = ['stayman', 'texas', 'negative-doubles', 'nmf', 'jacoby-2nt', 'rkcb', 'control-bids', 'jacoby'];
+export const LESSONS = ['stayman', 'texas', 'negative-doubles', 'nmf', 'jacoby-2nt', 'rkcb', 'control-bids', 'jacoby', 'club'];
 
 // The names of the conventions that problems are tagged with, in the
 // order the home screen lists them.
@@ -21,9 +21,15 @@ export const CONVENTIONS = {
   'jacoby-2nt': 'Jacoby 2NT',
   rkcb: 'RKCB',
   'control-bids': 'Control bids',
+  club: 'Club hands',
 };
 
 export const conventionName = (tag) => CONVENTIONS[tag] ?? tag;
+
+// The board a deal is. A club board can be in the problems twice, bid two
+// ways; both versions share a `source` and count as one board, since one
+// version's auction would give away the other's answers.
+export const boardOf = (deal) => deal.source ?? deal.id;
 
 // Every problem in the lessons, each with its deal and the seat that calls.
 export function flatten(lessons) {
@@ -94,8 +100,8 @@ export function pickSession(problems, size, { progress = {}, random = Math.rando
   const picked = [];
   for (const item of ordered) {
     if (picked.length === size) break;
-    if (deals.has(item.deal.id)) continue;
-    deals.add(item.deal.id);
+    if (deals.has(boardOf(item.deal))) continue;
+    deals.add(boardOf(item.deal));
     picked.push(item);
   }
   // Shuffled again, so the new problems aren't always first.
@@ -135,5 +141,5 @@ export function withTags(problems, tags) {
 
 // How many deals the problems come from: the most a session can hold.
 export function dealCount(problems) {
-  return new Set(problems.map((item) => item.deal.id)).size;
+  return new Set(problems.map((item) => boardOf(item.deal))).size;
 }

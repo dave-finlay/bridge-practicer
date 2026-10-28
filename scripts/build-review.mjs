@@ -65,8 +65,10 @@ function dealDiagram(deal) {
   </div>`;
 }
 
-// "Board 3", or "Part 2, board 3" for a lesson in two handouts.
-const boardName = (deal) => (deal.part ? `Part ${deal.part}, board ${deal.board}` : `Board ${deal.board}`);
+// "Board 3", or "Part 2, board 3" for a lesson in two handouts, or a club
+// board's source.
+const boardName = (deal) =>
+  deal.source ?? (deal.part ? `Part ${deal.part}, board ${deal.board}` : `Board ${deal.board}`);
 
 function problemHtml(deal, problem) {
   const seat = seatOfCall(deal.dealer, problem.at);
@@ -116,7 +118,9 @@ function dealHtml(deal) {
         <div>
           ${auctionHtml(deal)}
           ${marksHtml(deal)}
-          <blockquote><span class="answer-label">Handout</span> ${prose(deal.handout)}</blockquote>
+          ${deal.handout ? `<blockquote><span class="answer-label">Handout</span> ${prose(deal.handout)}</blockquote>` : ''}
+          ${deal.atTheTable ? `<blockquote><span class="answer-label">At the table</span> ${prose(deal.atTheTable)}</blockquote>` : ''}
+          ${deal.agreed ? `<blockquote><span class="answer-label">Agreed</span> ${prose(deal.agreed)}</blockquote>` : ''}
         </div>
       </div>
     </div>
@@ -140,7 +144,7 @@ const html = `<title>Bridge Practicer Problems</title>
   <header class="intro">
     <p class="eyebrow">Bridge practicer · draft problems for review</p>
     <h1>${lessons.map((l) => esc(l.title)).join(', ')}</h1>
-    <p>${problemCount} problems from ${lessons.reduce((n, l) => n + l.deals.length, 0)} lesson boards. Each one shows what the app will ask (your hand and the auction so far), then the answer it will give. Check that the answers are right and the explanations say what you'd want to read at the table.</p>
+    <p>${problemCount} problems from ${lessons.reduce((n, l) => n + l.deals.length, 0)} boards. Each one shows what the app will ask (your hand and the auction so far), then the answer it will give. Check that the answers are right and the explanations say what you'd want to read at the table.</p>
     ${flagged.length ? `<p>Boards with something to check: ${flagged.map((d) => `<a href="#${d.id}">${d.part ? `${d.part}.` : ''}${d.board}</a>`).join(', ')}.</p>` : ''}
   </header>
   ${lessons.map((l) => l.deals.map(dealHtml).join('')).join('')}

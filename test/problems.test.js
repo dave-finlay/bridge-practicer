@@ -68,6 +68,16 @@ test('dealCount counts the deals the problems come from', () => {
   assert.equal(dealCount(withTags(problems, ['rkcb', 'jacoby'])), 1);
 });
 
+test('two versions of a club board count as one board', () => {
+  const club = JSON.parse(readFileSync(new URL('../problems/club.json', import.meta.url)));
+  const both = flatten([club]).filter((p) => p.deal.source === 'Alpine Club 2026-10-27, board 13');
+  assert.equal(new Set(both.map((p) => p.deal.id)).size, 2);
+  assert.equal(dealCount(both), 1);
+  for (let seed = 1; seed <= 10; seed++) {
+    assert.equal(pickSession(both, 10, { random: seeded(seed) }).length, 1);
+  }
+});
+
 const DAY = 24 * 60 * 60 * 1000;
 const NOW = Date.UTC(2026, 9, 15);
 

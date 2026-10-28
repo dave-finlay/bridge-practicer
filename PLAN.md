@@ -107,9 +107,12 @@ The service worker and manifest arrive with step 5.
     vul: 'None',                 // None NS EW All
     hands: { N: 'A2.JT54.AQ4.AJT2', E: …, S: …, W: … },  // PBN style, T = ten
     auction: ['1N', 'P', '4H', 'P', '4S', 'P', 'P', 'P'], // from the dealer, complete
-    handout: '…',                // the handout's commentary on the bidding
+    handout: '…',                // lesson boards: the handout's commentary on the bidding
     reviewNotes: ['…'],          // optional: anything to check
     unusualSetup: '…',           // optional: why dealer or vulnerability isn't the board's usual
+    source: '…',                 // club boards: "Alpine Club 2026-10-27, board 13"
+    atTheTable: '…',             // club boards: what was bid and scored (on the feedback screen)
+    agreed: '…',                 // club boards: what was agreed should be bid, and when
     problems: [{
       id: 'texas-1a',            // never changes: progress is stored by id
       at: 2,                     // index in the auction of the call to make

@@ -16,7 +16,7 @@ import { alertsFor } from './alerts.js';
 import { BIDS, STRAINS, contract, isVulnerable, legalCalls, seatAfter } from './auction.js';
 import { SUITS, formatHolding, hcp, parseHand } from './hands.js';
 import {
-  LESSONS, conventionName, conventionsIn, dealCount, flatten, grade, pickSession, progressSummary,
+  LESSONS, boardOf, conventionName, conventionsIn, dealCount, flatten, grade, pickSession, progressSummary,
   updateProgress, withTags,
 } from './problems.js';
 import { startPreview } from './preview.js';
@@ -320,6 +320,9 @@ function renderFeedback(reviewing = false) {
       <h2>Why ${callHTML(problem.answer)}</h2>
       <p>${proseHTML(problem.explanation)}</p>
       ${alternatives.map(([c, why]) => `<p><strong>Also fine: ${callHTML(c)}.</strong> ${proseHTML(why)}</p>`).join('')}
+      ${deal.atTheTable ? `<h2>At the club</h2>
+        <p class="hint">${escapeHTML(deal.source)}</p>
+        <p>${proseHTML(deal.atTheTable)}</p>` : ''}
       <h2>The whole board</h2>
       <section class="auction">${auctionHTML(deal, seat, deal.auction, { highlight: problem.at })}</section>
       ${dealHTML(deal, seat)}
@@ -428,7 +431,7 @@ function render() {
 // Starts a session of up to `size` problems from `pool`, with `first`
 // first if it's given.
 function startSession(pool, size, first = null) {
-  const others = pool.filter((item) => item.deal !== first?.deal);
+  const others = pool.filter((item) => !first || boardOf(item.deal) !== boardOf(first.deal));
   const picked = pickSession(others, first ? size - 1 : size, { progress });
   session = (first ? [first, ...picked] : picked).map((item) => ({ item, call: null }));
   index = 0;
