@@ -279,6 +279,11 @@ problems are written.
   from the club's hand record, the agreed auction, and the reasoning.
   The bid recorder already records Dave's auctions, so its export could
   carry the auction across. Tagged `club`, with the date and board.
+- Session reviews (other conversations) submit these as files in
+  `~/context/bridge/practicer/submissions/`, in the problem format, as
+  `~/context/bridge/practicer/README.md` describes. A practicer
+  conversation checks them with Dave and adds the accepted ones to
+  `problems/club.json`.
 
 ## Decided: public hosting
 
