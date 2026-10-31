@@ -10,14 +10,15 @@
 //
 // Every answer is saved on the phone (js/store.js), and the progress
 // decides which problems come up: new ones first, then ones missed, then
-// ones due again.
+// ones due again. Ones answered right wait until they're due, so a set
+// can be short, or there can be none left for now.
 
 import { alertsFor } from './alerts.js';
 import { BIDS, STRAINS, contract, isVulnerable, legalCalls, seatAfter } from './auction.js';
 import { SUITS, formatHolding, hcp, parseHand } from './hands.js';
 import {
-  LESSONS, boardOf, conventionName, conventionsIn, dealCount, flatten, grade, pickSession, progressSummary,
-  updateProgress, withTags,
+  LESSONS, boardOf, conventionName, conventionsIn, dealCount, flatten, grade, nextDue, pickSession,
+  progressSummary, readyNow, updateProgress, withTags,
 } from './problems.js';
 import { startPreview } from './preview.js';
 import { loadProgress, requestPersistence, saveAnswer } from './store.js';
@@ -339,6 +340,8 @@ function renderFeedback(reviewing = false) {
 function renderSummary() {
   const right = session.filter(({ item, call }) => grade(item.problem, call) !== 'wrong').length;
   const missed = session.filter(({ item, call }) => grade(item.problem, call) === 'wrong').length;
+  // More challenges takes the same conventions, if any are ready.
+  const more = readyNow(withTags(problems, tags), progress).length;
   const rows = session.map(({ item, call }, i) => {
     const result = grade(item.problem, call);
     const answer = result === 'best' ? '' : ` · answer ${callHTML(item.problem.answer)}`;
@@ -358,9 +361,19 @@ function renderSummary() {
     <p class="hint">Tap a challenge to look at it again.</p>
     <ul class="results">${rows}</ul>
     ${missed ? `<button class="primary" data-action="missed">Practise the ${missed === 1 ? 'one' : `${missed}`} I missed</button>` : ''}
-    <button class="${missed ? 'secondary' : 'primary'}" data-action="again">More challenges</button>
+    ${more ? `<button class="${missed ? 'secondary' : 'primary'}" data-action="again">More challenges</button>` : ''}
     <button class="secondary" data-action="home">Home</button>`;
   window.scrollTo(0, 0);
+}
+
+// "later today", "tomorrow", "in 3 days", or "on" a date such as "3 Oct".
+function dueText(time) {
+  const startOfDay = (t) => new Date(t).setHours(0, 0, 0, 0);
+  const days = Math.round((startOfDay(time) - startOfDay(Date.now())) / (24 * 60 * 60 * 1000));
+  if (days <= 0) return 'later today';
+  if (days === 1) return 'tomorrow';
+  if (days < 14) return `in ${days} days`;
+  return `on ${new Date(time).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}`;
 }
 
 // "today", "yesterday", "3 days ago", or a date such as "3 Oct".
@@ -384,9 +397,9 @@ function renderHome() {
 
   const pool = withTags(problems, tags);
   const deals = dealCount(pool);
-  // A session has at most one problem per deal, so fewer deals than
-  // SESSION_SIZE means a shorter session.
-  const size = Math.min(SESSION_SIZE, deals);
+  // A session has at most one problem per deal, so fewer deals with a
+  // problem ready than SESSION_SIZE means a shorter session.
+  const size = Math.min(SESSION_SIZE, dealCount(readyNow(pool, progress)));
 
   const { seen, right, lastAt } = progressSummary(pool, progress);
 
@@ -399,7 +412,7 @@ function renderHome() {
     <section>
       <h2>Conventions</h2>
       <div class="chips">${chips}</div>
-      <p class="hint">${pool.length} challenge${pool.length === 1 ? '' : 's'} from ${deals} deal${deals === 1 ? '' : 's'}. A set of challenges has at most one from each deal.</p>
+      <p class="hint">${pool.length} challenge${pool.length === 1 ? '' : 's'} from ${deals} deal${deals === 1 ? '' : 's'}. A set has at most one challenge from each deal. One you got right comes back the next day, then after longer and longer gaps.</p>
     </section>
     <section>
       <h2>Progress${tags.length ? ' on these' : ''}</h2>
@@ -410,7 +423,9 @@ function renderHome() {
       </div>
     </section>
     <div class="starts">
-      <button class="primary" data-action="start">${size} bidding challenge${size === 1 ? '' : 's'}</button>
+      ${size ? `<button class="primary" data-action="start">${size} bidding challenge${size === 1 ? '' : 's'}</button>`
+        : `<p class="hint">You’ve done all of these for now. More are due ${dueText(nextDue(pool, progress))}.</p>
+      <button class="primary" disabled>All caught up</button>`}
     </div>`;
   window.scrollTo(0, 0);
 }
@@ -436,7 +451,8 @@ function startSession(pool, size, first = null) {
   session = (first ? [first, ...picked] : picked).map((item) => ({ item, call: null }));
   index = 0;
   selected = null;
-  screen = 'problem';
+  // With nothing ready, the home screen says when more are due.
+  screen = session.length ? 'problem' : 'home';
   render();
 }
 

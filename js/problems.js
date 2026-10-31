@@ -71,10 +71,25 @@ export function dueAt(record) {
   return record.lastAt + INTERVAL_DAYS[record.level] * DAY_MS;
 }
 
-// Up to `size` problems in random order, at most one from each deal, so
-// that no problem gives away another's answer. With `progress` (records
-// by problem id), problems never seen come first, then those answered
-// wrong last time, then those due soonest, at random among equals.
+// The problems ready at `now`: those never seen, those answered wrong
+// last time, and those due again. The rest were answered right recently
+// and wait until they're due.
+export function readyNow(problems, progress, now = Date.now()) {
+  return problems.filter(({ id }) => !progress[id] || dueAt(progress[id]) <= now);
+}
+
+// When the next of the problems not ready is due, or null if none is
+// waiting.
+export function nextDue(problems, progress, now = Date.now()) {
+  const times = problems.map(({ id }) => progress[id]).filter(Boolean).map(dueAt).filter((time) => time > now);
+  return times.length ? Math.min(...times) : null;
+}
+
+// Up to `size` of the problems ready now, in random order, at most one
+// from each deal, so that no problem gives away another's answer. With
+// `progress` (records by problem id), problems never seen come first,
+// then those answered wrong last time, then those due longest, at random
+// among equals. A set can be short: problems not due yet are left out.
 // `random` and `now` are for tests.
 export function pickSession(problems, size, { progress = {}, random = Math.random, now = Date.now() } = {}) {
   const shuffle = (list) => {
@@ -91,7 +106,7 @@ export function pickSession(problems, size, { progress = {}, random = Math.rando
     return [2, dueAt(record)];
   };
   // Sorting is stable, so the shuffle decides among equals.
-  const ordered = shuffle([...problems])
+  const ordered = shuffle(readyNow(problems, progress, now))
     .map((item) => ({ item, key: rank(item) }))
     .sort((a, b) => a.key[0] - b.key[0] || a.key[1] - b.key[1])
     .map(({ item }) => item);

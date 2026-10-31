@@ -158,11 +158,13 @@ The app calls the problems **challenges** ("10 bidding challenges",
 
 **Choosing problems.** At most one problem per deal. Within that, prefer
 problems never seen, then ones answered wrong last time, then ones due
-soonest, picking at random among equals, and shuffle the session. Each
+longest, picking at random among equals, and shuffle the session. Each
 problem keeps a level that drops to 0 when answered wrong and rises by
 one when answered right or acceptably. A problem is due 1, 3, 7, 14 or
 30 days (by level) after it was last answered, so missed problems come
-back sooner and known ones fade out.
+back sooner and known ones fade out. Problems not due yet are left out,
+even if that makes the session short; with none ready, the home screen
+says when more are due.
 
 ## Steps
 

@@ -2,8 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
-  conventionsIn, dealCount, dueAt, flatten, grade, pickSession, progressSummary, updateProgress,
-  withTags,
+  conventionsIn, dealCount, dueAt, flatten, grade, nextDue, pickSession, progressSummary, readyNow,
+  updateProgress, withTags,
 } from '../js/problems.js';
 
 const texas = JSON.parse(readFileSync(new URL('../problems/texas.json', import.meta.url)));
@@ -110,19 +110,45 @@ test('pickSession puts problems never seen first', () => {
   }
 });
 
-test('pickSession puts problems answered wrong next, then those due soonest', () => {
+test('pickSession puts problems answered wrong next, then those due longest', () => {
   const progress = allSeen(['texas-8a']); // 8a is new
   progress['texas-2a'] = updateProgress(progress['texas-2a'], 'texas-2a', 'wrong', NOW);
-  // Deal 5's problems have been right twice, so they're not due for 3
-  // days, after everything else.
-  for (const id of ['texas-5a', 'texas-5b']) progress[id] = updateProgress(progress[id], id, 'best', NOW);
+  // Deal 3's problems were answered a day later, so they're due a day
+  // after the others.
+  for (const id of ['texas-3a', 'texas-3b']) progress[id] = updateProgress(undefined, id, 'best', NOW + DAY);
   for (let seed = 1; seed <= 10; seed++) {
-    const pick = (size) => pickSession(problems, size, { progress, random: seeded(seed), now: NOW + DAY })
+    const pick = (size) => pickSession(problems, size, { progress, random: seeded(seed), now: NOW + 3 * DAY })
       .map(({ id }) => id).sort();
     assert.deepEqual(pick(2), ['texas-2a', 'texas-8a']);
-    assert.ok(pick(7).every((id) => !id.startsWith('texas-5')));
-    assert.equal(pick(8).filter((id) => id.startsWith('texas-5')).length, 1);
+    assert.ok(pick(7).every((id) => !id.startsWith('texas-3')));
+    assert.equal(pick(8).filter((id) => id.startsWith('texas-3')).length, 1);
   }
+});
+
+test('pickSession leaves out problems not due yet, so a set can be short', () => {
+  const progress = allSeen(['texas-8a']); // 8a is new
+  progress['texas-2a'] = updateProgress(progress['texas-2a'], 'texas-2a', 'wrong', NOW);
+  // Deal 5's problems have been right twice, so they're not due for 3 days.
+  for (const id of ['texas-5a', 'texas-5b']) progress[id] = updateProgress(progress[id], id, 'best', NOW);
+  // A day on, the rest are due again; deal 5 isn't.
+  for (let seed = 1; seed <= 10; seed++) {
+    const ids = pickSession(problems, 10, { progress, random: seeded(seed), now: NOW + DAY }).map(({ id }) => id);
+    assert.equal(ids.length, 7);
+    assert.ok(ids.every((id) => !id.startsWith('texas-5')));
+  }
+  // The same day, only the new and the missed ones are ready.
+  const sameDay = pickSession(problems, 10, { progress, random: seeded(1), now: NOW }).map(({ id }) => id).sort();
+  assert.deepEqual(sameDay, ['texas-2a', 'texas-8a']);
+});
+
+test('readyNow and nextDue: what can be practised now, and when more can', () => {
+  const progress = allSeen();
+  assert.equal(readyNow(problems, progress, NOW).length, 0);
+  assert.equal(nextDue(problems, progress, NOW), NOW + DAY);
+  assert.equal(readyNow(problems, progress, NOW + DAY).length, 16);
+  assert.equal(nextDue(problems, progress, NOW + DAY), null);
+  assert.equal(readyNow(problems, {}, NOW).length, 16);
+  assert.equal(pickSession(problems, 10, { progress, now: NOW }).length, 0);
 });
 
 test('progressSummary counts problems seen and right last time', () => {

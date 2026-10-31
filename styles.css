@@ -98,6 +98,11 @@ button {
   font-weight: 600;
 }
 
+.primary:disabled {
+  background: var(--off-bg);
+  color: var(--off-text);
+}
+
 .secondary {
   height: 44px;
   border: 1px solid var(--line);
@@ -806,6 +811,10 @@ button {
   margin-top: auto;
   padding: 10px 0 calc(env(safe-area-inset-bottom) + 20px);
   background: var(--bg);
+}
+
+.starts .hint {
+  margin: 0 0 10px;
 }
 
 /* Narrow screens: smaller chips, so more fit on a line. */
