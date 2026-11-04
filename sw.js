@@ -11,7 +11,7 @@
 // CACHE, so the new list is fetched in full. `npm run check` fails if a
 // lesson file or a script is missing from FILES.
 
-const CACHE = 'practicer-v10';
+const CACHE = 'practicer-v11';
 const FILES = [
   './',
   'index.html',

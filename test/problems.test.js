@@ -26,6 +26,12 @@ test('flatten lists every problem with its deal, lesson and seat', () => {
   assert.equal(problems.find((p) => p.id === 'texas-6c').seat, 'E');
 });
 
+test('flatten leaves out deals set aside', () => {
+  const lesson = { lesson: 'texas', deals: [{ ...texas.deals[0], setAside: 'to rethink' }, texas.deals[1]] };
+  assert.deepEqual(flatten([lesson]).map((p) => p.deal.id), flatten([{ ...texas, deals: [texas.deals[1]] }]).map((p) => p.deal.id));
+  assert.ok(flatten([lesson]).every((p) => p.deal.id !== texas.deals[0].id));
+});
+
 test('grade: the answer is best, listed alternatives acceptable, the rest wrong', () => {
   const problem = problems.find((p) => p.id === 'texas-6c').problem;
   assert.equal(grade(problem, '4N'), 'best');

@@ -106,7 +106,11 @@ function marksHtml(deal) {
 }
 
 function dealHtml(deal) {
-  const notes = [...(deal.unusualSetup ? [deal.unusualSetup] : []), ...(deal.reviewNotes ?? [])];
+  const notes = [
+    ...(deal.setAside ? [`Set aside: ${deal.setAside}`] : []),
+    ...(deal.unusualSetup ? [deal.unusualSetup] : []),
+    ...(deal.reviewNotes ?? []),
+  ];
   return `<section class="deal" id="${deal.id}">
     <h2>${boardName(deal)}</h2>
     ${notes.length ? `<div class="check"><span class="check-label">Please check</span><ul>${notes.map((n) => `<li>${prose(n)}</li>`).join('')}</ul></div>` : ''}
@@ -131,7 +135,7 @@ function dealHtml(deal) {
 const names = process.argv.length > 2 ? process.argv.slice(2) : LESSONS;
 const lessons = names.map((name) => JSON.parse(readFileSync(join(root, 'problems', `${name}.json`), 'utf8')));
 const problemCount = lessons.reduce((n, l) => n + l.deals.reduce((m, d) => m + d.problems.length, 0), 0);
-const flagged = lessons.flatMap((l) => l.deals.filter((d) => d.reviewNotes?.length || d.unusualSetup));
+const flagged = lessons.flatMap((l) => l.deals.filter((d) => d.setAside || d.reviewNotes?.length || d.unusualSetup));
 
 const css = readFileSync(join(root, 'scripts/review.css'), 'utf8');
 const html = `<title>Bridge Practicer Problems</title>

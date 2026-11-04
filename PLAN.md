@@ -110,6 +110,7 @@ The service worker and manifest arrive with step 5.
     handout: '…',                // lesson boards: the handout's commentary on the bidding
     reviewNotes: ['…'],          // optional: anything to check
     unusualSetup: '…',           // optional: why dealer or vulnerability isn't the board's usual
+    setAside: '…',               // optional: why the app leaves the deal out for now (still checked)
     source: '…',                 // club boards: "Alpine Club 2026-10-27, board 13"
     atTheTable: '…',             // club boards: what was bid and scored (on the feedback screen)
     agreed: '…',                 // club boards: what was agreed should be bid, and when

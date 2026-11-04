@@ -34,7 +34,7 @@ export const boardOf = (deal) => deal.source ?? deal.id;
 // Every problem in the lessons, each with its deal and the seat that calls.
 export function flatten(lessons) {
   return lessons.flatMap((lesson) =>
-    lesson.deals.flatMap((deal) =>
+    lesson.deals.filter((deal) => !deal.setAside).flatMap((deal) =>
       deal.problems.map((problem) => ({
         id: problem.id,
         lesson: lesson.lesson,
