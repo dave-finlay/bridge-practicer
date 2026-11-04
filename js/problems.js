@@ -13,7 +13,7 @@ export const ORIGINS = {
     name: 'Lessons',
     files: ['stayman', 'texas', 'negative-doubles', 'nmf', 'jacoby-2nt', 'rkcb', 'control-bids', 'jacoby'],
   },
-  club: { name: 'Club', files: ['alpine-2026-10-27'] },
+  club: { name: 'Club', files: ['alpine-2026-10-27', 'alpine-2026-11-03'] },
   teachers: { name: 'Teachers', files: ['too-strong', 'cuebids'] },
 };
 
@@ -36,6 +36,7 @@ export const TOPICS = {
   'control-bids': 'Control bids',
   'too-strong': 'Too strong to overcall',
   cuebids: 'Cuebids',
+  'level-of-fit': 'Level of fit',
   general: 'General bidding',
 };
 

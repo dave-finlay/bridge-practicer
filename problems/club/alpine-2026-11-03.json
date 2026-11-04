@@ -1,0 +1,158 @@
+{
+  "title": "Alpine Club, 3 Nov 2026",
+  "source": "Session review, submitted through ~/context/bridge/practicer",
+  "deals": [
+    {
+      "id": "club-2026-11-03-alpine-1",
+      "source": "Alpine Club 2026-11-03, board 1",
+      "board": 1,
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "N": "6.AQJ432.84.AJT5",
+        "E": "AQ9872.8.KJ53.K2",
+        "S": "54.T975.QT92.964",
+        "W": "KJT3.K6.A76.Q873"
+      },
+      "auction": ["1H", "1S", "2H", "3H", "4H", "4S", "P", "P", "5H", "P", "P", "X", "P", "P", "P"],
+      "atTheTable": "1♥–(1♠)–2♥–(3♠)–4♥–(4♠)–P–(P)–5♥–(5♠), passed out: 5♠ by East one down, −50 for 2 of 10 MPs. West meant 3♠ as a limit raise, but East couldn't tell how strong it was. Most tables made 4♠ for +420 or +450; one EW pair in the Open section doubled 5♥ for +500 (three down double dummy).",
+      "agreed": "Agreed 2026-11-04: when advancing an overcall, a jump raise follows the Law of Total Tricks (weak, under 10 points), and a cuebid of opener's suit shows 3+ support and a good hand, about 10-11+ (a limit raise or better). West cuebids 3♥ and then bids game, so East knows we have the balance of the points. When they bid 5♥, East and West use judgment (we don't play forcing passes); here doubling was +500.",
+      "reviewNotes": [
+        "Only West's 3♥ is drilled. East's call over 5♥ was a judgment call (a singleton heart argues for bidding on; we don't play forcing passes), so it isn't drilled.",
+        "Suggested tag: advancing-overcalls (or cuebid)."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-03-alpine-1a",
+          "at": 3,
+          "answer": "3H",
+          "tags": ["cuebids"],
+          "explanation": "Partner overcalled 1♠, showing five or more spades and 8+ points, and South raised hearts. You have four spades and 13 HCP, plus 1 for the doubleton heart: game values opposite most overcalls. Show a good raise by cuebidding opener's suit: 3♥ promises 3+ spades and about 10-11+ points (a limit raise or better). If partner signs off in 3♠ with a minimum, you still bid 4♠. Either way partner knows the hand is ours, which matters if they bid on.",
+          "whyNot": {
+            "3S": "This was the call at the table. A jump raise of an overcall is preemptive: four trumps and a weak hand. Partner can't tell you have 13 points, so later decisions, like doubling 5♥, become guesses.",
+            "2S": "A single raise is competitive, an eight-card fit and under 10 points. You have far too much.",
+            "4S": "A direct jump to game can also be preemptive (five trumps, weak), so it doesn't tell partner the hand is ours. Cuebid first, then bid game."
+          }
+        }
+      ]
+    },
+    {
+      "id": "club-2026-11-03-alpine-16",
+      "source": "Alpine Club 2026-11-03, board 16",
+      "board": 16,
+      "dealer": "W",
+      "vul": "EW",
+      "hands": {
+        "N": "KT972.J54.AT7.82",
+        "E": "A.976.Q94.AKJ765",
+        "S": "8654.AQ32.K6532.",
+        "W": "QJ3.KT8.J8.QT943"
+      },
+      "auction": ["P", "P", "1C", "1D", "2C", "2S", "3C", "3S", "4C", "P", "P", "P"],
+      "atTheTable": "P–P–1♣–(1♦)–2♣–(2♠)–3♣–(3♠), passed out: 3♠ by North made, −140 for 1.5 of 10 MPs. In our section four EW pairs scored +130 in clubs (8.5 of 10). Double dummy, 4♣ makes and so does their 4♠.",
+      "agreed": "Agreed 2026-11-04: use the Law of Total Tricks in competitive auctions. We have eleven clubs (West's 2♣ raise promised five; East's competitive 3♣ showed six), so West competes to 4♣ over 3♠. Dave notes it was still a judgment call: vulnerable, a flat 9 HCP and soft honours in their suits argued for defending, and 4♠ also makes.",
+      "reviewNotes": [
+        "The auction assumes NS stop over 4♣. Double dummy, 4♠ makes ten tricks, so NS could profitably bid on.",
+        "Strict Law says eleven trumps allows the 5 level, but 4♣ is enough to outbid 3♠, and 5♣ is one down double dummy."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-03-alpine-16a",
+          "at": 8,
+          "answer": "4C",
+          "tags": ["level-of-fit"],
+          "explanation": "Count trumps first. Your 2♣ raise promised five clubs, and partner's 3♣, bid again in competition, shows six: eleven between you. The Law of Total Tricks says to compete to the level of your trump count, so eleven trumps would allow the five level. Then adjust: your hand is flat, your ♠QJ are soft values in their suit, and you're vulnerable against not. That takes you down a level, but 4♣ is still there, and it outbids 3♠. If 4♣ fails, they were probably making 3♠: passing is likely to cost −140 or more, while 4♣ is most likely +130, and even one down undoubled (−100) is better.",
+          "acceptable": {
+            "P": "A judgment call: you're vulnerable, your hand is flat and your ♠QJ and ♥KT are soft values in their suits, all of which argue for defending. It cost here: −140 for 1.5 of 10."
+          },
+          "whyNot": {
+            "X": "3♠ makes ten tricks double dummy, so doubled it's −630. With eleven trumps of our own, we'd rather declare.",
+            "5C": "More than you need: 4♣ already outbids 3♠, and after adjusting down for your flat hand the five level is too high. Here it's one down double dummy."
+          }
+        }
+      ]
+    },
+    {
+      "id": "club-2026-11-03-alpine-19",
+      "source": "Alpine Club 2026-11-03, board 19",
+      "board": 19,
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "N": "43.KJT8.A9874.K8",
+        "E": "AK8.A9764.J53.AQ",
+        "S": "QJ52.Q3.KQ6.T976",
+        "W": "T976.52.T2.J5432"
+      },
+      "auction": ["P", "P", "1D", "1H", "X", "P", "1S", "1N", "2S", "P", "P", "X", "P", "P", "P"],
+      "atTheTable": "P–P–(1♦)–1♥–(X)–P–(1♠)–1NT–(2♠), passed out: 2♠ by North made eight tricks, −110 for 4 of 10 MPs. Double dummy, 2♠ takes only six tricks: doubled, two down for +300, a top; undoubled +100, about 7.5 of 10. East–West have nowhere to play: East takes five tricks in hearts or notrump.",
+      "agreed": "Agreed 2026-11-04: with 17+ and a five-card suit, too strong for a simple overcall (about 8-17), double first and bid the suit next. Once East has shown a strong hand, a double of their partscore is for penalty, and East, with 18 and ♠AK8 over the declarer, doubles 2♠.",
+      "reviewNotes": [
+        "New tag: 'too-strong-to-overcall' (Dave asked for this category). Not in the app's existing tag list.",
+        "The auction is the one at the table plus East's double of 2♠, so problem b can be shown. Problem a's answer (X) differs from the auction's 1♥; see its answerNote. After 1♦–X the auction would go differently, and East–West can't make anything (five tricks in hearts or notrump double dummy), so the gain on this deal comes from the double of 2♠, not from the first call.",
+        "Our lessons say to overcall 1NT with 15-18 balanced and a stopper (Doubleton 2026-09-30, board 1). East is 5-3-3-2 with 18, so 1NT is listed as acceptable; ♦J53 is a thin stopper.",
+        "The table auction is from Dave's memory (2026-11-04); the bid recorder had it differently."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-03-alpine-19a",
+          "at": 3,
+          "answer": "X",
+          "answerNote": "At the table East overcalled 1♥; the auction shown continues from that.",
+          "tags": ["too-strong"],
+          "explanation": "You have 18 HCP and five hearts. A simple overcall shows about 8-17, so 1♥ would undersell the hand: partner, expecting a modest overcall, will pass with a weak hand and never know you have 18. Double first, then bid hearts at your next turn: double-then-suit shows a hand too strong to overcall, 17+ with a good five-card suit.",
+          "acceptable": {
+            "1N": "With 15-18 balanced and a stopper, a 1NT overcall describes the hand in one bid. Your 5-3-3-2 is balanced, but ♦J53 is a thin stopper in their suit."
+          },
+          "whyNot": {
+            "1H": "The call at the table. It shows 8-17, so partner can't tell you have 18, and a later decision, like doubling them, is left to you alone."
+          }
+        },
+        {
+          "id": "club-2026-11-03-alpine-19b",
+          "at": 11,
+          "answer": "X",
+          "tags": ["too-strong"],
+          "explanation": "You've shown a strong balanced hand with 1NT, and partner has passed twice, so the strength is yours. They're in a 4-2 spade fit at best: you hold ♠AK8 sitting over North, the declarer, and partner may have length too. With 18 HCP and their trumps behind declarer, double for penalty. Here it's two down, +300.",
+          "whyNot": {
+            "P": "The call at the table. 2♠ made eight tricks, −110 for 4 of 10; doubled, it goes two down double dummy for a top.",
+            "3H": "You're vulnerable, and partner's passes show almost nothing. Double dummy you take five tricks in hearts; your values are worth more on defence."
+          }
+        }
+      ]
+    },
+    {
+      "id": "club-2026-11-03-alpine-21",
+      "source": "Alpine Club 2026-11-03, board 21",
+      "board": 21,
+      "dealer": "N",
+      "vul": "NS",
+      "hands": {
+        "N": "A.A954.AJT9643.Q",
+        "E": "JT763.K8.85.AKT6",
+        "S": "Q842.QJT763.KQ.8",
+        "W": "K95.2.72.J975432"
+      },
+      "auction": ["1D", "1S", "2H", "2S", "4H", "P", "P", "4S", "X", "P", "P", "P"],
+      "atTheTable": "(1♦)–1♠–(2♥)–2♠–(4♥), passed out: 4♥ by South made eleven tricks, −650 for 2 of 10 MPs. Double dummy, 4♠ by EW takes eight tricks: doubled, two down for −300, about 7 of 10 in our section. Par is 5♠ doubled three down, −500.",
+      "agreed": "Agreed 2026-11-04, as part of playing to the level of the fit: at favourable vulnerability, with a fit, shape and little defence, West saves in 4♠ over their vulnerable 4♥. By the Law of Total Tricks, our eight spades and their long hearts point to 4♠ doubled going two or three down, −300 or −500, both better than −650.",
+      "reviewNotes": [
+        "The auction assumes North doubles 4♠. If NS bid 5♥ instead, it also makes eleven tricks (−650), so the save costs nothing.",
+        "East's pass of 4♥ is right (♣AK and ♥K are real defence) and isn't drilled. We don't play forcing passes, so East's pass doesn't ask West to bid; West saves on their own hand."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-03-alpine-21a",
+          "at": 7,
+          "answer": "4S",
+          "tags": ["level-of-fit"],
+          "explanation": "They're vulnerable and you're not, and they've bid game. Your hand has almost no defence (4 HCP), a singleton heart and seven clubs. Partner's overcall showed five spades, so you have an eight-card fit. By the Law of Total Tricks, if they make ten or eleven tricks in hearts, you should take about seven or eight in spades: 4♠ doubled is two or three down, −300 or −500, both cheaper than their −620 or −650. If they bid on to 5♥, you've lost nothing. Partner, with real defence, rightly passed; you're the one who knows your hand won't beat 4♥.",
+          "whyNot": {
+            "P": "The call at the table. With almost no defence, you let them score their vulnerable game: −650 for 2 of 10.",
+            "5C": "Partner never showed clubs, so you can't know of the fit, and it's a level higher. Here it happens to take eight tricks too, but doubled that's −500, worse than 4♠'s −300."
+          }
+        }
+      ]
+    }
+  ]
+}
