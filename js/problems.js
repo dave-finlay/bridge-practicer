@@ -14,7 +14,7 @@ export const ORIGINS = {
     files: ['stayman', 'texas', 'negative-doubles', 'nmf', 'jacoby-2nt', 'rkcb', 'control-bids', 'jacoby'],
   },
   club: { name: 'Club', files: ['alpine-2026-10-27'] },
-  teachers: { name: 'Teachers', files: [] },
+  teachers: { name: 'Teachers', files: ['too-strong', 'cuebids'] },
 };
 
 // Every problem file's path, with its origin.

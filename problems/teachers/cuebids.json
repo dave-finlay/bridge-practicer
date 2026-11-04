@@ -1,0 +1,92 @@
+{
+  "title": "Cuebids",
+  "source": "The Bridge Teachers, YouTube",
+  "deals": [
+    {
+      "id": "bt-cuebid-board-8",
+      "source": "The Bridge Teachers, cuebid video, board 8 (1♥–(2♦))",
+      "board": 8,
+      "dealer": "W",
+      "vul": "None",
+      "hands": {
+        "N": "Q98.KJ965.K7.K94",
+        "E": "42.74.AJ863.Q865",
+        "S": "AK73.A32.94.AT73",
+        "W": "JT65.QT8.QT52.J2"
+      },
+      "auction": ["P", "1H", "2D", "3D", "P", "3H", "P", "4H", "P", "P", "P"],
+      "reviewNotes": [
+        "Hands and auction transcribed from the video's screenshots; the video's title is still to confirm. Double dummy, 4♥ makes 11 tricks and there's no slam.",
+        "Responder's cuebid of the overcaller's suit: agreed 2026-11-04."
+      ],
+      "problems": [
+        {
+          "id": "bt-cuebid-board-8a",
+          "at": 3,
+          "answer": "3D",
+          "tags": ["cuebids"],
+          "explanation": "Partner opened 1♥ and East overcalled 2♦. You have three hearts and 16 HCP: game values, maybe more. Cuebid the overcaller's suit: 3♦ shows support for partner's suit and a limit raise or better. Partner rebids 3♥ with a minimum, and you go on to game.",
+          "whyNot": {
+            "2H": "A simple raise shows about 6-10. You have 16.",
+            "4H": "A jump to game over an overcall is weak and distributional, to make it hard for the opponents. Partner would never look for slam with extras.",
+            "X": "A negative double shows four spades. You know you have a heart fit, so show it."
+          }
+        },
+        {
+          "id": "bt-cuebid-board-8b",
+          "at": 7,
+          "answer": "4H",
+          "tags": ["cuebids"],
+          "explanation": "Partner's 3♥ shows a minimum opening, with nothing extra to say. Your cuebid promised a limit raise or better, and with 16 HCP you have game opposite any opening: bid 4♥. With 12-14 opposite your 16, slam is out of reach.",
+          "whyNot": {
+            "P": "Your 3♦ showed a limit raise or better, and with 16 you have more than a limit raise. Game opposite any opening.",
+            "4N": "Partner has shown a minimum: 12-14 with your 16 isn't enough for slam."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt-cuebid-2024-12-23",
+      "source": "The Bridge Teachers, “Cue bid 12.23.24”, board 8",
+      "board": 8,
+      "dealer": "W",
+      "vul": "None",
+      "hands": {
+        "N": "AK9832.3.T87.JT5",
+        "E": "J7.QJ6.AQ9643.98",
+        "S": "T65.T854.J.AKQ76",
+        "W": "Q4.AK972.K52.432"
+      },
+      "auction": ["1H", "1S", "2S", "3H", "4H", "4S", "P", "P", "P"],
+      "reviewNotes": [
+        "Hands and auction transcribed from the video's screenshots. Double dummy, NS take 11 tricks in spades and EW's 4♥ is one down.",
+        "Two cuebids: East's 2♠ (responder's, in the overcaller's suit, agreed 2026-11-04) and South's 3♥ (advancer's, in the opener's suit, agreed 2026-11-04)."
+      ],
+      "problems": [
+        {
+          "id": "bt-cuebid-2024-12-23a",
+          "at": 2,
+          "answer": "2S",
+          "tags": ["cuebids"],
+          "explanation": "Partner opened 1♥ and North overcalled 1♠. You have three hearts and 10 HCP with a good six-card diamond suit: a limit raise in hearts. Cuebid the overcaller's suit: 2♠ shows heart support and a limit raise or better, so partner knows how strong the hand is when the bidding gets competitive.",
+          "whyNot": {
+            "2H": "A simple raise shows about 6-10 and a minimum hand. With 10 HCP and good diamonds, you're worth a limit raise.",
+            "3H": "A jump raise in competition is weak, a preempt. Cuebid to show a good raise."
+          }
+        },
+        {
+          "id": "bt-cuebid-2024-12-23b",
+          "at": 3,
+          "answer": "3H",
+          "tags": ["cuebids"],
+          "explanation": "Partner overcalled 1♠ and the opponents have shown a heart fit. You have three spades, 10 HCP and a singleton diamond. Cuebid opener's suit: 3♥ shows support for partner's spades and a limit raise or better. Partner then knows the hand is ours and can judge whether to compete to 4♠.",
+          "whyNot": {
+            "2N": "Not with three spades: show the fit first.",
+            "3S": "A jump raise of an overcall is weak: four trumps and under 10 points. You have the values for a limit raise.",
+            "4S": "A direct jump to game is preemptive too. Cuebid first, so partner knows your strength."
+          }
+        }
+      ]
+    }
+  ]
+}

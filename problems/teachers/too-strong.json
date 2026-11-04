@@ -1,0 +1,93 @@
+{
+  "title": "Too strong to overcall",
+  "source": "The Bridge Teachers, YouTube",
+  "deals": [
+    {
+      "id": "bt-too-strong-2024-06-17",
+      "source": "The Bridge Teachers, “Too Strong to Overcall 6.17.24”, board 8",
+      "board": 8,
+      "dealer": "W",
+      "vul": "None",
+      "hands": {
+        "N": "JT98732.75.J8.Q8",
+        "E": "K5.2.A9432.AJT96",
+        "S": "AQ64.AKQ96.KQ.72",
+        "W": ".JT843.T765.K543"
+      },
+      "auction": ["P", "P", "1D", "X", "P", "1S", "P", "3S", "P", "P", "P"],
+      "reviewNotes": [
+        "Hands and auction transcribed from the video's screenshots. Double dummy, NS take 9 tricks in spades: 3♠ makes and 4♠ is one down."
+      ],
+      "problems": [
+        {
+          "id": "bt-too-strong-2024-06-17a",
+          "at": 3,
+          "answer": "X",
+          "tags": ["too-strong"],
+          "explanation": "You have 20 HCP and five good hearts. A simple overcall shows about 8-17, so 1♥ would undersell the hand: partner would pass with a few points, and you'd never show your strength. Double first, then show the rest at your next turn, by raising partner's suit if it fits or bidding your hearts. Double-then-bid shows a hand too strong to overcall.",
+          "whyNot": {
+            "1H": "A simple overcall shows about 8-17. Partner, with a weak hand and short hearts, would pass, and you'd never get to show 20 points.",
+            "1N": "A 1NT overcall shows 15-18 balanced. You have 20, and a five-card suit worth showing."
+          }
+        },
+        {
+          "id": "bt-too-strong-2024-06-17b",
+          "at": 7,
+          "answer": "3S",
+          "tags": ["too-strong"],
+          "explanation": "Partner had to answer your double, so 1♠ shows four or more spades and anything from 0 to about 8 points. You have four-card support and 20 HCP. Because you doubled first, a raise now shows a strong hand, not a minimum takeout double: jump to 3♠ to invite game. Partner bids 4♠ with a few useful points and passes with nothing.",
+          "whyNot": {
+            "2S": "After a takeout double, a simple raise shows a minimum double, about 13-16. You have 20.",
+            "4S": "Partner's 1♠ was forced and may hold nothing. Here it's one down double dummy: 3♠ is the limit opposite this hand.",
+            "2H": "You have a spade fit. Showing it describes your hand better than a second suit."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt-too-strong-2025-02-10",
+      "source": "The Bridge Teachers, “Too Strong to Overcall 2.10.25”, board 1",
+      "board": 1,
+      "dealer": "E",
+      "vul": "None",
+      "unusualSetup": "The video deals board 1 with East as dealer.",
+      "hands": {
+        "N": "6.AT954.KQ86.752",
+        "E": "Q8.KQJ72.T.QT643",
+        "S": "AKJT9432.6.AJ5.8",
+        "W": "75.83.97432.AKJ9"
+      },
+      "auction": ["1H", "X", "P", "1N", "P", "4S", "P", "5H", "P", "6S", "P", "P", "P"],
+      "reviewNotes": [
+        "Hands and auction transcribed from the video's screenshots. Double dummy, 6♠ makes.",
+        "South has 13 HCP, so this goes beyond the agreement's '17+': the hand is too strong by playing tricks (eight spades to the AKJ10, about nine tricks), not points.",
+        "North's 5♥ is a control bid in the opponents' suit, the idea set aside on control-3, so only South's first two calls are drilled."
+      ],
+      "problems": [
+        {
+          "id": "bt-too-strong-2025-02-10a",
+          "at": 1,
+          "answer": "X",
+          "tags": ["too-strong"],
+          "explanation": "Only 13 HCP, but eight spades to the AKJ10 and the ♦A: about nine tricks on your own. Jump overcalls are weak, and a simple 1♠ overcall shows an ordinary hand, so neither tells partner that a few cards from them make game or more. Double first, then bid spades: double-then-suit shows a hand too strong to overcall.",
+          "whyNot": {
+            "1S": "A simple overcall shows about 8-17 and an ordinary hand. Partner will pass with a few points, never guessing you can take nine tricks.",
+            "2S": "A jump overcall is weak: a long suit and little else.",
+            "4S": "A jump to game in an overcall is preemptive: long spades and a weak hand. Partner will pass with the ♥A and ♦KQ, and 6♠ makes."
+          }
+        },
+        {
+          "id": "bt-too-strong-2025-02-10b",
+          "at": 5,
+          "answer": "4S",
+          "tags": ["too-strong"],
+          "explanation": "Partner's 1NT answers your double with about 6-10 points and a heart stopper. Now show the spades. Because you doubled first, bidding 4♠ shows a strong hand that can make game on its own, not a weak preempt, so partner knows the hand is worth more and can look for slam with good cards.",
+          "whyNot": {
+            "2S": "After doubling, a simple bid of your suit shows a good hand, but not one that makes game opposite almost nothing. You have about nine tricks.",
+            "3N": "With eight spades and a singleton heart, play in spades."
+          }
+        }
+      ]
+    }
+  ]
+}
