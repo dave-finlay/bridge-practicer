@@ -8,9 +8,10 @@
 // kept, so only new or changed deals are solved.
 
 import { execFileSync } from 'node:child_process';
-import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { SEATS, STRAINS } from '../js/auction.js';
+import { problemFiles } from '../js/problems.js';
 
 const root = new URL('..', import.meta.url).pathname;
 const problemsDir = join(root, 'problems');
@@ -43,10 +44,10 @@ function buildSolver() {
 // "N:<north> <east> <south> <west>", as DDS takes it.
 const pbn = (deal) => `N:${SEATS.map((seat) => deal.hands[seat]).join(' ')}`;
 
-const deals = readdirSync(problemsDir)
-  .filter((file) => file.endsWith('.json') && file !== 'dd.json')
+const deals = problemFiles()
+  .map(({ path }) => path)
   .sort()
-  .flatMap((file) => JSON.parse(readFileSync(join(problemsDir, file), 'utf8')).deals);
+  .flatMap((path) => JSON.parse(readFileSync(join(root, path), 'utf8')).deals);
 
 const old = existsSync(outFile) ? JSON.parse(readFileSync(outFile, 'utf8')) : {};
 const todo = deals.filter((deal) => old[deal.id]?.hands !== pbn(deal));
@@ -66,7 +67,7 @@ if (todo.length) {
   });
 }
 
-// Deals in the lesson files, in order. Deals no longer there are dropped.
+// Deals in the problem files, in order. Deals no longer there are dropped.
 const table = Object.fromEntries(deals.map((deal) => [deal.id, results[deal.id] ?? old[deal.id]]));
 // Innermost objects and lists on one line, so the file stays readable.
 const text = JSON.stringify(table, null, 2)

@@ -17,8 +17,10 @@ built is in [PLAN.md](PLAN.md).
 
 ## Problems
 
-Problems live in `problems/<lesson>.json`, one file per lesson. Each
-file holds the lesson's deals, and each deal holds one or more problems:
+Problems live in `problems/<origin>/<file>.json`, by where the deals
+come from: `lessons/` (one file per lesson handout), `club/` (one per
+club session reviewed) and `teachers/` (boards from other teachers, such
+as videos). Each file holds deals, and each deal holds one or more problems:
 the point in the auction to stop at, the answer, an explanation, and
 notes on tempting wrong calls. [PLAN.md](PLAN.md) describes the format.
 

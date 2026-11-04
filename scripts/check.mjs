@@ -1,4 +1,5 @@
-// Checks every problem file in problems/ and reports anything wrong.
+// Checks every problem file in problems/<origin>/ and reports anything
+// wrong.
 // Usage: node scripts/check.mjs
 
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
@@ -7,7 +8,7 @@ import {
   SEATS, dealerForBoard, isComplete, legalCalls, seatOfCall, sideOf, vulnerabilityForBoard,
 } from '../js/auction.js';
 import { RANKS, SUITS, hcp, parseHand } from '../js/hands.js';
-import { LESSONS } from '../js/problems.js';
+import { ORIGINS, problemFiles } from '../js/problems.js';
 
 const VULNERABILITIES = ['None', 'NS', 'EW', 'All'];
 const isLegal = (dealer, calls, call) => legalCalls(dealer, calls).has(call);
@@ -21,9 +22,21 @@ let problemCount = 0;
 // Double dummy results, from scripts/dd.mjs.
 const dd = JSON.parse(readFileSync(join(dir, 'dd.json'), 'utf8'));
 
-for (const file of readdirSync(dir).filter((f) => f.endsWith('.json') && f !== 'dd.json').sort()) {
-  const lesson = JSON.parse(readFileSync(join(dir, file), 'utf8'));
-  for (const deal of lesson.deals) {
+// Every file in an origin's folder must be listed in ORIGINS, or the app
+// won't load it.
+const root = new URL('../', import.meta.url).pathname;
+const files = problemFiles().map(({ path }) => path);
+for (const origin of Object.keys(ORIGINS)) {
+  if (!existsSync(join(dir, origin))) continue;
+  for (const name of readdirSync(join(dir, origin)).filter((f) => f.endsWith('.json'))) {
+    const file = `problems/${origin}/${name}`;
+    if (!files.includes(file)) errors.push(`${file} isn't listed in ORIGINS in js/problems.js`);
+  }
+}
+
+for (const file of files) {
+  const { deals } = JSON.parse(readFileSync(join(root, file), 'utf8'));
+  for (const deal of deals) {
     dealCount++;
     const where = `${file} ${deal.id}`;
     const fail = (message) => errors.push(`${where}: ${message}`);
@@ -102,12 +115,11 @@ for (const file of readdirSync(dir).filter((f) => f.endsWith('.json') && f !== '
 }
 
 // The service worker keeps every file the app loads for offline use.
-const root = new URL('../', import.meta.url).pathname;
 const swFiles = new Set(readFileSync(join(root, 'sw.js'), 'utf8').match(/^const FILES = \[([^\]]*)\]/m)[1]
   .match(/'[^']*'/g).map((quoted) => quoted.slice(1, -1)));
 const needed = [
   ...readdirSync(join(root, 'js')).filter((f) => f.endsWith('.js')).map((f) => `js/${f}`),
-  ...LESSONS.map((lesson) => `problems/${lesson}.json`),
+  ...files,
   'problems/dd.json',
 ];
 for (const file of needed) {

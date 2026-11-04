@@ -1,13 +1,13 @@
 // Builds review/index.html: every problem as the app will ask it, with the
 // answer, explanation and full deal, for checking before they go in the app.
-// Usage: node scripts/build-review.mjs [lesson …]   (default: every lesson)
+// Usage: node scripts/build-review.mjs [file or origin …]   (default: all)
 
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { alertsFor } from '../js/alerts.js';
 import { seatOfCall } from '../js/auction.js';
 import { SUITS, SUIT_SYMBOLS, formatCall, formatHolding, hcp, parseHand } from '../js/hands.js';
-import { LESSONS } from '../js/problems.js';
+import { problemFiles } from '../js/problems.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const SEAT_NAMES = { N: 'North', E: 'East', S: 'South', W: 'West' };
@@ -131,9 +131,13 @@ function dealHtml(deal) {
   </section>`;
 }
 
-// The lessons named on the command line (npm run review -- stayman), or all.
-const names = process.argv.length > 2 ? process.argv.slice(2) : LESSONS;
-const lessons = names.map((name) => JSON.parse(readFileSync(join(root, 'problems', `${name}.json`), 'utf8')));
+// The files named on the command line, by file name or origin (npm run
+// review -- stayman, or -- club), or all.
+const names = process.argv.slice(2);
+const paths = problemFiles()
+  .filter(({ origin, path }) => !names.length || names.includes(origin) || names.some((name) => path.endsWith(`/${name}.json`)))
+  .map(({ path }) => path);
+const lessons = paths.map((path) => JSON.parse(readFileSync(join(root, path), 'utf8')));
 const problemCount = lessons.reduce((n, l) => n + l.deals.reduce((m, d) => m + d.problems.length, 0), 0);
 const flagged = lessons.flatMap((l) => l.deals.filter((d) => d.setAside || d.reviewNotes?.length || d.unusualSetup));
 

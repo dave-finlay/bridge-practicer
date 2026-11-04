@@ -9,9 +9,9 @@
 //
 // When adding a file to the app, add it to FILES and bump the version in
 // CACHE, so the new list is fetched in full. `npm run check` fails if a
-// lesson file or a script is missing from FILES.
+// problem file or a script is missing from FILES.
 
-const CACHE = 'practicer-v11';
+const CACHE = 'practicer-v12';
 const FILES = [
   './',
   'index.html',
@@ -24,16 +24,16 @@ const FILES = [
   'js/preview.js',
   'js/problems.js',
   'js/store.js',
-  'problems/club.json',
-  'problems/control-bids.json',
+  'problems/club/alpine-2026-10-27.json',
+  'problems/lessons/control-bids.json',
+  'problems/lessons/jacoby.json',
+  'problems/lessons/jacoby-2nt.json',
+  'problems/lessons/negative-doubles.json',
+  'problems/lessons/nmf.json',
+  'problems/lessons/rkcb.json',
+  'problems/lessons/stayman.json',
+  'problems/lessons/texas.json',
   'problems/dd.json',
-  'problems/jacoby-2nt.json',
-  'problems/jacoby.json',
-  'problems/negative-doubles.json',
-  'problems/nmf.json',
-  'problems/rkcb.json',
-  'problems/stayman.json',
-  'problems/texas.json',
   'icons/icon-180.png',
   'icons/icon-192.png',
   'icons/icon-512.png',

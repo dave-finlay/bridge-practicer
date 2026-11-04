@@ -1,17 +1,30 @@
-// Problems: flattening the lesson files into a list, grading an answer,
+// Problems: flattening the problem files into a list, grading an answer,
 // keeping progress, and picking the problems for a session. No UI code.
 //
-// Each lesson file (problems/<lesson>.json) holds deals, and each deal
-// holds problems. See PLAN.md for the format.
+// Each problem file holds deals, and each deal holds problems. See
+// PLAN.md for the format.
 
 import { seatOfCall } from './auction.js';
 
-// The lesson files the app loads, in problems/.
-export const LESSONS = ['stayman', 'texas', 'negative-doubles', 'nmf', 'jacoby-2nt', 'rkcb', 'control-bids', 'jacoby', 'club'];
+// Where the deals come from, in the order the home screen lists them, and
+// the files the app loads from each: problems/<origin>/<file>.json.
+export const ORIGINS = {
+  lessons: {
+    name: 'Lessons',
+    files: ['stayman', 'texas', 'negative-doubles', 'nmf', 'jacoby-2nt', 'rkcb', 'control-bids', 'jacoby'],
+  },
+  club: { name: 'Club', files: ['alpine-2026-10-27'] },
+  teachers: { name: 'Teachers', files: [] },
+};
 
-// The names of the conventions that problems are tagged with, in the
-// order the home screen lists them.
-export const CONVENTIONS = {
+// Every problem file's path, with its origin.
+export const problemFiles = () => Object.entries(ORIGINS).flatMap(([origin, { files }]) =>
+  files.map((file) => ({ origin, path: `problems/${origin}/${file}.json` })));
+
+// The names of the topics that problems are tagged with, in the order the
+// home screen lists them: the lessons' conventions, then agreements
+// practised from other deals, then general bidding for the rest.
+export const TOPICS = {
   stayman: 'Stayman',
   jacoby: 'Jacoby transfers',
   texas: 'Texas transfers',
@@ -21,23 +34,27 @@ export const CONVENTIONS = {
   'jacoby-2nt': 'Jacoby 2NT',
   rkcb: 'RKCB',
   'control-bids': 'Control bids',
-  club: 'Club hands',
+  'too-strong': 'Too strong to overcall',
+  cuebids: 'Cuebids',
+  general: 'General bidding',
 };
 
-export const conventionName = (tag) => CONVENTIONS[tag] ?? tag;
+export const topicName = (tag) => TOPICS[tag] ?? tag;
 
 // The board a deal is. A club board can be in the problems twice, bid two
 // ways; both versions share a `source` and count as one board, since one
 // version's auction would give away the other's answers.
 export const boardOf = (deal) => deal.source ?? deal.id;
 
-// Every problem in the lessons, each with its deal and the seat that calls.
-export function flatten(lessons) {
-  return lessons.flatMap((lesson) =>
-    lesson.deals.filter((deal) => !deal.setAside).flatMap((deal) =>
+// Every problem in the files, each with its deal, its file's origin and
+// title, and the seat that calls. Each file is as loaded, plus `origin`.
+export function flatten(files) {
+  return files.flatMap((file) =>
+    file.deals.filter((deal) => !deal.setAside).flatMap((deal) =>
       deal.problems.map((problem) => ({
         id: problem.id,
-        lesson: lesson.lesson,
+        origin: file.origin,
+        title: file.title,
         deal,
         problem,
         seat: seatOfCall(deal.dealer, problem.at),
@@ -134,24 +151,30 @@ export function progressSummary(problems, progress) {
   };
 }
 
-// The conventions the problems test, in CONVENTIONS order with any others
+// The topics the problems test, in TOPICS order with any others
 // after, each with how many problems test it: [{ tag, name, count }].
-export function conventionsIn(problems) {
+export function topicsIn(problems) {
   const counts = new Map();
   for (const { problem } of problems) {
     for (const tag of problem.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1);
   }
-  const order = Object.keys(CONVENTIONS);
+  const order = Object.keys(TOPICS);
   const rank = (tag) => (order.includes(tag) ? order.indexOf(tag) : order.length);
   return [...counts.keys()]
     .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b))
-    .map((tag) => ({ tag, name: conventionName(tag), count: counts.get(tag) }));
+    .map((tag) => ({ tag, name: topicName(tag), count: counts.get(tag) }));
 }
 
 // The problems that test any of `tags`, or all of them if `tags` is empty.
 export function withTags(problems, tags) {
   if (!tags.length) return problems;
   return problems.filter(({ problem }) => problem.tags.some((tag) => tags.includes(tag)));
+}
+
+// The problems from `origin` ('lessons', 'club' or 'teachers'), or all of
+// them if `origin` is empty.
+export function fromOrigin(problems, origin) {
+  return origin ? problems.filter((item) => item.origin === origin) : problems;
 }
 
 // How many deals the problems come from: the most a session can hold.

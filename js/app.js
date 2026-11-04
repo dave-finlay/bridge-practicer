@@ -1,12 +1,13 @@
 // The app's screens and event handling.
 //
-// The home screen starts a session of 10 problems, optionally for
-// chosen conventions only. Each problem shows the problem screen: your
-// hand, the auction so far and a bidding box. Tapping a call selects it,
-// and Bid confirms it, so there's a moment to check. Then the feedback
-// screen grades the call and shows the whole deal. After the last problem
-// (or ✕ to stop early), the summary lists the answers, any of which can
-// be looked at again, and offers the missed ones as a new session.
+// The home screen starts a session of 10 problems, optionally from one
+// origin (lessons, club or teachers) or for chosen topics only. Each
+// problem shows the problem screen: your hand, the auction so far and a
+// bidding box. Tapping a call selects it, and Bid confirms it, so there's
+// a moment to check. Then the feedback screen grades the call and shows
+// the whole deal. After the last problem (or ✕ to stop early), the
+// summary lists the answers, any of which can be looked at again, and
+// offers the missed ones as a new session.
 //
 // Every answer is saved on the phone (js/store.js), and the progress
 // decides which problems come up: new ones first, then ones missed, then
@@ -17,8 +18,8 @@ import { alertsFor } from './alerts.js';
 import { BIDS, STRAINS, contract, isVulnerable, legalCalls, seatAfter } from './auction.js';
 import { SUITS, formatHolding, hcp, parseHand } from './hands.js';
 import {
-  LESSONS, boardOf, conventionName, conventionsIn, dealCount, flatten, grade, nextDue, pickSession,
-  progressSummary, readyNow, updateProgress, withTags,
+  ORIGINS, boardOf, dealCount, flatten, fromOrigin, grade, nextDue, pickSession, problemFiles,
+  progressSummary, readyNow, topicName, topicsIn, updateProgress, withTags,
 } from './problems.js';
 import { startPreview } from './preview.js';
 import { loadProgress, requestPersistence, saveAnswer } from './store.js';
@@ -26,7 +27,7 @@ import { loadProgress, requestPersistence, saveAnswer } from './store.js';
 const app = document.getElementById('app');
 
 const SESSION_SIZE = 10;
-// Where the home screen's choice of conventions is kept between visits.
+// Where the home screen's choice of origin and topics is kept between visits.
 const SETTINGS_KEY = 'bridge-practicer-settings';
 // Columns of the auction table, as on BBO and in the bid recorder.
 const TABLE_ORDER = ['W', 'N', 'E', 'S'];
@@ -52,22 +53,27 @@ let index = 0;
 let screen = 'loading'; // 'home', 'problem', 'feedback', 'review', 'summary', 'error'
 let selected = null; // the call tapped on the problem screen, not yet confirmed
 let answeredAt = 0;
-let tags = loadSettings().tags; // conventions chosen on the home screen; none means all
+// Chosen on the home screen: where the deals come from ('' for all), and
+// the topics (none means all).
+let { origin, tags } = loadSettings();
 
 // Settings are a convenience: if storage is unavailable, the defaults do.
 function loadSettings() {
   try {
     const settings = JSON.parse(localStorage.getItem(SETTINGS_KEY));
-    if (Array.isArray(settings?.tags)) return settings;
+    if (Array.isArray(settings?.tags)) return { origin: '', ...settings };
   } catch {}
-  return { tags: [] };
+  return { origin: '', tags: [] };
 }
 
 function saveSettings() {
   try {
-    localStorage.setItem(SETTINGS_KEY, JSON.stringify({ tags }));
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify({ origin, tags }));
   } catch {}
 }
+
+// The problems from the chosen origin and topics.
+const chosenPool = () => withTags(fromOrigin(problems, origin), tags);
 
 // Formatting
 
@@ -288,6 +294,13 @@ function doubleDummyHTML(deal) {
     <p>${par}</p>`;
 }
 
+// Where the board comes from: "Texas transfers lesson, board 6", or a
+// club or teacher's board's own `source`.
+function boardSource({ deal, title }) {
+  if (deal.source) return deal.source;
+  return `${title} lesson, ${deal.part ? `part ${deal.part}, ` : ''}board ${deal.board}`;
+}
+
 // After answering, Next goes on. Looking again from the summary
 // (`reviewing`), the button goes back to it.
 function renderFeedback(reviewing = false) {
@@ -321,10 +334,9 @@ function renderFeedback(reviewing = false) {
       <h2>Why ${callHTML(problem.answer)}</h2>
       <p>${proseHTML(problem.explanation)}</p>
       ${alternatives.map(([c, why]) => `<p><strong>Also fine: ${callHTML(c)}.</strong> ${proseHTML(why)}</p>`).join('')}
-      ${deal.atTheTable ? `<h2>At the club</h2>
-        <p class="hint">${escapeHTML(deal.source)}</p>
-        <p>${proseHTML(deal.atTheTable)}</p>` : ''}
+      ${deal.atTheTable ? `<h2>At the club</h2><p>${proseHTML(deal.atTheTable)}</p>` : ''}
       <h2>The whole board</h2>
+      <p class="hint">${escapeHTML(boardSource(item))}</p>
       <section class="auction">${auctionHTML(deal, seat, deal.auction, { highlight: problem.at })}</section>
       ${dealHTML(deal, seat)}
       ${doubleDummyHTML(deal)}
@@ -340,15 +352,15 @@ function renderFeedback(reviewing = false) {
 function renderSummary() {
   const right = session.filter(({ item, call }) => grade(item.problem, call) !== 'wrong').length;
   const missed = session.filter(({ item, call }) => grade(item.problem, call) === 'wrong').length;
-  // More challenges takes the same conventions, if any are ready.
-  const more = readyNow(withTags(problems, tags), progress).length;
+  // More challenges takes the same origin and topics, if any are ready.
+  const more = readyNow(chosenPool(), progress).length;
   const rows = session.map(({ item, call }, i) => {
     const result = grade(item.problem, call);
     const answer = result === 'best' ? '' : ` · answer ${callHTML(item.problem.answer)}`;
     return `<li class="${result}"><button data-review="${i}">
       <span class="mark" aria-hidden="true">${GRADES[result].icon}</span>
       <span class="result-text">
-        <small>${escapeHTML(conventionName(item.problem.tags[0]))}</small>
+        <small>${escapeHTML(topicName(item.problem.tags[0]))}</small>
         You bid ${callHTML(call)}${answer}
       </span>
       <span class="chevron" aria-hidden="true">›</span>
@@ -386,16 +398,25 @@ function whenText(time) {
   return new Date(time).toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
 }
 
-// The home screen: which conventions to practise, progress, and Start.
+// The home screen: where the deals come from, which topics to practise,
+// progress, and Start.
 function renderHome() {
-  const chip = (tag, name, count, on) =>
-    `<button class="chip${on ? ' on' : ''}" data-tag="${tag}" aria-pressed="${on}">${escapeHTML(name)}${count ? ` <small>${count}</small>` : ''}</button>`;
-  const chips = [
-    chip('', 'All', 0, !tags.length),
-    ...conventionsIn(problems).map(({ tag, name, count }) => chip(tag, name, count, tags.includes(tag))),
+  const chip = (data, name, count, on) =>
+    `<button class="chip${on ? ' on' : ''}" ${data} aria-pressed="${on}">${escapeHTML(name)}${count ? ` <small>${count}</small>` : ''}</button>`;
+  // Only origins with problems are offered.
+  const origins = [
+    chip('data-origin=""', 'All', 0, !origin),
+    ...Object.entries(ORIGINS)
+      .filter(([key]) => fromOrigin(problems, key).length)
+      .map(([key, { name }]) => chip(`data-origin="${key}"`, name, 0, origin === key)),
+  ].join('');
+  const topics = [
+    chip('data-tag=""', 'All', 0, !tags.length),
+    ...topicsIn(fromOrigin(problems, origin))
+      .map(({ tag, name, count }) => chip(`data-tag="${tag}"`, name, count, tags.includes(tag))),
   ].join('');
 
-  const pool = withTags(problems, tags);
+  const pool = chosenPool();
   const deals = dealCount(pool);
   // A session has at most one problem per deal, so fewer deals with a
   // problem ready than SESSION_SIZE means a shorter session.
@@ -410,8 +431,10 @@ function renderHome() {
       <p class="hint">Challenges from bridge lessons</p>
     </header>
     <section>
-      <h2>Conventions</h2>
-      <div class="chips">${chips}</div>
+      <h2>From</h2>
+      <div class="chips">${origins}</div>
+      <h2>Topics</h2>
+      <div class="chips">${topics}</div>
       <p class="hint">${pool.length} challenge${pool.length === 1 ? '' : 's'} from ${deals} deal${deals === 1 ? '' : 's'}. A set has at most one challenge from each deal. One you got right comes back the next day, then after longer and longer gaps.</p>
     </section>
     <section>
@@ -490,9 +513,14 @@ app.addEventListener('click', (event) => {
   const button = event.target.closest('button');
   if (!button || button.disabled) return;
 
-  const { call, action, tag, review } = button.dataset;
+  const { call, action, origin: newOrigin, tag, review } = button.dataset;
   if (call) {
     selected = call;
+  } else if (newOrigin !== undefined) {
+    // Topics with nothing from the new origin are dropped.
+    origin = newOrigin;
+    tags = tags.filter((t) => fromOrigin(problems, origin).some(({ problem }) => problem.tags.includes(t)));
+    saveSettings();
   } else if (tag !== undefined) {
     // "All" clears the choice; a convention toggles, and none left is all.
     tags = !tag ? [] : tags.includes(tag) ? tags.filter((t) => t !== tag) : [...tags, tag];
@@ -501,7 +529,7 @@ app.addEventListener('click', (event) => {
     index = Number(review);
     screen = 'review';
   } else if (action === 'start') {
-    startSession(withTags(problems, tags), SESSION_SIZE);
+    startSession(chosenPool(), SESSION_SIZE);
     return;
   } else if (action === 'cancel') {
     selected = null;
@@ -522,10 +550,10 @@ app.addEventListener('click', (event) => {
     startSession(missed, missed.length);
     return;
   } else if (action === 'again') {
-    startSession(withTags(problems, tags), SESSION_SIZE);
+    startSession(chosenPool(), SESSION_SIZE);
     return;
   } else if (action === 'home') {
-    // Home starts again from all conventions.
+    // Home starts again from all topics, keeping the origin.
     tags = [];
     saveSettings();
     screen = 'home';
@@ -541,13 +569,13 @@ document.addEventListener('click', (event) => {
 
 async function start() {
   try {
-    const lessons = await Promise.all(
-      LESSONS.map((lesson) => fetch(`problems/${lesson}.json`).then((response) => {
-        if (!response.ok) throw new Error(`${lesson}: ${response.status}`);
-        return response.json();
+    const files = await Promise.all(
+      problemFiles().map(({ origin, path }) => fetch(path).then((response) => {
+        if (!response.ok) throw new Error(`${path}: ${response.status}`);
+        return response.json().then((file) => ({ ...file, origin }));
       })),
     );
-    problems = flatten(lessons);
+    problems = flatten(files);
     // Without storage (e.g. a private window), progress lasts until the
     // page closes.
     progress = await loadProgress().catch((error) => {
@@ -557,8 +585,11 @@ async function start() {
     requestPersistence().catch(() => {});
     // Double dummy results are extra: the app works without them.
     dd = await fetch('problems/dd.json').then((response) => (response.ok ? response.json() : {})).catch(() => ({}));
-    // Forget conventions no longer in the problems.
-    tags = tags.filter((tag) => problems.some(({ problem }) => problem.tags.includes(tag)));
+    // "Club hands" was a topic before the club was an origin.
+    if (tags.includes('club')) origin = 'club';
+    // Forget origins and topics no longer in the problems.
+    if (!fromOrigin(problems, origin).length) origin = '';
+    tags = tags.filter((tag) => fromOrigin(problems, origin).some(({ problem }) => problem.tags.includes(tag)));
     // A problem id in the URL (e.g. #texas-6d) skips the home screen and
     // puts that problem first, for trying out a particular problem.
     const wanted = problems.find((item) => `#${item.id}` === location.hash);

@@ -1,7 +1,6 @@
 {
-  "lesson": "club",
-  "title": "Club hands",
-  "source": "Session reviews of club games, submitted through ~/context/bridge/practicer",
+  "title": "Alpine Club, 27 Oct 2026",
+  "source": "Session review, submitted through ~/context/bridge/practicer",
   "deals": [
     {
       "id": "club-2026-10-27-alpine-2",
@@ -28,7 +27,7 @@
           "id": "club-2026-10-27-alpine-2a",
           "at": 6,
           "answer": "P",
-          "tags": ["club"],
+          "tags": ["general"],
           "explanation": "You opened 1♦ with a minimum 14. North's double shows a good hand, and partner's pass (no redouble) shows a weak one. South has answered the double, so you aren't obliged to bid again. Pass: you've already described your hand, and a free bid would show extra values.",
           "whyNot": {
             "1N": "This was the call at the table. A free 1NT shows more than a minimum, and opposite a known weak partner you can't make it: it went three down, and North, with 17 HCP, should have doubled for −500.",
@@ -61,7 +60,7 @@
           "id": "club-2026-10-27-alpine-10a",
           "at": 6,
           "answer": "4H",
-          "tags": ["club"],
+          "tags": ["general"],
           "explanation": "Partner opened 1♥ and rebid 2♥, showing six hearts and a minimum. Your ♥J52 makes a nine-card fit, so count dummy points: 11 HCP plus 3 for the singleton diamond is 14. That's an opening hand opposite an opening bid, so bid game: 4♥.",
           "whyNot": {
             "3H": "This was the call at the table. 3♥ invites, and partner passed with a minimum. With 14 dummy points you don't need partner's help: bid game.",
@@ -96,7 +95,7 @@
           "id": "club-2026-10-27-alpine-13a",
           "at": 3,
           "answer": "5N",
-          "tags": ["club"],
+          "tags": ["general"],
           "explanation": "Partner's 1NT shows 15-17. With your 20 HCP the side has 35-37: 33 is enough for a small slam and 37 for a grand. So you belong in 6NT, and in 7NT only if partner has a maximum. Bid 5NT, quantitative: it forces to 6NT and asks partner to bid 7NT with a maximum.",
           "whyNot": {
             "6N": "6NT is safe, but you'd miss 7NT when partner has 17 and the side has 37. 5NT lets partner decide.",
@@ -110,7 +109,7 @@
           "id": "club-2026-10-27-alpine-13b",
           "at": 5,
           "answer": "6N",
-          "tags": ["club"],
+          "tags": ["general"],
           "explanation": "Partner's 5NT is quantitative: it forces to 6NT and invites 7NT. You have 15, the bottom of your 1NT range, so bid 6NT.",
           "whyNot": {
             "7N": "Bid 7NT only with a maximum (17). You have 15.",
@@ -143,7 +142,7 @@
           "id": "club-2026-10-27-alpine-13-rkcb-a",
           "at": 9,
           "answer": "5S",
-          "tags": ["club", "rkcb"],
+          "tags": ["rkcb"],
           "explanation": "Your 2♠ answered Stayman, so partner's 4NT is RKCB for spades. You have two key cards (♦A, ♠K) and the ♠Q. 5♣ = 1 or 4 key cards, 5♦ = 0 or 3, 5♥ = 2 without the trump queen, 5♠ = 2 with it. Bid 5♠.",
           "whyNot": {
             "5H": "5♥ shows two key cards without the trump queen. You have the ♠Q.",
@@ -155,7 +154,7 @@
           "id": "club-2026-10-27-alpine-13-rkcb-b",
           "at": 11,
           "answer": "5N",
-          "tags": ["club", "rkcb"],
+          "tags": ["rkcb"],
           "explanation": "Partner has two key cards and the ♠Q. With your three (♠A, ♥A, ♣A) the side has all five, plus the trump queen. Now count tricks: 4 spades, 4 hearts, ♦AK and ♣A make 11, and a 12th comes from the ♦J or the clubs. The 13th isn't there unless partner has the ♣K. Bid 5NT: it asks for partner's lowest king outside trumps, and promises all the key cards and the trump queen.",
           "whyNot": {
             "7S": "This was the call at the table: one down. All the key cards and the trump queen don't make 13 tricks. Without the ♣K the grand needs the diamond finesse.",
@@ -167,7 +166,7 @@
           "id": "club-2026-10-27-alpine-13-rkcb-c",
           "at": 13,
           "answer": "6S",
-          "tags": ["club", "rkcb"],
+          "tags": ["rkcb"],
           "explanation": "Partner's 5NT asks for your lowest king outside trumps; the ♠K doesn't count. You have no other king, so bid 6♠.",
           "whyNot": {
             "6C": "6♣ would show the ♣K. You don't have it.",
@@ -179,7 +178,7 @@
           "id": "club-2026-10-27-alpine-13-rkcb-d",
           "at": 15,
           "answer": "6N",
-          "tags": ["club"],
+          "tags": ["rkcb"],
           "explanation": "Partner's 6♠ denies the ♣K, so you can't count 13 tricks: stop in six. Both hands are balanced and partner opened 1NT, so 6NT should take as many tricks as 6♠, and at matchpoints it scores 1440 against 1430.",
           "acceptable": {
             "P": "6♠ is a fine contract. 6NT just scores a little more at matchpoints."
@@ -215,7 +214,7 @@
           "id": "club-2026-10-27-alpine-16a",
           "at": 6,
           "answer": "3D",
-          "tags": ["club"],
+          "tags": ["general"],
           "explanation": "Partner has shown five spades and at least four diamonds, with 12-18. Your four diamonds make at least an eight-card fit, and your 10 HCP are the top of your 1NT response, with the ♣AQ. Raise to 3♦ to invite game. Four-card support is enough: the 5+ rule is for raising a 1♣ opening, and partner's second suit promises four.",
           "whyNot": {
             "P": "This was the call at the table. Partner can have up to 18, and you have a maximum with a diamond fit. Game is likely, so invite.",
@@ -227,7 +226,7 @@
           "id": "club-2026-10-27-alpine-16b",
           "at": 8,
           "answer": "3H",
-          "tags": ["club"],
+          "tags": ["general"],
           "explanation": "Partner's raise to 3♦ invites game, and with 16 HCP and 5-5 you accept. 3NT may score more than 5♦, but you have nothing in clubs. With a minor agreed, a new suit below 3NT shows a stopper: bid 3♥ to show the ♥A, and let partner bid 3NT with a club stopper.",
           "whyNot": {
             "3N": "You have no club stopper (♣J3). If partner hasn't got one either, they run the clubs. Show your heart stopper and let partner decide.",
@@ -239,7 +238,7 @@
           "id": "club-2026-10-27-alpine-16c",
           "at": 10,
           "answer": "3N",
-          "tags": ["club"],
+          "tags": ["general"],
           "explanation": "Partner's 3♥ shows a heart stopper and asks about the other unbid suit, clubs. You have the ♣AQ, so bid 3NT.",
           "whyNot": {
             "4D": "4♦ would say you can't stop clubs. With the ♣AQ, bid 3NT.",
@@ -272,7 +271,7 @@
           "id": "club-2026-10-27-alpine-16-jump-shift-a",
           "at": 4,
           "answer": "3D",
-          "tags": ["club"],
+          "tags": ["general"],
           "explanation": "You have 16 HCP and 5-5 in spades and diamonds, with the singleton ♥A: only four losers (one each in spades and diamonds, two in clubs). Opposite partner's 6-10, game is likely even though your points are short of the usual 19 for a jump shift. Jump to 3♦: it's forcing to game and shows a strong two-suiter.",
           "acceptable": {
             "2D": "2♦ is the normal call with 16 HCP, and fine if partner raises with four diamonds and a maximum. The jump shift makes sure you reach game."
@@ -308,7 +307,7 @@
           "id": "club-2026-10-27-alpine-17a",
           "at": 5,
           "answer": "X",
-          "tags": ["club"],
+          "tags": ["general"],
           "explanation": "South's 3♣ preempt has been passed round to you. Partner may have values but no good bid at the 3 level. You have 18 HCP and only two clubs, so reopen with a double: takeout at the 3 level shows 16+. Partner can bid a suit, or pass for penalty with good clubs.",
           "acceptable": {
             "3H": "Rebidding your good five-card heart suit is reasonable and makes here. The double is more flexible: partner can show another suit or pass for penalty."
@@ -322,7 +321,7 @@
           "id": "club-2026-10-27-alpine-17b",
           "at": 7,
           "answer": "3H",
-          "tags": ["club"],
+          "tags": ["general"],
           "explanation": "Partner's double asks you to bid. Partner opened 1♥, which promises five hearts, so your ♥T85 makes a known eight-card fit. Your five diamonds might find a fit or might not. Both bids are at the 3 level, so choose the sure fit: 3♥.",
           "whyNot": {
             "3D": "This was the call at the table, and it went one down. Your diamonds are only five weak cards with no known fit, while hearts are a known eight-card fit at the same level.",

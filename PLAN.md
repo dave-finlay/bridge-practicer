@@ -70,7 +70,9 @@ The same as the bid recorder:
 ## Layout
 
 ```
-problems/<lesson>.json   the problems, one file per lesson
+problems/lessons/        the problems from lesson handouts, one file per lesson
+problems/club/           from club sessions reviewed, one file per session
+problems/teachers/       from other teachers (e.g. videos), one file per topic
 js/auction.js            auction rules (from the bid recorder)
 js/hands.js              hands, point counts, writing hands and calls
 test/                    unit tests
@@ -96,8 +98,8 @@ The service worker and manifest arrive with step 5.
 
 ```js
 {
-  lesson: 'texas',               // file name and tag for the lesson
-  title: 'Texas transfers',
+  lesson: 'texas',               // lesson files: the file name
+  title: 'Texas transfers',      // the lesson, session ("Alpine Club, 27 Oct 2026") or topic
   source: 'Texas Hands Explan.pdf',
   deals: [{
     id: 'texas-1',               // never changes once published
@@ -111,7 +113,7 @@ The service worker and manifest arrive with step 5.
     reviewNotes: ['…'],          // optional: anything to check
     unusualSetup: '…',           // optional: why dealer or vulnerability isn't the board's usual
     setAside: '…',               // optional: why the app leaves the deal out for now (still checked)
-    source: '…',                 // club boards: "Alpine Club 2026-10-27, board 13"
+    source: '…',                 // club and teachers' boards: "Alpine Club 2026-10-27, board 13"
     atTheTable: '…',             // club boards: what was bid and scored (on the feedback screen)
     agreed: '…',                 // club boards: what was agreed should be bid, and when
     problems: [{
@@ -121,7 +123,7 @@ The service worker and manifest arrive with step 5.
       answerNote: '…',           // required if the answer differs from the auction
       acceptable: { '6S': '…' }, // optional: other calls that are fine, and why
       whyNot: { '4S': '…' },     // optional: tempting wrong calls, and why not
-      tags: ['texas'],           // conventions the problem tests
+      tags: ['texas'],           // topics the problem tests (TOPICS in js/problems.js)
       explanation: '…',
     }],
   }],
@@ -141,8 +143,10 @@ are missing or out of date (`npm run dd` fixes it).
 The app calls the problems **challenges** ("10 bidding challenges",
 "More challenges"); "session" isn't used on screen.
 
-1. **Home:** convention chips (All, or any mix of conventions, remembered
-   on the phone; Home from the summary goes back to All), Start with 10
+1. **Home:** origin chips (All, Lessons, Club or Teachers: where the
+   deals come from) and topic chips (All, or any mix of topics; both
+   remembered on the phone; Home from the summary goes back to all
+   topics), Start with 10
    bidding challenges (fewer if the filter leaves fewer deals; a choice
    of 20 was dropped as more than anyone wanted at once), and
    progress (problems seen, share right, last practised).
@@ -192,7 +196,7 @@ step 4 stores progress.
 IndexedDB storage of every answer, levels for choosing problems, and the
 progress line on the home screen.
 **Review:** check that missed problems come back.
-Progress on the home screen follows the convention chips. Note: an
+Progress on the home screen follows the chips. Note: an
 iPhone home screen app keeps its own storage, separate from Safari's,
 so progress starts fresh once it's installed (step 5).
 
@@ -200,7 +204,7 @@ so progress starts fresh once it's installed (step 5).
 `manifest.webmanifest`, icons (`npm run icons`) and `sw.js`, the same
 approach as the bid recorder: the phone keeps a copy of every file and
 refreshes it in the background, so updates show on the second opening.
-`npm run check` fails if a script or lesson file is missing from the
+`npm run check` fails if a script or problem file is missing from the
 service worker's list.
 **Review:** install it and try it in airplane mode.
 
@@ -284,12 +288,14 @@ problems are written.
   agree what they *should* have bid, and it becomes a problem: the deal
   from the club's hand record, the agreed auction, and the reasoning.
   The bid recorder already records Dave's auctions, so its export could
-  carry the auction across. Tagged `club`, with the date and board.
+  carry the auction across. Tagged by topic (`general` if no other
+  fits), with the date and board in `source`.
 - Session reviews (other conversations) submit these as files in
   `~/context/bridge/practicer/submissions/`, in the problem format, as
   `~/context/bridge/practicer/README.md` describes. A practicer
-  conversation checks them with Dave and adds the accepted ones to
-  `problems/club.json`.
+  conversation checks them with Dave and adds the accepted ones to the
+  session's file in `problems/club/`, listed in ORIGINS in
+  `js/problems.js`.
 
 ## Decided: public hosting
 

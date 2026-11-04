@@ -2,11 +2,13 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
-  conventionsIn, dealCount, dueAt, flatten, grade, nextDue, pickSession, progressSummary, readyNow,
-  updateProgress, withTags,
+  ORIGINS, dealCount, dueAt, flatten, fromOrigin, grade, nextDue, pickSession, problemFiles, progressSummary,
+  readyNow, topicsIn, updateProgress, withTags,
 } from '../js/problems.js';
 
-const texas = JSON.parse(readFileSync(new URL('../problems/texas.json', import.meta.url)));
+const load = (path, origin) => ({ ...JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url))), origin });
+const texas = load('problems/lessons/texas.json', 'lessons');
+const club = load('problems/club/alpine-2026-10-27.json', 'club');
 const problems = flatten([texas]);
 
 // A repeatable stand-in for Math.random.
@@ -17,17 +19,18 @@ function seeded(seed) {
   };
 }
 
-test('flatten lists every problem with its deal, lesson and seat', () => {
+test('flatten lists every problem with its deal, origin, title and seat', () => {
   assert.equal(problems.length, 16);
   const first = problems.find((p) => p.id === 'texas-1a');
-  assert.equal(first.lesson, 'texas');
+  assert.equal(first.origin, 'lessons');
+  assert.equal(first.title, 'Texas transfers');
   assert.equal(first.deal.id, 'texas-1');
   assert.equal(first.seat, 'S');
   assert.equal(problems.find((p) => p.id === 'texas-6c').seat, 'E');
 });
 
 test('flatten leaves out deals set aside', () => {
-  const lesson = { lesson: 'texas', deals: [{ ...texas.deals[0], setAside: 'to rethink' }, texas.deals[1]] };
+  const lesson = { ...texas, deals: [{ ...texas.deals[0], setAside: 'to rethink' }, texas.deals[1]] };
   assert.deepEqual(flatten([lesson]).map((p) => p.deal.id), flatten([{ ...texas, deals: [texas.deals[1]] }]).map((p) => p.deal.id));
   assert.ok(flatten([lesson]).every((p) => p.deal.id !== texas.deals[0].id));
 });
@@ -55,8 +58,8 @@ test('pickSession stops at the size asked for, and varies the problems', () => {
   assert.ok(firsts.size > 3);
 });
 
-test('conventionsIn lists the tags in the usual order, with counts and names', () => {
-  assert.deepEqual(conventionsIn(problems), [
+test('topicsIn lists the tags in the usual order, with counts and names', () => {
+  assert.deepEqual(topicsIn(problems), [
     { tag: 'jacoby', name: 'Jacoby transfers', count: 2 },
     { tag: 'texas', name: 'Texas transfers', count: 15 },
     { tag: 'rkcb', name: 'RKCB', count: 2 },
@@ -74,8 +77,22 @@ test('dealCount counts the deals the problems come from', () => {
   assert.equal(dealCount(withTags(problems, ['rkcb', 'jacoby'])), 1);
 });
 
+test('problemFiles lists each origin\'s files in its folder', () => {
+  const files = problemFiles();
+  assert.ok(files.some(({ origin, path }) => origin === 'lessons' && path === 'problems/lessons/texas.json'));
+  assert.ok(files.some(({ origin, path }) => origin === 'club' && path === 'problems/club/alpine-2026-10-27.json'));
+  assert.equal(files.length, Object.values(ORIGINS).reduce((n, { files: names }) => n + names.length, 0));
+});
+
+test('fromOrigin keeps the problems from one origin, or all for none', () => {
+  const both = flatten([texas, club]);
+  assert.equal(fromOrigin(both, 'club').length, 14);
+  assert.equal(fromOrigin(both, 'lessons').length, 16);
+  assert.equal(fromOrigin(both, '').length, 30);
+  assert.equal(fromOrigin(both, 'teachers').length, 0);
+});
+
 test('two versions of a club board count as one board', () => {
-  const club = JSON.parse(readFileSync(new URL('../problems/club.json', import.meta.url)));
   const both = flatten([club]).filter((p) => p.deal.source === 'Alpine Club 2026-10-27, board 13');
   assert.equal(new Set(both.map((p) => p.deal.id)).size, 2);
   assert.equal(dealCount(both), 1);
