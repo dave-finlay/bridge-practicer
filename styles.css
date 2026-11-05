@@ -513,6 +513,65 @@ button {
   color: var(--muted);
 }
 
+.card:disabled {
+  opacity: 0.35;
+}
+
+/* Play position: dummy's cards, then the trick so far round a compass. */
+.position {
+  display: grid;
+  flex: 1;
+  align-content: start;
+  gap: 8px;
+}
+
+.dummy-hand {
+  justify-self: center;
+  min-width: 60%;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.trick {
+  display: grid;
+  grid-template-areas: ". n ." "w . e" ". s .";
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px 6px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  text-align: center;
+}
+
+.spot small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.spot .played {
+  display: block;
+  min-height: 1.3em;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.spot.led small {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.spot-n { grid-area: n; }
+.spot-w { grid-area: w; }
+.spot-e { grid-area: e; }
+.spot-s { grid-area: s; }
+
 /* Short screens (an iPhone mini or SE, or Display Zoom set to Larger
    Text): a smaller hand and buttons, so the auction keeps room for three
    rows of calls. */
@@ -840,6 +899,45 @@ button {
 }
 
 /* Home */
+
+.about-button {
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  color: var(--felt);
+  font-size: 16px;
+  vertical-align: baseline;
+}
+
+.about {
+  max-width: min(420px, calc(100vw - 32px));
+  padding: 18px 18px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.about::backdrop {
+  background: rgb(0 0 0 / 40%);
+}
+
+dialog.about h2 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 18px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.about p {
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+.about .primary {
+  margin-top: 6px;
+}
 
 .home-screen {
   display: flex;

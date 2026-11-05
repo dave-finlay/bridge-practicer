@@ -4,10 +4,10 @@
 
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { alertsFor } from '../js/alerts.js';
+import { marksFor } from '../js/alerts.js';
 import { contract, seatOfCall } from '../js/auction.js';
 import { SUITS, SUIT_SYMBOLS, formatCall, formatCard, formatHolding, hcp, parseHand } from '../js/hands.js';
-import { isFullDeal, leaderOf, problemFiles } from '../js/problems.js';
+import { dummyOf, isFullDeal, isPosition, leaderOf, problemFiles, toPlay, trickSeats } from '../js/problems.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const SEAT_NAMES = { N: 'North', E: 'East', S: 'South', W: 'West' };
@@ -26,7 +26,7 @@ function call(code) {
 }
 
 // A problem's answer or alternative: a card for an opening lead, else a call.
-const answer = (problem, code) => (problem.lead ? prose(formatCard(code)) : call(code));
+const answer = (problem, code) => (problem.lead || problem.play ? prose(formatCard(code)) : call(code));
 
 function handHtml(handText, { label } = {}) {
   const hand = parseHand(handText);
@@ -39,7 +39,7 @@ function auctionHtml(deal, upTo) {
   const cells = Array(TABLE_ORDER.indexOf(deal.dealer)).fill('<td></td>');
   const calls = upTo === undefined ? deal.auction : deal.auction.slice(0, upTo);
   // Alerted calls get a red box and announced ones a blue box, as in the app.
-  const marks = alertsFor(deal.dealer, deal.auction);
+  const marks = marksFor(deal);
   let shown = calls.map((c, i) => {
     const mark = marks.get(i);
     if (!mark) return `<td>${call(c)}</td>`;
@@ -103,13 +103,50 @@ function problemHtml(deal, problem) {
 
 // The alerts and announcements in the whole auction, as a list.
 function marksHtml(deal) {
-  const marks = [...alertsFor(deal.dealer, deal.auction)];
+  const marks = [...marksFor(deal)];
   if (!marks.length) return '';
   return `<ul class="marks">${marks.map(([i, m]) =>
     `<li><span class="mark ${m.kind}">${call(deal.auction[i])}</span> ${m.kind === 'alert' ? 'Alert' : 'Announced'}: ${esc(m.text)}</li>`).join('')}</ul>`;
 }
 
+// A play position: the contract, dummy's and your cards, the trick so far,
+// then each problem's answer.
+function positionHtml(deal) {
+  const you = toPlay(deal);
+  const dummy = dummyOf(deal);
+  const suits = deal.shown ?? 'SHDC';
+  const cards = (seat) => `<div class="hand"><div class="hand-label">${seat === you ? 'You' : 'Dummy'} (${SEAT_NAMES[seat]})</div>${[...suits].map((suit) =>
+    `<div class="holding"><span class="${suitClass(SUIT_SYMBOLS[suit])}">${SUIT_SYMBOLS[suit]}</span> ${formatHolding(parseHand(deal.hands[seat])[suit])}</div>`).join('')}</div>`;
+  const trick = trickSeats(deal).map((seat, i) => `${SEAT_NAMES[seat]} ${prose(formatCard(deal.trick[i]))}`).join(', ');
+  const notes = deal.reviewNotes ?? [];
+  return `<section class="deal" id="${deal.id}">
+    <h2>${esc(deal.source)}</h2>
+    ${notes.length ? `<div class="check"><span class="check-label">Please check</span><ul>${notes.map((n) => `<li>${prose(n)}</li>`).join('')}</ul></div>` : ''}
+    ${deal.problems.map((problem) => `<article class="problem" id="${problem.id}">
+      <header class="problem-head">
+        <h3>Play</h3>
+        <p class="setting">${call(deal.contract)} by ${SEAT_NAMES[deal.declarer]} · you are ${SEAT_NAMES[you]}</p>
+        <p class="tags">${problem.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</p>
+      </header>
+      <div class="problem-body">
+        <div class="question">
+          ${cards(dummy)}
+          <p>Trick so far: ${trick || 'you lead'}</p>
+          ${cards(you)}
+        </div>
+        <div class="answer">
+          <p class="answer-call"><span class="answer-label">Answer</span> ${answer(problem, problem.answer)}</p>
+          <p>${prose(problem.explanation)}</p>
+          ${Object.keys(problem.acceptable ?? {}).length ? `<dl class="calls acceptable"><dt class="list-title">Also acceptable</dt>${Object.entries(problem.acceptable).map(([c, why]) => `<div><dt>${answer(problem, c)}</dt><dd>${prose(why)}</dd></div>`).join('')}</dl>` : ''}
+          ${Object.keys(problem.whyNot ?? {}).length ? `<dl class="calls"><dt class="list-title">Why not…</dt>${Object.entries(problem.whyNot).map(([c, why]) => `<div><dt>${answer(problem, c)}</dt><dd>${prose(why)}</dd></div>`).join('')}</dl>` : ''}
+        </div>
+      </div>
+    </article>`).join('')}
+  </section>`;
+}
+
 function dealHtml(deal) {
+  if (isPosition(deal)) return positionHtml(deal);
   const notes = [
     ...(deal.setAside ? [`Set aside: ${deal.setAside}`] : []),
     ...(deal.unusualSetup ? [deal.unusualSetup] : []),

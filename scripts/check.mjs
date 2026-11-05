@@ -8,7 +8,9 @@ import {
   SEATS, contract, dealerForBoard, isComplete, legalCalls, seatOfCall, sideOf, vulnerabilityForBoard,
 } from '../js/auction.js';
 import { RANKS, SUITS, cardsOf, hcp, parseHand } from '../js/hands.js';
-import { ORIGINS, isFullDeal, leaderOf, problemFiles } from '../js/problems.js';
+import {
+  ORIGINS, dummyOf, isFullDeal, isPosition, leaderOf, problemFiles, toPlay, trickSeats,
+} from '../js/problems.js';
 
 const VULNERABILITIES = ['None', 'NS', 'EW', 'All'];
 const isLegal = (dealer, calls, call) => legalCalls(dealer, calls).has(call);
@@ -40,6 +42,11 @@ for (const file of files) {
     dealCount++;
     const where = `${file} ${deal.id}`;
     const fail = (message) => errors.push(`${where}: ${message}`);
+
+    if (isPosition(deal)) {
+      checkPosition(deal, fail);
+      continue;
+    }
 
     if (!SEATS.includes(deal.dealer)) fail(`bad dealer ${deal.dealer}`);
     if (!VULNERABILITIES.includes(deal.vul)) fail(`bad vulnerability ${deal.vul}`);
@@ -89,6 +96,10 @@ for (const file of files) {
       if (!isLegal(deal.dealer, deal.auction.slice(0, i), call)) fail(`call ${i + 1} (${call}) is not legal`);
     });
     if (!isComplete(deal.auction)) fail('the auction does not end with three passes');
+    // The opponents' conventional calls, which the deal alerts itself.
+    for (const [i, text] of Object.entries(deal.alerts ?? {})) {
+      if (!(Number(i) >= 0 && Number(i) < deal.auction.length) || !text) fail(`alert "${i}" isn't a call in the auction`);
+    }
 
     for (const problem of deal.problems) {
       problemCount++;
@@ -137,6 +148,73 @@ for (const file of files) {
       const seat = seatOfCall(deal.dealer, problem.at);
       problem.seat = seat;
       problem.hcp = hcp(parseHand(deal.hands[seat]));
+    }
+  }
+}
+
+// A play position: the contract, dummy's and the player's cards before
+// this trick (only the `shown` suits, if given), and the trick so far.
+// Every card played must follow suit when the player can.
+function checkPosition(deal, fail) {
+  if (!/^[1-7][CDHSN]$/.test(deal.contract)) fail(`bad contract ${deal.contract}`);
+  if (!SEATS.includes(deal.declarer)) fail(`bad declarer ${deal.declarer}`);
+  if (!SEATS.includes(deal.leader)) fail(`bad leader ${deal.leader}`);
+  if (deal.trick.length > 3) fail('the trick is already complete');
+  const you = toPlay(deal);
+  const dummy = dummyOf(deal);
+  if (you === deal.declarer || you === dummy) fail(`${you} plays next, but isn't a defender`);
+  const given = Object.keys(deal.hands).sort().join('');
+  if (given !== [dummy, you].sort().join('')) fail(`hands should be given for dummy (${dummy}) and ${you} only`);
+  const shown = deal.shown ?? SUITS.join('');
+
+  const seen = new Set();
+  const holdings = {};
+  for (const [seat, text] of Object.entries(deal.hands)) {
+    const hand = parseHand(text);
+    holdings[seat] = cardsOf(hand);
+    for (const suit of SUITS) {
+      if (hand[suit] && !shown.includes(suit)) fail(`${seat} has ${suit}, which isn't shown`);
+      const order = [...hand[suit]].map((rank) => RANKS.indexOf(rank));
+      if (order.some((i) => i < 0)) fail(`${seat} ${suit} "${hand[suit]}" has a bad rank`);
+      if (order.some((i, k) => k > 0 && i <= order[k - 1])) fail(`${seat} ${suit} "${hand[suit]}" is not in rank order`);
+    }
+    for (const card of holdings[seat]) {
+      if (seen.has(card)) fail(`${card} appears twice`);
+      seen.add(card);
+    }
+  }
+  // A card can be played only if it follows suit, or the player (whose
+  // whole hand is known) has none of the suit led.
+  const led = deal.trick[0]?.[0];
+  const follows = (seat, card) => {
+    if (!led || card[0] === led) return true;
+    if (!holdings[seat]) return true;
+    return shown.length === 4 && !holdings[seat].some((c) => c[0] === led);
+  };
+  deal.trick.forEach((card, i) => {
+    const seat = trickSeats(deal)[i];
+    if (!/^[SHDC][AKQJT98765432]$/.test(card)) fail(`bad card ${card}`);
+    if (holdings[seat] && !holdings[seat].includes(card)) fail(`${seat} plays ${card}, which isn't in their hand`);
+    if (!holdings[seat] && seen.has(card)) fail(`${card} appears twice`);
+    seen.add(card);
+    if (!follows(seat, card)) fail(`${seat} plays ${card} without following suit`);
+  });
+
+  for (const problem of deal.problems) {
+    problemCount++;
+    const problemFail = (message) => fail(`${problem.id}: ${message}`);
+    if (problemIds.has(problem.id)) problemFail('duplicate problem id');
+    problemIds.add(problem.id);
+    if (!problem.id.startsWith(deal.id)) problemFail("id doesn't match the deal");
+    if (!problem.play) problemFail('a position\'s problems must be play problems');
+    if (!problem.explanation) problemFail('no explanation');
+    if (!problem.tags?.length) problemFail('no tags');
+    for (const card of [problem.answer, ...Object.keys(problem.whyNot ?? {}), ...Object.keys(problem.acceptable ?? {})]) {
+      if (!holdings[you]?.includes(card)) problemFail(`${card} isn't in ${you}'s hand`);
+      else if (!follows(you, card)) problemFail(`${card} doesn't follow suit`);
+    }
+    for (const card of [...Object.keys(problem.whyNot ?? {}), ...Object.keys(problem.acceptable ?? {})]) {
+      if (card === problem.answer) problemFail(`${card} is also the answer`);
     }
   }
 }

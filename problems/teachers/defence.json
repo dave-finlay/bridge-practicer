@@ -1,0 +1,507 @@
+{
+  "title": "Defence: signals and second and third hand",
+  "source": "Phil Abrahamson (Planet Bridge) handouts",
+  "deals": [
+    {
+      "id": "sig-encourage-queen",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 7, case 1",
+      "contract": "4S",
+      "declarer": "S",
+      "shown": "H",
+      "hands": {
+        "N": ".752..",
+        "E": ".Q83.."
+      },
+      "leader": "W",
+      "trick": ["HA", "H2"],
+      "problems": [
+        {
+          "id": "sig-encourage-queena",
+          "play": true,
+          "answer": "H8",
+          "tags": ["signals"],
+          "explanation": "Partner's ace promises the king. You hold the ♥Q, so partner can cash the K and lead a third heart to your Q: you'd like hearts continued. A high spot card encourages: play the ♥8.",
+          "whyNot": {
+            "H3": "A low spot card discourages. Partner might switch, and your side would lose its third heart trick.",
+            "HQ": "Partner's A and K win the first two tricks anyway. Keep the Q to win the third."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-discourage",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 7, case 2",
+      "contract": "4S",
+      "declarer": "S",
+      "shown": "H",
+      "hands": {
+        "N": ".752..",
+        "E": ".T83.."
+      },
+      "leader": "W",
+      "trick": ["HA", "H2"],
+      "problems": [
+        {
+          "id": "sig-discouragea",
+          "play": true,
+          "answer": "H3",
+          "tags": ["signals"],
+          "explanation": "Without the ♥Q, you don't want partner to go on: if declarer has the Q, cashing the K sets it up, but if you wait, declarer may never make it. A low spot card discourages: play the ♥3.",
+          "whyNot": {
+            "H8": "A high spot card encourages, and partner would cash the K, setting up declarer's Q."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-doubleton",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 9",
+      "contract": "4S",
+      "declarer": "S",
+      "shown": "H",
+      "hands": {
+        "N": ".752..",
+        "E": ".83.."
+      },
+      "leader": "W",
+      "trick": ["HA", "H2"],
+      "problems": [
+        {
+          "id": "sig-doubletona",
+          "play": true,
+          "answer": "H8",
+          "tags": ["signals"],
+          "explanation": "With two cards, play high then low. The ♥8 encourages: partner cashes the K, you follow with the 3, and partner leads a third heart for you to ruff.",
+          "whyNot": {
+            "H3": "Low discourages, and you'd miss the ruff. With a doubleton, play the higher card first."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-no-honour",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 13, hand 2",
+      "contract": "4S",
+      "declarer": "S",
+      "shown": "H",
+      "hands": {
+        "N": ".J65..",
+        "E": ".843.."
+      },
+      "leader": "W",
+      "trick": ["HA", "H5"],
+      "reviewNotes": [
+        "The handout doesn't show dummy; the dummy here is chosen to fit."
+      ],
+      "problems": [
+        {
+          "id": "sig-no-honoura",
+          "play": true,
+          "answer": "H3",
+          "tags": ["signals"],
+          "explanation": "Three small cards and no honour: nothing to encourage. Play your lowest, the ♥3, to discourage.",
+          "whyNot": {
+            "H8": "The 8 is a high spot card: it would encourage partner to continue."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-jack-under-king",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 13, hand 4",
+      "contract": "4S",
+      "declarer": "S",
+      "shown": "H",
+      "hands": {
+        "N": ".764..",
+        "E": ".J83.."
+      },
+      "leader": "W",
+      "trick": ["HK", "H4"],
+      "reviewNotes": [
+        "The handout doesn't show dummy; the dummy here is chosen to fit."
+      ],
+      "problems": [
+        {
+          "id": "sig-jack-under-kinga",
+          "play": true,
+          "answer": "H8",
+          "tags": ["signals"],
+          "explanation": "Partner's ♥K promises the Q, and you have the J: together you hold K Q J, so hearts are safe to continue. Encourage with a high spot card: the ♥8.",
+          "whyNot": {
+            "H3": "Low discourages. With the J completing partner's sequence, you want hearts."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-queen-led-discourage",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 13, hand 5",
+      "contract": "4S",
+      "declarer": "S",
+      "shown": "H",
+      "hands": {
+        "N": ".965..",
+        "E": ".843.."
+      },
+      "leader": "W",
+      "trick": ["HQ", "H5"],
+      "reviewNotes": [
+        "The handout doesn't show dummy; the dummy here is chosen to fit."
+      ],
+      "problems": [
+        {
+          "id": "sig-queen-led-discouragea",
+          "play": true,
+          "answer": "H3",
+          "tags": ["signals"],
+          "explanation": "Partner's ♥Q promises the J. With no honour to help, discourage with your lowest card: the ♥3.",
+          "whyNot": {
+            "H8": "A high spot card would ask partner to continue, with nothing to back it up."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-king-under-queen",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 13, hand 6",
+      "contract": "4S",
+      "declarer": "S",
+      "shown": "H",
+      "hands": {
+        "N": ".754..",
+        "E": ".K83.."
+      },
+      "leader": "W",
+      "trick": ["HQ", "H4"],
+      "reviewNotes": [
+        "The handout doesn't show dummy; the dummy here is chosen to fit."
+      ],
+      "problems": [
+        {
+          "id": "sig-king-under-queena",
+          "play": true,
+          "answer": "H8",
+          "tags": ["signals"],
+          "explanation": "Partner's ♥Q promises the J, and you have the K: hearts are your side's suit. Encourage with a high spot card, the ♥8, and keep the K.",
+          "whyNot": {
+            "HK": "Don't play your K on partner's Q: the Q will win if declarer doesn't take it, and the K is worth keeping.",
+            "H3": "Low discourages, but you want hearts continued."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-after-dummy-ace",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 12",
+      "contract": "4H",
+      "declarer": "S",
+      "shown": "D",
+      "hands": {
+        "N": "..AT5.",
+        "E": "..J83."
+      },
+      "leader": "W",
+      "trick": ["DK", "DA"],
+      "problems": [
+        {
+          "id": "sig-after-dummy-acea",
+          "play": true,
+          "answer": "D8",
+          "tags": ["signals"],
+          "explanation": "Signals aren't only for when partner's card wins. Partner's ♦K promises the Q, and dummy took the A. With the ♦J, you know it's safe for partner to continue diamonds later: encourage with the ♦8.",
+          "whyNot": {
+            "D3": "Low discourages. Your J makes diamonds a good suit for partner to attack again."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-high-doubleton-5",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 16",
+      "contract": "4H",
+      "declarer": "S",
+      "shown": "D",
+      "hands": {
+        "N": "..Q76.",
+        "E": "..52."
+      },
+      "leader": "W",
+      "trick": ["DA", "D6"],
+      "problems": [
+        {
+          "id": "sig-high-doubleton-5a",
+          "play": true,
+          "answer": "D5",
+          "tags": ["signals"],
+          "explanation": "With a doubleton, start high-low: the ♦5, then the 2. The 5 doesn't look high, but partner, seeing the 2 missing, should read it as encouraging, cash the K and give you a ruff.",
+          "whyNot": {
+            "D2": "Your lowest card discourages, and you'd miss the ruff. Start a high-low with the 5."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-qx-exception",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 17",
+      "contract": "4S",
+      "declarer": "S",
+      "shown": "C",
+      "hands": {
+        "N": "...J96",
+        "E": "...Q4"
+      },
+      "leader": "W",
+      "trick": ["CA", "C6"],
+      "reviewNotes": [
+        "The handout states the rule without an example; the cards here are chosen to fit."
+      ],
+      "problems": [
+        {
+          "id": "sig-qx-exceptiona",
+          "play": true,
+          "answer": "C4",
+          "tags": ["signals"],
+          "explanation": "The exception: with Q x under partner's ace, play the small card. Playing the Q under the ace promises the J (or a singleton), and partner would underlead the K to your 'J'.",
+          "whyNot": {
+            "CQ": "The Q under partner's ace shows the J as well, or a singleton. With Q x, play the x."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-wasted-jack",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 23",
+      "contract": "4H",
+      "declarer": "S",
+      "shown": "D",
+      "hands": {
+        "N": "..Q65.",
+        "E": "..J872."
+      },
+      "leader": "W",
+      "trick": ["DA", "D5"],
+      "problems": [
+        {
+          "id": "sig-wasted-jacka",
+          "play": true,
+          "answer": "D2",
+          "tags": ["signals"],
+          "explanation": "Think about dummy's ♦Q. If partner continues with the K, the Q becomes good for declarer, who'll throw a loser on it. If partner switches, declarer never makes the Q. So discourage, even with the J: play the ♦2.",
+          "whyNot": {
+            "D8": "Encouraging asks partner to cash the K, setting up dummy's Q for a discard."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-discard",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 18",
+      "contract": "4S",
+      "declarer": "S",
+      "hands": {
+        "N": "5.KJ6.KJ4.8",
+        "E": ".AQ72.752.43"
+      },
+      "leader": "S",
+      "trick": ["SK", "SA", "S5"],
+      "reviewNotes": [
+        "The handout writes small cards as x; the spot cards here are chosen to keep its point.",
+        "In the handout, partner wins this trick with the ♠A; whether declarer would lead the K into it doesn't matter for the discard."
+      ],
+      "problems": [
+        {
+          "id": "sig-discarda",
+          "play": true,
+          "answer": "H7",
+          "tags": ["signals"],
+          "explanation": "You can't follow to the spade, so your discard can signal. You'd love partner to lead a heart through dummy's K J to your A Q. A high spot card in a suit asks for it: discard the ♥7.",
+          "acceptable": {
+            "D2": "A low spot card says you don't want a suit, which also points partner away from diamonds."
+          },
+          "whyNot": {
+            "H2": "A low heart says you don't want hearts: the opposite of what you mean.",
+            "HA": "Throwing the A gives away a sure trick."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hand2-low",
+      "source": "Phil Abrahamson, “11 Defense – Guidelines”, page 9",
+      "contract": "4S",
+      "declarer": "S",
+      "shown": "H",
+      "hands": {
+        "N": ".Q74..",
+        "W": ".AJ63.."
+      },
+      "leader": "S",
+      "trick": ["H5"],
+      "problems": [
+        {
+          "id": "hand2-lowa",
+          "play": true,
+          "answer": "H3",
+          "tags": ["second-third"],
+          "explanation": "Second hand low. Declarer leads towards dummy's Q: if you play low, declarer's K (if they have it) and dummy's Q can't both win, because your A kills one of them. And if partner has the K, partner takes the Q.",
+          "whyNot": {
+            "HA": "Rising with the A sets up both dummy's Q and declarer's K: two tricks instead of one.",
+            "HJ": "Splitting your honours gives declarer a cheap trick. Play low."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hand2-tempo",
+      "source": "Phil Abrahamson, “11 Defense – Guidelines”, page 10",
+      "contract": "4S",
+      "declarer": "S",
+      "shown": "H",
+      "hands": {
+        "N": ".KJ84..",
+        "W": ".A73.."
+      },
+      "leader": "S",
+      "trick": ["H2"],
+      "problems": [
+        {
+          "id": "hand2-tempoa",
+          "play": true,
+          "answer": "H3",
+          "tags": ["second-third"],
+          "explanation": "Second hand low, in tempo. If you play low smoothly, declarer has to guess between the K and the J, and may guess wrong. If you hesitate, declarer knows you're thinking about the A and plays the K.",
+          "whyNot": {
+            "HA": "Rising with the A sets up dummy's K and J. Keep it to capture an honour later."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hand2-cover",
+      "source": "Phil Abrahamson, “11 Defense – Guidelines”, page 11",
+      "contract": "4S",
+      "declarer": "S",
+      "shown": "H",
+      "hands": {
+        "N": ".AJ863..",
+        "W": ".K4.."
+      },
+      "leader": "S",
+      "trick": ["HQ"],
+      "problems": [
+        {
+          "id": "hand2-covera",
+          "play": true,
+          "answer": "HK",
+          "tags": ["second-third"],
+          "explanation": "Cover an honour with an honour. If you play low, declarer lets the Q run, then leads towards the A J, and your K dies anyway. Covering kills the Q with your K, and partner's 10 may become a winner.",
+          "whyNot": {
+            "H4": "Declarer's Q wins, and your K is caught on the next round."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hand3-ace",
+      "source": "Phil Abrahamson, “11 Defense – Guidelines”, page 13",
+      "contract": "3N",
+      "declarer": "S",
+      "shown": "H",
+      "hands": {
+        "N": ".852..",
+        "E": ".A96.."
+      },
+      "leader": "W",
+      "trick": ["H4", "H2"],
+      "problems": [
+        {
+          "id": "hand3-acea",
+          "play": true,
+          "answer": "HA",
+          "tags": ["second-third"],
+          "explanation": "Third hand high: you're the last chance to win the trick for your side. Partner led low, so partner doesn't have the K Q. Win the ♥A and lead back to partner's honours: partner may have the K, or the Q sitting over declarer.",
+          "whyNot": {
+            "H9": "If declarer has the K or Q, playing low lets declarer win a cheap trick."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hand3-queen",
+      "source": "Phil Abrahamson, “11 Defense – Guidelines”, page 14",
+      "contract": "3N",
+      "declarer": "S",
+      "shown": "S",
+      "hands": {
+        "N": "852...",
+        "E": "Q96..."
+      },
+      "leader": "W",
+      "trick": ["S4", "S2"],
+      "problems": [
+        {
+          "id": "hand3-queena",
+          "play": true,
+          "answer": "SQ",
+          "tags": ["second-third"],
+          "explanation": "Third hand high: play the ♠Q. Partner led low, so partner doesn't have the A. If declarer takes the Q with the A, partner's K (or J) is set up for later.",
+          "whyNot": {
+            "S9": "Declarer could win cheaply with the J or 10."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hand3-lowest",
+      "source": "Phil Abrahamson, “11 Defense – Guidelines”, page 15",
+      "contract": "3N",
+      "declarer": "S",
+      "shown": "D",
+      "hands": {
+        "N": "..752.",
+        "E": "..QJT."
+      },
+      "leader": "W",
+      "trick": ["D4", "D2"],
+      "problems": [
+        {
+          "id": "hand3-lowesta",
+          "play": true,
+          "answer": "DT",
+          "tags": ["second-third"],
+          "explanation": "Third hand high, but the lowest of touching cards: the ♦10. If declarer wins with the A, partner knows you have the Q and J (declarer would have won with them otherwise), and keeps attacking diamonds.",
+          "whyNot": {
+            "DQ": "From touching cards, play the lowest. The Q would tell partner declarer has the J, and partner might stop leading the suit."
+          }
+        }
+      ]
+    },
+    {
+      "id": "hand3-save-ace",
+      "source": "Phil Abrahamson, “11 Defense – Guidelines”, page 16",
+      "contract": "4S",
+      "declarer": "S",
+      "shown": "H",
+      "hands": {
+        "N": ".K5..",
+        "E": ".A92.."
+      },
+      "leader": "W",
+      "trick": ["HJ", "H5"],
+      "problems": [
+        {
+          "id": "hand3-save-acea",
+          "play": true,
+          "answer": "H9",
+          "tags": ["second-third"],
+          "explanation": "Think before playing third hand high. Partner's ♥J promises the 10, so declarer has the Q. If you take the A now, dummy's K and declarer's Q are both good. Keep the A to kill the K later, and encourage with the ♥9.",
+          "whyNot": {
+            "HA": "Winning the A sets up two heart tricks for declarer: dummy's K and the Q.",
+            "H2": "Low discourages, but you want partner to continue hearts through dummy's K."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -25,6 +25,15 @@ export function alertsFor(dealer, calls) {
   return marks;
 }
 
+// A deal's marked calls: those above, plus any the deal lists in
+// `alerts` (by index in the auction), for the opponents' conventions,
+// which aren't our agreements.
+export function marksFor(deal) {
+  const marks = alertsFor(deal.dealer, deal.auction);
+  for (const [i, text] of Object.entries(deal.alerts ?? {})) marks.set(Number(i), { kind: 'alert', text });
+  return marks;
+}
+
 function markFor(dealer, calls, i) {
   const call = calls[i];
   const seat = seatOfCall(dealer, i);

@@ -634,8 +634,9 @@
         "W": "K2.532.9432.QJT3"
       },
       "auction": ["1N", "P", "P", "2C", "P", "2H", "P", "P", "P"],
+      "alerts": {"3": "Both majors (Landy)"},
       "reviewNotes": [
-        "North's 2♣ is a conventional bid showing both majors (not one of our agreements)."
+        "North's 2♣ is a conventional bid showing both majors (not one of our agreements), so the deal alerts it. Rosenberg marks it only \"Majors\"; Landy is the usual name for that meaning."
       ],
       "problems": [
         {
@@ -643,7 +644,7 @@
           "lead": true,
           "answer": "H2",
           "tags": ["leads-suit"],
-          "explanation": "North's 2♣ showed both majors, and South chose hearts, so declarer will want to ruff spades with dummy's trumps or in hand. Your side has the balance of power, so there's no hurry for the club tricks: lead a trump to cut down the ruffs.",
+          "explanation": "North's 2♣ is a convention (Landy) showing both majors, and South chose hearts, so declarer will want to ruff spades with dummy's trumps or in hand. Your side has the balance of power, so there's no hurry for the club tricks: lead a trump to cut down the ruffs.",
           "acceptable": {
             "H3": "Any trump does the job here.",
             "H5": "Any trump does the job here."

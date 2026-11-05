@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { alertsFor } from '../js/alerts.js';
+import { alertsFor, marksFor } from '../js/alerts.js';
 
 // The marks for an auction as { index: 'alert: text' }, for short asserts.
 function marks(dealer, calls) {
@@ -65,4 +65,11 @@ test('new minor forcing is alerted, opener\'s answer is not', () => {
   assert.equal(marks('N', ['1D', 'P', '1S', 'P', '1N', 'P', '2D', 'P', 'P', 'P'])[6], undefined);
   // Not after interference.
   assert.equal(marks('N', ['1D', '1H', '1S', 'P', '1N', 'P', '2C', 'P', 'P', 'P'])[6], undefined);
+});
+
+test('marksFor adds the alerts a deal lists for the opponents\' conventions', () => {
+  const deal = { dealer: 'E', auction: ['1N', 'P', 'P', '2C', 'P', '2H', 'P', 'P', 'P'], alerts: { 3: 'Both majors (Landy)' } };
+  const marks = marksFor(deal);
+  assert.deepEqual(marks.get(0), { kind: 'announce', text: '15 to 17' });
+  assert.deepEqual(marks.get(3), { kind: 'alert', text: 'Both majors (Landy)' });
 });

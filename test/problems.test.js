@@ -107,6 +107,17 @@ test('an opening lead problem is asked of the leader, who may be the only hand g
   assert.equal(grade(items.find((p) => p.id === 'lead-nt-racea').problem, 'HA'), 'wrong');
 });
 
+test('a play problem is asked of the next player to the trick', () => {
+  const defence = load('problems/teachers/defence.json', 'teachers');
+  const items = flatten([defence]);
+  const third = items.find((p) => p.id === 'sig-encourage-queena'); // West led, dummy played
+  assert.equal(third.seat, 'E');
+  const second = items.find((p) => p.id === 'hand2-lowa'); // declarer led
+  assert.equal(second.seat, 'W');
+  assert.equal(grade(third.problem, 'H8'), 'best');
+  assert.equal(grade(third.problem, 'H3'), 'wrong');
+});
+
 test('two versions of a club board count as one board', () => {
   const both = flatten([club]).filter((p) => p.deal.source === 'Alpine Club 2026-10-27, board 13');
   assert.equal(new Set(both.map((p) => p.deal.id)).size, 2);

@@ -113,6 +113,7 @@ The service worker and manifest arrive with step 5.
     handout: '…',                // lesson boards: the handout's commentary on the bidding
     reviewNotes: ['…'],          // optional: anything to check
     unusualSetup: '…',           // optional: why dealer or vulnerability isn't the board's usual
+    alerts: { 3: 'Both majors (Landy)' },  // optional: the opponents' conventional calls, by index
     setAside: '…',               // optional: why the app leaves the deal out for now (still checked)
     source: '…',                 // club and teachers' boards: "Alpine Club 2026-10-27, board 13"
     atTheTable: '…',             // club boards: what was bid and scored (on the feedback screen)
@@ -134,6 +135,21 @@ The service worker and manifest arrive with step 5.
       explanation: '…',
     }],
   }],
+}
+```
+
+A play position (from a handout) has no auction: the contract, dummy's
+and your cards before this trick (perhaps only the `shown` suits), and
+the trick so far. Its problems ask for your card:
+
+```js
+{
+  id: 'sig-encourage-queen', source: '…',
+  contract: '4S', declarer: 'S',
+  shown: 'H',                    // optional: only these suits are shown
+  hands: { N: '.752..', E: '.Q83..' },  // dummy and you, before the trick
+  leader: 'W', trick: ['HA', 'H2'],     // you (East) play next
+  problems: [{ id: 'sig-encourage-queena', play: true, answer: 'H8', tags: ['signals'], explanation: '…' }],
 }
 ```
 

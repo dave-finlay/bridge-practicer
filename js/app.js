@@ -5,7 +5,8 @@
 // problem shows the problem screen: your hand, the auction so far and a
 // bidding box. Tapping a call selects it, and Bid confirms it, so there's
 // a moment to check. An opening lead problem shows the whole auction and
-// your hand as cards to tap instead. Then the feedback screen grades the call and shows
+// your hand as cards to tap instead, and a play problem a moment in the
+// play: dummy, the trick so far and your cards. Then the feedback screen grades the call and shows
 // the whole deal. After the last problem (or ✕ to stop early), the
 // summary lists the answers, any of which can be looked at again, and
 // offers the missed ones as a new session.
@@ -15,12 +16,12 @@
 // ones due again. Ones answered right wait until they're due, so a set
 // can be short, or there can be none left for now.
 
-import { alertsFor } from './alerts.js';
+import { marksFor } from './alerts.js';
 import { BIDS, STRAINS, contract, isVulnerable, legalCalls, seatAfter } from './auction.js';
 import { SUITS, formatHolding, hcp, parseHand } from './hands.js';
 import {
-  ORIGINS, boardOf, dealCount, flatten, fromOrigins, grade, isFullDeal, nextDue, pickSession, problemFiles,
-  progressSummary, readyNow, topicName, topicsIn, updateProgress, withTags,
+  ORIGINS, boardOf, dealCount, dummyOf, flatten, fromOrigins, grade, isFullDeal, isPosition, nextDue, pickSession,
+  problemFiles, progressSummary, readyNow, topicName, topicsIn, trickSeats, updateProgress, withTags,
 } from './problems.js';
 import { startPreview } from './preview.js';
 import { loadProgress, requestPersistence, saveAnswer } from './store.js';
@@ -110,8 +111,10 @@ function cardHTML(card) {
   return `<span class="${red ? 'red' : ''}">${SYMBOLS[card[0]]}${card[1] === 'T' ? '10' : card[1]}</span>`;
 }
 
-// A problem's answer, or a player's: a card for an opening lead, else a call.
-const answerHTML = (problem, answer) => (problem.lead ? cardHTML(answer) : callHTML(answer));
+// A problem's answer, or a player's: a card for a lead or a play, else a call.
+const answerHTML = (problem, answer) => (problem.lead || problem.play ? cardHTML(answer) : callHTML(answer));
+// What the player did, for "You led ♥A", "You played ♥3", "You bid 2♥".
+const answerVerb = (problem) => (problem.lead ? 'led' : problem.play ? 'played' : 'bid');
 
 // "4♠", "5♣ doubled".
 function contractHTML({ level, strain, doubled }) {
@@ -154,7 +157,7 @@ function auctionHTML(deal, you, calls, { ask = false, pending = null, highlight 
 
   const cells = [];
   for (let i = 0; i < TABLE_ORDER.indexOf(deal.dealer); i++) cells.push('<div></div>');
-  const marks = alertsFor(deal.dealer, deal.auction);
+  const marks = marksFor(deal);
   calls.forEach((call, i) => {
     const mark = marks.get(i);
     const label = mark && `${mark.kind === 'alert' ? 'Alert' : 'Announced'}: ${mark.text}`;
@@ -219,6 +222,7 @@ function renderProblem() {
   const { item } = session[index];
   const { deal, problem, seat } = item;
   if (problem.lead) return renderLead();
+  if (problem.play) return renderPlay();
   const before = deal.auction.slice(0, problem.at);
   const legal = legalCalls(deal.dealer, before);
 
@@ -264,15 +268,6 @@ function renderLead() {
   const { item } = session[index];
   const { deal, seat } = item;
   const final = contract(deal.dealer, deal.auction);
-  const hand = parseHand(deal.hands[seat]);
-  const holding = (suit) => {
-    const red = suit === 'H' || suit === 'D';
-    const cards = [...hand[suit]].map((rank) => {
-      const card = suit + rank;
-      return `<button class="card${red ? ' red' : ''}${card === selected ? ' selected' : ''}" data-card="${card}">${rank === 'T' ? '10' : rank}</button>`;
-    });
-    return `<div class="holding"><span class="suit${red ? ' red' : ''}">${SYMBOLS[suit]}</span>${cards.join('') || '<span class="void">—</span>'}</div>`;
-  };
 
   app.className = 'problem-screen lead-screen';
   app.innerHTML = `
@@ -283,12 +278,74 @@ function renderLead() {
     </header>
     <section class="auction">${auctionHTML(deal, seat, deal.auction)}</section>
     <p class="lead-prompt">${contractHTML(final)} by ${SEAT_NAMES[final.declarer]}. Your lead.</p>
-    <section class="lead-hand" aria-label="Your hand: tap the card to lead">${SUITS.map(holding).join('')}</section>
+    <section class="lead-hand" aria-label="Your hand: tap the card to lead">${cardButtonsHTML(deal.hands[seat])}</section>
     <div class="confirm">
       <button class="secondary" data-action="cancel"${selected ? '' : ' disabled'}>Cancel</button>
       <button class="primary" data-action="confirm"${selected ? '' : ' disabled'}>${selected ? `Lead ${cardHTML(selected)}` : 'Choose a card'}</button>
     </div>`;
   scrollAuction();
+}
+
+// Your cards as buttons to tap, one suit per line, or only the suits a
+// position shows. Cards that don't follow suit are disabled.
+function cardButtonsHTML(handText, { suits = SUITS, led = null } = {}) {
+  const hand = parseHand(handText);
+  const canFollow = led && hand[led];
+  return suits.map((suit) => {
+    const red = suit === 'H' || suit === 'D';
+    const cards = [...hand[suit]].map((rank) => {
+      const card = suit + rank;
+      const disabled = canFollow && suit !== led ? ' disabled' : '';
+      return `<button class="card${red ? ' red' : ''}${card === selected ? ' selected' : ''}" data-card="${card}"${disabled}>${rank === 'T' ? '10' : rank}</button>`;
+    });
+    return `<div class="holding"><span class="suit${red ? ' red' : ''}">${SYMBOLS[suit]}</span>${cards.join('') || '<span class="void">—</span>'}</div>`;
+  }).join('');
+}
+
+// A play position: dummy's cards left, then the trick so far round a
+// compass, with "?" (or your card, once chosen or answered) in your place.
+function positionHTML(deal, you, yourCard = null) {
+  const suits = [...(deal.shown ?? SUITS.join(''))];
+  const dummy = dummyOf(deal);
+  const played = Object.fromEntries(trickSeats(deal).map((seat, i) => [seat, deal.trick[i]]));
+  const dummyLeft = parseHand(deal.hands[dummy]);
+  if (played[dummy]) dummyLeft[played[dummy][0]] = dummyLeft[played[dummy][0]].replace(played[dummy][1], '');
+  const role = (seat) => (seat === you ? 'you' : seat === dummy ? 'dummy' : seat === deal.declarer ? 'declarer' : 'partner');
+  const spot = (seat) => {
+    const card = seat === you ? yourCard : played[seat];
+    const content = card ? cardHTML(card) : seat === you ? '<span class="cursor">?</span>' : '';
+    return `<div class="spot spot-${seat.toLowerCase()}${seat === deal.leader ? ' led' : ''}">
+      <small>${SEAT_NAMES[seat]} · ${role(seat)}</small><span class="played">${content}</span></div>`;
+  };
+  return `
+    <div class="dummy-hand">
+      <div class="deal-label">Dummy (${SEAT_NAMES[dummy]})</div>
+      ${suits.map((suit) => holdingHTML(dummyLeft, suit)).join('')}
+    </div>
+    <div class="trick" aria-label="The trick so far">${SEATS_ORDER.map(spot).join('')}</div>`;
+}
+const SEATS_ORDER = ['N', 'W', 'E', 'S'];
+
+// A play problem: the contract, dummy and the trick so far, then your
+// cards at the bottom to tap.
+function renderPlay() {
+  const { item } = session[index];
+  const { deal, seat } = item;
+  const suits = [...(deal.shown ?? SUITS.join(''))];
+  app.className = 'problem-screen play-screen';
+  app.innerHTML = `
+    <header class="bar">
+      <button class="quit" data-action="quit" aria-label="Stop these challenges">✕</button>
+      <span class="progress">${index + 1} of ${session.length}</span>
+      <span class="setting">You are ${SEAT_NAMES[seat]} · ${callHTML(deal.contract)} by ${SEAT_NAMES[deal.declarer]}</span>
+    </header>
+    <section class="position">${positionHTML(deal, seat, selected)}</section>
+    <p class="lead-prompt">${deal.trick.length ? 'Which card do you play?' : 'Which card do you lead?'}</p>
+    <section class="lead-hand" aria-label="Your cards: tap the one to play">${cardButtonsHTML(deal.hands[seat], { suits, led: deal.trick[0]?.[0] })}</section>
+    <div class="confirm">
+      <button class="secondary" data-action="cancel"${selected ? '' : ' disabled'}>Cancel</button>
+      <button class="primary" data-action="confirm"${selected ? '' : ' disabled'}>${selected ? `Play ${cardHTML(selected)}` : 'Choose a card'}</button>
+    </div>`;
 }
 
 function dealHTML(deal, you) {
@@ -382,6 +439,31 @@ function boardSource({ deal, title }) {
   return `${title} lesson, ${deal.part ? `part ${deal.part}, ` : ''}board ${deal.board}`;
 }
 
+// The board under the feedback: the auction, then the whole deal with
+// double dummy results, or just your hand if that's all there is.
+function boardFeedbackHTML(item, problem) {
+  const { deal, seat } = item;
+  return `
+    <h2>${isFullDeal(deal) ? 'The whole board' : 'The auction'}</h2>
+    <p class="hint">${escapeHTML(boardSource(item))}</p>
+    <section class="auction">${auctionHTML(deal, seat, deal.auction, { highlight: problem.at })}</section>
+    ${isFullDeal(deal)
+      ? `${dealHTML(deal, seat)}${problem.lead ? leadsHTML(deal, seat) : ''}${doubleDummyHTML(deal)}`
+      : `<div class="deal-hand you lone-hand"><div class="deal-label">${SEAT_NAMES[seat]} (you) · ${hcp(parseHand(deal.hands[seat]))}</div>${handHTML(deal.hands[seat])}</div>`}`;
+}
+
+// A play problem's position under the feedback, with your card in place.
+function positionFeedbackHTML(item, call) {
+  const { deal, seat } = item;
+  const suits = [...(deal.shown ?? SUITS.join(''))];
+  const hand = parseHand(deal.hands[seat]);
+  return `
+    <h2>The position</h2>
+    <p class="hint">${callHTML(deal.contract)} by ${SEAT_NAMES[deal.declarer]} · ${escapeHTML(boardSource(item))}</p>
+    <section class="position">${positionHTML(deal, seat, call)}</section>
+    <div class="deal-hand you lone-hand"><div class="deal-label">${SEAT_NAMES[seat]} (you)</div>${suits.map((suit) => holdingHTML(hand, suit)).join('')}</div>`;
+}
+
 // After answering, Next goes on. Looking again from the summary
 // (`reviewing`), the button goes back to it.
 function renderFeedback(reviewing = false) {
@@ -408,7 +490,7 @@ function renderFeedback(reviewing = false) {
           <h1>${title}</h1>
           <p>${result === 'best'
             ? `${answerHTML(problem, call)} is the answer.`
-            : `You ${problem.lead ? 'led' : 'bid'} ${answerHTML(problem, call)}. The answer is ${answerHTML(problem, problem.answer)}.`}</p>
+            : `You ${answerVerb(problem)} ${answerHTML(problem, call)}. The answer is ${answerHTML(problem, problem.answer)}.`}</p>
         </div>
       </header>
       ${notes.join('')}
@@ -416,12 +498,7 @@ function renderFeedback(reviewing = false) {
       <p>${proseHTML(problem.explanation)}</p>
       ${alternatives.map(([c, why]) => `<p><strong>Also fine: ${answerHTML(problem, c)}.</strong> ${proseHTML(why)}</p>`).join('')}
       ${deal.atTheTable ? `<h2>At the club</h2><p>${proseHTML(deal.atTheTable)}</p>` : ''}
-      <h2>${isFullDeal(deal) ? 'The whole board' : 'The auction'}</h2>
-      <p class="hint">${escapeHTML(boardSource(item))}</p>
-      <section class="auction">${auctionHTML(deal, seat, deal.auction, { highlight: problem.at })}</section>
-      ${isFullDeal(deal)
-        ? `${dealHTML(deal, seat)}${problem.lead ? leadsHTML(deal, seat) : ''}${doubleDummyHTML(deal)}`
-        : `<div class="deal-hand you lone-hand"><div class="deal-label">${SEAT_NAMES[seat]} (you) · ${hcp(parseHand(deal.hands[seat]))}</div>${handHTML(deal.hands[seat])}</div>`}
+      ${isPosition(deal) ? positionFeedbackHTML(item, call) : boardFeedbackHTML(item, problem)}
     </div>
     <div class="next-bar">
       ${reviewing
@@ -443,7 +520,7 @@ function renderSummary() {
       <span class="mark" aria-hidden="true">${GRADES[result].icon}</span>
       <span class="result-text">
         <small>${escapeHTML(topicName(item.problem.tags[0]))}</small>
-        You ${item.problem.lead ? 'led' : 'bid'} ${answerHTML(item.problem, call)}${answer}
+        You ${answerVerb(item.problem)} ${answerHTML(item.problem, call)}${answer}
       </span>
       <span class="chevron" aria-hidden="true">›</span>
     </button></li>`;
@@ -510,8 +587,15 @@ function renderHome() {
   app.innerHTML = `
     <header>
       <h1>Bridge Practicer</h1>
-      <p class="hint">Challenges from bridge lessons</p>
+      <p class="hint">Bidding and defence challenges
+        <button class="about-button" data-action="about" aria-label="About these challenges">ⓘ</button></p>
     </header>
+    <dialog class="about" aria-label="About these challenges">
+      <h2>About these challenges</h2>
+      <p>A collection of bridge challenges I want to get better at remembering: from lessons I've taken, hands I've played at the club, and bridge teaching I've found online.</p>
+      <p>Each one shows a hand and asks for the call, the opening lead or the card to play, then explains the answer.</p>
+      <button class="primary" data-action="close-about">Close</button>
+    </dialog>
     <section>
       <h2>From</h2>
       <div class="chips">${originChips}</div>
@@ -592,8 +676,19 @@ app.addEventListener('click', (event) => {
     if (marked !== wasShown) showMark(marked);
     return;
   }
+  // The About popup: a tap on its backdrop (the dialog itself) closes it.
+  if (event.target.matches('dialog.about')) {
+    event.target.close();
+    return;
+  }
   const button = event.target.closest('button');
   if (!button || button.disabled) return;
+  if (button.dataset.action === 'about' || button.dataset.action === 'close-about') {
+    const about = app.querySelector('dialog.about');
+    if (button.dataset.action === 'about') about.showModal();
+    else about.close();
+    return;
+  }
 
   const { call, card, action, origin, tag, review } = button.dataset;
   if (call || card) {

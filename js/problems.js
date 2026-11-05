@@ -14,7 +14,7 @@ export const ORIGINS = {
     files: ['stayman', 'texas', 'negative-doubles', 'nmf', 'jacoby-2nt', 'rkcb', 'control-bids', 'jacoby'],
   },
   club: { name: 'Club', files: ['alpine-2026-10-27', 'alpine-2026-11-03'] },
-  teachers: { name: 'Teachers', files: ['too-strong', 'cuebids', 'opening-leads'] },
+  teachers: { name: 'Teachers', files: ['too-strong', 'cuebids', 'opening-leads', 'defence'] },
 };
 
 // Every problem file's path, with its origin.
@@ -40,6 +40,8 @@ export const TOPICS = {
   general: 'General bidding',
   'leads-nt': 'Leads vs notrump',
   'leads-suit': 'Leads vs suits',
+  signals: 'Attitude signals',
+  'second-third': 'Second and third hand',
 };
 
 export const topicName = (tag) => TOPICS[tag] ?? tag;
@@ -56,6 +58,15 @@ export const isFullDeal = (deal) => SEATS.every((seat) => deal.hands[seat]);
 // The player who makes the opening lead: declarer's left-hand opponent.
 export const leaderOf = (deal) => seatAfter(contract(deal.dealer, deal.auction).declarer);
 
+// A play position: a moment in the play from a handout, with the contract,
+// dummy's and your cards (perhaps in one suit only) and the trick so far,
+// but no auction. Its problems (`play: true`) ask for your card.
+export const isPosition = (deal) => Array.isArray(deal.trick);
+export const dummyOf = (deal) => seatAfter(deal.declarer, 2);
+// Who played each card of the trick so far, and who plays next.
+export const trickSeats = (deal) => deal.trick.map((_, i) => seatAfter(deal.leader, i));
+export const toPlay = (deal) => seatAfter(deal.leader, deal.trick.length);
+
 // Every problem in the files, each with its deal, its file's origin and
 // title, and the seat that calls. Each file is as loaded, plus `origin`.
 export function flatten(files) {
@@ -67,9 +78,10 @@ export function flatten(files) {
         title: file.title,
         deal,
         problem,
-        // An opening lead problem (`lead: true`) asks the leader for a card;
-        // the others ask for the call at `at`.
-        seat: problem.lead ? leaderOf(deal) : seatOfCall(deal.dealer, problem.at),
+        // An opening lead problem (`lead: true`) asks the leader for a card,
+        // and a play problem the next to play; the others ask for the call
+        // at `at`.
+        seat: problem.play ? toPlay(deal) : problem.lead ? leaderOf(deal) : seatOfCall(deal.dealer, problem.at),
       })),
     ),
   );
