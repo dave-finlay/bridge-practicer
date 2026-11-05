@@ -2,7 +2,7 @@
 // wrong.
 // Usage: node scripts/check.mjs
 
-import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
   SEATS, contract, dealerForBoard, isComplete, legalCalls, seatOfCall, sideOf, vulnerabilityForBoard,
@@ -256,6 +256,23 @@ for (const file of needed) {
 }
 for (const file of swFiles) {
   if (file !== './' && !existsSync(join(root, file))) errors.push(`sw.js: ${file} in FILES doesn't exist`);
+}
+
+// Progress on the phones is kept by problem id, so renaming or deleting
+// an id quietly loses its history. problems/ids.txt lists every id ever
+// checked; one that has gone is an error, and new ones are added to it
+// once everything passes. (Setting a deal aside keeps its ids.)
+const idsFile = join(dir, 'ids.txt');
+const known = existsSync(idsFile) ? readFileSync(idsFile, 'utf8').split('\n').filter(Boolean) : [];
+for (const id of known) {
+  if (!problemIds.has(id)) {
+    errors.push(`${id} has gone, and progress on it is lost. If it was never published, or is meant to go, remove it from problems/ids.txt`);
+  }
+}
+const added = [...problemIds].filter((id) => !known.includes(id));
+if (added.length && !errors.length) {
+  writeFileSync(idsFile, `${[...known, ...added].sort().join('\n')}\n`);
+  console.log(`Added ${added.length} new problem ids to problems/ids.txt`);
 }
 
 if (errors.length) {

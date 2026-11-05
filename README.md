@@ -35,8 +35,8 @@ explanation, and notes on tempting wrong answers. [PLAN.md](PLAN.md)
 describes the format.
 
 ```sh
-npm test          # unit tests
-npm run check     # checks every deal and problem (52 cards, legal auctions, ...)
+npm test          # unit tests, plus the checker
+npm run check     # checks every deal and problem (52 cards, legal auctions, ids kept, ...)
 npm run review    # builds review/index.html, a page for checking the problems
 npm run dd        # double dummy results for new or changed deals
 npm start         # serves the app to this computer and phones on the Wi-Fi

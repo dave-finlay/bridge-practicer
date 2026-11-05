@@ -184,6 +184,17 @@ ids, and an answer that matches the auction unless an `answerNote`
 explains why it doesn't. It also fails if a deal's double dummy results
 are missing or out of date (`npm run dd` fixes it).
 
+Progress on the phones is kept by problem id, so an id must never be
+renamed or deleted once published: that challenge's history would be
+lost. `problems/ids.txt` lists every id the checker has seen, adding new
+ones when everything passes, and the checker fails if one has gone.
+Setting a deal aside keeps its ids. To drop an id on purpose (or one
+that was never published), remove it from the list.
+
+`npm test` runs the checker too, along with a test that every named
+import in `js/` and `scripts/` exists, since `js/app.js` needs a browser
+and can't be loaded by the tests.
+
 ## Screens
 
 The app calls the problems **challenges** ("10 bidding challenges",
