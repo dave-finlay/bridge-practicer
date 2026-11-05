@@ -143,8 +143,9 @@ are missing or out of date (`npm run dd` fixes it).
 The app calls the problems **challenges** ("10 bidding challenges",
 "More challenges"); "session" isn't used on screen.
 
-1. **Home:** origin chips (All, Lessons, Club or Teachers: where the
-   deals come from) and topic chips (All, or any mix of topics; both
+1. **Home:** origin chips (All, or any mix of Lessons, Club and
+   Teachers: where the deals come from) and topic chips (All, or any
+   mix of topics; both
    remembered on the phone; Home from the summary goes back to all
    topics), Start with 10
    bidding challenges (fewer if the filter leaves fewer deals; a choice

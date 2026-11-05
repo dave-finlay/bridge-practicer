@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
-  ORIGINS, dealCount, dueAt, flatten, fromOrigin, grade, nextDue, pickSession, problemFiles, progressSummary,
+  ORIGINS, dealCount, dueAt, flatten, fromOrigins, grade, nextDue, pickSession, problemFiles, progressSummary,
   readyNow, topicsIn, updateProgress, withTags,
 } from '../js/problems.js';
 
@@ -84,12 +84,13 @@ test('problemFiles lists each origin\'s files in its folder', () => {
   assert.equal(files.length, Object.values(ORIGINS).reduce((n, { files: names }) => n + names.length, 0));
 });
 
-test('fromOrigin keeps the problems from one origin, or all for none', () => {
+test('fromOrigins keeps the problems from any of the origins, or all for none', () => {
   const both = flatten([texas, club]);
-  assert.equal(fromOrigin(both, 'club').length, 14);
-  assert.equal(fromOrigin(both, 'lessons').length, 16);
-  assert.equal(fromOrigin(both, '').length, 30);
-  assert.equal(fromOrigin(both, 'teachers').length, 0);
+  assert.equal(fromOrigins(both, ['club']).length, 14);
+  assert.equal(fromOrigins(both, ['lessons']).length, 16);
+  assert.equal(fromOrigins(both, ['lessons', 'club']).length, 30);
+  assert.equal(fromOrigins(both, []).length, 30);
+  assert.equal(fromOrigins(both, ['teachers']).length, 0);
 });
 
 test('two versions of a club board count as one board', () => {

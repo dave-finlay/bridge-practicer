@@ -1,7 +1,7 @@
 // The app's screens and event handling.
 //
-// The home screen starts a session of 10 problems, optionally from one
-// origin (lessons, club or teachers) or for chosen topics only. Each
+// The home screen starts a session of 10 problems, optionally from chosen
+// origins (lessons, club, teachers) or for chosen topics only. Each
 // problem shows the problem screen: your hand, the auction so far and a
 // bidding box. Tapping a call selects it, and Bid confirms it, so there's
 // a moment to check. Then the feedback screen grades the call and shows
@@ -18,7 +18,7 @@ import { alertsFor } from './alerts.js';
 import { BIDS, STRAINS, contract, isVulnerable, legalCalls, seatAfter } from './auction.js';
 import { SUITS, formatHolding, hcp, parseHand } from './hands.js';
 import {
-  ORIGINS, boardOf, dealCount, flatten, fromOrigin, grade, nextDue, pickSession, problemFiles,
+  ORIGINS, boardOf, dealCount, flatten, fromOrigins, grade, nextDue, pickSession, problemFiles,
   progressSummary, readyNow, topicName, topicsIn, updateProgress, withTags,
 } from './problems.js';
 import { startPreview } from './preview.js';
@@ -27,7 +27,7 @@ import { loadProgress, requestPersistence, saveAnswer } from './store.js';
 const app = document.getElementById('app');
 
 const SESSION_SIZE = 10;
-// Where the home screen's choice of origin and topics is kept between visits.
+// Where the home screen's choice of origins and topics is kept between visits.
 const SETTINGS_KEY = 'bridge-practicer-settings';
 // Columns of the auction table, as on BBO and in the bid recorder.
 const TABLE_ORDER = ['W', 'N', 'E', 'S'];
@@ -53,27 +53,36 @@ let index = 0;
 let screen = 'loading'; // 'home', 'problem', 'feedback', 'review', 'summary', 'error'
 let selected = null; // the call tapped on the problem screen, not yet confirmed
 let answeredAt = 0;
-// Chosen on the home screen: where the deals come from ('' for all), and
-// the topics (none means all).
-let { origin, tags } = loadSettings();
+// Chosen on the home screen: where the deals come from, and the topics.
+// None chosen means all.
+let { origins, tags } = loadSettings();
 
 // Settings are a convenience: if storage is unavailable, the defaults do.
+// Before origins could be combined, the setting was one `origin`.
 function loadSettings() {
   try {
     const settings = JSON.parse(localStorage.getItem(SETTINGS_KEY));
-    if (Array.isArray(settings?.tags)) return { origin: '', ...settings };
+    if (Array.isArray(settings?.tags)) {
+      const origins = Array.isArray(settings.origins) ? settings.origins : [settings.origin].filter(Boolean);
+      return { origins, tags: settings.tags };
+    }
   } catch {}
-  return { origin: '', tags: [] };
+  return { origins: [], tags: [] };
 }
 
 function saveSettings() {
   try {
-    localStorage.setItem(SETTINGS_KEY, JSON.stringify({ origin, tags }));
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify({ origins, tags }));
   } catch {}
 }
 
-// The problems from the chosen origin and topics.
-const chosenPool = () => withTags(fromOrigin(problems, origin), tags);
+// The problems from the chosen origins and topics.
+const chosenPool = () => withTags(fromOrigins(problems, origins), tags);
+
+// Topics with nothing from the chosen origins are dropped.
+const keepTopicsInOrigins = () => {
+  tags = tags.filter((tag) => fromOrigins(problems, origins).some(({ problem }) => problem.tags.includes(tag)));
+};
 
 // Formatting
 
@@ -352,7 +361,7 @@ function renderFeedback(reviewing = false) {
 function renderSummary() {
   const right = session.filter(({ item, call }) => grade(item.problem, call) !== 'wrong').length;
   const missed = session.filter(({ item, call }) => grade(item.problem, call) === 'wrong').length;
-  // More challenges takes the same origin and topics, if any are ready.
+  // More challenges takes the same origins and topics, if any are ready.
   const more = readyNow(chosenPool(), progress).length;
   const rows = session.map(({ item, call }, i) => {
     const result = grade(item.problem, call);
@@ -404,15 +413,15 @@ function renderHome() {
   const chip = (data, name, count, on) =>
     `<button class="chip${on ? ' on' : ''}" ${data} aria-pressed="${on}">${escapeHTML(name)}${count ? ` <small>${count}</small>` : ''}</button>`;
   // Only origins with problems are offered.
-  const origins = [
-    chip('data-origin=""', 'All', 0, !origin),
+  const originChips = [
+    chip('data-origin=""', 'All', 0, !origins.length),
     ...Object.entries(ORIGINS)
-      .filter(([key]) => fromOrigin(problems, key).length)
-      .map(([key, { name }]) => chip(`data-origin="${key}"`, name, 0, origin === key)),
+      .filter(([key]) => fromOrigins(problems, [key]).length)
+      .map(([key, { name }]) => chip(`data-origin="${key}"`, name, 0, origins.includes(key))),
   ].join('');
   const topics = [
     chip('data-tag=""', 'All', 0, !tags.length),
-    ...topicsIn(fromOrigin(problems, origin))
+    ...topicsIn(fromOrigins(problems, origins))
       .map(({ tag, name, count }) => chip(`data-tag="${tag}"`, name, count, tags.includes(tag))),
   ].join('');
 
@@ -432,7 +441,7 @@ function renderHome() {
     </header>
     <section>
       <h2>From</h2>
-      <div class="chips">${origins}</div>
+      <div class="chips">${originChips}</div>
       <h2>Topics</h2>
       <div class="chips">${topics}</div>
       <p class="hint">${pool.length} challenge${pool.length === 1 ? '' : 's'} from ${deals} deal${deals === 1 ? '' : 's'}. A set has at most one challenge from each deal. One you got right comes back the next day, then after longer and longer gaps.</p>
@@ -513,13 +522,13 @@ app.addEventListener('click', (event) => {
   const button = event.target.closest('button');
   if (!button || button.disabled) return;
 
-  const { call, action, origin: newOrigin, tag, review } = button.dataset;
+  const { call, action, origin, tag, review } = button.dataset;
   if (call) {
     selected = call;
-  } else if (newOrigin !== undefined) {
-    // Topics with nothing from the new origin are dropped.
-    origin = newOrigin;
-    tags = tags.filter((t) => fromOrigin(problems, origin).some(({ problem }) => problem.tags.includes(t)));
+  } else if (origin !== undefined) {
+    // As with topics: "All" clears the choice, an origin toggles.
+    origins = !origin ? [] : origins.includes(origin) ? origins.filter((o) => o !== origin) : [...origins, origin];
+    keepTopicsInOrigins();
     saveSettings();
   } else if (tag !== undefined) {
     // "All" clears the choice; a convention toggles, and none left is all.
@@ -553,7 +562,7 @@ app.addEventListener('click', (event) => {
     startSession(chosenPool(), SESSION_SIZE);
     return;
   } else if (action === 'home') {
-    // Home starts again from all topics, keeping the origin.
+    // Home starts again from all topics, keeping the origins.
     tags = [];
     saveSettings();
     screen = 'home';
@@ -586,10 +595,10 @@ async function start() {
     // Double dummy results are extra: the app works without them.
     dd = await fetch('problems/dd.json').then((response) => (response.ok ? response.json() : {})).catch(() => ({}));
     // "Club hands" was a topic before the club was an origin.
-    if (tags.includes('club')) origin = 'club';
+    if (tags.includes('club') && !origins.includes('club')) origins.push('club');
     // Forget origins and topics no longer in the problems.
-    if (!fromOrigin(problems, origin).length) origin = '';
-    tags = tags.filter((tag) => fromOrigin(problems, origin).some(({ problem }) => problem.tags.includes(tag)));
+    origins = origins.filter((o) => fromOrigins(problems, [o]).length);
+    keepTopicsInOrigins();
     // A problem id in the URL (e.g. #texas-6d) skips the home screen and
     // puts that problem first, for trying out a particular problem.
     const wanted = problems.find((item) => `#${item.id}` === location.hash);

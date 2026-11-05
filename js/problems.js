@@ -172,10 +172,11 @@ export function withTags(problems, tags) {
   return problems.filter(({ problem }) => problem.tags.some((tag) => tags.includes(tag)));
 }
 
-// The problems from `origin` ('lessons', 'club' or 'teachers'), or all of
-// them if `origin` is empty.
-export function fromOrigin(problems, origin) {
-  return origin ? problems.filter((item) => item.origin === origin) : problems;
+// The problems from any of `origins` ('lessons', 'club', 'teachers'), or
+// all of them if `origins` is empty.
+export function fromOrigins(problems, origins) {
+  if (!origins.length) return problems;
+  return problems.filter((item) => origins.includes(item.origin));
 }
 
 // How many deals the problems come from: the most a session can hold.
