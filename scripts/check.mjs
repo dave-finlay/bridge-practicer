@@ -5,10 +5,10 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
-  SEATS, dealerForBoard, isComplete, legalCalls, seatOfCall, sideOf, vulnerabilityForBoard,
+  SEATS, contract, dealerForBoard, isComplete, legalCalls, seatOfCall, sideOf, vulnerabilityForBoard,
 } from '../js/auction.js';
-import { RANKS, SUITS, hcp, parseHand } from '../js/hands.js';
-import { ORIGINS, problemFiles } from '../js/problems.js';
+import { RANKS, SUITS, cardsOf, hcp, parseHand } from '../js/hands.js';
+import { ORIGINS, isFullDeal, leaderOf, problemFiles } from '../js/problems.js';
 
 const VULNERABILITIES = ['None', 'NS', 'EW', 'All'];
 const isLegal = (dealer, calls, call) => legalCalls(dealer, calls).has(call);
@@ -43,15 +43,23 @@ for (const file of files) {
 
     if (!SEATS.includes(deal.dealer)) fail(`bad dealer ${deal.dealer}`);
     if (!VULNERABILITIES.includes(deal.vul)) fail(`bad vulnerability ${deal.vul}`);
+    // A hand from a handout example may have no board number.
     const usual = { dealer: dealerForBoard(deal.board), vul: vulnerabilityForBoard(deal.board) };
     // `unusualSetup` explains a handout that doesn't follow the usual rotation.
-    if ((usual.dealer !== deal.dealer || usual.vul !== deal.vul) && !deal.unusualSetup) {
+    if (deal.board !== undefined && (usual.dealer !== deal.dealer || usual.vul !== deal.vul) && !deal.unusualSetup) {
       fail(`board ${deal.board} is usually dealer ${usual.dealer}, ${usual.vul} vul`);
     }
 
-    // Four hands of 13 cards, ranks in order, making one full deck.
+    // Four hands of 13 cards, ranks in order, making one full deck. A deal
+    // for opening leads only may give just the leader's hand.
+    const full = isFullDeal(deal);
+    if (!full) {
+      const given = Object.keys(deal.hands);
+      if (!deal.problems.every((problem) => problem.lead)) fail('only some hands are given, but not every problem is a lead');
+      else if (given.length !== 1 || given[0] !== leaderOf(deal)) fail("only the leader's hand should be given");
+    }
     const seen = new Set();
-    for (const seat of SEATS) {
+    for (const seat of SEATS.filter((s) => deal.hands[s])) {
       const hand = parseHand(deal.hands[seat]);
       let cards = 0;
       for (const suit of SUITS) {
@@ -70,8 +78,10 @@ for (const file of files) {
       }
       if (cards !== 13) fail(`${seat} has ${cards} cards`);
     }
-    if (seen.size !== 52) fail(`the deal has ${seen.size} different cards`);
-    if (dd[deal.id]?.hands !== `N:${SEATS.map((seat) => deal.hands[seat]).join(' ')}`) {
+    if (full && seen.size !== 52) fail(`the deal has ${seen.size} different cards`);
+    const solved = dd[deal.id];
+    const leadsSolved = !deal.problems.some((problem) => problem.lead) || solved?.lead;
+    if (full && (solved?.hands !== `N:${SEATS.map((seat) => deal.hands[seat]).join(' ')}` || !leadsSolved)) {
       fail('double dummy results are missing or out of date: run npm run dd');
     }
 
@@ -86,6 +96,25 @@ for (const file of files) {
       if (problemIds.has(problem.id)) errors.push(`${at}: duplicate problem id`);
       problemIds.add(problem.id);
       if (!problem.id.startsWith(`${deal.id}`)) errors.push(`${at}: id doesn't match the deal`);
+      if (!problem.explanation) errors.push(`${at}: no explanation`);
+      if (!problem.tags?.length) errors.push(`${at}: no tags`);
+
+      // An opening lead: the answer and alternatives are cards in the
+      // leader's hand.
+      if (problem.lead) {
+        if (!contract(deal.dealer, deal.auction)) {
+          errors.push(`${at}: the deal is passed out, so there's no lead`);
+          continue;
+        }
+        const cards = cardsOf(parseHand(deal.hands[leaderOf(deal)]));
+        if (!cards.includes(problem.answer)) errors.push(`${at}: answer ${problem.answer} isn't in the leader's hand`);
+        for (const card of [...Object.keys(problem.whyNot ?? {}), ...Object.keys(problem.acceptable ?? {})]) {
+          if (!cards.includes(card)) errors.push(`${at}: ${card} isn't in the leader's hand`);
+          if (card === problem.answer) errors.push(`${at}: ${card} is also the answer`);
+        }
+        continue;
+      }
+
       if (!(problem.at >= 0 && problem.at < deal.auction.length)) {
         errors.push(`${at}: "at" is outside the auction`);
         continue;
@@ -105,8 +134,6 @@ for (const file of files) {
         if (!isLegal(deal.dealer, before, call)) errors.push(`${at}: ${call} is not legal at this point`);
         if (call === problem.answer) errors.push(`${at}: ${call} is also the answer`);
       }
-      if (!problem.explanation) errors.push(`${at}: no explanation`);
-      if (!problem.tags?.length) errors.push(`${at}: no tags`);
       const seat = seatOfCall(deal.dealer, problem.at);
       problem.seat = seat;
       problem.hcp = hcp(parseHand(deal.hands[seat]));

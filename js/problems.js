@@ -4,7 +4,7 @@
 // Each problem file holds deals, and each deal holds problems. See
 // PLAN.md for the format.
 
-import { seatOfCall } from './auction.js';
+import { SEATS, contract, seatAfter, seatOfCall } from './auction.js';
 
 // Where the deals come from, in the order the home screen lists them, and
 // the files the app loads from each: problems/<origin>/<file>.json.
@@ -14,7 +14,7 @@ export const ORIGINS = {
     files: ['stayman', 'texas', 'negative-doubles', 'nmf', 'jacoby-2nt', 'rkcb', 'control-bids', 'jacoby'],
   },
   club: { name: 'Club', files: ['alpine-2026-10-27', 'alpine-2026-11-03'] },
-  teachers: { name: 'Teachers', files: ['too-strong', 'cuebids'] },
+  teachers: { name: 'Teachers', files: ['too-strong', 'cuebids', 'opening-leads'] },
 };
 
 // Every problem file's path, with its origin.
@@ -38,6 +38,8 @@ export const TOPICS = {
   cuebids: 'Cuebids',
   'level-of-fit': 'Level of fit',
   general: 'General bidding',
+  'leads-nt': 'Leads vs notrump',
+  'leads-suit': 'Leads vs suits',
 };
 
 export const topicName = (tag) => TOPICS[tag] ?? tag;
@@ -46,6 +48,13 @@ export const topicName = (tag) => TOPICS[tag] ?? tag;
 // ways; both versions share a `source` and count as one board, since one
 // version's auction would give away the other's answers.
 export const boardOf = (deal) => deal.source ?? deal.id;
+
+// A deal with all four hands. A lead problem from a handout may give
+// only the leader's hand.
+export const isFullDeal = (deal) => SEATS.every((seat) => deal.hands[seat]);
+
+// The player who makes the opening lead: declarer's left-hand opponent.
+export const leaderOf = (deal) => seatAfter(contract(deal.dealer, deal.auction).declarer);
 
 // Every problem in the files, each with its deal, its file's origin and
 // title, and the seat that calls. Each file is as loaded, plus `origin`.
@@ -58,7 +67,9 @@ export function flatten(files) {
         title: file.title,
         deal,
         problem,
-        seat: seatOfCall(deal.dealer, problem.at),
+        // An opening lead problem (`lead: true`) asks the leader for a card;
+        // the others ask for the call at `at`.
+        seat: problem.lead ? leaderOf(deal) : seatOfCall(deal.dealer, problem.at),
       })),
     ),
   );

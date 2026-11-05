@@ -4,7 +4,8 @@
 // origins (lessons, club, teachers) or for chosen topics only. Each
 // problem shows the problem screen: your hand, the auction so far and a
 // bidding box. Tapping a call selects it, and Bid confirms it, so there's
-// a moment to check. Then the feedback screen grades the call and shows
+// a moment to check. An opening lead problem shows the whole auction and
+// your hand as cards to tap instead. Then the feedback screen grades the call and shows
 // the whole deal. After the last problem (or ✕ to stop early), the
 // summary lists the answers, any of which can be looked at again, and
 // offers the missed ones as a new session.
@@ -18,7 +19,7 @@ import { alertsFor } from './alerts.js';
 import { BIDS, STRAINS, contract, isVulnerable, legalCalls, seatAfter } from './auction.js';
 import { SUITS, formatHolding, hcp, parseHand } from './hands.js';
 import {
-  ORIGINS, boardOf, dealCount, flatten, fromOrigins, grade, nextDue, pickSession, problemFiles,
+  ORIGINS, boardOf, dealCount, flatten, fromOrigins, grade, isFullDeal, nextDue, pickSession, problemFiles,
   progressSummary, readyNow, topicName, topicsIn, updateProgress, withTags,
 } from './problems.js';
 import { startPreview } from './preview.js';
@@ -51,7 +52,7 @@ let progress = {}; // progress records by problem id, from js/store.js
 let session = []; // [{ item, call }], call is null until answered
 let index = 0;
 let screen = 'loading'; // 'home', 'problem', 'feedback', 'review', 'summary', 'error'
-let selected = null; // the call tapped on the problem screen, not yet confirmed
+let selected = null; // the call or card tapped on the problem screen, not yet confirmed
 let answeredAt = 0;
 // Chosen on the home screen: where the deals come from, and the topics.
 // None chosen means all.
@@ -101,6 +102,20 @@ function callHTML(call) {
   if (call === 'X') return '<span class="double">X</span>';
   if (call === 'XX') return '<span class="redouble">XX</span>';
   return `<span class="${isRed(call) ? 'red' : ''}">${bidLabel(call)}</span>`;
+}
+
+// A card such as 'H6' or 'ST': '♥6', '♠10'.
+function cardHTML(card) {
+  const red = card[0] === 'H' || card[0] === 'D';
+  return `<span class="${red ? 'red' : ''}">${SYMBOLS[card[0]]}${card[1] === 'T' ? '10' : card[1]}</span>`;
+}
+
+// A problem's answer, or a player's: a card for an opening lead, else a call.
+const answerHTML = (problem, answer) => (problem.lead ? cardHTML(answer) : callHTML(answer));
+
+// "4♠", "5♣ doubled".
+function contractHTML({ level, strain, doubled }) {
+  return `${callHTML(`${level}${strain}`)}${{ X: ' doubled', XX: ' redoubled' }[doubled] ?? ''}`;
 }
 
 // Text from the problem files, with suit symbols drawn as text and colored.
@@ -203,6 +218,7 @@ function confirmLabel(call) {
 function renderProblem() {
   const { item } = session[index];
   const { deal, problem, seat } = item;
+  if (problem.lead) return renderLead();
   const before = deal.auction.slice(0, problem.at);
   const legal = legalCalls(deal.dealer, before);
 
@@ -238,6 +254,39 @@ function renderProblem() {
       ${callButton('P', 'Pass', 'pass')}
       ${callButton('X', 'X', 'double')}
       ${callButton('XX', 'XX', 'redouble')}
+    </div>`;
+  scrollAuction();
+}
+
+// An opening lead: the whole auction, then your hand at the bottom, where
+// the thumb reaches, with each card a button.
+function renderLead() {
+  const { item } = session[index];
+  const { deal, seat } = item;
+  const final = contract(deal.dealer, deal.auction);
+  const hand = parseHand(deal.hands[seat]);
+  const holding = (suit) => {
+    const red = suit === 'H' || suit === 'D';
+    const cards = [...hand[suit]].map((rank) => {
+      const card = suit + rank;
+      return `<button class="card${red ? ' red' : ''}${card === selected ? ' selected' : ''}" data-card="${card}">${rank === 'T' ? '10' : rank}</button>`;
+    });
+    return `<div class="holding"><span class="suit${red ? ' red' : ''}">${SYMBOLS[suit]}</span>${cards.join('') || '<span class="void">—</span>'}</div>`;
+  };
+
+  app.className = 'problem-screen lead-screen';
+  app.innerHTML = `
+    <header class="bar">
+      <button class="quit" data-action="quit" aria-label="Stop these challenges">✕</button>
+      <span class="progress">${index + 1} of ${session.length}</span>
+      <span class="setting">You are ${SEAT_NAMES[seat]} · ${VUL_NAMES[deal.vul]}</span>
+    </header>
+    <section class="auction">${auctionHTML(deal, seat, deal.auction)}</section>
+    <p class="lead-prompt">${contractHTML(final)} by ${SEAT_NAMES[final.declarer]}. Your lead.</p>
+    <section class="lead-hand" aria-label="Your hand: tap the card to lead">${SUITS.map(holding).join('')}</section>
+    <div class="confirm">
+      <button class="secondary" data-action="cancel"${selected ? '' : ' disabled'}>Cancel</button>
+      <button class="primary" data-action="confirm"${selected ? '' : ' disabled'}>${selected ? `Lead ${cardHTML(selected)}` : 'Choose a card'}</button>
     </div>`;
   scrollAuction();
 }
@@ -303,6 +352,29 @@ function doubleDummyHTML(deal) {
     <p>${par}</p>`;
 }
 
+// For an opening lead, the tricks the defence takes after each card the
+// leader could lead, under the leader's hand, with the leads that beat
+// the contract marked.
+function leadsHTML(deal, seat) {
+  const tricks = dd[deal.id]?.lead;
+  if (!tricks) return '';
+  const final = contract(deal.dealer, deal.auction);
+  const beat = 8 - final.level;
+  const hand = parseHand(deal.hands[seat]);
+  const holding = (suit) => {
+    const red = suit === 'H' || suit === 'D';
+    const cards = [...hand[suit]].map((rank) => {
+      const taken = tricks[suit + rank];
+      return `<span class="lead-result${taken >= beat ? ' beats' : ''}">${rank === 'T' ? '10' : rank}<small>${taken}</small></span>`;
+    });
+    return `<div class="holding"><span class="suit${red ? ' red' : ''}">${SYMBOLS[suit]}</span>${cards.join('') || '—'}</div>`;
+  };
+  return `
+    <h2>Double dummy leads</h2>
+    <p class="dd-note">Tricks the defence takes after each lead, with all four hands seen and perfect play. Green leads beat ${contractHTML(final)} (${beat} tricks).</p>
+    <div class="leads">${SUITS.map(holding).join('')}</div>`;
+}
+
 // Where the board comes from: "Texas transfers lesson, board 6", or a
 // club or teacher's board's own `source`.
 function boardSource({ deal, title }) {
@@ -322,7 +394,7 @@ function renderFeedback(reviewing = false) {
   if (result === 'acceptable') {
     notes.push(`<p>${proseHTML(problem.acceptable[call])}</p>`);
   } else if (result === 'wrong' && problem.whyNot?.[call]) {
-    notes.push(`<p><strong>Why not ${callHTML(call)}?</strong> ${proseHTML(problem.whyNot[call])}</p>`);
+    notes.push(`<p><strong>Why not ${answerHTML(problem, call)}?</strong> ${proseHTML(problem.whyNot[call])}</p>`);
   }
   const alternatives = Object.entries(problem.acceptable ?? {}).filter(([c]) => c !== call);
   const last = index === session.length - 1;
@@ -335,20 +407,21 @@ function renderFeedback(reviewing = false) {
         <div>
           <h1>${title}</h1>
           <p>${result === 'best'
-            ? `${callHTML(call)} is the answer.`
-            : `You bid ${callHTML(call)}. The answer is ${callHTML(problem.answer)}.`}</p>
+            ? `${answerHTML(problem, call)} is the answer.`
+            : `You ${problem.lead ? 'led' : 'bid'} ${answerHTML(problem, call)}. The answer is ${answerHTML(problem, problem.answer)}.`}</p>
         </div>
       </header>
       ${notes.join('')}
-      <h2>Why ${callHTML(problem.answer)}</h2>
+      <h2>Why ${answerHTML(problem, problem.answer)}</h2>
       <p>${proseHTML(problem.explanation)}</p>
-      ${alternatives.map(([c, why]) => `<p><strong>Also fine: ${callHTML(c)}.</strong> ${proseHTML(why)}</p>`).join('')}
+      ${alternatives.map(([c, why]) => `<p><strong>Also fine: ${answerHTML(problem, c)}.</strong> ${proseHTML(why)}</p>`).join('')}
       ${deal.atTheTable ? `<h2>At the club</h2><p>${proseHTML(deal.atTheTable)}</p>` : ''}
-      <h2>The whole board</h2>
+      <h2>${isFullDeal(deal) ? 'The whole board' : 'The auction'}</h2>
       <p class="hint">${escapeHTML(boardSource(item))}</p>
       <section class="auction">${auctionHTML(deal, seat, deal.auction, { highlight: problem.at })}</section>
-      ${dealHTML(deal, seat)}
-      ${doubleDummyHTML(deal)}
+      ${isFullDeal(deal)
+        ? `${dealHTML(deal, seat)}${problem.lead ? leadsHTML(deal, seat) : ''}${doubleDummyHTML(deal)}`
+        : `<div class="deal-hand you lone-hand"><div class="deal-label">${SEAT_NAMES[seat]} (you) · ${hcp(parseHand(deal.hands[seat]))}</div>${handHTML(deal.hands[seat])}</div>`}
     </div>
     <div class="next-bar">
       ${reviewing
@@ -365,12 +438,12 @@ function renderSummary() {
   const more = readyNow(chosenPool(), progress).length;
   const rows = session.map(({ item, call }, i) => {
     const result = grade(item.problem, call);
-    const answer = result === 'best' ? '' : ` · answer ${callHTML(item.problem.answer)}`;
+    const answer = result === 'best' ? '' : ` · answer ${answerHTML(item.problem, item.problem.answer)}`;
     return `<li class="${result}"><button data-review="${i}">
       <span class="mark" aria-hidden="true">${GRADES[result].icon}</span>
       <span class="result-text">
         <small>${escapeHTML(topicName(item.problem.tags[0]))}</small>
-        You bid ${callHTML(call)}${answer}
+        You ${item.problem.lead ? 'led' : 'bid'} ${answerHTML(item.problem, call)}${answer}
       </span>
       <span class="chevron" aria-hidden="true">›</span>
     </button></li>`;
@@ -455,7 +528,7 @@ function renderHome() {
       </div>
     </section>
     <div class="starts">
-      ${size ? `<button class="primary" data-action="start">${size} bidding challenge${size === 1 ? '' : 's'}</button>`
+      ${size ? `<button class="primary" data-action="start">${size} challenge${size === 1 ? '' : 's'}</button>`
         : `<p class="hint">You’ve done all of these for now. More are due ${dueText(nextDue(pool, progress))}.</p>
       <button class="primary" disabled>All caught up</button>`}
     </div>`;
@@ -522,9 +595,9 @@ app.addEventListener('click', (event) => {
   const button = event.target.closest('button');
   if (!button || button.disabled) return;
 
-  const { call, action, origin, tag, review } = button.dataset;
-  if (call) {
-    selected = call;
+  const { call, card, action, origin, tag, review } = button.dataset;
+  if (call || card) {
+    selected = call ?? card;
   } else if (origin !== undefined) {
     // As with topics: "All" clears the choice, an origin toggles.
     origins = !origin ? [] : origins.includes(origin) ? origins.filter((o) => o !== origin) : [...origins, origin];

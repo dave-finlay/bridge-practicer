@@ -2,8 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
-  ORIGINS, dealCount, dueAt, flatten, fromOrigins, grade, nextDue, pickSession, problemFiles, progressSummary,
-  readyNow, topicsIn, updateProgress, withTags,
+  ORIGINS, dealCount, dueAt, flatten, fromOrigins, grade, isFullDeal, leaderOf, nextDue, pickSession, problemFiles,
+  progressSummary, readyNow, topicsIn, updateProgress, withTags,
 } from '../js/problems.js';
 
 const load = (path, origin) => ({ ...JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url))), origin });
@@ -91,6 +91,20 @@ test('fromOrigins keeps the problems from any of the origins, or all for none', 
   assert.equal(fromOrigins(both, ['lessons', 'club']).length, 30);
   assert.equal(fromOrigins(both, []).length, 30);
   assert.equal(fromOrigins(both, ['teachers']).length, 0);
+});
+
+test('an opening lead problem is asked of the leader, who may be the only hand given', () => {
+  const leads = load('problems/teachers/opening-leads.json', 'teachers');
+  const race = leads.deals.find((deal) => deal.id === 'lead-nt-race');
+  assert.equal(leaderOf(race), 'S'); // 3NT by East
+  assert.ok(isFullDeal(race));
+  const handOnly = leads.deals.find((deal) => deal.id === 'lead-nt-kqj');
+  assert.ok(!isFullDeal(handOnly));
+  const items = flatten([leads]);
+  assert.equal(items.find((p) => p.id === 'lead-nt-racea').seat, 'S');
+  assert.equal(items.find((p) => p.id === 'lead-nt-kqja').seat, 'W');
+  assert.equal(grade(items.find((p) => p.id === 'lead-nt-racea').problem, 'H6'), 'best');
+  assert.equal(grade(items.find((p) => p.id === 'lead-nt-racea').problem, 'HA'), 'wrong');
 });
 
 test('two versions of a club board count as one board', () => {

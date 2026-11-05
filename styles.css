@@ -460,6 +460,59 @@ button {
   color: var(--off-text);
 }
 
+/* Opening lead: the auction, then your hand at the bottom with each card
+   a button. */
+.lead-prompt {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  text-align: center;
+}
+
+.lead-hand {
+  display: grid;
+  gap: 5px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.lead-hand .holding {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.card {
+  min-width: 38px;
+  height: 42px;
+  padding: 0 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card.red {
+  color: var(--red);
+}
+
+.card.selected {
+  border-color: var(--felt);
+  background: var(--felt);
+  color: #fff;
+}
+
+.void {
+  color: var(--muted);
+}
+
 /* Short screens (an iPhone mini or SE, or Display Zoom set to Larger
    Text): a smaller hand and buttons, so the auction keeps room for three
    rows of calls. */
@@ -680,6 +733,51 @@ button {
 .results .best .mark { color: var(--good); }
 .results .acceptable .mark { color: var(--ok); }
 .results .wrong .mark { color: var(--bad); }
+
+/* A lead problem's hand when the other hands aren't given. */
+.lone-hand {
+  justify-self: start;
+  width: max-content;
+  margin-top: 10px;
+}
+
+/* Double dummy leads: the leader's hand, with the defence's tricks under
+   each card. */
+
+.leads {
+  display: grid;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.leads .holding {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.lead-result {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 1.2em;
+  line-height: 1.1;
+}
+
+.lead-result small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.lead-result.beats small {
+  color: var(--good);
+  font-weight: 700;
+}
 
 /* Double dummy table, under the deal on the feedback screen. */
 

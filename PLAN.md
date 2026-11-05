@@ -104,10 +104,11 @@ The service worker and manifest arrive with step 5.
   deals: [{
     id: 'texas-1',               // never changes once published
     part: 2,                     // optional: which handout, for a lesson in two
-    board: 1,                    // board number in the handout
+    board: 1,                    // board number in the handout (optional for a handout example)
     dealer: 'N',                 // N E S W
     vul: 'None',                 // None NS EW All
-    hands: { N: 'A2.JT54.AQ4.AJT2', E: …, S: …, W: … },  // PBN style, T = ten
+    hands: { N: 'A2.JT54.AQ4.AJT2', E: …, S: …, W: … },  // PBN style, T = ten; a lead-only
+                                 // example from a handout may give just the leader's hand
     auction: ['1N', 'P', '4H', 'P', '4S', 'P', 'P', 'P'], // from the dealer, complete
     handout: '…',                // lesson boards: the handout's commentary on the bidding
     reviewNotes: ['…'],          // optional: anything to check
@@ -125,10 +126,20 @@ The service worker and manifest arrive with step 5.
       whyNot: { '4S': '…' },     // optional: tempting wrong calls, and why not
       tags: ['texas'],           // topics the problem tests (TOPICS in js/problems.js)
       explanation: '…',
+    }, {
+      id: 'lead-nt-racea',       // an opening lead: no `at`; the leader is
+      lead: true,                // declarer's left-hand opponent
+      answer: 'H6',              // a card in the leader's hand; acceptable and
+      tags: ['leads-nt'],        // whyNot are cards too
+      explanation: '…',
     }],
   }],
 }
 ```
+
+Opening lead problems show the whole auction and the leader's hand as
+cards to tap. With all four hands, `npm run dd` also solves each lead
+(the defence's tricks after each card), shown on the feedback screen.
 
 `npm run check` verifies every deal: four 13-card hands making one full
 deck with ranks in order, dealer and vulnerability matching the board

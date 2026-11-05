@@ -1,0 +1,806 @@
+{
+  "title": "Opening leads",
+  "source": "Phil Abrahamson (Planet Bridge) and Debbie Rosenberg lectures",
+  "deals": [
+    {
+      "id": "lead-nt-race",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 8",
+      "dealer": "E",
+      "vul": "None",
+      "hands": {
+        "N": "J953.74.982.A975",
+        "E": "AK8.QJ5.J653.KQ4",
+        "S": "T762.AK962.T4.63",
+        "W": "Q4.T83.AKQ7.JT82"
+      },
+      "auction": ["1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The video gives the deal and the contract (3NT by East); the 1NT–3NT auction is made up to fit."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-racea",
+          "lead": true,
+          "answer": "H6",
+          "tags": ["leads-nt"],
+          "explanation": "Notrump is a race: declarer and the defence are both setting up tricks. Lead your longest and strongest suit, hearts, and with no three-card sequence, lead fourth highest: the ♥6. Losing the first heart is fine. Later, when partner gets in, partner returns a heart and your suit runs.",
+          "whyNot": {
+            "HA": "You win the ♥A and ♥K, but then the suit is stuck: when partner gets in, there's no heart left to return, and declarer has time to set up the clubs.",
+            "H2": "Fourth highest from A K 9 6 2 is the 6. The 2 is fifth, and partner would count your length wrong."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-kqj",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 10, hand 1",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "KQJT7.765.J984.A"
+      },
+      "auction": ["1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-kqja",
+          "lead": true,
+          "answer": "SK",
+          "tags": ["leads-nt"],
+          "explanation": "Lead the top of a sequence: the ♠K. It can't cost a trick, and once the ♠A has gone, the rest of your spades are winners. Your ♣A is the entry to get back to them.",
+          "whyNot": {
+            "S7": "Fourth highest is for a suit without a sequence. From K Q J 10, the K drives out the ace and gives nothing away.",
+            "CA": "Cashing your only club throws away the entry you need to run the spades."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-length",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 10, hand 2",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "KJ532.KQJ.Q32.42"
+      },
+      "auction": ["1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-lengtha",
+          "lead": true,
+          "answer": "S3",
+          "tags": ["leads-nt"],
+          "explanation": "Length matters more than strength. Five spades can become length tricks once the high cards are gone; your ♥KQJ will make tricks anyway and are entries to get back to the spades. With no three-card sequence in spades, lead fourth highest: the ♠3.",
+          "whyNot": {
+            "HK": "The hearts make one or two tricks whenever you lead them. Spades are the suit that needs setting up, so start them now.",
+            "S2": "Fourth highest from K J 5 3 2 is the 3."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-fourth",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 9, hand 3",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "953.Q96.K6542.42"
+      },
+      "auction": ["1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-fourtha",
+          "lead": true,
+          "answer": "D4",
+          "tags": ["leads-nt"],
+          "explanation": "Lead your longest suit, diamonds, and with no sequence, fourth highest: count down K, 6, 5, 4, and lead the ♦4. Partner can then work out how many diamonds you have.",
+          "whyNot": {
+            "D2": "The 2 is your fifth highest diamond. Fourth highest (the 4) tells partner the truth about your length.",
+            "H6": "Three hearts won't set up length tricks. Diamonds are your suit."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-ace",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 9, hand 4",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "32.543.A9765.432"
+      },
+      "auction": ["1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example.",
+        "The slide's hand has 14 cards; a small diamond is dropped here, which doesn't change the answer."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-acea",
+          "lead": true,
+          "answer": "D6",
+          "tags": ["leads-nt"],
+          "explanation": "Against notrump it's fine to lead from a suit with the ace. Lead fourth highest (A, 9, 7, 6): the ♦6. You lose a trick early to set up the long diamonds, and the ♦A stays as your entry to cash them.",
+          "whyNot": {
+            "DA": "Leading the ace wins a trick but sets up declarer's diamond honours, and you lose your entry to the long cards.",
+            "D5": "Fourth highest from A 9 7 6 5 is the 6. The 5 would mislead partner about your length."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-strongest",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 9, hand 5",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "9532.KQ54.432.42"
+      },
+      "auction": ["1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-strongesta",
+          "lead": true,
+          "answer": "H4",
+          "tags": ["leads-nt"],
+          "explanation": "Spades and hearts are both four long, so lead the stronger: hearts. K Q isn't a three-card sequence, so lead fourth highest: the ♥4.",
+          "whyNot": {
+            "HK": "Against notrump, a sequence needs three cards (K Q J). With only K Q, lead fourth highest.",
+            "S2": "The same length, but the hearts are far stronger."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-partner-doubleton",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 15, hand 1",
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "W": "92.Q432.K965.432"
+      },
+      "auction": ["1C", "1S", "1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-partner-doubletona",
+          "lead": true,
+          "answer": "S9",
+          "tags": ["leads-nt"],
+          "explanation": "Partner bid spades, so that's usually your side's best suit: lead it. From a doubleton in partner's suit, lead the top card, the ♠9. When the ♠2 follows later, partner knows you had exactly two.",
+          "whyNot": {
+            "S2": "Low from partner's suit shows three or more. From a doubleton, lead the top card."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-partner-low",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 15, hand 2",
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "W": "982.Q432.K965.42"
+      },
+      "auction": ["1C", "1S", "1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-partner-lowa",
+          "lead": true,
+          "answer": "S2",
+          "tags": ["leads-nt"],
+          "explanation": "Lead partner's suit. With three small cards and no touching honours, lead low: the ♠2. When you follow with another spade later, partner knows you had more than two.",
+          "whyNot": {
+            "S9": "The top card shows a doubleton in partner's suit. From three, lead low."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-partner-honours",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 15, hand 3",
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "W": "QJ2.Q432.K96.432"
+      },
+      "auction": ["1C", "1S", "1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example.",
+        "The slide's hand has 14 cards; a small diamond is dropped here, which doesn't change the answer."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-partner-honoursa",
+          "lead": true,
+          "answer": "SQ",
+          "tags": ["leads-nt"],
+          "explanation": "Lead partner's suit, and with touching honours, lead the top: the ♠Q. It promises the J, so partner knows how the suit lies and you're off to a great start.",
+          "whyNot": {
+            "S2": "Low denies touching honours. From Q J, lead the Q."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-own-suit",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 15, hand 4",
+      "dealer": "N",
+      "vul": "None",
+      "hands": {
+        "W": "92.KQJ432.K965.4"
+      },
+      "auction": ["1C", "1S", "1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-own-suita",
+          "lead": true,
+          "answer": "HK",
+          "tags": ["leads-nt"],
+          "explanation": "Partner's suit is the usual lead, but six hearts headed by the K Q J can win the race on their own: lead the top of your sequence, the ♥K. Once the ♥A is driven out, you have five heart tricks to cash. (Apologise to partner later, if needed.)",
+          "acceptable": {
+            "S9": "Partner's suit, top of a doubleton, is the normal lead. Here your own suit is strong enough to be the exception."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-declarers-suit",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 18",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "KJ98.986.K432.42"
+      },
+      "auction": ["1S", "P", "2C", "P", "2N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-declarers-suita",
+          "lead": true,
+          "answer": "D2",
+          "tags": ["leads-nt"],
+          "explanation": "Listen to the bidding. Spades would normally be your lead, but declarer bid them: with something like ♠A Q 10 4 3 sitting after you, a spade lead hands declarer a free finesse and a trick they could never get on their own. Lead your other four-card suit, fourth highest: the ♦2.",
+          "whyNot": {
+            "S8": "Declarer bid spades. Leading into declarer's long, strong suit gives away a trick; let declarer lead it towards your K J instead."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-unbid-major",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 19",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "K432.98.843.KJ65"
+      },
+      "auction": ["1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-unbid-majora",
+          "lead": true,
+          "answer": "S2",
+          "tags": ["leads-nt"],
+          "explanation": "Spades and clubs are both four long, and neither is clearly better. When unsure, lean towards an unbid major: responder didn't use Stayman, so the opponents probably don't have four spades. Lead fourth highest: the ♠2.",
+          "acceptable": {
+            "C5": "Clubs are a little stronger, and there are no guarantees on opening lead. The unbid major is the better bet."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-broken",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 20, broken sequence",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "QJ962.K74.85.J63"
+      },
+      "auction": ["1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-brokena",
+          "lead": true,
+          "answer": "SQ",
+          "tags": ["leads-nt"],
+          "explanation": "Q J 9 is a broken sequence (two touching honours, a gap, then the next card). It's almost as good as Q J 10: lead the top, the ♠Q.",
+          "whyNot": {
+            "S6": "Fourth highest is right without a sequence. With Q J 9, lead the Q."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-nt-interior",
+      "source": "Phil Abrahamson, “08 Opening Lead vs a NT Contract” (video), page 20, interior sequence",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "KJT43.962.Q85.74"
+      },
+      "auction": ["1N", "P", "3N", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-nt-interiora",
+          "lead": true,
+          "answer": "SJ",
+          "tags": ["leads-nt"],
+          "explanation": "K J 10 is an interior sequence: a high honour, a gap, then touching cards. Lead the top of the touching cards: the ♠J. If declarer has the A or Q, your K and 10 sit over dummy and partner's honour helps set up the suit.",
+          "whyNot": {
+            "SK": "Leading the K from K J 10 risks it being captured by the A, and sets up declarer's Q.",
+            "S4": "With an interior sequence, lead the top of the touching cards rather than fourth highest."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-suit-kqj",
+      "source": "Phil Abrahamson, “09 Opening Lead vs a Suit Contract”, page 9, hand 1",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "532.KQJ32.432.42"
+      },
+      "auction": ["1S", "P", "2S", "P", "3S", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-suit-kqja",
+          "lead": true,
+          "answer": "HK",
+          "tags": ["leads-suit"],
+          "explanation": "Lead the top of a sequence: the ♥K. It's safe, and it sets up heart tricks before declarer can throw losing hearts away.",
+          "whyNot": {
+            "H3": "With a sequence, lead the top card, not fourth highest."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-suit-two-card",
+      "source": "Phil Abrahamson, “09 Opening Lead vs a Suit Contract”, page 9, hand 2",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "53.K32.QJ42.Q742"
+      },
+      "auction": ["1S", "P", "2S", "P", "3S", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-suit-two-carda",
+          "lead": true,
+          "answer": "DQ",
+          "tags": ["leads-suit"],
+          "explanation": "Against a suit contract, two touching honours are enough of a sequence: lead the ♦Q, promising the J.",
+          "whyNot": {
+            "D2": "Against notrump you'd need three cards for a sequence lead. Against a suit, from Q J lead the Q.",
+            "H2": "Leading away from a king can give declarer a trick. The diamond sequence is safer."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-suit-fourth",
+      "source": "Phil Abrahamson, “09 Opening Lead vs a Suit Contract”, page 9, hand 3",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "953.Q96.Q6542.42"
+      },
+      "auction": ["1S", "P", "2S", "P", "3S", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-suit-fourtha",
+          "lead": true,
+          "answer": "D4",
+          "tags": ["leads-suit"],
+          "explanation": "No sequence and no singleton, so lead fourth highest from your longest suit: Q, 6, 5, 4, the ♦4.",
+          "whyNot": {
+            "D2": "The 2 is your fifth highest. Fourth highest tells partner how many you have."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-suit-ak",
+      "source": "Phil Abrahamson, “09 Opening Lead vs a Suit Contract”, page 9, hand 4",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "32.Q43.AK765.432"
+      },
+      "auction": ["1S", "P", "2S", "P", "3S", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example.",
+        "The slide's hand has 14 cards; a small diamond is dropped here, which doesn't change the answer."
+      ],
+      "problems": [
+        {
+          "id": "lead-suit-aka",
+          "lead": true,
+          "answer": "DA",
+          "tags": ["leads-suit"],
+          "explanation": "With the A K, lead the ace: you take a trick, keep the lead, and get to see dummy (and partner's signal) before deciding what to do next.",
+          "whyNot": {
+            "D5": "Never underlead an A K against a suit contract: declarer may win a trick with a singleton or doubleton honour."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-suit-unsupported-ace",
+      "source": "Phil Abrahamson, “09 Opening Lead vs a Suit Contract”, page 9, hand 5",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "32.Q43.A9765.432"
+      },
+      "auction": ["1S", "P", "2S", "P", "3S", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example.",
+        "The slide's hand has 14 cards; a small diamond is dropped here, which doesn't change the answer."
+      ],
+      "problems": [
+        {
+          "id": "lead-suit-unsupported-acea",
+          "lead": true,
+          "answer": "C2",
+          "tags": ["leads-suit"],
+          "explanation": "Against a suit contract, don't lead an ace without the king, and don't lead away from one: aces are for taking kings. Leave the diamonds alone and lead something safe, such as the ♣2 from three small.",
+          "acceptable": {
+            "H3": "Also fine: low from three to an honour. The point is to stay out of diamonds."
+          },
+          "whyNot": {
+            "DA": "Leading an unsupported ace sets up declarer's king.",
+            "D6": "Leading away from the ace against a suit lets declarer win a cheap trick with the king, and the long diamonds won't be cashable. (Against notrump, the ♦6 would be right.)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-suit-jt",
+      "source": "Phil Abrahamson, “09 Opening Lead vs a Suit Contract”, page 9, hand 6",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "KJ53.JT6.432.432"
+      },
+      "auction": ["1S", "P", "2S", "P", "3S", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-suit-jta",
+          "lead": true,
+          "answer": "HJ",
+          "tags": ["leads-suit"],
+          "explanation": "J 10 is a two-card sequence, good enough against a suit: lead the ♥J. It's safe, and it avoids leading away from honours elsewhere.",
+          "whyNot": {
+            "H6": "Low from J 10 6 could cost a trick. Lead the top of the sequence."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-suit-singleton",
+      "source": "Phil Abrahamson, “09 Opening Lead vs a Suit Contract”, page 9, hand 7",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "532.QJT98.5432.2"
+      },
+      "auction": ["1S", "P", "2S", "P", "3S", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-suit-singletona",
+          "lead": true,
+          "answer": "C2",
+          "tags": ["leads-suit"],
+          "explanation": "Against a suit, everyone loves a singleton lead: if partner wins the ♣A (or gets in early), partner returns a club and you ruff.",
+          "acceptable": {
+            "HQ": "The top of a solid sequence is a fine lead too. The singleton gives you a chance of a ruff."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-suit-ace-king",
+      "source": "Phil Abrahamson, “09 Opening Lead vs a Suit Contract”, page 8",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "43.AK986.Q432.42"
+      },
+      "auction": ["1S", "P", "3S", "P", "4S", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-suit-ace-kinga",
+          "lead": true,
+          "answer": "HA",
+          "tags": ["leads-suit"],
+          "explanation": "With the A K, lead the ace: take a trick and get a look at dummy. Because you hold the K, the lead won't help declarer, and partner's signal tells you whether to go on.",
+          "whyNot": {
+            "H8": "Never underlead an A K against a suit contract."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-suit-solid",
+      "source": "Phil Abrahamson, “09 Opening Lead vs a Suit Contract”, page 10",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "A2.KQJ93.Q542.32"
+      },
+      "auction": ["1S", "P", "3S", "P", "4S", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout shows the other hands only partly (with x's), so this is the leader's hand alone.",
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-suit-solida",
+          "lead": true,
+          "answer": "HK",
+          "tags": ["leads-suit"],
+          "explanation": "Lead the ♥K, the top of your sequence. When you get in with the ♠A, you can cash your heart winners before declarer throws hearts away on dummy's clubs. The lead is safe because your hearts are so solid.",
+          "whyNot": {
+            "SA": "Your trump ace will take a trick whenever it's played. Leading it gives declarer time, and aces are for taking kings.",
+            "H3": "With a sequence, lead the top card."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-suit-qjt",
+      "source": "Phil Abrahamson, “09 Opening Lead vs a Suit Contract”, page 11",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "432.QJT6.Q432.42"
+      },
+      "auction": ["1S", "P", "3S", "P", "4S", "P", "P", "P"],
+      "reviewNotes": [
+        "The handout shows the other hands only partly (with x's), so this is the leader's hand alone.",
+        "The handout gives only the leader's hand; the auction is made up to fit the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-suit-qjta",
+          "lead": true,
+          "answer": "HQ",
+          "tags": ["leads-suit"],
+          "explanation": "Lead the ♥Q, the top of your sequence, promising the J. It's safe, and it starts setting up heart tricks before declarer can discard losing hearts.",
+          "whyNot": {
+            "H6": "With a sequence, lead the top card.",
+            "D2": "Leading away from a queen is riskier than leading from a sequence."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-trump-majors",
+      "source": "Debbie Rosenberg, “When to Lead Trump” (Palo Alto Bridge Center, 2026-02-19), example 1",
+      "dealer": "E",
+      "vul": "None",
+      "hands": {
+        "W": "K2.532.9432.QJT3"
+      },
+      "auction": ["1N", "P", "P", "2C", "P", "2H", "P", "P", "P"],
+      "reviewNotes": [
+        "North's 2♣ is a conventional bid showing both majors (not one of our agreements)."
+      ],
+      "problems": [
+        {
+          "id": "lead-trump-majorsa",
+          "lead": true,
+          "answer": "H2",
+          "tags": ["leads-suit"],
+          "explanation": "North's 2♣ showed both majors, and South chose hearts, so declarer will want to ruff spades with dummy's trumps or in hand. Your side has the balance of power, so there's no hurry for the club tricks: lead a trump to cut down the ruffs.",
+          "acceptable": {
+            "H3": "Any trump does the job here.",
+            "H5": "Any trump does the job here."
+          },
+          "whyNot": {
+            "CQ": "An attractive sequence, but the trump lead is the standout: declarer's ruffs are where their tricks come from."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-trump-partner-suit",
+      "source": "Debbie Rosenberg, “When to Lead Trump” (Palo Alto Bridge Center, 2026-02-19), example 2",
+      "dealer": "E",
+      "vul": "NS",
+      "hands": {
+        "W": "KJ85.5.J943.AJT3"
+      },
+      "auction": ["1H", "X", "XX", "P", "P", "2C", "X", "P", "P", "P"],
+      "problems": [
+        {
+          "id": "lead-trump-partner-suita",
+          "lead": true,
+          "answer": "H5",
+          "tags": ["leads-suit"],
+          "explanation": "Lead partner's suit: the singleton ♥5. A trump lead is tempting after you've doubled 2♣ for penalty, but your clubs (A J 10) sit in front of declarer; it's better for partner to lead trumps through declarer to you later.",
+          "whyNot": {
+            "C3": "Leading from A J 10 x gives declarer a cheap trump trick. Let partner lead trumps through declarer."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-trump-pass-double",
+      "source": "Debbie Rosenberg, “When to Lead Trump” (Palo Alto Bridge Center, 2026-02-19), example 3",
+      "dealer": "S",
+      "vul": "All",
+      "hands": {
+        "W": "QJ83.AQ83.5.KJT3"
+      },
+      "auction": ["1D", "X", "P", "P", "P"],
+      "problems": [
+        {
+          "id": "lead-trump-pass-doublea",
+          "lead": true,
+          "answer": "D5",
+          "tags": ["leads-suit"],
+          "explanation": "Partner passed your takeout double at the one level, so partner's diamonds are longer and stronger than declarer's. Lead a trump to help partner draw trumps, as you would if you were declarer. This is the exception to not leading a singleton trump.",
+          "whyNot": {
+            "SQ": "A normal lead on most auctions, but here the defence wants to draw trumps, and only a trump lead starts that."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-trump-not-two-level",
+      "source": "Debbie Rosenberg, “When to Lead Trump” (Palo Alto Bridge Center, 2026-02-19), example 4",
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "W": "3.AQ83.KJ32.QJT3"
+      },
+      "auction": ["2S", "X", "P", "P", "P"],
+      "problems": [
+        {
+          "id": "lead-trump-not-two-levela",
+          "lead": true,
+          "answer": "CQ",
+          "tags": ["leads-suit"],
+          "explanation": "This isn't a trump lead auction. When partner passes a takeout double of a weak two, partner has good spades, but not necessarily longer and stronger than declarer's. A trump lead would more likely help declarer. Lead the top of your club sequence: the ♣Q.",
+          "whyNot": {
+            "S3": "The pass-the-double logic works at the one level. At the two level, a trump lead into declarer's long suit usually helps them."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-trump-not-long-suit",
+      "source": "Debbie Rosenberg, “When to Lead Trump” (Palo Alto Bridge Center, 2026-02-19), example 5",
+      "dealer": "N",
+      "vul": "All",
+      "hands": {
+        "W": "JT43.865.J932.54"
+      },
+      "auction": ["1S", "1N", "2H", "P", "P", "P"],
+      "problems": [
+        {
+          "id": "lead-trump-not-long-suita",
+          "lead": true,
+          "answer": "C5",
+          "tags": ["leads-suit"],
+          "explanation": "Not a trump lead: South's 2♥ shows long hearts (usually six), and there's no sign dummy has a fit. Partner overcalled 1NT, so partner has the values to win a trick early. Lead the top of your doubleton club, hoping partner can get in and give you a ruff before trumps are drawn.",
+          "whyNot": {
+            "H5": "Declarer has long trumps and dummy probably doesn't. A trump lead won't cut down ruffs; it just helps declarer draw trumps.",
+            "SJ": "Dummy's suit. Declarer will ruff spades with the long hearts anyway."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-trump-preference",
+      "source": "Debbie Rosenberg, “When to Lead Trump” (Palo Alto Bridge Center, 2026-02-19), example 6",
+      "dealer": "S",
+      "vul": "None",
+      "hands": {
+        "W": "QJT43.KJ86.95.QJ"
+      },
+      "auction": ["1S", "P", "1N", "P", "2D", "P", "P", "P"],
+      "reviewNotes": [
+        "South's 1NT response is forcing, as in the example."
+      ],
+      "problems": [
+        {
+          "id": "lead-trump-preferencea",
+          "lead": true,
+          "answer": "D5",
+          "tags": ["leads-suit"],
+          "explanation": "A standout trump lead: after 1♠–1NT (forcing)–2♦–pass, dummy didn't give preference to spades, so dummy usually has a singleton or void spade. Declarer will want to ruff spades in dummy, and your strong spades make that more likely. Lead a trump, and from a doubleton trump, lead low: the ♦5.",
+          "whyNot": {
+            "D9": "Top of a doubleton is for partner's suit. When leading a trump, lead low.",
+            "SQ": "Your spades are declarer's losers: they'll be ruffed in dummy. Lead trumps to stop that."
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead-trump-sacrifice",
+      "source": "Debbie Rosenberg, “When to Lead Trump” (Palo Alto Bridge Center, 2026-02-19), example 7",
+      "dealer": "N",
+      "vul": "EW",
+      "hands": {
+        "N": "54.QT7.86543.AJ6",
+        "E": "KT72.A954.KQT2.8",
+        "S": "J963.2.A7.KQT974",
+        "W": "AQ8.KJ863.J9.532"
+      },
+      "auction": ["P", "1D", "2C", "2H", "3C", "4H", "5C", "X", "P", "P", "P"],
+      "reviewNotes": [
+        "Rosenberg's suggested auction. A heart lead followed by a trump switch also works, she says; a diamond lead doesn't."
+      ],
+      "problems": [
+        {
+          "id": "lead-trump-sacrificea",
+          "lead": true,
+          "answer": "C2",
+          "tags": ["leads-suit"],
+          "explanation": "They're sacrificing, and your side has most of the high cards, with something in every side suit. Where will declarer's tricks come from? Ruffs in dummy. Lead a trump, and keep leading trumps whenever you get in.",
+          "acceptable": {
+            "C3": "Any trump does the job here.",
+            "C5": "Any trump does the job here.",
+            "H6": "Also works, as long as you switch to trumps as soon as you see dummy: double dummy it holds declarer to seven tricks too."
+          },
+          "whyNot": {
+            "DJ": "Declarer gets ruffs in dummy before you can draw its trumps."
+          }
+        }
+      ]
+    }
+  ]
+}

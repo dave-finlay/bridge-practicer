@@ -6,12 +6,16 @@
 // it into vendor/ and compiles it with scripts/dd/dd-table.cpp, which
 // takes a few seconds. Deals already in dd.json with the same hands are
 // kept, so only new or changed deals are solved.
+//
+// A deal with an opening lead problem also gets, for each card the leader
+// could lead, the tricks the defence then takes. Deals with only the
+// leader's hand can't be solved and are left out.
 
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { SEATS, STRAINS } from '../js/auction.js';
-import { problemFiles } from '../js/problems.js';
+import { SEATS, STRAINS, contract } from '../js/auction.js';
+import { isFullDeal, leaderOf, problemFiles } from '../js/problems.js';
 
 const root = new URL('..', import.meta.url).pathname;
 const problemsDir = join(root, 'problems');
@@ -47,15 +51,25 @@ const pbn = (deal) => `N:${SEATS.map((seat) => deal.hands[seat]).join(' ')}`;
 const deals = problemFiles()
   .map(({ path }) => path)
   .sort()
-  .flatMap((path) => JSON.parse(readFileSync(join(root, path), 'utf8')).deals);
+  .flatMap((path) => JSON.parse(readFileSync(join(root, path), 'utf8')).deals)
+  .filter(isFullDeal);
+const wantsLeads = (deal) => deal.problems.some((problem) => problem.lead);
 
 const old = existsSync(outFile) ? JSON.parse(readFileSync(outFile, 'utf8')) : {};
-const todo = deals.filter((deal) => old[deal.id]?.hands !== pbn(deal));
+const todo = deals.filter((deal) => old[deal.id]?.hands !== pbn(deal) || (wantsLeads(deal) && !old[deal.id].lead));
 
 const results = {};
 if (todo.length) {
   if (!existsSync(solver)) buildSolver();
-  const input = todo.map((deal) => `${SEATS.indexOf(deal.dealer)} ${DDS_VUL[deal.vul]} ${pbn(deal)}`).join('\n');
+  const leads = todo.filter(wantsLeads);
+  const leadLine = (deal) => {
+    const { strain } = contract(deal.dealer, deal.auction);
+    return `L ${SEATS.indexOf(leaderOf(deal))} ${DDS_STRAINS.indexOf(strain)} ${pbn(deal)}`;
+  };
+  const input = [
+    ...todo.map((deal) => `${SEATS.indexOf(deal.dealer)} ${DDS_VUL[deal.vul]} ${pbn(deal)}`),
+    ...leads.map(leadLine),
+  ].join('\n');
   const lines = execFileSync(solver, { input, encoding: 'utf8' }).trim().split('\n');
   todo.forEach((deal, i) => {
     const { tricks, par, contracts } = JSON.parse(lines[i]);
@@ -65,6 +79,7 @@ if (todo.length) {
     ]));
     results[deal.id] = { hands: pbn(deal), tricks: bySeat, par: { score: par, contracts } };
   });
+  leads.forEach((deal, i) => { results[deal.id].lead = JSON.parse(lines[todo.length + i]).lead; });
 }
 
 // Deals in the problem files, in order. Deals no longer there are dropped.

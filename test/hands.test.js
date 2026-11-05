@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { formatCall, formatHolding, hcp, parseHand } from '../js/hands.js';
+import { cardsOf, formatCall, formatCard, formatHolding, hcp, parseHand } from '../js/hands.js';
 
 test('parseHand splits a PBN hand into suits, spades first', () => {
   assert.deepEqual(parseHand('A2.JT54.AQ4.AJT2'), { S: 'A2', H: 'JT54', D: 'AQ4', C: 'AJT2' });
@@ -25,4 +25,13 @@ test('formatCall uses suit symbols, NT and Pass', () => {
   assert.equal(formatCall('P'), 'Pass');
   assert.equal(formatCall('X'), 'X');
   assert.equal(formatCall('XX'), 'XX');
+});
+
+test('formatCard writes a card with its suit symbol, spelling out the ten', () => {
+  assert.equal(formatCard('H6'), '♥6');
+  assert.equal(formatCard('ST'), '♠10');
+});
+
+test('cardsOf lists the cards in a hand, spades first', () => {
+  assert.deepEqual(cardsOf(parseHand('A2..Q.KT')), ['SA', 'S2', 'DQ', 'CK', 'CT']);
 });

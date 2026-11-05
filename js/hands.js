@@ -30,6 +30,16 @@ export function formatHolding(holding) {
   return [...holding].map((rank) => (rank === 'T' ? '10' : rank)).join(' ');
 }
 
+// A card is its suit and rank: 'H6', 'ST' (the ten). 'ST' → '♠10'.
+export function formatCard(card) {
+  return SUIT_SYMBOLS[card[0]] + (card[1] === 'T' ? '10' : card[1]);
+}
+
+// The cards in a hand, as in formatCard: ['SA', 'S2', 'HJ', …].
+export function cardsOf(hand) {
+  return SUITS.flatMap((suit) => [...hand[suit]].map((rank) => suit + rank));
+}
+
 // '1N' → '1NT', '4H' → '4♥', 'P' → 'Pass'.
 export function formatCall(call) {
   if (call === 'P') return 'Pass';

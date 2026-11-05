@@ -5,9 +5,9 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { alertsFor } from '../js/alerts.js';
-import { seatOfCall } from '../js/auction.js';
-import { SUITS, SUIT_SYMBOLS, formatCall, formatHolding, hcp, parseHand } from '../js/hands.js';
-import { problemFiles } from '../js/problems.js';
+import { contract, seatOfCall } from '../js/auction.js';
+import { SUITS, SUIT_SYMBOLS, formatCall, formatCard, formatHolding, hcp, parseHand } from '../js/hands.js';
+import { isFullDeal, leaderOf, problemFiles } from '../js/problems.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const SEAT_NAMES = { N: 'North', E: 'East', S: 'South', W: 'West' };
@@ -24,6 +24,9 @@ const suitClass = (symbol) => (symbol === '♥' || symbol === '♦' ? 'red' : 'b
 function call(code) {
   return prose(formatCall(code));
 }
+
+// A problem's answer or alternative: a card for an opening lead, else a call.
+const answer = (problem, code) => (problem.lead ? prose(formatCard(code)) : call(code));
 
 function handHtml(handText, { label } = {}) {
   const hand = parseHand(handText);
@@ -71,26 +74,27 @@ const boardName = (deal) =>
   deal.source ?? (deal.part ? `Part ${deal.part}, board ${deal.board}` : `Board ${deal.board}`);
 
 function problemHtml(deal, problem) {
-  const seat = seatOfCall(deal.dealer, problem.at);
+  const seat = problem.lead ? leaderOf(deal) : seatOfCall(deal.dealer, problem.at);
+  const final = problem.lead && contract(deal.dealer, deal.auction);
   const letter = problem.id.slice(deal.id.length);
   const acceptable = Object.entries(problem.acceptable ?? {});
   const whyNot = Object.entries(problem.whyNot ?? {});
   return `<article class="problem" id="${problem.id}">
     <header class="problem-head">
-      <h3>Problem ${deal.part ? `${deal.part}.` : ''}${deal.board}${letter}</h3>
+      <h3>${problem.lead ? 'Opening lead' : 'Problem'} ${deal.part ? `${deal.part}.` : ''}${deal.board ?? ''}${letter}</h3>
       <p class="setting">You are ${SEAT_NAMES[seat]} · Dealer ${SEAT_NAMES[deal.dealer]} · ${VUL_NAMES[deal.vul]}</p>
       <p class="tags">${problem.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</p>
     </header>
     <div class="problem-body">
       <div class="question">
         ${handHtml(deal.hands[seat], { label: 'Your hand' })}
-        ${auctionHtml(deal, problem.at)}
+        ${problem.lead ? `${auctionHtml(deal)}<p>${call(`${final.level}${final.strain}`)}${final.doubled ? ' doubled' : ''} by ${SEAT_NAMES[final.declarer]}: your lead</p>` : auctionHtml(deal, problem.at)}
       </div>
       <div class="answer">
-        <p class="answer-call"><span class="answer-label">Answer</span> ${call(problem.answer)}</p>
+        <p class="answer-call"><span class="answer-label">Answer</span> ${answer(problem, problem.answer)}</p>
         <p>${prose(problem.explanation)}</p>
-        ${acceptable.length ? `<dl class="calls acceptable"><dt class="list-title">Also acceptable</dt>${acceptable.map(([c, why]) => `<div><dt>${call(c)}</dt><dd>${prose(why)}</dd></div>`).join('')}</dl>` : ''}
-        ${whyNot.length ? `<dl class="calls"><dt class="list-title">Why not…</dt>${whyNot.map(([c, why]) => `<div><dt>${call(c)}</dt><dd>${prose(why)}</dd></div>`).join('')}</dl>` : ''}
+        ${acceptable.length ? `<dl class="calls acceptable"><dt class="list-title">Also acceptable</dt>${acceptable.map(([c, why]) => `<div><dt>${answer(problem, c)}</dt><dd>${prose(why)}</dd></div>`).join('')}</dl>` : ''}
+        ${whyNot.length ? `<dl class="calls"><dt class="list-title">Why not…</dt>${whyNot.map(([c, why]) => `<div><dt>${answer(problem, c)}</dt><dd>${prose(why)}</dd></div>`).join('')}</dl>` : ''}
         ${problem.answerNote ? `<p class="note">${prose(problem.answerNote)}</p>` : ''}
       </div>
     </div>
@@ -116,9 +120,9 @@ function dealHtml(deal) {
     ${notes.length ? `<div class="check"><span class="check-label">Please check</span><ul>${notes.map((n) => `<li>${prose(n)}</li>`).join('')}</ul></div>` : ''}
     ${deal.problems.map((p) => problemHtml(deal, p)).join('')}
     <div class="full">
-      <h3>The whole board</h3>
+      <h3>${isFullDeal(deal) ? 'The whole board' : 'The auction'}</h3>
       <div class="full-body">
-        ${dealDiagram(deal)}
+        ${isFullDeal(deal) ? dealDiagram(deal) : ''}
         <div>
           ${auctionHtml(deal)}
           ${marksHtml(deal)}
@@ -153,7 +157,7 @@ const html = `<title>Bridge Practicer Problems</title>
     <p class="eyebrow">Bridge practicer · draft problems for review</p>
     <h1>${lessons.map((l) => esc(l.title)).join(', ')}</h1>
     <p>${problemCount} problems from ${lessons.reduce((n, l) => n + l.deals.length, 0)} boards. Each one shows what the app will ask (your hand and the auction so far), then the answer it will give. Check that the answers are right and the explanations say what you'd want to read at the table.</p>
-    ${flagged.length ? `<p>Boards with something to check: ${flagged.map((d) => `<a href="#${d.id}">${d.part ? `${d.part}.` : ''}${d.board}</a>`).join(', ')}.</p>` : ''}
+    ${flagged.length ? `<p>Boards with something to check: ${flagged.map((d) => `<a href="#${d.id}">${d.board === undefined ? esc(d.id) : `${d.part ? `${d.part}.` : ''}${d.board}`}</a>`).join(', ')}.</p>` : ''}
   </header>
   ${lessons.map((l) => l.deals.map(dealHtml).join('')).join('')}
 </main>
