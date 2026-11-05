@@ -723,6 +723,7 @@
     },
     {
       "id": "lead-trump-not-long-suit",
+      "setAside": "A doubleton lead for a ruff is an exception even for the teacher, and it isn't among Phil's attractive leads; it can come back once the basic leads are automatic (2026-11-05).",
       "source": "Debbie Rosenberg, “When to Lead Trump” (Palo Alto Bridge Center, 2026-02-19), example 5",
       "dealer": "N",
       "vul": "All",
@@ -746,6 +747,7 @@
     },
     {
       "id": "lead-trump-preference",
+      "setAside": "It relies on a forcing 1NT response, which we don't play, and it marks wrong the top-of-sequence ♠Q our carding teaches (2026-11-05).",
       "source": "Debbie Rosenberg, “When to Lead Trump” (Palo Alto Bridge Center, 2026-02-19), example 6",
       "dealer": "S",
       "vul": "None",
