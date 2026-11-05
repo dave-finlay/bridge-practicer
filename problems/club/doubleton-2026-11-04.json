@@ -1,0 +1,106 @@
+{
+  "title": "Doubleton Club, 4 Nov 2026",
+  "source": "Session review, submitted through ~/context/bridge/practicer",
+  "deals": [
+    {
+      "id": "club-2026-11-04-doubleton-5",
+      "source": "Doubleton Club 2026-11-04, board 5",
+      "board": 5,
+      "dealer": "N",
+      "vul": "NS",
+      "hands": {
+        "N": "3.Q987654.87.Q86",
+        "E": "T76.KJT.Q32.J432",
+        "S": "Q9854.A.9654.A75",
+        "W": "AKJ2.32.AKJT.KT9"
+      },
+      "auction": ["P", "P", "1S", "X", "2H", "P", "2S", "P", "P", "P"],
+      "atTheTable": "P–P–1♠–X–2♥–P–2♠–X–P–3♣, all pass. West meant the second double as takeout, and East bid 3♣, as asked: one down not vulnerable (−50, 0.5 of 2). The best other result was 2♠ by West +2 (+110).",
+      "agreed": "Pass is slightly better and the double is acceptable. We compete aggressively below 2NT, but don't forget defence: with four good trumps over the bidder, defending is the stronger option (agreed by Dave and Donna, 2026-11-05).",
+      "reviewNotes": [
+        "Double dummy, 2♠ goes four down (+400 undoubled); 3♥ by North over a pass is two down (+200). Either is a top. East–West can make 3NT+1 (+430), but nobody bid it.",
+        "Pairs with board 18 of the same session, where two cards in their suit make the reopening double right.",
+        "Tagged general: the decision is counting defensive tricks. The agreements file records this board as the exception to 'Be aggressive below 2NT'."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-04-doubleton-5a",
+          "at": 7,
+          "answer": "P",
+          "tags": ["general"],
+          "explanation": "You've shown a strong hand with your first double. Now count your defensive tricks: AKJ of spades sitting over the spade bidder is probably three trump tricks, and with the AK of diamonds and probably the king of clubs you hold five or six tricks on your own; six beat 2♠. We compete aggressively below 2NT, but don't forget defence. Shortness in their suit points to competing; four good trumps point to defending.",
+          "acceptable": {
+            "X": "The call made at the table, meant as takeout. Reasonable with 19 HCP: partner bid 3♣, one down not vulnerable (−50), no disaster. But 2♠ goes four down (+400)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "club-2026-11-04-doubleton-16",
+      "source": "Doubleton Club 2026-11-04, board 16",
+      "board": 16,
+      "dealer": "W",
+      "vul": "EW",
+      "hands": {
+        "N": "KQJ9742...A98642",
+        "E": "653.T7.AKT7642.5",
+        "S": "AT8.KQJ3.93.KQJ7",
+        "W": ".A986542.QJ85.T3"
+      },
+      "auction": ["3H", "3S", "4H", "5H", "P", "5S", "P", "P", "P"],
+      "atTheTable": "3♥–3♠–4♥–X–P–5♣, all pass. South meant the double for penalty; North read it as takeout and bid 5♣, which made all 13 tricks (+440, 0 of 2). The other tables scored 6♠+1 (+1010) and 5♠+2 (+510). 7♠ makes double dummy (par NS +1510).",
+      "agreed": "South should show the spade fit rather than double: 5♥, advancer's cuebid, is best, showing spade support and slam interest; 4♠ is acceptable (agreed by Dave and Donna, 2026-11-05).",
+      "reviewNotes": [
+        "North's call over 5♥ (agreed 2026-11-05): probably 5♠. North knows of ten spades and at least 21 HCP, but South's strength could be in diamonds, leaving club losers. Over 4♠, North passes. South's continuation over 5♠ wasn't discussed; the auction shows a pass. Only South's call over 4♥ is a problem here.",
+        "The agreements file records this board under \"Advancer's cuebid\": above game in partner's suit, the cuebid is a slam try."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-04-doubleton-16a",
+          "at": 3,
+          "answer": "5H",
+          "tags": ["cuebids"],
+          "explanation": "Partner's 3♠ overcall of a preempt shows a good hand and a good suit, usually six or seven spades, so your AT8 makes a fit of nine or more. With 16 HCP, the ace of trumps and KQJ of clubs, you want to be in spades, and slam is possible. A cuebid of their suit after partner's overcall shows support and a good hand; here it's above 4♠, so it says 'spade support and slam interest'. It tells partner about the fit and your values in one call, and leaves partner to judge the slam.",
+          "acceptable": {
+            "4S": "Shows the fit and bids the game, but it could be a weak, competitive raise, so it says nothing about slam."
+          },
+          "whyNot": {
+            "X": "The call made at the table. Meant for penalty, but 4♥ doubled is only one down (+200), and partner reads it as takeout, assumes you're short in spades and goes wrong. With support for partner's suit, show it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "club-2026-11-04-doubleton-18",
+      "source": "Doubleton Club 2026-11-04, board 18",
+      "board": 18,
+      "dealer": "E",
+      "vul": "NS",
+      "hands": {
+        "N": "8742.4.AJT987.Q8",
+        "E": "T5.KQ83.432.JT62",
+        "S": "AQJ.J762.65.K954",
+        "W": "K963.AT95.KQ.A73"
+      },
+      "auction": ["P", "P", "1N", "2D", "P", "P", "X", "P", "2H", "P", "P", "P"],
+      "atTheTable": "P–P–1NT–2♦, all pass. North made 2♦ (−90, 0 of 2). Both other tables played 3♥ by West; EW make nine tricks in hearts double dummy (par EW +140).",
+      "agreed": "Opener's reopening double after they overcall our 1NT is takeout, whatever the suit, including clubs: responder bids their longest suit, or passes to convert to penalty with a good holding in the overcalled suit (agreed by Dave and Donna, 2026-11-05).",
+      "reviewNotes": [
+        "The auction after the double is a likely one, not discussed: East bids 2♥ (four hearts, cheaper than 3♣) and West passes. Only West's double is a problem here.",
+        "Tagged level-of-fit, where the agreements file records 'Be aggressive below 2NT' with this board as its example."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-04-doubleton-18a",
+          "at": 6,
+          "answer": "X",
+          "tags": ["level-of-fit"],
+          "explanation": "A judgment call, but double is slightly better. Partner didn't have enough to cuebid 3♦ (Stayman, forcing to game), and a natural two-level bid would show five cards, so their pass shows a weak hand but not a bust. South passed 2♦, so the opponents aren't going anywhere either. You have a good 16 count with four cards in both majors and only two diamonds, and you're not vulnerable. So double: it's takeout, asking partner to bid their longest suit, and with a good diamond holding partner can pass and defend 2♦ doubled. Either way, you don't let the opponents play a cheap two-level contract: below 2NT, we compete aggressively.",
+          "acceptable": {
+            "P": "The call made at the table. Reasonable, since partner is weak and you've described your hand with 1NT, but they made 2♦ for −90, while you have a 4-4 heart fit and nine tricks for +140."
+          }
+        }
+      ]
+    }
+  ]
+}

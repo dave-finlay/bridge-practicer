@@ -4,7 +4,7 @@
   "deals": [
     {
       "id": "bt-cuebid-board-8",
-      "source": "The Bridge Teachers, cuebid video, board 8 (1♥–(2♦))",
+      "source": "The Bridge Teachers, “Overcalls 1.16.23”, board 8",
       "board": 8,
       "dealer": "W",
       "vul": "None",
@@ -16,7 +16,7 @@
       },
       "auction": ["P", "1H", "2D", "3D", "P", "3H", "P", "4H", "P", "P", "P"],
       "reviewNotes": [
-        "Hands and auction transcribed from the video's screenshots; the video's title is still to confirm. Double dummy, 4♥ makes 11 tricks and there's no slam.",
+        "Hands and auction transcribed from the video's screenshots. Double dummy, 4♥ makes 11 tricks and there's no slam.",
         "Responder's cuebid of the overcaller's suit: agreed 2026-11-04."
       ],
       "problems": [
@@ -84,6 +84,38 @@
             "2N": "Not with three spades: show the fit first.",
             "3S": "A jump raise of an overcall is weak: four trumps and under 10 points. You have the values for a limit raise.",
             "4S": "A direct jump to game is preemptive too. Cuebid first, so partner knows your strength."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt-cuebid-2025-10-13",
+      "source": "The Bridge Teachers, “Support Cue Bid 10.13.25”, board 16",
+      "board": 16,
+      "dealer": "W",
+      "vul": "EW",
+      "hands": {
+        "N": "Q96.AQJT96.87.Q9",
+        "E": "AK..AKQJ95.T8754",
+        "S": "T832.K754.6.AK63",
+        "W": "J754.832.T432.J2"
+      },
+      "auction": ["P", "1H", "2N", "3C", "P", "4H", "5C", "P", "P", "P"],
+      "alerts": { "2": "Both minors (Unusual 2NT)" },
+      "setAside": "We know the Unusual 2NT but don't play it, and a defence to it is one convention more than we want for now (2026-11-05).",
+      "reviewNotes": [
+        "Hands and auction transcribed from the video's screenshots. East played 5♣ and took five tricks: six down, +600 for North-South. Double dummy, 4♥ makes, and so does 5♦ for East–West."
+      ],
+      "problems": [
+        {
+          "id": "bt-cuebid-2025-10-13a",
+          "at": 3,
+          "answer": "3C",
+          "tags": ["cuebids"],
+          "explanation": "Partner opened 1♥ and East's 2NT shows both minors, at least five of each. You have four hearts, a singleton diamond and 10 HCP: a limit raise. Over the Unusual 2NT, cuebid the lower of their suits: 3♣ shows support for partner's suit and a limit raise or better, just as a cuebid does over an ordinary overcall.",
+          "whyNot": {
+            "3H": "A simple raise shows about 6-10 and a minimum hand. With four trumps and a singleton, you're worth a limit raise.",
+            "4H": "Jumping to game over their bid is weak and distributional, to shut them out. Partner would never know you have real values."
           }
         }
       ]
