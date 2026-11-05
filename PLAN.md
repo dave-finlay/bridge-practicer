@@ -290,7 +290,9 @@ These can go in as they are, since the answers don't depend on Dave's own
 agreements. Before each, Dave picks which version to use.
 
 **To explore, and decide whether to play**
-- **Michaels cue bid**: both majors, or a major and a minor.
+- **Michaels cue bid**: both majors, or a major and a minor. Not
+  played, but the answer to it (responder's cuebid) is in the app, from
+  The Bridge Teachers.
 - **Drury / reverse Drury**: a passed hand's 2♣ asking whether a
   third- or fourth-seat opener is light.
 - **Support doubles**: opener's double showing three-card support for
@@ -301,8 +303,8 @@ agreements. Before each, Dave picks which version to use.
 
 **Decided not to play**
 - **Unusual 2NT** (the two lowest unbid suits): known, not played
-  (2026-11-04). A Bridge Teachers board defending against it is in
-  `problems/teachers/cuebids.json`, set aside.
+  (2026-11-04). Opponents at the club play it, so a Bridge Teachers
+  board on the answer to it (responder's cuebid) is in the app.
 
 For the ones to explore, I'd write a short summary of the convention
 first, as a page like the review page, so Dave can decide whether to

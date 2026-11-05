@@ -1078,6 +1078,19 @@
       "contracts": ["5H*-NS-1"]
     }
   },
+  "bt-cuebid-michaels": {
+    "hands": "N:A65.T3.AKT94.J82 J942.J42..KQT954 KQT87.AK5.QJ.A76 3.Q9876.876532.3",
+    "tricks": {
+      "N": { "C": 8, "D": 12, "H": 9, "S": 13, "N": 13 },
+      "E": { "C": 5, "D": 1, "H": 4, "S": 0, "N": 0 },
+      "S": { "C": 8, "D": 12, "H": 7, "S": 12, "N": 13 },
+      "W": { "C": 5, "D": 1, "H": 4, "S": 0, "N": 0 }
+    },
+    "par": {
+      "score": 2220,
+      "contracts": ["7N-NS"]
+    }
+  },
   "lead-nt-race": {
     "hands": "N:J953.74.982.A975 AK8.QJ5.J653.KQ4 T762.AK962.T4.63 Q4.T83.AKQ7.JT82",
     "tricks": {

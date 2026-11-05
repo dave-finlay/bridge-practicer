@@ -101,10 +101,10 @@
         "W": "J754.832.T432.J2"
       },
       "auction": ["P", "1H", "2N", "3C", "P", "4H", "5C", "P", "P", "P"],
-      "alerts": { "2": "Both minors (Unusual 2NT)" },
-      "setAside": "We know the Unusual 2NT but don't play it, and a defense to it is one convention more than we want for now (2026-11-05).",
+      "alerts": { "2": "Unusual 2NT: at least five clubs and five diamonds (the two lowest unbid suits)" },
       "reviewNotes": [
-        "Hands and auction transcribed from the video's screenshots. East played 5♣ and took five tricks: six down, +600 for North-South. Double dummy, 4♥ makes, and so does 5♦ for East–West."
+        "Hands and auction transcribed from the video's screenshots. East played 5♣ and took five tricks: six down, +600 for North-South. Double dummy, 4♥ makes, and so does 5♦ for East–West.",
+        "We don't play the Unusual 2NT, but opponents at the club do (2026-11-05), so this drills the answer to it."
       ],
       "problems": [
         {
@@ -116,6 +116,50 @@
           "whyNot": {
             "3H": "A simple raise shows about 6-10 and a minimum hand. With four trumps and a singleton, you're worth a limit raise.",
             "4H": "Jumping to game over their bid is weak and distributional, to shut them out. Partner would never know you have real values."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bt-cuebid-michaels",
+      "source": "The Bridge Teachers, “Card Combination 7.29.24”, board 7",
+      "board": 7,
+      "dealer": "S",
+      "vul": "All",
+      "hands": {
+        "N": "A65.T3.AKT94.J82",
+        "E": "J942.J42..KQT954",
+        "S": "KQT87.AK5.QJ.A76",
+        "W": "3.Q9876.876532.3"
+      },
+      "auction": ["1S", "2S", "3H", "P", "4N", "P", "5H", "P", "6S", "P", "P", "P"],
+      "alerts": { "1": "Michaels cuebid: at least five hearts and five of a minor" },
+      "reviewNotes": [
+        "The bidding question is from “Cue Bid Over Michael's 7.22.24”, board 13, with the same hand as responder; the whole deal and auction are from “Card Combination 7.29.24”, board 7, where it's turned round so South opens.",
+        "We don't play Michaels, but opponents at the club do (2026-11-05), so this drills the answer to it."
+      ],
+      "problems": [
+        {
+          "id": "bt-cuebid-michaelsa",
+          "at": 2,
+          "answer": "3H",
+          "tags": ["cuebids"],
+          "explanation": "Partner opened 1♠ and West's 2♠ is a Michaels cuebid: at least five hearts and five of a minor. You have three spades and 12 HCP with a strong diamond suit: a limit raise or better. Cuebid their known suit: 3♥ shows support for partner's spades and a limit raise or better, just as a cuebid does over an ordinary overcall.",
+          "whyNot": {
+            "3S": "With 2♠ taken, 3♠ is the simple raise in competition, about 6-10. You're worth a limit raise or more.",
+            "4S": "Jumping to game over their bid is weak and distributional, to shut them out. Partner would never know you have real values.",
+            "X": "A double of Michaels shows a good hand looking to punish them in one of their suits. You have a fit for partner: show it."
+          }
+        },
+        {
+          "id": "bt-cuebid-michaelsb",
+          "at": 6,
+          "answer": "5H",
+          "tags": ["rkcb"],
+          "explanation": "Partner's 4NT is RKCB for spades, the suit your cuebid agreed. You have two key cards, the ♠A and ♦A, and not the ♠Q: 5♥ (two, without the queen).",
+          "whyNot": {
+            "5S": "5♠ shows two key cards with the queen. You don't have the ♠Q.",
+            "5D": "5♦ shows zero or three key cards. You have two: the ♠A and ♦A."
           }
         }
       ]
