@@ -9,7 +9,7 @@ import {
 } from '../js/auction.js';
 import { RANKS, SUITS, cardsOf, hcp, parseHand } from '../js/hands.js';
 import {
-  ORIGINS, dummyOf, isFullDeal, isPosition, leaderOf, problemFiles, toPlay, trickSeats,
+  ORIGINS, dummyOf, earlierSeats, isFullDeal, isPosition, leaderOf, problemFiles, toPlay, trickSeats, trickWinner,
 } from '../js/problems.js';
 
 const VULNERABILITIES = ['None', 'NS', 'EW', 'All'];
@@ -199,6 +199,30 @@ function checkPosition(deal, fail) {
     seen.add(card);
     if (!follows(seat, card)) fail(`${seat} plays ${card} without following suit`);
   });
+
+  // Earlier tricks: four cards each, none still held, following suit when
+  // the hand shows the player had none left. The last one's winner leads now.
+  const trump = deal.contract[1] === 'N' ? null : deal.contract[1];
+  for (const [k, earlier] of (deal.earlier ?? []).entries()) {
+    if (!SEATS.includes(earlier.leader)) fail(`earlier trick ${k + 1}: bad leader ${earlier.leader}`);
+    if (earlier.cards?.length !== 4) fail(`earlier trick ${k + 1} should have four cards`);
+    const suitLed = earlier.cards[0][0];
+    earlier.cards.forEach((card, i) => {
+      const seat = earlierSeats(earlier)[i];
+      if (!/^[SHDC][AKQJT98765432]$/.test(card)) fail(`earlier trick ${k + 1}: bad card ${card}`);
+      if (seen.has(card)) fail(`earlier trick ${k + 1}: ${card} appears twice`);
+      seen.add(card);
+      if (card[0] !== suitLed && holdings[seat] && shown.length === 4 && holdings[seat].some((c) => c[0] === suitLed)) {
+        fail(`earlier trick ${k + 1}: ${seat} plays ${card} but still holds ${suitLed}`);
+      }
+    });
+  }
+  const last = deal.earlier?.at(-1);
+  if (last && trickWinner(last, trump) !== deal.leader) fail(`${trickWinner(last, trump)} won the last earlier trick, but ${deal.leader} leads`);
+  if (deal.earlier && deal.trick.length) fail('show earlier tricks only when you lead to the next one');
+  if (shown.length === 4 && holdings[dummy].length !== holdings[you].length) {
+    fail(`dummy holds ${holdings[dummy].length} cards and ${you} ${holdings[you].length}`);
+  }
 
   for (const problem of deal.problems) {
     problemCount++;

@@ -86,8 +86,8 @@
           "tags": ["jacoby-2nt"],
           "explanation": "Partner has a singleton diamond, and your KQJ there are wasted: partner will ruff the suit anyway. That's the worst holding opposite a singleton, so sign off in 4♠.",
           "whyNot": {
-            "4N": "Your diamond honours are wasted opposite the singleton. Slam is unlikely.",
-            "3S": "Your diamond honours are wasted. Sign off in game."
+            "4N": "Your diamond honors are wasted opposite the singleton. Slam is unlikely.",
+            "3S": "Your diamond honors are wasted. Sign off in game."
           }
         }
       ]
@@ -175,7 +175,7 @@
             "3C": "Showing the singleton club is also descriptive. The handout prefers 4♦ for the strong second suit, which East likes more."
           },
           "tags": ["jacoby-2nt"],
-          "explanation": "Partner's 2NT is Jacoby. You have a strong second suit, five diamonds with two of the top three honours, so jump to 4♦ to show it.",
+          "explanation": "Partner's 2NT is Jacoby. You have a strong second suit, five diamonds with two of the top three honors, so jump to 4♦ to show it.",
           "whyNot": {
             "4H": "4♥ shows a minimum with no shortness or second suit. Your diamonds are worth showing.",
             "3H": "3♥ shows 18 or more. You have 12."
@@ -188,7 +188,7 @@
           "tags": ["jacoby-2nt", "rkcb"],
           "explanation": "Partner has a good five-card diamond suit, and your KJ of diamonds fills it in. With 14 HCP, four hearts and that fit, slam is likely. Bid 4NT, RKCB, to check key cards.",
           "whyNot": {
-            "4H": "Your diamond honours fit partner's second suit perfectly. Look for slam."
+            "4H": "Your diamond honors fit partner's second suit perfectly. Look for slam."
           }
         },
         {
@@ -322,7 +322,7 @@
           "explanation": "Partner has a singleton club, and your ♣AK are partly wasted there. Slam is less likely, but with 16 you're not ready to give up. Bid 3♠, the cheapest way to agree spades and wait to hear more.",
           "whyNot": {
             "4S": "With 16 you can afford to keep the bidding low and hear more from partner first.",
-            "4N": "Your club honours are partly wasted opposite the singleton. Find out more before asking for key cards."
+            "4N": "Your club honors are partly wasted opposite the singleton. Find out more before asking for key cards."
           }
         },
         {

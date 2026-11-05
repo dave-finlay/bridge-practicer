@@ -20,7 +20,7 @@ import { marksFor } from './alerts.js';
 import { BIDS, STRAINS, contract, isVulnerable, legalCalls, seatAfter } from './auction.js';
 import { SUITS, formatHolding, hcp, parseHand } from './hands.js';
 import {
-  ORIGINS, boardOf, dealCount, dummyOf, flatten, fromOrigins, grade, isFullDeal, isPosition, nextDue, pickSession,
+  ORIGINS, boardOf, dealCount, dummyOf, earlierSeats, flatten, fromOrigins, grade, isFullDeal, isPosition, nextDue, pickSession,
   problemFiles, progressSummary, readyNow, topicName, topicsIn, trickSeats, updateProgress, withTags,
 } from './problems.js';
 import { startPreview } from './preview.js';
@@ -114,7 +114,7 @@ function cardHTML(card) {
 // A problem's answer, or a player's: a card for a lead or a play, else a call.
 const answerHTML = (problem, answer) => (problem.lead || problem.play ? cardHTML(answer) : callHTML(answer));
 // What the player did, for "You led ♥A", "You played ♥3", "You bid 2♥".
-const answerVerb = (problem) => (problem.lead ? 'led' : problem.play ? 'played' : 'bid');
+const answerVerb = (problem, deal) => (problem.lead || deal.trick?.length === 0 ? 'led' : problem.play ? 'played' : 'bid');
 
 // "4♠", "5♣ doubled".
 function contractHTML({ level, strain, doubled }) {
@@ -318,11 +318,21 @@ function positionHTML(deal, you, yourCard = null) {
       <small>${SEAT_NAMES[seat]} · ${role(seat)}</small><span class="played">${content}</span></div>`;
   };
   return `
+    ${deal.context ? `<p class="hint position-context">${escapeHTML(deal.context)}</p>` : ''}
     <div class="dummy-hand">
       <div class="deal-label">Dummy (${SEAT_NAMES[dummy]})</div>
       ${suits.map((suit) => holdingHTML(dummyLeft, suit)).join('')}
     </div>
-    <div class="trick" aria-label="The trick so far">${SEATS_ORDER.map(spot).join('')}</div>`;
+    ${(deal.earlier ?? []).map((trick, k) => earlierHTML(trick, k, role)).join('')}
+    ${deal.trick.length ? `<div class="trick" aria-label="The trick so far">${SEATS_ORDER.map(spot).join('')}</div>` : ''}`;
+}
+
+// A trick played before the position, as a line: "Trick 1: you led ♥K,
+// dummy ♥2, partner ♥8, declarer ♥4."
+function earlierHTML(trick, k, role) {
+  const plays = earlierSeats(trick).map((seat, i) =>
+    `${role(seat)}${i === 0 ? ' led' : ''} ${cardHTML(trick.cards[i])}`);
+  return `<p class="earlier"><strong>Trick ${k + 1}:</strong> ${plays.join(', ')}.</p>`;
 }
 const SEATS_ORDER = ['N', 'W', 'E', 'S'];
 
@@ -344,7 +354,7 @@ function renderPlay() {
     <section class="lead-hand" aria-label="Your cards: tap the one to play">${cardButtonsHTML(deal.hands[seat], { suits, led: deal.trick[0]?.[0] })}</section>
     <div class="confirm">
       <button class="secondary" data-action="cancel"${selected ? '' : ' disabled'}>Cancel</button>
-      <button class="primary" data-action="confirm"${selected ? '' : ' disabled'}>${selected ? `Play ${cardHTML(selected)}` : 'Choose a card'}</button>
+      <button class="primary" data-action="confirm"${selected ? '' : ' disabled'}>${selected ? `${deal.trick.length ? 'Play' : 'Lead'} ${cardHTML(selected)}` : 'Choose a card'}</button>
     </div>`;
 }
 
@@ -409,7 +419,7 @@ function doubleDummyHTML(deal) {
     <p>${par}</p>`;
 }
 
-// For an opening lead, the tricks the defence takes after each card the
+// For an opening lead, the tricks the defense takes after each card the
 // leader could lead, under the leader's hand, with the leads that beat
 // the contract marked.
 function leadsHTML(deal, seat) {
@@ -428,7 +438,7 @@ function leadsHTML(deal, seat) {
   };
   return `
     <h2>Double dummy leads</h2>
-    <p class="dd-note">Tricks the defence takes after each lead, with all four hands seen and perfect play. Green leads beat ${contractHTML(final)} (${beat} tricks).</p>
+    <p class="dd-note">Tricks the defense takes after each lead, with all four hands seen and perfect play. Green leads beat ${contractHTML(final)} (${beat} tricks).</p>
     <div class="leads">${SUITS.map(holding).join('')}</div>`;
 }
 
@@ -490,7 +500,7 @@ function renderFeedback(reviewing = false) {
           <h1>${title}</h1>
           <p>${result === 'best'
             ? `${answerHTML(problem, call)} is the answer.`
-            : `You ${answerVerb(problem)} ${answerHTML(problem, call)}. The answer is ${answerHTML(problem, problem.answer)}.`}</p>
+            : `You ${answerVerb(problem, deal)} ${answerHTML(problem, call)}. The answer is ${answerHTML(problem, problem.answer)}.`}</p>
         </div>
       </header>
       ${notes.join('')}
@@ -520,7 +530,7 @@ function renderSummary() {
       <span class="mark" aria-hidden="true">${GRADES[result].icon}</span>
       <span class="result-text">
         <small>${escapeHTML(topicName(item.problem.tags[0]))}</small>
-        You ${answerVerb(item.problem)} ${answerHTML(item.problem, call)}${answer}
+        You ${answerVerb(item.problem, item.deal)} ${answerHTML(item.problem, call)}${answer}
       </span>
       <span class="chevron" aria-hidden="true">›</span>
     </button></li>`;
@@ -531,7 +541,7 @@ function renderSummary() {
     <h1>${right} of ${session.length} right</h1>
     <p class="hint">Tap a challenge to look at it again.</p>
     <ul class="results">${rows}</ul>
-    ${missed ? `<button class="primary" data-action="missed">Practise the ${missed === 1 ? 'one' : `${missed}`} I missed</button>` : ''}
+    ${missed ? `<button class="primary" data-action="missed">Practice the ${missed === 1 ? 'one' : `${missed}`} I missed</button>` : ''}
     ${more ? `<button class="${missed ? 'secondary' : 'primary'}" data-action="again">More challenges</button>` : ''}
     <button class="secondary" data-action="home">Home</button>`;
   window.scrollTo(0, 0);
@@ -557,7 +567,7 @@ function whenText(time) {
   return new Date(time).toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
 }
 
-// The home screen: where the deals come from, which topics to practise,
+// The home screen: where the deals come from, which topics to practice,
 // progress, and Start.
 function renderHome() {
   const chip = (data, name, count, on) =>
@@ -587,7 +597,7 @@ function renderHome() {
   app.innerHTML = `
     <header>
       <h1>Bridge Practicer</h1>
-      <p class="hint">Bidding and defence challenges
+      <p class="hint">Bidding and defense challenges
         <button class="about-button" data-action="about" aria-label="About these challenges">ⓘ</button></p>
     </header>
     <dialog class="about" aria-label="About these challenges">
@@ -608,7 +618,7 @@ function renderHome() {
       <div class="stats">
         <div><strong>${seen}</strong> of ${pool.length} tried</div>
         <div><strong>${right}</strong> right last time</div>
-        <div><strong>${lastAt ? whenText(lastAt) : 'Not yet'}</strong> last practised</div>
+        <div><strong>${lastAt ? whenText(lastAt) : 'Not yet'}</strong> last practiced</div>
       </div>
     </section>
     <div class="starts">

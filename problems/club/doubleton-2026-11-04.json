@@ -16,7 +16,7 @@
       },
       "auction": ["P", "P", "1S", "X", "2H", "P", "2S", "P", "P", "P"],
       "atTheTable": "P–P–1♠–X–2♥–P–2♠–X–P–3♣, all pass. West meant the second double as takeout, and East bid 3♣, as asked: one down not vulnerable (−50, 0.5 of 2). The best other result was 2♠ by West +2 (+110).",
-      "agreed": "Pass is slightly better and the double is acceptable. We compete aggressively below 2NT, but don't forget defence: with four good trumps over the bidder, defending is the stronger option (agreed by Dave and Donna, 2026-11-05).",
+      "agreed": "Pass is slightly better and the double is acceptable. We compete aggressively below 2NT, but don't forget defense: with four good trumps over the bidder, defending is the stronger option (agreed by Dave and Donna, 2026-11-05).",
       "reviewNotes": [
         "Double dummy, 2♠ goes four down (+400 undoubled); 3♥ by North over a pass is two down (+200). Either is a top. East–West can make 3NT+1 (+430), but nobody bid it.",
         "Pairs with board 18 of the same session, where two cards in their suit make the reopening double right.",
@@ -28,7 +28,7 @@
           "at": 7,
           "answer": "P",
           "tags": ["general"],
-          "explanation": "You've shown a strong hand with your first double. Now count your defensive tricks: AKJ of spades sitting over the spade bidder is probably three trump tricks, and with the AK of diamonds and probably the king of clubs you hold five or six tricks on your own; six beat 2♠. We compete aggressively below 2NT, but don't forget defence. Shortness in their suit points to competing; four good trumps point to defending.",
+          "explanation": "You've shown a strong hand with your first double. Now count your defensive tricks: AKJ of spades sitting over the spade bidder is probably three trump tricks, and with the AK of diamonds and probably the king of clubs you hold five or six tricks on your own; six beat 2♠. We compete aggressively below 2NT, but don't forget defense. Shortness in their suit points to competing; four good trumps point to defending.",
           "acceptable": {
             "X": "The call made at the table, meant as takeout. Reasonable with 19 HCP: partner bid 3♣, one down not vulnerable (−50), no disaster. But 2♠ goes four down (+400)."
           }
@@ -87,14 +87,14 @@
       "agreed": "Opener's reopening double after they overcall our 1NT is takeout, whatever the suit, including clubs: responder bids their longest suit, or passes to convert to penalty with a good holding in the overcalled suit (agreed by Dave and Donna, 2026-11-05).",
       "reviewNotes": [
         "The auction after the double is a likely one, not discussed: East bids 2♥ (four hearts, cheaper than 3♣) and West passes. Only West's double is a problem here.",
-        "Tagged level-of-fit, where the agreements file records 'Be aggressive below 2NT' with this board as its example."
+        "Tagged general: West can't count a fit, so the Law doesn't decide it; the lesson is the reopening double agreement."
       ],
       "problems": [
         {
           "id": "club-2026-11-04-doubleton-18a",
           "at": 6,
           "answer": "X",
-          "tags": ["level-of-fit"],
+          "tags": ["general"],
           "explanation": "A judgment call, but double is slightly better. Partner didn't have enough to cuebid 3♦ (Stayman, forcing to game), and a natural two-level bid would show five cards, so their pass shows a weak hand but not a bust. South passed 2♦, so the opponents aren't going anywhere either. You have a good 16 count with four cards in both majors and only two diamonds, and you're not vulnerable. So double: it's takeout, asking partner to bid their longest suit, and with a good diamond holding partner can pass and defend 2♦ doubled. Either way, you don't let the opponents play a cheap two-level contract: below 2NT, we compete aggressively.",
           "acceptable": {
             "P": "The call made at the table. Reasonable, since partner is weak and you've described your hand with 1NT, but they made 2♦ for −90, while you have a 4-4 heart fit and nine tricks for +140."

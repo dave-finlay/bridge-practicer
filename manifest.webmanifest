@@ -1,7 +1,7 @@
 {
   "name": "Bridge Practicer",
   "short_name": "Practicer",
-  "description": "Bidding and defence challenges from bridge lessons, club hands and teaching found online.",
+  "description": "Bidding and defense challenges from bridge lessons, club hands and teaching found online.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

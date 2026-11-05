@@ -23,7 +23,7 @@
           "lead": true,
           "answer": "H6",
           "tags": ["leads-nt"],
-          "explanation": "Notrump is a race: declarer and the defence are both setting up tricks. Lead your longest and strongest suit, hearts, and with no three-card sequence, lead fourth highest: the ♥6. Losing the first heart is fine. Later, when partner gets in, partner returns a heart and your suit runs.",
+          "explanation": "Notrump is a race: declarer and the defense are both setting up tricks. Lead your longest and strongest suit, hearts, and with no three-card sequence, lead fourth highest: the ♥6. Losing the first heart is fine. Later, when partner gets in, partner returns a heart and your suit runs.",
           "whyNot": {
             "HA": "You win the ♥A and ♥K, but then the suit is stuck: when partner gets in, there's no heart left to return, and declarer has time to set up the clubs.",
             "H2": "Fourth highest from A K 9 6 2 is the 6. The 2 is fifth, and partner would count your length wrong."
@@ -130,7 +130,7 @@
           "tags": ["leads-nt"],
           "explanation": "Against notrump it's fine to lead from a suit with the ace. Lead fourth highest (A, 9, 7, 6): the ♦6. You lose a trick early to set up the long diamonds, and the ♦A stays as your entry to cash them.",
           "whyNot": {
-            "DA": "Leading the ace wins a trick but sets up declarer's diamond honours, and you lose your entry to the long cards.",
+            "DA": "Leading the ace wins a trick but sets up declarer's diamond honors, and you lose your entry to the long cards.",
             "D5": "Fourth highest from A 9 7 6 5 is the 6. The 5 would mislead partner about your length."
           }
         }
@@ -205,7 +205,7 @@
           "lead": true,
           "answer": "S2",
           "tags": ["leads-nt"],
-          "explanation": "Lead partner's suit. With three small cards and no touching honours, lead low: the ♠2. When you follow with another spade later, partner knows you had more than two.",
+          "explanation": "Lead partner's suit. With three small cards and no touching honors, lead low: the ♠2. When you follow with another spade later, partner knows you had more than two.",
           "whyNot": {
             "S9": "The top card shows a doubleton in partner's suit. From three, lead low."
           }
@@ -231,9 +231,9 @@
           "lead": true,
           "answer": "SQ",
           "tags": ["leads-nt"],
-          "explanation": "Lead partner's suit, and with touching honours, lead the top: the ♠Q. It promises the J, so partner knows how the suit lies and you're off to a great start.",
+          "explanation": "Lead partner's suit, and with touching honors, lead the top: the ♠Q. It promises the J, so partner knows how the suit lies and you're off to a great start.",
           "whyNot": {
-            "S2": "Low denies touching honours. From Q J, lead the Q."
+            "S2": "Low denies touching honors. From Q J, lead the Q."
           }
         }
       ]
@@ -256,7 +256,7 @@
           "lead": true,
           "answer": "HK",
           "tags": ["leads-nt"],
-          "explanation": "Partner's suit is the usual lead, but six hearts headed by the K Q J can win the race on their own: lead the top of your sequence, the ♥K. Once the ♥A is driven out, you have five heart tricks to cash. (Apologise to partner later, if needed.)",
+          "explanation": "Partner's suit is the usual lead, but six hearts headed by the K Q J can win the race on their own: lead the top of your sequence, the ♥K. Once the ♥A is driven out, you have five heart tricks to cash. (Apologize to partner later, if needed.)",
           "acceptable": {
             "S9": "Partner's suit, top of a doubleton, is the normal lead. Here your own suit is strong enough to be the exception."
           }
@@ -331,7 +331,7 @@
           "lead": true,
           "answer": "SQ",
           "tags": ["leads-nt"],
-          "explanation": "Q J 9 is a broken sequence (two touching honours, a gap, then the next card). It's almost as good as Q J 10: lead the top, the ♠Q.",
+          "explanation": "Q J 9 is a broken sequence (two touching honors, a gap, then the next card). It's almost as good as Q J 10: lead the top, the ♠Q.",
           "whyNot": {
             "S6": "Fourth highest is right without a sequence. With Q J 9, lead the Q."
           }
@@ -356,7 +356,7 @@
           "lead": true,
           "answer": "SJ",
           "tags": ["leads-nt"],
-          "explanation": "K J 10 is an interior sequence: a high honour, a gap, then touching cards. Lead the top of the touching cards: the ♠J. If declarer has the A or Q, your K and 10 sit over dummy and partner's honour helps set up the suit.",
+          "explanation": "K J 10 is an interior sequence: a high honor, a gap, then touching cards. Lead the top of the touching cards: the ♠J. If declarer has the A or Q, your K and 10 sit over dummy and partner's honor helps set up the suit.",
           "whyNot": {
             "SK": "Leading the K from K J 10 risks it being captured by the A, and sets up declarer's Q.",
             "S4": "With an interior sequence, lead the top of the touching cards rather than fourth highest."
@@ -407,7 +407,7 @@
           "lead": true,
           "answer": "DQ",
           "tags": ["leads-suit"],
-          "explanation": "Against a suit contract, two touching honours are enough of a sequence: lead the ♦Q, promising the J.",
+          "explanation": "Against a suit contract, two touching honors are enough of a sequence: lead the ♦Q, promising the J.",
           "whyNot": {
             "D2": "Against notrump you'd need three cards for a sequence lead. Against a suit, from Q J lead the Q.",
             "H2": "Leading away from a king can give declarer a trick. The diamond sequence is safer."
@@ -461,7 +461,7 @@
           "tags": ["leads-suit"],
           "explanation": "With the A K, lead the ace: you take a trick, keep the lead, and get to see dummy (and partner's signal) before deciding what to do next.",
           "whyNot": {
-            "D5": "Never underlead an A K against a suit contract: declarer may win a trick with a singleton or doubleton honour."
+            "D5": "Never underlead an A K against a suit contract: declarer may win a trick with a singleton or doubleton honor."
           }
         }
       ]
@@ -487,7 +487,7 @@
           "tags": ["leads-suit"],
           "explanation": "Against a suit contract, don't lead an ace without the king, and don't lead away from one: aces are for taking kings. Leave the diamonds alone and lead something safe, such as the ♣2 from three small.",
           "acceptable": {
-            "H3": "Also fine: low from three to an honour. The point is to stay out of diamonds."
+            "H3": "Also fine: low from three to an honor. The point is to stay out of diamonds."
           },
           "whyNot": {
             "DA": "Leading an unsupported ace sets up declarer's king.",
@@ -514,7 +514,7 @@
           "lead": true,
           "answer": "HJ",
           "tags": ["leads-suit"],
-          "explanation": "J 10 is a two-card sequence, good enough against a suit: lead the ♥J. It's safe, and it avoids leading away from honours elsewhere.",
+          "explanation": "J 10 is a two-card sequence, good enough against a suit: lead the ♥J. It's safe, and it avoids leading away from honors elsewhere.",
           "whyNot": {
             "H6": "Low from J 10 6 could cost a trick. Lead the top of the sequence."
           }
@@ -694,7 +694,7 @@
           "tags": ["leads-suit"],
           "explanation": "Partner passed your takeout double at the one level, so partner's diamonds are longer and stronger than declarer's. Lead a trump to help partner draw trumps, as you would if you were declarer. This is the exception to not leading a singleton trump.",
           "whyNot": {
-            "SQ": "A normal lead on most auctions, but here the defence wants to draw trumps, and only a trump lead starts that."
+            "SQ": "A normal lead on most auctions, but here the defense wants to draw trumps, and only a trump lead starts that."
           }
         }
       ]

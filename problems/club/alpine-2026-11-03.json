@@ -50,7 +50,7 @@
       },
       "auction": ["P", "P", "1C", "1D", "2C", "2S", "3C", "3S", "4C", "P", "P", "P"],
       "atTheTable": "P–P–1♣–(1♦)–2♣–(2♠)–3♣–(3♠), passed out: 3♠ by North made, −140 for 1.5 of 10 MPs. In our section four EW pairs scored +130 in clubs (8.5 of 10). Double dummy, 4♣ makes and so does their 4♠.",
-      "agreed": "Agreed 2026-11-04: use the Law of Total Tricks in competitive auctions. We have eleven clubs (West's 2♣ raise promised five; East's competitive 3♣ showed six), so West competes to 4♣ over 3♠. Dave notes it was still a judgment call: vulnerable, a flat 9 HCP and soft honours in their suits argued for defending, and 4♠ also makes.",
+      "agreed": "Agreed 2026-11-04: use the Law of Total Tricks in competitive auctions. We have eleven clubs (West's 2♣ raise promised five; East's competitive 3♣ showed six), so West competes to 4♣ over 3♠. Dave notes it was still a judgment call: vulnerable, a flat 9 HCP and soft honors in their suits argued for defending, and 4♠ also makes.",
       "reviewNotes": [
         "The auction assumes NS stop over 4♣. Double dummy, 4♠ makes ten tricks, so NS could profitably bid on.",
         "Strict Law says eleven trumps allows the 5 level, but 4♣ is enough to outbid 3♠, and 5♣ is one down double dummy."
@@ -116,7 +116,7 @@
           "explanation": "You've shown a strong balanced hand with 1NT, and partner has passed twice, so the strength is yours. They're in a 4-2 spade fit at best: you hold ♠AK8 sitting over North, the declarer, and partner may have length too. With 18 HCP and their trumps behind declarer, double for penalty. Here it's two down, +300.",
           "whyNot": {
             "P": "The call at the table. 2♠ made eight tricks, −110 for 4 of 10; doubled, it goes two down double dummy for a top.",
-            "3H": "You're vulnerable, and partner's passes show almost nothing. Double dummy you take five tricks in hearts; your values are worth more on defence."
+            "3H": "You're vulnerable, and partner's passes show almost nothing. Double dummy you take five tricks in hearts; your values are worth more on defense."
           }
         }
       ]
@@ -135,10 +135,10 @@
       },
       "auction": ["1D", "1S", "2H", "2S", "4H", "P", "P", "4S", "X", "P", "P", "P"],
       "atTheTable": "(1♦)–1♠–(2♥)–2♠–(4♥), passed out: 4♥ by South made eleven tricks, −650 for 2 of 10 MPs. Double dummy, 4♠ by EW takes eight tricks: doubled, two down for −300, about 7 of 10 in our section. Par is 5♠ doubled three down, −500.",
-      "agreed": "Agreed 2026-11-04, as part of playing to the level of the fit: at favourable vulnerability, with a fit, shape and little defence, West saves in 4♠ over their vulnerable 4♥. By the Law of Total Tricks, our eight spades and their long hearts point to 4♠ doubled going two or three down, −300 or −500, both better than −650.",
+      "agreed": "Agreed 2026-11-04, as part of playing to the level of the fit: at favorable vulnerability, with a fit, shape and little defense, West saves in 4♠ over their vulnerable 4♥. By the Law of Total Tricks, our eight spades and their long hearts point to 4♠ doubled going two or three down, −300 or −500, both better than −650.",
       "reviewNotes": [
         "The auction assumes North doubles 4♠. If NS bid 5♥ instead, it also makes eleven tricks (−650), so the save costs nothing.",
-        "East's pass of 4♥ is right (♣AK and ♥K are real defence) and isn't drilled. We don't play forcing passes, so East's pass doesn't ask West to bid; West saves on their own hand."
+        "East's pass of 4♥ is right (♣AK and ♥K are real defense) and isn't drilled. We don't play forcing passes, so East's pass doesn't ask West to bid; West saves on their own hand."
       ],
       "problems": [
         {
@@ -146,9 +146,9 @@
           "at": 7,
           "answer": "4S",
           "tags": ["level-of-fit"],
-          "explanation": "They're vulnerable and you're not, and they've bid game. Your hand has almost no defence (4 HCP), a singleton heart and seven clubs. Partner's overcall showed five spades, so you have an eight-card fit. By the Law of Total Tricks, if they make ten or eleven tricks in hearts, you should take about seven or eight in spades: 4♠ doubled is two or three down, −300 or −500, both cheaper than their −620 or −650. If they bid on to 5♥, you've lost nothing. Partner, with real defence, rightly passed; you're the one who knows your hand won't beat 4♥.",
+          "explanation": "They're vulnerable and you're not, and they've bid game. Your hand has almost no defense (4 HCP), a singleton heart and seven clubs. Partner's overcall showed five spades, so you have an eight-card fit. By the Law of Total Tricks, if they make ten or eleven tricks in hearts, you should take about seven or eight in spades: 4♠ doubled is two or three down, −300 or −500, both cheaper than their −620 or −650. If they bid on to 5♥, you've lost nothing. Partner, with real defense, rightly passed; you're the one who knows your hand won't beat 4♥.",
           "whyNot": {
-            "P": "The call at the table. With almost no defence, you let them score their vulnerable game: −650 for 2 of 10.",
+            "P": "The call at the table. With almost no defense, you let them score their vulnerable game: −650 for 2 of 10.",
             "5C": "Partner never showed clubs, so you can't know of the fit, and it's a level higher. Here it happens to take eight tricks too, but doubled that's −500, worse than 4♠'s −300."
           }
         }

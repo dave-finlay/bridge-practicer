@@ -303,7 +303,7 @@ button {
 }
 
 /* Alerted calls get a red box and announced ones a blue box (the ACBL
-   convention card's colours). Tapping one shows its meaning. */
+   convention card's colors). Tapping one shows its meaning. */
 .calls [data-kind] {
   cursor: pointer;
 }
@@ -572,6 +572,18 @@ button {
 .spot-e { grid-area: e; }
 .spot-s { grid-area: s; }
 
+/* A trick played before the position, and what the bidding said. */
+.earlier {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+.position-context {
+  margin: 0;
+  text-align: center;
+}
+
 /* Short screens (an iPhone mini or SE, or Display Zoom set to Larger
    Text): a smaller hand and buttons, so the auction keeps room for three
    rows of calls. */
@@ -800,7 +812,7 @@ button {
   margin-top: 10px;
 }
 
-/* Double dummy leads: the leader's hand, with the defence's tricks under
+/* Double dummy leads: the leader's hand, with the defense's tricks under
    each card. */
 
 .leads {

@@ -102,7 +102,7 @@
       },
       "auction": ["P", "1H", "2N", "3C", "P", "4H", "5C", "P", "P", "P"],
       "alerts": { "2": "Both minors (Unusual 2NT)" },
-      "setAside": "We know the Unusual 2NT but don't play it, and a defence to it is one convention more than we want for now (2026-11-05).",
+      "setAside": "We know the Unusual 2NT but don't play it, and a defense to it is one convention more than we want for now (2026-11-05).",
       "reviewNotes": [
         "Hands and auction transcribed from the video's screenshots. East played 5♣ and took five tricks: six down, +600 for North-South. Double dummy, 4♥ makes, and so does 5♦ for East–West."
       ],

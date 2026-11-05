@@ -8,7 +8,7 @@
 // kept, so only new or changed deals are solved.
 //
 // A deal with an opening lead problem also gets, for each card the leader
-// could lead, the tricks the defence then takes. Deals with only the
+// could lead, the tricks the defense then takes. Deals with only the
 // leader's hand can't be solved and are left out.
 
 import { execFileSync } from 'node:child_process';

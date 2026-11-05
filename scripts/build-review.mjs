@@ -7,7 +7,7 @@ import { join } from 'node:path';
 import { marksFor } from '../js/alerts.js';
 import { contract, seatOfCall } from '../js/auction.js';
 import { SUITS, SUIT_SYMBOLS, formatCall, formatCard, formatHolding, hcp, parseHand } from '../js/hands.js';
-import { dummyOf, isFullDeal, isPosition, leaderOf, problemFiles, toPlay, trickSeats } from '../js/problems.js';
+import { dummyOf, earlierSeats, isFullDeal, isPosition, leaderOf, problemFiles, toPlay, trickSeats } from '../js/problems.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const SEAT_NAMES = { N: 'North', E: 'East', S: 'South', W: 'West' };
@@ -118,6 +118,8 @@ function positionHtml(deal) {
   const cards = (seat) => `<div class="hand"><div class="hand-label">${seat === you ? 'You' : 'Dummy'} (${SEAT_NAMES[seat]})</div>${[...suits].map((suit) =>
     `<div class="holding"><span class="${suitClass(SUIT_SYMBOLS[suit])}">${SUIT_SYMBOLS[suit]}</span> ${formatHolding(parseHand(deal.hands[seat])[suit])}</div>`).join('')}</div>`;
   const trick = trickSeats(deal).map((seat, i) => `${SEAT_NAMES[seat]} ${prose(formatCard(deal.trick[i]))}`).join(', ');
+  const earlier = (deal.earlier ?? []).map((t, k) =>
+    `<p>Trick ${k + 1}: ${earlierSeats(t).map((seat, i) => `${SEAT_NAMES[seat]} ${prose(formatCard(t.cards[i]))}`).join(', ')}</p>`).join('');
   const notes = deal.reviewNotes ?? [];
   return `<section class="deal" id="${deal.id}">
     <h2>${esc(deal.source)}</h2>
@@ -130,7 +132,9 @@ function positionHtml(deal) {
       </header>
       <div class="problem-body">
         <div class="question">
+          ${deal.context ? `<p>${prose(deal.context)}</p>` : ''}
           ${cards(dummy)}
+          ${earlier}
           <p>Trick so far: ${trick || 'you lead'}</p>
           ${cards(you)}
         </div>

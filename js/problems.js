@@ -5,6 +5,7 @@
 // PLAN.md for the format.
 
 import { SEATS, contract, seatAfter, seatOfCall } from './auction.js';
+import { RANKS } from './hands.js';
 
 // Where the deals come from, in the order the home screen lists them, and
 // the files the app loads from each: problems/<origin>/<file>.json.
@@ -14,7 +15,7 @@ export const ORIGINS = {
     files: ['stayman', 'texas', 'negative-doubles', 'nmf', 'jacoby-2nt', 'rkcb', 'control-bids', 'jacoby'],
   },
   club: { name: 'Club', files: ['alpine-2026-10-27', 'alpine-2026-11-03', 'doubleton-2026-11-04'] },
-  teachers: { name: 'Teachers', files: ['too-strong', 'cuebids', 'opening-leads', 'defence'] },
+  teachers: { name: 'Teachers', files: ['too-strong', 'cuebids', 'opening-leads', 'defense'] },
 };
 
 // Every problem file's path, with its origin.
@@ -23,7 +24,7 @@ export const problemFiles = () => Object.entries(ORIGINS).flatMap(([origin, { fi
 
 // The names of the topics that problems are tagged with, in the order the
 // home screen lists them: the lessons' conventions, then agreements
-// practised from other deals, then general bidding for the rest.
+// practiced from other deals, then general bidding for the rest.
 export const TOPICS = {
   stayman: 'Stayman',
   jacoby: 'Jacoby transfers',
@@ -42,6 +43,7 @@ export const TOPICS = {
   'leads-suit': 'Leads vs suits',
   signals: 'Attitude signals',
   'second-third': 'Second and third hand',
+  'mid-hand': 'Leading mid-hand',
 };
 
 export const topicName = (tag) => TOPICS[tag] ?? tag;
@@ -66,6 +68,17 @@ export const dummyOf = (deal) => seatAfter(deal.declarer, 2);
 // Who played each card of the trick so far, and who plays next.
 export const trickSeats = (deal) => deal.trick.map((_, i) => seatAfter(deal.leader, i));
 export const toPlay = (deal) => seatAfter(deal.leader, deal.trick.length);
+
+// A position can show the tricks played before it (`earlier`, each
+// `{ leader, cards }`): who played each card, and who won the trick: the
+// highest trump, or else the highest card of the suit led.
+export const earlierSeats = (trick) => trick.cards.map((_, i) => seatAfter(trick.leader, i));
+export function trickWinner(trick, trump) {
+  const led = trick.cards[0][0];
+  const rank = (card) => (card[0] === trump ? 0 : card[0] === led ? 20 : 40) + RANKS.indexOf(card[1]);
+  const best = trick.cards.reduce((a, b) => (rank(b) < rank(a) ? b : a));
+  return earlierSeats(trick)[trick.cards.indexOf(best)];
+}
 
 // Every problem in the files, each with its deal, its file's origin and
 // title, and the seat that calls. Each file is as loaded, plus `origin`.

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   ORIGINS, dealCount, dueAt, flatten, fromOrigins, grade, isFullDeal, leaderOf, nextDue, pickSession, problemFiles,
-  progressSummary, readyNow, topicsIn, updateProgress, withTags,
+  progressSummary, readyNow, topicsIn, trickWinner, updateProgress, withTags,
 } from '../js/problems.js';
 
 const load = (path, origin) => ({ ...JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url))), origin });
@@ -108,8 +108,8 @@ test('an opening lead problem is asked of the leader, who may be the only hand g
 });
 
 test('a play problem is asked of the next player to the trick', () => {
-  const defence = load('problems/teachers/defence.json', 'teachers');
-  const items = flatten([defence]);
+  const defense = load('problems/teachers/defense.json', 'teachers');
+  const items = flatten([defense]);
   const third = items.find((p) => p.id === 'sig-encourage-queena'); // West led, dummy played
   assert.equal(third.seat, 'E');
   const second = items.find((p) => p.id === 'hand2-lowa'); // declarer led
@@ -190,7 +190,7 @@ test('pickSession leaves out problems not due yet, so a set can be short', () =>
   assert.deepEqual(sameDay, ['texas-2a', 'texas-8a']);
 });
 
-test('readyNow and nextDue: what can be practised now, and when more can', () => {
+test('readyNow and nextDue: what can be practiced now, and when more can', () => {
   const progress = allSeen();
   assert.equal(readyNow(problems, progress, NOW).length, 0);
   assert.equal(nextDue(problems, progress, NOW), NOW + DAY);
@@ -205,4 +205,11 @@ test('progressSummary counts problems seen and right last time', () => {
   progress['texas-1a'] = updateProgress(progress['texas-1a'], 'texas-1a', 'wrong', NOW + DAY);
   assert.deepEqual(progressSummary(problems, progress), { seen: 4, right: 3, lastAt: NOW + DAY });
   assert.deepEqual(progressSummary(problems, {}), { seen: 0, right: 0, lastAt: null });
+});
+
+test('trickWinner: the highest trump, else the highest card of the suit led', () => {
+  assert.equal(trickWinner({ leader: 'W', cards: ['HK', 'H2', 'H8', 'H4'] }, 'S'), 'W');
+  assert.equal(trickWinner({ leader: 'W', cards: ['HK', 'H2', 'HA', 'H4'] }, 'S'), 'E');
+  assert.equal(trickWinner({ leader: 'W', cards: ['HK', 'H2', 'H8', 'S2'] }, 'S'), 'S');
+  assert.equal(trickWinner({ leader: 'N', cards: ['D5', 'CA', 'D9', 'D7'] }, null), 'S');
 });

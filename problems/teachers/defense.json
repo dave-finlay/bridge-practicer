@@ -1,5 +1,5 @@
 {
-  "title": "Defence: signals and second and third hand",
+  "title": "Defense: signals, second and third hand, and leading mid-hand",
   "source": "Phil Abrahamson (Planet Bridge) handouts",
   "deals": [
     {
@@ -99,7 +99,7 @@
           "play": true,
           "answer": "H3",
           "tags": ["signals"],
-          "explanation": "Three small cards and no honour: nothing to encourage. Play your lowest, the ♥3, to discourage.",
+          "explanation": "Three small cards and no honor: nothing to encourage. Play your lowest, the ♥3, to discourage.",
           "whyNot": {
             "H8": "The 8 is a high spot card: it would encourage partner to continue."
           }
@@ -155,7 +155,7 @@
           "play": true,
           "answer": "H3",
           "tags": ["signals"],
-          "explanation": "Partner's ♥Q promises the J. With no honour to help, discourage with your lowest card: the ♥3.",
+          "explanation": "Partner's ♥Q promises the J. With no honor to help, discourage with your lowest card: the ♥3.",
           "whyNot": {
             "H8": "A high spot card would ask partner to continue, with nothing to back it up."
           }
@@ -300,7 +300,7 @@
       "contract": "4S",
       "declarer": "S",
       "hands": {
-        "N": "5.KJ6.KJ4.8",
+        "N": "5.KJ6.KJ4.82",
         "E": ".AQ72.752.43"
       },
       "leader": "S",
@@ -347,7 +347,7 @@
           "explanation": "Second hand low. Declarer leads towards dummy's Q: if you play low, declarer's K (if they have it) and dummy's Q can't both win, because your A kills one of them. And if partner has the K, partner takes the Q.",
           "whyNot": {
             "HA": "Rising with the A sets up both dummy's Q and declarer's K: two tricks instead of one.",
-            "HJ": "Splitting your honours gives declarer a cheap trick. Play low."
+            "HJ": "Splitting your honors gives declarer a cheap trick. Play low."
           }
         }
       ]
@@ -372,7 +372,7 @@
           "tags": ["second-third"],
           "explanation": "Second hand low, in tempo. If you play low smoothly, declarer has to guess between the K and the J, and may guess wrong. If you hesitate, declarer knows you're thinking about the A and plays the K.",
           "whyNot": {
-            "HA": "Rising with the A sets up dummy's K and J. Keep it to capture an honour later."
+            "HA": "Rising with the A sets up dummy's K and J. Keep it to capture an honor later."
           }
         }
       ]
@@ -395,7 +395,7 @@
           "play": true,
           "answer": "HK",
           "tags": ["second-third"],
-          "explanation": "Cover an honour with an honour. If you play low, declarer lets the Q run, then leads towards the A J, and your K dies anyway. Covering kills the Q with your K, and partner's 10 may become a winner.",
+          "explanation": "Cover an honor with an honor. If you play low, declarer lets the Q run, then leads towards the A J, and your K dies anyway. Covering kills the Q with your K, and partner's 10 may become a winner.",
           "whyNot": {
             "H4": "Declarer's Q wins, and your K is caught on the next round."
           }
@@ -420,7 +420,7 @@
           "play": true,
           "answer": "HA",
           "tags": ["second-third"],
-          "explanation": "Third hand high: you're the last chance to win the trick for your side. Partner led low, so partner doesn't have the K Q. Win the ♥A and lead back to partner's honours: partner may have the K, or the Q sitting over declarer.",
+          "explanation": "Third hand high: you're the last chance to win the trick for your side. Partner led low, so partner doesn't have the K Q. Win the ♥A and lead back to partner's honors: partner may have the K, or the Q sitting over declarer.",
           "whyNot": {
             "H9": "If declarer has the K or Q, playing low lets declarer win a cheap trick."
           }
@@ -499,6 +499,272 @@
           "whyNot": {
             "HA": "Winning the A sets up two heart tricks for declarer: dummy's K and the Q.",
             "H2": "Low discourages, but you want partner to continue hearts through dummy's K."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-read-continue",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 14, case 1",
+      "contract": "4S",
+      "declarer": "S",
+      "hands": {
+        "N": "K843.75.AQ4.K96",
+        "W": "62.Q63.J852.J73"
+      },
+      "earlier": [{ "leader": "W", "cards": ["HK", "H2", "H8", "H4"] }],
+      "leader": "W",
+      "trick": [],
+      "reviewNotes": ["The handout gives only the hearts; the other suits are made up to fit."],
+      "problems": [
+        {
+          "id": "sig-read-continuea",
+          "play": true,
+          "answer": "HQ",
+          "tags": ["signals"],
+          "explanation": "Your ♥K won, and partner's ♥8 is a high spot card: it encourages, so partner has the ♥A or the J. Partner wants hearts, so continue: lead the ♥Q, the top of what's left of your K Q.",
+          "whyNot": {
+            "H3": "Right suit, and low works when partner has the A. But the Q is safe whoever has it.",
+            "D2": "Partner asked for hearts. A diamond up to dummy's A Q also gives declarer a free finesse.",
+            "C3": "Partner asked for hearts. A club gives up your heart tricks for nothing."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-read-switch",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 14, case 2",
+      "contract": "4S",
+      "declarer": "S",
+      "hands": {
+        "N": "KQ63.85.973.AQT",
+        "W": "J4.K63.J852.743"
+      },
+      "earlier": [{ "leader": "W", "cards": ["HA", "H4", "H2", "H7"] }],
+      "leader": "W",
+      "trick": [],
+      "reviewNotes": ["The handout gives only the hearts and says not to continue them; the rest of the hands, and the club switch, are made up to fit."],
+      "problems": [
+        {
+          "id": "sig-read-switcha",
+          "play": true,
+          "answer": "C7",
+          "tags": ["signals"],
+          "explanation": "Partner's ♥2 discourages: no ♥Q. If declarer has it, cashing your K sets the Q up as a winner, so leave hearts for partner to lead through it later. Switch instead, and with dummy on your left, lead through dummy's strength: a club through the A Q 10, in case partner has the K or J sitting over them. From three small, lead the top.",
+          "acceptable": {
+            "C4": "The right suit. From three small, the top card tells partner you have nothing in clubs.",
+            "C3": "The right suit. From three small, the top card tells partner you have nothing in clubs."
+          },
+          "whyNot": {
+            "HK": "Partner's low heart says partner doesn't have the Q. If declarer has it, the K sets it up.",
+            "DJ": "Dummy's diamonds are weak and on your left: a diamond goes round to declarer, who plays last and can win cheaply over partner's honors."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-read-know-more",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 14, case 4",
+      "contract": "4S",
+      "declarer": "S",
+      "hands": {
+        "N": "Q952.86.KQ7.Q83",
+        "W": "74.KQ3.J9852.J6"
+      },
+      "earlier": [{ "leader": "W", "cards": ["HA", "H4", "H2", "H5"] }],
+      "leader": "W",
+      "trick": [],
+      "reviewNotes": ["The handout gives only the hearts; the other suits are made up to fit."],
+      "problems": [
+        {
+          "id": "sig-read-know-morea",
+          "play": true,
+          "answer": "HK",
+          "tags": ["signals"],
+          "explanation": "Partner's ♥2 discourages, but partner can't see your hand: it only says partner has nothing in hearts. You know the K and Q are both winners. A signal is information, not an order: when you know more, act on it. Cash your hearts before declarer can throw them away.",
+          "acceptable": {
+            "HQ": "The same: the K and Q are both winners."
+          },
+          "whyNot": {
+            "D5": "Partner's low heart doesn't ask for a switch when you hold the K and Q. Take your tricks.",
+            "C6": "Partner's low heart doesn't ask for a switch when you hold the K and Q. Take your tricks."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-read-think",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 24",
+      "contract": "4S",
+      "declarer": "S",
+      "hands": {
+        "N": "KJ84.75.AJ5.Q73",
+        "W": "53.K964.T82.J96"
+      },
+      "earlier": [{ "leader": "W", "cards": ["HA", "H2", "H3", "H8"] }],
+      "leader": "W",
+      "trick": [],
+      "reviewNotes": ["The handout gives only the hearts; the other suits are made up to fit."],
+      "problems": [
+        {
+          "id": "sig-read-thinka",
+          "play": true,
+          "answer": "HK",
+          "tags": ["signals"],
+          "explanation": "Partner's ♥3 doesn't encourage, so partner has no Q, and it isn't the start of a high-low, so partner doesn't have a doubleton. That leaves two cases. Partner has a singleton: cash the K, then give partner a ruff. Or partner has three or more without the Q: then declarer has only the Q left, and it falls under your K. Either way, continue with the K.",
+          "whyNot": {
+            "H4": "If declarer's last heart is the Q, a low heart lets it win. Cash the K and it falls.",
+            "D2": "Switching gives up the ruff, or the Q falling under your K. Partner's low heart is information to think about, not an order to switch."
+          }
+        }
+      ]
+    },
+    {
+      "id": "sig-read-underlead",
+      "source": "Phil Abrahamson, “10 Attitude Signals on Defense”, page 25",
+      "context": "South opened 1♠.",
+      "contract": "4S",
+      "declarer": "S",
+      "hands": {
+        "N": "K874.6.74.AKQJT",
+        "W": "63.K9.AQ932.852"
+      },
+      "earlier": [{ "leader": "W", "cards": ["HA", "H5", "H8", "H3"] }],
+      "leader": "W",
+      "trick": [],
+      "reviewNotes": ["The handout's dummy shows small cards as x; the spots, and the hearts played to trick 1 other than the A and 8, are made up to fit."],
+      "problems": [
+        {
+          "id": "sig-read-underleada",
+          "play": true,
+          "answer": "H9",
+          "tags": ["signals"],
+          "explanation": "Partner's ♥8 encourages: partner has the Q. (It can't be the start of a doubleton: declarer would have six hearts and would have opened 1♥.) Once declarer gets in, trumps get drawn and the diamond losers go on dummy's clubs, so you need four tricks now: two hearts and two diamonds. Declarer has the ♦K for the opening bid, and if you lead diamonds you set it up. So lead your low heart to partner's Q, and partner, looking at dummy, switches to a diamond through declarer's K to your A Q.",
+          "whyNot": {
+            "HK": "You make two hearts, but then you have to lead diamonds yourself, or a third heart that declarer may ruff. Partner needs to be on lead, to lead diamonds through the K.",
+            "DA": "One diamond trick, and declarer's K is then a winner. You need partner to lead through it.",
+            "DQ": "Declarer wins the K. Diamonds have to come from partner, through declarer.",
+            "C8": "Dummy's clubs are solid: once declarer is in, they'll take care of declarer's losers. Act now."
+          }
+        }
+      ]
+    },
+    {
+      "id": "third-save-ace",
+      "source": "Phil Abrahamson, “11 Defense: Guidelines”, page 21",
+      "context": "Your side passed throughout.",
+      "contract": "4H",
+      "declarer": "S",
+      "shown": "D",
+      "hands": {
+        "N": "..K4.",
+        "E": "..A92."
+      },
+      "leader": "W",
+      "trick": ["DJ", "D4"],
+      "problems": [
+        {
+          "id": "third-save-acea",
+          "play": true,
+          "answer": "D9",
+          "tags": ["second-third", "signals"],
+          "explanation": "Partner's ♦J is the top of a sequence: it promises the 10 and denies the Q (from Q J 10, partner would lead the Q). So declarer has the Q. Take your A now and declarer's K and Q are both winners. Keep the A to capture dummy's K later. A singleton Q with declarer would give partner seven diamonds, and partner would have bid. Thinking beats the guideline here: don't play third hand high. Play the 9, a high spot, to say you like diamonds.",
+          "whyNot": {
+            "DA": "Third hand high, but here it sets up declarer's K and Q. Keep the A for dummy's K.",
+            "D2": "Ducking is right, but the 2 discourages. The 9 tells partner you like diamonds, so partner leads them again, through dummy's K."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mid-through-strength",
+      "source": "Phil Abrahamson, “11 Defense: Guidelines”, page 18",
+      "context": "Mid-hand: declarer has drawn trumps.",
+      "contract": "4S",
+      "declarer": "S",
+      "hands": {
+        "N": "53.AQT.432.",
+        "W": ".874.965.K3"
+      },
+      "leader": "W",
+      "trick": [],
+      "reviewNotes": ["The handout gives dummy's spades, hearts and diamonds; your hand is made up to fit, with no heart or diamond honors, so the guideline decides."],
+      "problems": [
+        {
+          "id": "mid-through-strengtha",
+          "play": true,
+          "answer": "H8",
+          "tags": ["mid-hand"],
+          "explanation": "Dummy is on your left, so lead through dummy's strength: a heart through the A Q 10. Dummy has to play before partner, so if partner has the K or J, partner can wait to pounce on whatever dummy plays. From three small, lead the top.",
+          "acceptable": {
+            "H7": "The right suit. From three small, the top card tells partner you have nothing in hearts.",
+            "H4": "The right suit. From three small, the top card tells partner you have nothing in hearts."
+          },
+          "whyNot": {
+            "D9": "Dummy's diamonds are small and on your left: a diamond goes round to declarer, who plays last and can win cheaply over partner's honors.",
+            "C3": "Dummy has no clubs: declarer ruffs in dummy and throws a loser from hand, a ruff and discard. Don't give one."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mid-up-to-weakness",
+      "source": "Phil Abrahamson, “11 Defense: Guidelines”, page 19",
+      "context": "Mid-hand: declarer has drawn trumps.",
+      "contract": "4S",
+      "declarer": "S",
+      "hands": {
+        "N": "53.AQT.432.",
+        "E": ".965.JT87.9"
+      },
+      "leader": "E",
+      "trick": [],
+      "reviewNotes": ["The handout gives dummy's spades, hearts and diamonds; your hand is made up to fit."],
+      "problems": [
+        {
+          "id": "mid-up-to-weaknessa",
+          "play": true,
+          "answer": "DJ",
+          "tags": ["mid-hand"],
+          "explanation": "Dummy is on your right, so lead the weakest thing in sight: a diamond, up to dummy's small ones. Partner's diamonds sit behind declarer's, and partner can see dummy has nothing, so partner knows exactly what to play. From J 10, lead the J.",
+          "acceptable": {
+            "D7": "The right suit, but from a sequence, lead the top: the J."
+          },
+          "whyNot": {
+            "H9": "A heart goes round to dummy's A Q 10, and dummy plays last: whatever partner has, declarer can win it cheaply. That's a free finesse.",
+            "C9": "Dummy has no clubs: declarer ruffs in dummy and throws a loser from hand, a ruff and discard. Don't give one."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mid-not-away",
+      "source": "Phil Abrahamson, “11 Defense: Guidelines”, page 20",
+      "context": "Mid-hand: declarer has drawn trumps.",
+      "contract": "4S",
+      "declarer": "S",
+      "hands": {
+        "N": "J6.863.KQT.74",
+        "W": ".K74.8652.Q95"
+      },
+      "leader": "W",
+      "trick": [],
+      "reviewNotes": ["Made up to apply page 20's rhyme, \"If dummy's on your left, lead through heft\", when your other suits have honors in them."],
+      "problems": [
+        {
+          "id": "mid-not-awaya",
+          "play": true,
+          "answer": "D8",
+          "tags": ["mid-hand"],
+          "explanation": "Dummy is on your left, so lead through its strength: a diamond through the K Q 10, in case partner has the A or J over them. Your hearts and clubs are worse leads: dummy's cards there are small, and declarer plays last, so leading away from your K or Q gives declarer a free finesse. From four small, lead a high one to show you have nothing in diamonds.",
+          "acceptable": {
+            "D6": "The right suit. A high spot card tells partner you have nothing in diamonds.",
+            "D5": "The right suit, though a high spot card tells partner more.",
+            "D2": "The right suit, though a high spot card tells partner more."
+          },
+          "whyNot": {
+            "H4": "Away from your K, round to declarer, who plays last: if declarer has the A Q, you've given away a trick.",
+            "C5": "Away from your Q, round to declarer, who plays last: a free finesse."
           }
         }
       ]

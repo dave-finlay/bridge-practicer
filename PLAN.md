@@ -13,10 +13,10 @@ with a review: read the code, try it, and course-correct before moving on.
 
 - **Curated problems first**, taken from the example boards in the lesson
   handouts (about 58 deals, roughly 100 problems). Generated hands come
-  later, and only if Dave starts recognising the curated ones. They would
+  later, and only if Dave starts recognizing the curated ones. They would
   be generated ahead of time and shipped with the app, not made up live.
 - **Mixed sessions** of 10 problems, with the conventions mixed so
-  that recognising the situation is part of the test. A filter by
+  that recognizing the situation is part of the test. A filter by
   convention is there for focused study.
 - **"The convention doesn't apply" problems** are included, e.g. Texas is
   off over a 3♦ overcall, and 1♠ rather than a negative double with five
@@ -42,7 +42,7 @@ with a review: read the code, try it, and course-correct before moving on.
   so long auctions have room.
 - **Alerts and announcements are marked** in the auction, as ACBL rules
   and Dave's agreements require: a red box for an alert, blue for an
-  announcement (the convention card's colours), and tapping one shows
+  announcement (the convention card's colors), and tapping one shows
   its meaning. `js/alerts.js` works them out from the auction by rules,
   so the problem files don't list them. Announced: 1NT openings (15 to
   17), Jacoby and Texas transfers, and a super-accept. Alerted: Jacoby
@@ -153,9 +153,28 @@ the trick so far. Its problems ask for your card:
 }
 ```
 
+To lead to a later trick, the `trick` is empty, `leader` is you, and the
+hands are what's left. `earlier` shows the tricks before it, and
+`context` a line of what the bidding said:
+
+```js
+{
+  id: 'sig-read-underlead', source: '…', context: 'South opened 1♠.',
+  contract: '4S', declarer: 'S',
+  hands: { N: 'K874.6.74.AKQJT', W: '63.K9.AQ932.852' },  // after trick 1
+  earlier: [{ leader: 'W', cards: ['HA', 'H5', 'H8', 'H3'] }],
+  leader: 'W', trick: [],
+  problems: [{ id: 'sig-read-underleada', play: true, answer: 'H9', tags: ['signals'], explanation: '…' }],
+}
+```
+
+The checker makes sure the earlier tricks follow suit, the last one's
+winner leads now, and (with all suits shown) dummy and you hold as many
+cards as each other.
+
 Opening lead problems show the whole auction and the leader's hand as
 cards to tap. With all four hands, `npm run dd` also solves each lead
-(the defence's tricks after each card), shown on the feedback screen.
+(the defense's tricks after each card), shown on the feedback screen.
 
 `npm run check` verifies every deal: four 13-card hands making one full
 deck with ranks in order, dealer and vulnerability matching the board
@@ -177,7 +196,7 @@ The app calls the problems **challenges** ("10 bidding challenges",
    topics), Start with 10
    bidding challenges (fewer if the filter leaves fewer deals; a choice
    of 20 was dropped as more than anyone wanted at once), and
-   progress (problems seen, share right, last practised).
+   progress (problems seen, share right, last practiced).
 2. **Problem:** "3 of 10", your seat, dealer and vulnerability, your hand
    (large, one suit per line), the auction table (W N E S, as in the bid
    recorder) with "?" at your turn, and a bidding box with illegal calls
@@ -186,7 +205,7 @@ The app calls the problems **challenges** ("10 bidding challenges",
    call; the explanation; the "why not" note for your call if there is
    one; the whole deal and auction; double dummy results; Next.
 4. **Summary:** the score, each problem with a tick or cross, its
-   convention and the answer (tap to look again), "Practise the ones I
+   convention and the answer (tap to look again), "Practice the ones I
    missed", More challenges (same conventions) and Home.
 
 **Choosing problems.** At most one problem per deal. Within that, prefer
@@ -264,15 +283,13 @@ way leave out the `handout` field and say where the deal came from.
 
 **Understood but not played**
 - **Balancing:** bidding in the pass-out seat with less than usual.
-- **Cue bids of the opponents' suit:** e.g. a cue bid raise showing a
-  limit raise or better after an overcall, and a cue bid asking for a
-  stopper.
+- **A cue bid asking for a stopper.** (Cuebid raises, by responder and
+  by advancer, are agreed and in the app as the "Cuebids" topic.)
 
 These can go in as they are, since the answers don't depend on Dave's own
 agreements. Before each, Dave picks which version to use.
 
 **To explore, and decide whether to play**
-- **Unusual 2NT**: the two lowest unbid suits.
 - **Michaels cue bid**: both majors, or a major and a minor.
 - **Drury / reverse Drury**: a passed hand's 2♣ asking whether a
   third- or fourth-seat opener is light.
@@ -282,9 +299,14 @@ agreements. Before each, Dave picks which version to use.
   for them) once a minor fit is found, so 3NT is reached instead of 5 of
   a minor; inverted minors fit here too.
 
-For these, I'd write a short summary of the convention first, as a
-page like the review page, so Dave can decide whether to play it. If
-so, the agreement goes in `~/context/bridge/agreements.md` before any
+**Decided not to play**
+- **Unusual 2NT** (the two lowest unbid suits): known, not played
+  (2026-11-04). A Bridge Teachers board defending against it is in
+  `problems/teachers/cuebids.json`, set aside.
+
+For the ones to explore, I'd write a short summary of the convention
+first, as a page like the review page, so Dave can decide whether to
+play it. If so, the agreement goes in `~/context/bridge/agreements.md` before any
 problems are written.
 
 **A scoring trainer**

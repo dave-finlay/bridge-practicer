@@ -7,7 +7,7 @@
 //    "contracts":["4S*-EW-1", ...]}
 //
 // Or, for the opening lead, "L <leader> <trump> N:<north> ...", with the
-// leader 0-3 and trump 0-4 (S H D C NT). Writes the tricks the defence
+// leader 0-3 and trump 0-4 (S H D C NT). Writes the tricks the defense
 // takes after each card the leader could lead:
 //   {"lead":{"SA":4,"S7":3,...}}
 
@@ -18,7 +18,7 @@
 #include <iostream>
 #include <string>
 
-// Every card the leader could lead, with the defence's tricks after it.
+// Every card the leader could lead, with the defense's tricks after it.
 // DDS lists one card per group of equals, with the rest of the group as
 // a bit per rank (bit r for rank r, 2-14).
 static int leadLine(const std::string& line) {
