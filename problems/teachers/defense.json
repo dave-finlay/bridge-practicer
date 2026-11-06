@@ -549,13 +549,11 @@
           "id": "sig-read-switcha",
           "play": true,
           "answer": "C7",
-          "tags": ["signals"],
-          "explanation": "Partner's ♥2 discourages: no ♥Q. If declarer has it, cashing your K sets the Q up as a winner, so leave hearts for partner to lead through it later. Switch instead, and with dummy on your left, lead through dummy's strength: a club through the A Q 10, in case partner has the K or J sitting over them. From three small, lead the top.",
-          "acceptable": {
-            "C4": "The right suit. From three small, the top card tells partner you have nothing in clubs.",
-            "C3": "The right suit. From three small, the top card tells partner you have nothing in clubs."
-          },
+          "tags": ["signals", "mid-hand"],
+          "explanation": "Partner's ♥2 discourages: no ♥Q. If declarer has it, cashing your K sets the Q up as a winner, so leave hearts for partner to lead through it later. Switch instead, and with dummy on your left, lead through dummy's strength: a club through the A Q 10, in case partner has the K or J sitting over them. In the middle of the hand, starting a new suit, we lead BOSTON: bottom of something, top of nothing. With nothing in clubs, lead the top: the ♣7. (On opening lead it's different: from small cards you'd lead low.)",
           "whyNot": {
+            "C4": "The right suit, but a low card says you have an honor in clubs. From nothing, lead the top.",
+            "C3": "The right suit, but a low card says you have an honor in clubs. From nothing, lead the top.",
             "HK": "Partner's low heart says partner doesn't have the Q. If declarer has it, the K sets it up.",
             "DJ": "Dummy's diamonds are weak and on your left: a diamond goes round to declarer, who plays last and can win cheaply over partner's honors."
           }
@@ -696,12 +694,10 @@
           "play": true,
           "answer": "H8",
           "tags": ["mid-hand"],
-          "explanation": "Dummy is on your left, so lead through dummy's strength: a heart through the A Q 10. Dummy has to play before partner, so if partner has the K or J, partner can wait to pounce on whatever dummy plays. From three small, lead the top.",
-          "acceptable": {
-            "H7": "The right suit. From three small, the top card tells partner you have nothing in hearts.",
-            "H4": "The right suit. From three small, the top card tells partner you have nothing in hearts."
-          },
+          "explanation": "Dummy is on your left, so lead through dummy's strength: a heart through the A Q 10. Dummy has to play before partner, so if partner has the K or J, partner can wait to pounce on whatever dummy plays. In the middle of the hand, starting a new suit, we lead BOSTON: bottom of something, top of nothing. With nothing in hearts, lead the top: the ♥8. (On opening lead it's different: from small cards you'd lead low.)",
           "whyNot": {
+            "H7": "The right suit, but lead the top from nothing: the 8.",
+            "H4": "The right suit, but a low card says you have an honor in hearts. From nothing, lead the top.",
             "D9": "Dummy's diamonds are small and on your left: a diamond goes round to declarer, who plays last and can win cheaply over partner's honors.",
             "C3": "Dummy has no clubs: declarer ruffs in dummy and throws a loser from hand, a ruff and discard. Don't give one."
           }
@@ -727,11 +723,9 @@
           "play": true,
           "answer": "DJ",
           "tags": ["mid-hand"],
-          "explanation": "Dummy is on your right, so lead the weakest thing in sight: a diamond, up to dummy's small ones. Partner's diamonds sit behind declarer's, and partner can see dummy has nothing, so partner knows exactly what to play. From J 10, lead the J.",
-          "acceptable": {
-            "D7": "The right suit, but from a sequence, lead the top: the J."
-          },
+          "explanation": "Dummy is on your right, so lead the weakest thing in sight: a diamond, up to dummy's small ones. Partner's diamonds sit behind declarer's, and partner can see dummy has nothing, so partner knows exactly what to play. Starting a new suit in the middle of the hand, lead the top of an honor sequence if you have one: from J 10 8 7, the J.",
           "whyNot": {
+            "D7": "The right suit, but with an honor sequence, lead its top: the J.",
             "H9": "A heart goes round to dummy's A Q 10, and dummy plays last: whatever partner has, declarer can win it cheaply. That's a free finesse.",
             "C9": "Dummy has no clubs: declarer ruffs in dummy and throws a loser from hand, a ruff and discard. Don't give one."
           }
@@ -757,13 +751,11 @@
           "play": true,
           "answer": "D8",
           "tags": ["mid-hand"],
-          "explanation": "Dummy is on your left, so lead through its strength: a diamond through the K Q 10, in case partner has the A or J over them. Your hearts and clubs are worse leads: dummy's cards there are small, and declarer plays last, so leading away from your K or Q gives declarer a free finesse. From four small, lead a high one to show you have nothing in diamonds.",
-          "acceptable": {
-            "D6": "The right suit. A high spot card tells partner you have nothing in diamonds.",
-            "D5": "The right suit, though a high spot card tells partner more.",
-            "D2": "The right suit, though a high spot card tells partner more."
-          },
+          "explanation": "Dummy is on your left, so lead through its strength: a diamond through the K Q 10, in case partner has the A or J over them. Your hearts and clubs are worse leads: dummy's cards there are small, and declarer plays last, so leading away from your K or Q gives declarer a free finesse. In the middle of the hand, starting a new suit, we lead BOSTON: bottom of something, top of nothing. With nothing in diamonds, lead the top: the ♦8. (On opening lead it's different: from small cards you'd lead low.)",
           "whyNot": {
+            "D6": "The right suit, but lead the top from nothing: the 8.",
+            "D5": "The right suit, but a low card says you have an honor in diamonds. From nothing, lead the top.",
+            "D2": "The right suit, but a low card says you have an honor in diamonds. From nothing, lead the top.",
             "H4": "Away from your K, round to declarer, who plays last: if declarer has the A Q, you've given away a trick.",
             "C5": "Away from your Q, round to declarer, who plays last: a free finesse."
           }
