@@ -644,13 +644,13 @@
           "lead": true,
           "answer": "H2",
           "tags": ["leads-suit"],
-          "explanation": "North's 2♣ is a convention (Landy) showing both majors, and South chose hearts, so declarer will want to ruff spades with dummy's trumps or in hand. Your side has the balance of power, so there's no hurry for the club tricks: lead a trump to cut down the ruffs.",
+          "explanation": "Normally you'd lead the ♣Q, the top of your Q J 10 sequence. But this auction calls for a trump. North's 2♣ showed both majors and South chose hearts, so dummy has hearts and spades and little in the minors. Declarer's extra tricks will come from ruffs: ruffing dummy's spades in hand, and minor-suit losers in dummy. Each trump you lead cuts those down. Partner opened 1NT, so your side has the strength, and your club tricks will keep.",
           "acceptable": {
             "H3": "Any trump does the job here.",
             "H5": "Any trump does the job here."
           },
           "whyNot": {
-            "CQ": "An attractive sequence, but the trump lead is the standout: declarer's ruffs are where their tricks come from."
+            "CQ": "The normal lead from Q J 10, and safe. But here declarer's tricks come from ruffs, and only trump leads cut them down; your club tricks will keep."
           }
         }
       ]
@@ -670,7 +670,7 @@
           "lead": true,
           "answer": "H5",
           "tags": ["leads-suit"],
-          "explanation": "Lead partner's suit: the singleton ♥5. A trump lead is tempting after you've doubled 2♣ for penalty, but your clubs (A J 10) sit in front of declarer; it's better for partner to lead trumps through declarer to you later.",
+          "explanation": "Lead partner's suit: the singleton ♥5. A trump lead is tempting after you've doubled 2♣ for penalty, but your clubs (A J 10) sit behind declarer: lead them yourself and declarer wins a cheap trick. It's better for partner to lead trumps through declarer to you later.",
           "whyNot": {
             "C3": "Leading from A J 10 x gives declarer a cheap trump trick. Let partner lead trumps through declarer."
           }
@@ -692,9 +692,9 @@
           "lead": true,
           "answer": "D5",
           "tags": ["leads-suit"],
-          "explanation": "Partner passed your takeout double at the one level, so partner's diamonds are longer and stronger than declarer's. Lead a trump to help partner draw trumps, as you would if you were declarer. This is the exception to not leading a singleton trump.",
+          "explanation": "Normally you'd lead the ♠Q, the top of your Q J sequence. But partner passed your takeout double of 1♦, turning it into penalty, so partner's diamonds are longer and stronger than declarer's. Your side has the trumps: defend as you'd play as declarer, and draw them. Lead your diamond, so partner can win and lead trumps again, keeping control. A singleton trump is usually a poor lead, but this auction is the exception.",
           "whyNot": {
-            "SQ": "A normal lead on most auctions, but here the defense wants to draw trumps, and only a trump lead starts that."
+            "SQ": "The normal lead from Q J, but on this auction your side holds the trumps: start drawing them."
           }
         }
       ]
@@ -747,7 +747,6 @@
     },
     {
       "id": "lead-trump-preference",
-      "setAside": "It relies on a forcing 1NT response, which we don't play, and it marks wrong the top-of-sequence ♠Q our carding teaches (2026-11-05).",
       "source": "Debbie Rosenberg, “When to Lead Trump” (Palo Alto Bridge Center, 2026-02-19), example 6",
       "dealer": "S",
       "vul": "None",
@@ -756,7 +755,7 @@
       },
       "auction": ["1S", "P", "1N", "P", "2D", "P", "P", "P"],
       "reviewNotes": [
-        "South's 1NT response is forcing, as in the example."
+        "Rosenberg's auction has a forcing 1NT. In SAYC it isn't, but opener's 2♦ and dummy's pass still show dummy short in spades, all the more with five spades in your hand. Brought back 2026-11-06, when the standout trump-lead auctions were agreed."
       ],
       "problems": [
         {
@@ -764,10 +763,12 @@
           "lead": true,
           "answer": "D5",
           "tags": ["leads-suit"],
-          "explanation": "A standout trump lead: after 1♠–1NT (forcing)–2♦–pass, dummy didn't give preference to spades, so dummy usually has a singleton or void spade. Declarer will want to ruff spades in dummy, and your strong spades make that more likely. Lead a trump, and from a doubleton trump, lead low: the ♦5.",
+          "explanation": "Normally you'd lead the ♠Q, the top of your Q J 10 sequence. But after 1♠–1NT–2♦–pass, dummy didn't go back to spades, and with five spades in your hand, dummy has two at most and probably one or none. Declarer's spade losers will be ruffed in dummy, and your strong spades make that likely. Lead a trump to cut down dummy's trumps. From a doubleton trump, lead low: the ♦5.",
+          "acceptable": {
+            "D9": "Also a trump, and that's what matters. Rosenberg leads low from a doubleton trump; top of a doubleton is for partner's suit."
+          },
           "whyNot": {
-            "D9": "Top of a doubleton is for partner's suit. When leading a trump, lead low.",
-            "SQ": "Your spades are declarer's losers: they'll be ruffed in dummy. Lead trumps to stop that."
+            "SQ": "The normal lead from Q J 10, but here your spades are declarer's losers, ruffed in dummy. Lead trumps to stop that."
           }
         }
       ]
@@ -793,14 +794,14 @@
           "lead": true,
           "answer": "C2",
           "tags": ["leads-suit"],
-          "explanation": "They're sacrificing, and your side has most of the high cards, with something in every side suit. Where will declarer's tricks come from? Ruffs in dummy. Lead a trump, and keep leading trumps whenever you get in.",
+          "explanation": "Normally you'd lead partner's suit: the ♦J, the top of your doubleton. But they're sacrificing in 5♣ over your 4♥, and your side has most of the high cards, with something in every side suit. Where will declarer's tricks come from? Ruffs in dummy. Lead a trump to cut down dummy's trumps, and keep leading them whenever you get in.",
           "acceptable": {
             "C3": "Any trump does the job here.",
             "C5": "Any trump does the job here.",
             "H6": "Also works, as long as you switch to trumps as soon as you see dummy: double dummy it holds declarer to seven tricks too."
           },
           "whyNot": {
-            "DJ": "Declarer gets ruffs in dummy before you can draw its trumps."
+            "DJ": "Partner's suit, top of a doubleton: the normal lead. But here declarer's tricks come from ruffs in dummy, and every trump you lead takes one away."
           }
         }
       ]

@@ -479,7 +479,7 @@
     },
     {
       "id": "hand3-save-ace",
-      "source": "Phil Abrahamson, “11 Defense – Guidelines”, page 16",
+      "source": "Phil Abrahamson, “11 Defense – Guidelines”, page 21",
       "contract": "4S",
       "declarer": "S",
       "shown": "H",
@@ -651,6 +651,7 @@
     },
     {
       "id": "third-save-ace",
+      "setAside": "The same point as hand3-save-ace, from the same page (2026-11-06).",
       "source": "Phil Abrahamson, “11 Defense: Guidelines”, page 21",
       "context": "Your side passed throughout.",
       "contract": "4H",
