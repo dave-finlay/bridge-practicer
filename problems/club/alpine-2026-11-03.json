@@ -84,12 +84,11 @@
         "S": "QJ52.Q3.KQ6.T976",
         "W": "T976.52.T2.J5432"
       },
-      "auction": ["P", "P", "1D", "1H", "X", "P", "1S", "1N", "2S", "P", "P", "X", "P", "P", "P"],
-      "atTheTable": "P–P–(1♦)–1♥–(X)–P–(1♠)–1NT–(2♠), passed out: 2♠ by North made eight tricks, −110 for 4 of 10 MPs. Double dummy, 2♠ takes only six tricks: doubled, two down for +300, a top; undoubled +100, about 7.5 of 10. East–West have nowhere to play: East takes five tricks in hearts or notrump.",
-      "agreed": "Agreed 2026-11-04: with 17+ and a five-card suit, too strong for a simple overcall (about 8-17), double first and bid the suit next. Once East has shown a strong hand, a double of their partscore is for penalty, and East, with 18 and ♠AK8 over the declarer, doubles 2♠.",
+      "auction": ["P", "P", "1D", "X", "1S", "P", "1N", "X", "2N", "P", "P", "P"],
+      "atTheTable": "P–P–(1♦)–1♥–(X)–P–(1♠)–1NT–(2♠), passed out: 2♠ by North made eight tricks, −110 for 4 of 10 MPs. North's 1♠ with ♠43 was odd (1NT fits better), and East–West could only place North–South in a 4-4 fit, so passing 2♠ was reasonable. Double dummy, 2♠ takes only six tricks, but nobody at the table could know that.",
+      "agreed": "Agreed 2026-11-04: with 17+ and a five-card suit, too strong for a simple overcall (about 8-17), double first and bid the suit next. Revised 2026-11-06: only East's first call is drilled; the old second problem (doubling 2♠) relied on seeing North's two spades.",
       "reviewNotes": [
-        "New tag: 'too-strong-to-overcall' (Dave asked for this category). Not in the app's existing tag list.",
-        "The auction is the one at the table plus East's double of 2♠, so problem b can be shown. Problem a's answer (X) differs from the auction's 1♥; see its answerNote. After 1♦–X the auction would go differently, and East–West can't make anything (five tricks in hearts or notrump double dummy), so the gain on this deal comes from the double of 2♠, not from the first call.",
+        "The auction after East's double is Dave's guess at how it should have gone (2026-11-06): P–P–(1♦)–X–(1♠)–P–(1NT)–X–(2NT), all pass. Only East's first call is drilled. Double dummy, 2NT by South makes eight tricks.",
         "Our lessons say to overcall 1NT with 15-18 balanced and a stopper (Doubleton 2026-09-30, board 1). East is 5-3-3-2 with 18, so 1NT is listed as acceptable; ♦J53 is a thin stopper.",
         "The table auction is from Dave's memory (2026-11-04); the bid recorder had it differently."
       ],
@@ -98,25 +97,13 @@
           "id": "club-2026-11-03-alpine-19a",
           "at": 3,
           "answer": "X",
-          "answerNote": "At the table East overcalled 1♥; the auction shown continues from that.",
           "tags": ["too-strong"],
           "explanation": "You have 18 HCP and five hearts. A simple overcall shows about 8-17, so 1♥ would undersell the hand: partner, expecting a modest overcall, will pass with a weak hand and never know you have 18. Double first, then bid hearts at your next turn: double-then-suit shows a hand too strong to overcall, 17+ with a good five-card suit.",
           "acceptable": {
             "1N": "With 15-18 balanced and a stopper, a 1NT overcall describes the hand in one bid. Your 5-3-3-2 is balanced, but ♦J53 is a thin stopper in their suit."
           },
           "whyNot": {
-            "1H": "The call at the table. It shows 8-17, so partner can't tell you have 18, and a later decision, like doubling them, is left to you alone."
-          }
-        },
-        {
-          "id": "club-2026-11-03-alpine-19b",
-          "at": 11,
-          "answer": "X",
-          "tags": ["too-strong"],
-          "explanation": "You've shown a strong balanced hand with 1NT, and partner has passed twice, so the strength is yours. They're in a 4-2 spade fit at best: you hold ♠AK8 sitting over North, the declarer, and partner may have length too. With 18 HCP and their trumps behind declarer, double for penalty. Here it's two down, +300.",
-          "whyNot": {
-            "P": "The call at the table. 2♠ made eight tricks, −110 for 4 of 10; doubled, it goes two down double dummy for a top.",
-            "3H": "You're vulnerable, and partner's passes show almost nothing. Double dummy you take five tricks in hearts; your values are worth more on defense."
+            "1H": "The call at the table. It shows 8-17, so partner can't tell you have 18, and every later decision is left to you alone."
           }
         }
       ]

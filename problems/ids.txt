@@ -25,7 +25,6 @@ club-2026-10-27-alpine-17b
 club-2026-10-27-alpine-2a
 club-2026-11-03-alpine-16a
 club-2026-11-03-alpine-19a
-club-2026-11-03-alpine-19b
 club-2026-11-03-alpine-1a
 club-2026-11-03-alpine-21a
 club-2026-11-04-doubleton-16a
