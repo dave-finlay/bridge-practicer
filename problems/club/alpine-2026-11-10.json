@@ -75,6 +75,51 @@
       ]
     },
     {
+      "id": "club-2026-11-10-alpine-19-response",
+      "source": "Alpine Club 2026-11-10, board 19",
+      "board": 19,
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "N": "AT4.AT2.J8732.94",
+        "E": "J862.54.Q.KQJ872",
+        "S": "53.K876.T964.653",
+        "W": "KQ97.QJ93.AK5.AT"
+      },
+      "auction": ["P", "1D", "P", "1S", "P", "4S", "P", "P", "P"],
+      "atTheTable": "(P)–1♦–(P)–2♣–(P)–2NT, all pass. West meant 2NT as 18-19, as after a one-level response; East read it as a minimum and passed. 2NT made nine tricks (+150, 1 of 9). The field bid 4♠ or 3NT for +620 to +690.",
+      "agreed": "East, with 9 HCP, four spades and six clubs, responds 1♠: too weak for a two-level response (10+), and with less than an opening hand responder shows a four-card major at the one level first. West, with 19 and four spades, raises to 4♠. Agreed by Dave, 2026-11-17.",
+      "reviewNotes": [
+        "Double dummy, East-West make 10 tricks in notrump, spades and clubs, and 9 in hearts. Par is 3NT+1 (+630); 4♠= is +620.",
+        "One of two versions of this board, sharing its source: this one drills East's response and West's raise; the other drills West's rebid after East's 2♣, as at the table."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-10-alpine-19-responsea",
+          "at": 3,
+          "answer": "1S",
+          "tags": ["general"],
+          "explanation": "Partner opened 1♦. You have 9 HCP, four spades and six clubs. A two-level response like 2♣ promises 10+, and with less than an opening hand you show a four-card major at the one level first: bid 1♠. It's forcing for one round, so you can show the clubs later, and it finds a spade fit at once.",
+          "whyNot": {
+            "2C": "The call made at the table. A two-level response promises 10+, and you have 9. It also hides your spades: partner will take 2♣ as denying a four-card major.",
+            "1N": "1NT denies a four-card major. With four spades, bid them.",
+            "3C": "A jump shift shows a strong hand, about 17+. You have 9."
+          }
+        },
+        {
+          "id": "club-2026-11-10-alpine-19-responseb",
+          "at": 5,
+          "answer": "4S",
+          "tags": ["opener-rebids"],
+          "explanation": "Partner's 1♠ shows four or more spades and 6+ points, and you have four spades too: a 4-4 fit. With 19 HCP you have game opposite even a minimum response, so raise straight to 4♠.",
+          "whyNot": {
+            "3S": "A jump raise shows about 16-18 and only invites: partner passes with a minimum. With 19, bid the game.",
+            "2N": "A jump to 2NT shows 18-19 balanced, but you've found a 4-4 spade fit. Tell partner: 4♠."
+          }
+        }
+      ]
+    },
+    {
       "id": "club-2026-11-10-alpine-19",
       "source": "Alpine Club 2026-11-10, board 19",
       "board": 19,
@@ -86,24 +131,23 @@
         "S": "53.K876.T964.653",
         "W": "KQ97.QJ93.AK5.AT"
       },
-      "auction": ["P", "1D", "P", "2C", "P", "2H", "P", "2S", "P", "4S", "P", "P", "P"],
+      "auction": ["P", "1D", "P", "2C", "P", "3N", "P", "P", "P"],
       "atTheTable": "(P)–1♦–(P)–2♣–(P)–2NT, all pass. West meant 2NT as 18-19, as after a one-level response; East read it as a minimum and passed. 2NT made nine tricks (+150, 1 of 9). The field bid 4♠ or 3NT for +620 to +690.",
-      "agreed": "After a two-level response, 2NT shows a minimum (12-14) and 3NT 15-18, so with 19 West must not rebid 2NT. Best is 2♥, showing the four-card major: a new suit keeps the auction going because 2♣ promised another bid. Then 4♠ over East's 2♠, or 3NT over 3♣. A 3♥ jump shift or a direct 3NT are also fine. We don't play reverses (Donna), so 2♥ isn't relied on to show extra strength; West places the contract. Agreed by Dave, 2026-11-16.",
+      "agreed": "After a two-level response, 2NT shows a minimum (12-14) and 3NT 15-18, so with 19 West must not rebid 2NT. East's 2♣ most likely denies a four-card major (with less than an opening hand, responder bids the major at the one level), so West bids 3NT. 2♥ (forcing, since 2♣ promised another bid) or a 3♥ jump shift is also fine. Agreed by Dave, 2026-11-16; revised 2026-11-17.",
       "reviewNotes": [
         "Double dummy, East-West make 10 tricks in notrump, spades and clubs, and 9 in hearts. Par is 3NT+1 (+630); 4♠= is +620.",
-        "The agreed auction keeps East's 2♣, to set up West's rebid. East's 1♠ response (9 HCP, four spades, six clubs) is better, and is in lessons.md, but it isn't drilled here.",
-        "Tagged opener-rebids, a new topic for opener's second bid (2026-11-16)."
+        "One of two versions of this board, sharing its source: this one drills West's rebid after East's 2♣, as at the table; the other drills East's 1♠ response and West's raise."
       ],
       "problems": [
         {
           "id": "club-2026-11-10-alpine-19a",
           "at": 5,
-          "answer": "2H",
+          "answer": "3N",
           "tags": ["opener-rebids"],
-          "explanation": "You planned to open and rebid 2NT to show 18-19 balanced, but that works only after a one-level response. Partner's 2♣ is a two-level response, promising 10+ points, so you have at least 29 between you and game is certain. Now 2NT would show a minimum, 12-14, and partner may pass it. Show your four-card majors up the line instead: 2♥. Partner promised another bid, so 2♥ keeps the auction going. Over 2♠, you have a 4-4 fit, so bid 4♠; over 3♣ or 2NT, bid 3NT.",
+          "explanation": "You planned to open and rebid 2NT to show 18-19 balanced, but that works only after a one-level response. Partner's 2♣ is a two-level response, promising 10+, so you have at least 29 between you and game is certain. Now 2NT would show a minimum, 12-14, and partner may pass it. With less than an opening hand, partner would have shown a four-card major at the one level, so 2♣ most likely denies one: bid 3NT. If partner has more, partner can bid on.",
           "acceptable": {
-            "3H": "A jump shift, forcing to game. It can't be passed or misread, but it uses up a level: partner bids 3♠ with four spades, or 3NT.",
-            "3N": "Reaches game in one bid and makes 10 tricks here (+630). 3NT shows 15-18, a little short of your 19, and it hides both majors, so you'd miss a 4-4 major fit when 3NT isn't safe."
+            "2H": "A new suit, forcing because 2♣ promised another bid. It finds a 4-4 fit if partner has an opening hand and a major to show later, but 2♣ most likely denies one.",
+            "3H": "A jump shift, forcing to game. Fine, but it uses up room, and 2♣ most likely denies a major."
           },
           "whyNot": {
             "2N": "The call made at the table. After a two-level response, 2NT shows a minimum (12-14), and partner passed (+150, 1 of 9). 18-19 balanced is a jump to 2NT only after a one-level response."
