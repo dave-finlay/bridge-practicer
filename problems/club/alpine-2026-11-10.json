@@ -1,0 +1,115 @@
+{
+  "title": "Alpine Club, 10 Nov 2026",
+  "source": "Session review, submitted through ~/context/bridge/practicer",
+  "deals": [
+    {
+      "id": "club-2026-11-10-alpine-2",
+      "source": "Alpine Club 2026-11-10, board 2",
+      "board": 2,
+      "dealer": "E",
+      "vul": "NS",
+      "hands": {
+        "N": "K9854.K5.J92.JT2",
+        "E": "J7.QT84.Q754.AQ7",
+        "S": "AT632.J9762..653",
+        "W": "Q.A3.AKT863.K984"
+      },
+      "auction": ["P", "P", "1D", "P", "1H", "1S", "3D", "P", "5D", "P", "P", "P"],
+      "atTheTable": "P–P–1♦–P–1♥–(1♠)–2♦–(2♠)–3♦, all pass. 3♦ made 11 tricks (+150, 3 of 9). Five tables bid 5♦ for +400 or +420.",
+      "agreed": "West's 2♦ showed a minimum (12-15); with 16 HCP, a strong six-card suit and five losers, West jumps to 3♦ (16-18, six diamonds), invitational even after the overcall. East, a passed hand with a maximum and four trumps, then bids 5♦ (no spade stopper for 3NT). Agreed by Dave, 2026-11-16.",
+      "reviewNotes": [
+        "Double dummy, East-West make 11 tricks in diamonds and only 8 in notrump. Par is 5♦= (+400).",
+        "North's call over 3♦ is a guess: at the table North bid 2♠ over 2♦ with K9854 and 8 HCP, so North might bid 3♠ here. East would still bid 5♦.",
+        "East's decision at the table, after 2♦–(2♠), was also discussed: a 3♠ cuebid (over 10 points and a fit) or 4♦, not 3♦. It isn't drilled here, because the agreed auction goes differently.",
+        "Tagged opener-rebids, a new topic for opener's second bid (2026-11-16)."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-10-alpine-2a",
+          "at": 6,
+          "answer": "3D",
+          "tags": ["opener-rebids"],
+          "explanation": "Count your hand: 16 HCP, a strong six-card diamond suit, a side four-card club suit and a singleton spade, about five losers. That's much better than a minimum. A simple 2♦ rebid shows 12-15, so jump to 3♦: 16-18 with a good six-card suit, inviting game. The overcall doesn't change that. Partner, with a fit and a maximum, can now bid 5♦.",
+          "whyNot": {
+            "2D": "The call made at the table. It shows a minimum, 12-15, so partner, a passed hand, could only compete to 3♦, and you stopped there (+150, 3 of 9). 5♦ makes.",
+            "2C": "A new suit at the two level, but it's not forcing and doesn't show your extra strength or the six-card diamond suit."
+          }
+        }
+      ]
+    },
+    {
+      "id": "club-2026-11-10-alpine-6",
+      "source": "Alpine Club 2026-11-10, board 6",
+      "board": 6,
+      "dealer": "E",
+      "vul": "EW",
+      "hands": {
+        "N": "97.T.Q987652.JT5",
+        "E": "J643.AQ.3.AQ8432",
+        "S": "AKT8.987532.A.K6",
+        "W": "Q52.KJ64.KJT4.97"
+      },
+      "auction": ["1C", "1H", "1N", "P", "2C", "2H", "2N", "P", "3N", "P", "P", "P"],
+      "atTheTable": "1♣–(1♥)–1NT–(P)–2♣–(2♥), all pass. 2♥ went one down (+50, 4 of 9). One table made 3NT for +600.",
+      "agreed": "West, with a maximum 1NT response (10 HCP) and KJ64 of hearts, bids 2NT. It tells partner definitively that West has a heart stopper and is at the top of the 6-10 range. Partner opened and rebid clubs, so there are 22+ HCP between us and partner has five or six clubs; with their suit stopped, notrump is likely a better spot than clubs. Not a double: Donna would probably read it as takeout, showing spades and diamonds. Agreed by Dave and Donna, 2026-11-16.",
+      "reviewNotes": [
+        "Double dummy, East-West make 9 tricks in notrump (3NT +600, a top) and only 7 in clubs; 2♥ by South makes only 6 tricks, so doubled it's two down (+300, about 8 of 9).",
+        "Par is a North–South save in 4♦ doubled, two down (−300), but North never mentioned diamonds and hardly any table got there.",
+        "East's 3NT over 2NT is a judgment: 13 HCP, six clubs and the heart AQ make it reasonable, and it makes double dummy.",
+        "The double's meaning isn't formally agreed, but Donna thinks she'd read it as takeout (spades and diamonds), so it's a whyNot, not acceptable (2026-11-16). See 'Penalty or takeout doubles' under discussion in agreements.md.",
+        "Tagged general: no existing topic fits."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-10-alpine-6a",
+          "at": 6,
+          "answer": "2N",
+          "tags": ["general"],
+          "explanation": "Your 1NT showed about 6-10 with a heart stopper, and you have the top of the range: 10 HCP with KJ64 of hearts sitting over the heart bidder. Partner opened and rebid clubs, so you have 22+ HCP between you and partner has five or six clubs. Don't sell out to 2♥: bid 2NT. It tells partner for certain that you have hearts stopped and a maximum, and invites 3NT. With their suit stopped and no fit of your own, notrump is likely to play better than clubs. Partner, with a good hand, bids 3NT.",
+          "whyNot": {
+            "X": "Meant as penalty, it would score well (2♥ doubled is two down double dummy, +300). But partner would probably read it as takeout: 'I have spades and diamonds, bid one of them.' 2NT says what you have without the risk.",
+            "P": "The call made at the table. It sells out cheaply when you have a maximum and their suit stopped (+50, 4 of 9). Be aggressive below 2NT.",
+            "3C": "It competes, but with your heart stopper and only two clubs, notrump is the better destination. Double dummy 3♣ makes only seven tricks."
+          }
+        }
+      ]
+    },
+    {
+      "id": "club-2026-11-10-alpine-19",
+      "source": "Alpine Club 2026-11-10, board 19",
+      "board": 19,
+      "dealer": "S",
+      "vul": "EW",
+      "hands": {
+        "N": "AT4.AT2.J8732.94",
+        "E": "J862.54.Q.KQJ872",
+        "S": "53.K876.T964.653",
+        "W": "KQ97.QJ93.AK5.AT"
+      },
+      "auction": ["P", "1D", "P", "2C", "P", "2H", "P", "2S", "P", "4S", "P", "P", "P"],
+      "atTheTable": "(P)–1♦–(P)–2♣–(P)–2NT, all pass. West meant 2NT as 18-19, as after a one-level response; East read it as a minimum and passed. 2NT made nine tricks (+150, 1 of 9). The field bid 4♠ or 3NT for +620 to +690.",
+      "agreed": "After a two-level response, 2NT shows a minimum (12-14) and 3NT 15-18, so with 19 West must not rebid 2NT. Best is 2♥, showing the four-card major: a new suit keeps the auction going because 2♣ promised another bid. Then 4♠ over East's 2♠, or 3NT over 3♣. A 3♥ jump shift or a direct 3NT are also fine. We don't play reverses (Donna), so 2♥ isn't relied on to show extra strength; West places the contract. Agreed by Dave, 2026-11-16.",
+      "reviewNotes": [
+        "Double dummy, East-West make 10 tricks in notrump, spades and clubs, and 9 in hearts. Par is 3NT+1 (+630); 4♠= is +620.",
+        "The agreed auction keeps East's 2♣, to set up West's rebid. East's 1♠ response (9 HCP, four spades, six clubs) is better, and is in lessons.md, but it isn't drilled here.",
+        "Tagged opener-rebids, a new topic for opener's second bid (2026-11-16)."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-10-alpine-19a",
+          "at": 5,
+          "answer": "2H",
+          "tags": ["opener-rebids"],
+          "explanation": "You planned to open and rebid 2NT to show 18-19 balanced, but that works only after a one-level response. Partner's 2♣ is a two-level response, promising 10+ points, so you have at least 29 between you and game is certain. Now 2NT would show a minimum, 12-14, and partner may pass it. Show your four-card majors up the line instead: 2♥. Partner promised another bid, so 2♥ keeps the auction going. Over 2♠, you have a 4-4 fit, so bid 4♠; over 3♣ or 2NT, bid 3NT.",
+          "acceptable": {
+            "3H": "A jump shift, forcing to game. It can't be passed or misread, but it uses up a level: partner bids 3♠ with four spades, or 3NT.",
+            "3N": "Reaches game in one bid and makes 10 tricks here (+630). 3NT shows 15-18, a little short of your 19, and it hides both majors, so you'd miss a 4-4 major fit when 3NT isn't safe."
+          },
+          "whyNot": {
+            "2N": "The call made at the table. After a two-level response, 2NT shows a minimum (12-14), and partner passed (+150, 1 of 9). 18-19 balanced is a jump to 2NT only after a one-level response."
+          }
+        }
+      ]
+    }
+  ]
+}

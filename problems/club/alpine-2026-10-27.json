@@ -271,7 +271,7 @@
           "id": "club-2026-10-27-alpine-16-jump-shift-a",
           "at": 4,
           "answer": "3D",
-          "tags": ["general"],
+          "tags": ["opener-rebids"],
           "explanation": "You have 16 HCP and 5-5 in spades and diamonds, with the singleton ♥A: only four losers (one each in spades and diamonds, two in clubs). Opposite partner's 6-10, game is likely even though your points are short of the usual 19 for a jump shift. Jump to 3♦: it's forcing to game and shows a strong two-suiter.",
           "acceptable": {
             "2D": "2♦ is the normal call with 16 HCP, and fine if partner raises with four diamonds and a maximum. The jump shift makes sure you reach game."

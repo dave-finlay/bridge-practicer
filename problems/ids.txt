@@ -30,6 +30,9 @@ club-2026-11-03-alpine-21a
 club-2026-11-04-doubleton-16a
 club-2026-11-04-doubleton-18a
 club-2026-11-04-doubleton-5a
+club-2026-11-10-alpine-19a
+club-2026-11-10-alpine-2a
+club-2026-11-10-alpine-6a
 control-1a
 control-1b
 control-1c
