@@ -14,7 +14,7 @@ export const ORIGINS = {
     name: 'Lessons',
     files: ['stayman', 'texas', 'negative-doubles', 'nmf', 'jacoby-2nt', 'rkcb', 'control-bids', 'jacoby'],
   },
-  club: { name: 'Club', files: ['alpine-2026-10-27', 'alpine-2026-11-03', 'doubleton-2026-11-04', 'alpine-2026-11-10'] },
+  club: { name: 'Club', files: ['alpine-2026-10-27', 'alpine-2026-11-03', 'doubleton-2026-11-04', 'alpine-2026-11-10', 'alpine-2026-11-17'] },
   teachers: { name: 'Teachers', files: ['too-strong', 'cuebids', 'opening-leads', 'defense'] },
 };
 

@@ -1,0 +1,82 @@
+{
+  "title": "Alpine Club, 17 Nov 2026",
+  "source": "Session review, submitted through ~/context/bridge/practicer",
+  "deals": [
+    {
+      "id": "club-2026-11-17-alpine-12",
+      "source": "Alpine Club 2026-11-17, board 12",
+      "board": 12,
+      "dealer": "W",
+      "vul": "NS",
+      "hands": {
+        "N": "J754.72.K9862.K6",
+        "E": "AK9.96.AJ743.753",
+        "S": "T62.Q84.QT5.AT84",
+        "W": "Q83.AKJT53..QJ92"
+      },
+      "auction": ["1H", "P", "2D", "P", "2H", "P", "2S", "P", "3C", "P", "3N", "P", "4H", "P", "P", "P"],
+      "atTheTable": "1♥–2♦–2♥–2NT, passed out. 2NT by East made 11 tricks for +210, 5 of 10. Five tables bid 4♥ and made 10 or 11 tricks (+420 or +450); 4♥ making 11 would have scored 8.",
+      "agreed": "East bids 2♠ (agreed 2026-11-18). East knows game is on: an opening hand opposite an opening hand. So East keeps the bidding going with a new suit, even a three-card one, rather than inviting with 2NT, which West could pass. West, expecting East to be 5-4 or 5-3 in diamonds and spades and holding only three spades, won't pass 2♠, and bids 3♣ (or 3NT). After 3♣, East bids 3NT, and West chooses between 3NT and 4♥. 3NT directly is acceptable but takes a risk in clubs.",
+      "reviewNotes": [
+        "agreements.md doesn't say whether responder's new suit at their second turn (1♥–2♦–2♥–2♠) is forcing. Dave's view (2026-11-18): it works in practice anyway, because West won't want to play a likely seven-card spade fit.",
+        "West's continuation is judgment: 3♣ or 3NT over 2♠, then pass 3NT or pull to 4♥ with six hearts and the diamond void. The auction shows 3♣–3NT–4♥; double dummy, 3NT and 4♥ both make 10 tricks.",
+        "4♥ by East is acceptable, as well as 3NT (Dave, 2026-11-18)."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-17-alpine-12a",
+          "at": 6,
+          "answer": "2S",
+          "tags": ["general"],
+          "explanation": "Partner opened and you responded at the two level, so you have an opening hand opposite an opening hand: game is on. Partner's 2♥ shows a minimum, usually six hearts, but you don't yet know the right game. Clubs are the unbid suit and your ♣753 has no stopper, and with ♥96 you can't be sure of a heart fit. So bid a new suit, 2♠, to keep the bidding going, even though it's only ♠AK9. Partner won't pass: from the auction they expect you to be 5-4 or 5-3 in diamonds and spades, and won't want to play a seven-card fit. Partner bids 3♣ with clubs covered (here ♣QJ92), and you bid 3NT; with six good hearts and a diamond void, partner may prefer 4♥. Partner might also bid 3NT straight away.",
+          "acceptable": {
+            "3N": "Bids the game you know is on, but with ♣753 you're gambling that partner covers clubs. Here partner has ♣QJ92 and 3NT makes 10 tricks, but when partner has nothing in clubs, the opponents can run the suit.",
+            "4H": "Bids a game you know is on, and partner's 2♥ rebid usually shows six, so ♥96 likely makes an eight-card fit. Double dummy it makes 10 tricks, but 3NT makes 10 too and scores more at matchpoints; 2♠ finds out which game first."
+          },
+          "whyNot": {
+            "2N": "The call at the table. 2NT is invitational, 11-12, and leaves the decision to partner, who knows less than you do. With a minimum and a misfit in diamonds, partner reasonably passed, and you missed game (+210, 5 of 10).",
+            "3H": "Also only invitational, so partner can pass it, and with ♥96 it's thin support."
+          }
+        }
+      ]
+    },
+    {
+      "id": "club-2026-11-17-alpine-21",
+      "source": "Alpine Club 2026-11-17, board 21",
+      "board": 21,
+      "dealer": "N",
+      "vul": "NS",
+      "hands": {
+        "N": "AT6.KJ73.T97.876",
+        "E": "KQJ.6.A8532.AKT4",
+        "S": "98753.T954.J.J92",
+        "W": "42.AQ82.KQ64.Q53"
+      },
+      "auction": ["P", "1D", "P", "1H", "P", "2N", "P", "3N", "P", "P", "P"],
+      "atTheTable": "P–1♦–P–1♥–P–3♦–P–5♦, all pass. 5♦ by East made 12 tricks for +420, 4.5 of 10. Five tables played 3NT for +460 to +520; nobody bid slam (6♦ and 6NT make double dummy).",
+      "agreed": "East rebids 2NT (agreed 2026-11-18). It shows 18-19 with stoppers in the unbid suits, and West, with 13 opposite 18-19 (31-32, short of the 33 for slam), bids 3NT. Over 3♦ West had no clean way to ask about spades: 3♣ is below 3♦, and with no suit agreed a new suit isn't clearly a stopper bid. So West's 5♦, with ♠42, was a defensible choice, and the fix is East's rebid.",
+      "reviewNotes": [
+        "agreements.md now says 1m–1M–2NT can include a singleton in partner's suit with both unbid suits stopped, and a good five-card suit can count as a point towards the 18 (Dave, 2026-11-18).",
+        "3♦ (the table call) is wrong: it promises six diamonds. Dave thinks 3♣ is better than 3♦ (a forcing jump shift showing the strength and both minors, and partner can go back to diamonds), so it's acceptable, though it still hides the spade stopper (2026-11-18).",
+        "Double dummy, 3NT by East makes 11 tricks (+460, about 5.5 of 10); the field took 12 in notrump (+490, about 7.5).",
+        "Tagged opener-rebids."
+      ],
+      "problems": [
+        {
+          "id": "club-2026-11-17-alpine-21a",
+          "at": 5,
+          "answer": "2N",
+          "tags": ["opener-rebids"],
+          "explanation": "You have 17 HCP, and your five-card diamond suit makes the hand worth about 18, enough for a 2NT rebid (18-19). The singleton is in partner's suit, the best place for one in notrump, and you have both unbid suits well stopped with ♠KQJ and ♣AKT4. 2NT tells partner exactly that, so partner can bid 3NT. Partner, with 13, knows you have 31-32 between you, short of slam, and bids 3NT.",
+          "acceptable": {
+            "3C": "A jump shift: forcing to game, it shows your strength and your diamonds and clubs, and partner can go back to diamonds. Much better than 3♦, but it doesn't show your spade stopper, so partner can't tell that 3NT is an option. 2NT says it all."
+          },
+          "whyNot": {
+            "3D": "The call at the table. It shows 16-18, which is right, but promises six diamonds, and says nothing about your spade and club stoppers. Partner, with ♠42, had no clean way to ask about spades (3♣ is below 3♦) and settled for 5♦, which needs 11 tricks to score what 3NT scores with 9 (+420, 4.5 of 10; 3NT scored +460 to +520).",
+            "2C": "Shows a second suit, but with a range of 12-18 partner may pass with a minimum, and it hides your extra strength and your stoppers."
+          }
+        }
+      ]
+    }
+  ]
+}

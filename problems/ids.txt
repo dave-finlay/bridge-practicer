@@ -35,6 +35,8 @@ club-2026-11-10-alpine-19-responseb
 club-2026-11-10-alpine-19a
 club-2026-11-10-alpine-2a
 club-2026-11-10-alpine-6a
+club-2026-11-17-alpine-12a
+club-2026-11-17-alpine-21a
 control-1a
 control-1b
 control-1c
