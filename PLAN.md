@@ -229,6 +229,12 @@ back sooner and known ones fade out. Problems not due yet are left out,
 even if that makes the session short; with none ready, the home screen
 says when more are due.
 
+**Starting over.** To go through a set again before it's due, Start
+these over (on the home screen) clears the progress on the problems the
+chips choose, after asking, so they all come up as new. The answers log
+keeps the past answers. When all of them are done for now, it takes the
+place of the start button; otherwise it's a link under the progress.
+
 ## Steps
 
 ### 1. Problem format, checker and review page: done

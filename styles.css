@@ -1064,6 +1064,21 @@ dialog.about h2 {
   font-size: 22px;
 }
 
+.start-over-button {
+  margin-top: 6px;
+  padding: 8px 0;
+  border: 0;
+  background: none;
+  color: var(--felt);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.start-over .secondary {
+  width: 100%;
+  margin-top: 8px;
+}
+
 /* Laptop preview at phone size (js/preview.js). */
 
 .preview-bar {

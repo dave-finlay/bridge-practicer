@@ -49,6 +49,15 @@ export async function saveAnswer(answer, record) {
   return done(transaction);
 }
 
+// Deletes the progress records of the problems with these ids, so they
+// come up as new again. The answers log keeps every past answer.
+export async function clearProgress(ids) {
+  const db = await open();
+  const transaction = db.transaction('progress', 'readwrite');
+  for (const id of ids) transaction.objectStore('progress').delete(id);
+  return done(transaction);
+}
+
 // Asks the browser not to clear the app's data when the phone is low on space.
 // Browsers may say no, and older ones don't support it; either way the
 // app still works.

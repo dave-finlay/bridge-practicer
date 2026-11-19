@@ -14,7 +14,9 @@
 // Every answer is saved on the phone (js/store.js), and the progress
 // decides which problems come up: new ones first, then ones missed, then
 // ones due again. Ones answered right wait until they're due, so a set
-// can be short, or there can be none left for now.
+// can be short, or there can be none left for now. Start these over
+// clears the progress on the chosen origins and topics, so they can all
+// be gone through again.
 
 import { marksFor } from './alerts.js';
 import { BIDS, STRAINS, contract, isVulnerable, legalCalls, seatAfter } from './auction.js';
@@ -24,7 +26,7 @@ import {
   problemFiles, progressSummary, readyNow, topicName, topicsIn, trickSeats, updateProgress, withTags,
 } from './problems.js';
 import { startPreview } from './preview.js';
-import { loadProgress, requestPersistence, saveAnswer } from './store.js';
+import { clearProgress, loadProgress, requestPersistence, saveAnswer } from './store.js';
 
 const app = document.getElementById('app');
 
@@ -620,11 +622,18 @@ function renderHome() {
         <div><strong>${right}</strong> right last time</div>
         <div><strong>${lastAt ? whenText(lastAt) : 'Not yet'}</strong> last practiced</div>
       </div>
+      ${seen && size ? `<button class="start-over-button" data-action="start-over">Start these over</button>` : ''}
     </section>
+    <dialog class="about start-over" aria-label="Start these over">
+      <h2>Start these over?</h2>
+      <p>The ${seen} challenge${seen === 1 ? '' : 's'} you’ve tried from the ones chosen above will come up as new again, so you can go through them all. Their progress so far is cleared, and that can’t be undone.</p>
+      <button class="primary" data-action="confirm-start-over">Start over</button>
+      <button class="secondary" data-action="close-start-over">Cancel</button>
+    </dialog>
     <div class="starts">
       ${size ? `<button class="primary" data-action="start">${size} challenge${size === 1 ? '' : 's'}</button>`
-        : `<p class="hint">You’ve done all of these for now. More are due ${dueText(nextDue(pool, progress))}.</p>
-      <button class="primary" disabled>All caught up</button>`}
+        : `<p class="hint">You’ve done all of these for now. More are due ${dueText(nextDue(pool, progress))}, or you can start them over and go through them all again.</p>
+      <button class="primary" data-action="start-over">Start these over</button>`}
     </div>`;
   window.scrollTo(0, 0);
 }
@@ -674,6 +683,14 @@ function recordAnswer(call) {
   saveAnswer({ id: item.id, call, grade: result, at: answeredAt }, progress[item.id]).catch(console.error);
 }
 
+// Clears the progress on `pool`, on the phone and here, so its problems
+// come up as new again.
+function startOver(pool) {
+  const ids = pool.map(({ id }) => id).filter((id) => progress[id]);
+  for (const id of ids) delete progress[id];
+  clearProgress(ids).catch(console.error);
+}
+
 // Events
 
 app.addEventListener('click', (event) => {
@@ -686,17 +703,20 @@ app.addEventListener('click', (event) => {
     if (marked !== wasShown) showMark(marked);
     return;
   }
-  // The About popup: a tap on its backdrop (the dialog itself) closes it.
+  // A popup (About, or Start these over): a tap on its backdrop (the
+  // dialog itself) closes it.
   if (event.target.matches('dialog.about')) {
     event.target.close();
     return;
   }
   const button = event.target.closest('button');
   if (!button || button.disabled) return;
-  if (button.dataset.action === 'about' || button.dataset.action === 'close-about') {
-    const about = app.querySelector('dialog.about');
-    if (button.dataset.action === 'about') about.showModal();
-    else about.close();
+  const popup = { 'about': 'dialog.about:not(.start-over)', 'start-over': 'dialog.start-over' };
+  const [, closing, name] = button.dataset.action?.match(/^(close-)?(about|start-over)$/) ?? [];
+  if (name) {
+    const dialog = app.querySelector(popup[name]);
+    if (closing) dialog.close();
+    else dialog.showModal();
     return;
   }
 
@@ -718,6 +738,8 @@ app.addEventListener('click', (event) => {
   } else if (action === 'start') {
     startSession(chosenPool(), SESSION_SIZE);
     return;
+  } else if (action === 'confirm-start-over') {
+    startOver(chosenPool());
   } else if (action === 'cancel') {
     selected = null;
   } else if (action === 'confirm') {
